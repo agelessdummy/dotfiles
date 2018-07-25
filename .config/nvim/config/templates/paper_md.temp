@@ -1,0 +1,42 @@
+    [^Comment]:  Text that will not appear in html source
+
+---
+title:  'TITLE OR PROJECT'
+author:
+- Luis Mendez
+date: DATE
+csl: ~/Path/to/CSL.csl
+bibliography: ~/Path/to/BIB.bib
+output:
+    - html_document 
+    - pdf_document:
+        toc: true
+        number_sections: true
+        fig_width: 7
+        fig_height: 6
+        fig_caption: true
+        fontsize: 12pt
+        geometry: margin=1in
+        documentclass: 
+        classoption:
+        latex_engine: xelatex
+        keep_tex: true | false
+    - word_document
+    - odt_document
+    - md_document:
+        variant:
+    markdown (Full Pandoc Markdown)
+    markdown_strict (Original Markdown specification; the default)
+    markdown_github (GitHub Flavored Markdown)
+    markdown_mmd (MultiMarkdown)
+    markdown_phpextra (PHP Markdown extra)
+
+tags: [nothing, nothingness]
+abstract: |
+  This is the abstract.
+
+  It consists of two paragraphs.
+bibliography: MyBib.bib
+csl: MyCSL.csl
+...
+

@@ -1,0 +1,88 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% LaTeX book template                                        %%
+%% Author:  Amber Jain (http://amberj.devio.us/)              %%
+%%          Luiѕ Mendez                                       %%
+%% License: ISC license                                       %%
+%% Date: Started/Finished:                                    %%
+%% WebSite: https://gist.github.com/dcernst/1827406           %%
+%%  https://en.wikibooks.org/wiki/LaTeX/Document_Structure    %%
+%%  https://raw.githubusercontent.com/amberj/latex-book       %%
+%%        -template/master/book-template.tex                  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[12pt, letterpaper, openany, twoside, draft]{memoir}
+
+%%% PACKAGES 
+%%%------------------------------------------------------------------------------
+
+\usepackage[utf8]{inputenc} % If utf8 encoding
+\usepackage[T1]{fontenc}    %
+\usepackage[english]{babel} % English please
+\usepackage{amsmath}    % Math
+\usepackage{graphicx}   % caption image
+\usepackage[final]{microtype} % Less badboxes
+
+\usepackage{hyperref}   " adding clickable links
+
+% \usepackage[backend=bibtex,style=mla,autocite=plain,sorting=none] {biblatex}
+% always use \autocite=footnote
+% always use \autocite{}
+% \bibliography{BIB}  % the bibliography  *.bib
+% \addbibresource{BIB.bib}
+
+\hypersetup{%
+  pdftitle = {TITLE},
+  pdfauthor = {Luis Mendez},
+  %pdfsubject = {11th International Modelica Conferenc 2015},
+  %pdfkeywords = {Modelica, package management, GitHub, dependency resolution, golang},
+  hidelinks,
+pdfpagelayout=SinglePage}
+
+\title(TITLE)
+\date(DATE)
+\author(Luis Mendez)
+
+\begin{document}
+
+\frontmatter
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Add a dedication paragraph to dedicate your book to someone %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{dedication}
+Dedicated to Calvin and Hobbes.
+\end{dedication}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Auto-generated table of contents, list of figures and list of tables %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tableofcontents
+\listoffigures
+\listoftables
+
+\mainmatter
+
+\begin{abstract}    % abstract or loglines
+
+\end{abstract}
+
+\maketitle
+\pagenumbering{gobble}
+
+\tableofcontents
+\newpage
+
+\newpage
+\pagenumbering{arabic}
+
+%% -------------------------------------------------------------
+%%                         Start here
+%% -------------------------------------------------------------
+
+
+% --------------------------------------------------------------
+%     You don't have to mess with anything below this line.
+% --------------------------------------------------------------
+ 
+% \printbibliography 
+\end{document}
