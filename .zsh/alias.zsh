@@ -93,7 +93,8 @@ ialias -g grep='grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 
 #### MY OWN ALIAS'S
 # Debian and Ubuntu Systems
-alias update="sudo apt-get update && sudo apt-get -y upgrade && sudo apt-get autoremove && sudo apt-get autoclean"
+#alias update="sudo apt-get update && sudo apt-get -y upgrade && sudo apt-get autoremove && sudo apt-get autoclean"
+alias dupdate="sudo apt-get update && sudo apt-get -y upgrade"
 alias apt-get="sudo apt-get"
 alias dpkg="sudo dpkg"
 alias store="dpkg --get-selections > ~/.dotfiles/backups/packages.list"
