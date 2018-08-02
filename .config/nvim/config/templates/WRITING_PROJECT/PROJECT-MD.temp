@@ -34,7 +34,9 @@
 
 [Short Story Beats](#short-story-beats)
 
-[Novel Beats](#novel-beats)
+[4 Act Novel Beats](#4-act-novel-beats)
+
+[3 Act Novel Beats](#3-act-novel-beats)
 
 [Worldbuilding](#worldbuilding)
 
@@ -309,11 +311,14 @@ Then insert those archetypes in the [Killogator logline](http://graemeshimmin.co
 | Scene |# beats |
 | Beats | smallest unit|
 
-Beats = - setup + cause + effect - setup: table in a museun - cause: one bal strikes another - effect: that ball rolls across the table
+    - Beats = - setup + cause + effect 
+     - setup: table in a museun 
+     - cause: one bal strikes another 
+     - effect: that ball rolls across the table
 
 ### Short Story Beats
 
-### Novel Beats
+### 4 Act Novel Beats
 
 If only writing a **short story** then the list of named beats; if not try all
 and add more beats.
@@ -350,5 +355,31 @@ and add more beats.
 | Beat 14           | the nugget of truth that now makes sense to them                       | -            | -            | -            | -       | -         |
 | Resolution        | fresh stasis{good/bad}                                                 | -            | -            | -            | -       | -         |
 | Beat 15           | proving, visually, that a change has occurred                          | -            | -            | -            | -       | -         |
+
+### 3 Act Novel Beats
+
+If only writing a **short story** then the list of named beats; if not try all
+and add more beats.
+
+| #                    | Points                                                                                             | PWC          | AWC          | POV          | Scene   | Chapter   |
+| :----------------    | :---------------------------------------------------------------------                             | -----------: | :----------- | :----------: | :-----: | :-------: |
+| Act 1: Setup         |                                                                                                    |              |              |              |         |           |
+| Start:               | the setting (Time/Place), characters are developed, and a conflict is introduced                   |              |              |              |         |           |
+| 1. Stasis            | everyday life                                                                                      |              |              |              |         |           |
+| 2. Trigger           | something beyond PROTAG's control that sparks the story                                            |              |              |              |         |           |
+|----------------------|----------------------------------------------------------------------------------------------------|--------------|--------------|--------------|---------|-----------|
+| Act 2: Confrontation |                                                                                                    |              |              |              |         |           |
+| Rising Action:       | leads to the climax; common for complications to arise                                             |              |              |              |         |           |
+| 3. Quest             | unpleasant TRIGGER (quest to return to status quo), pleasant TRIGGER (quest to increase new state) |              |              |              |         |           |
+| 4. Surprise          | means more obstacles, complications and troubles                                                   |              |              |              |         |           |
+| Climax:              | characterized by the highest amount of suspense                                                    |              |              |              |         |           |
+| 5. Critical Choice   | choosing between good, but hard; and bad , but easy paths                                          |              |              |              |         |           |
+| 6. Climax            | when the tension is at its highest                                                                 |              |              |              |         |           |
+|----------------------|----------------------------------------------------------------------------------------------------|--------------|--------------|--------------|---------|-----------|
+| Act 3: Resolution    |                                                                                                    |              |              |              |         |           |
+| Falling Action:      | story is ending , any unknown details or plot twists are revealed and wrapped up                   |              |              |              |         |           |
+| 7. Reversal          | critical choice + climax = change of status of characters                                          |              |              |              |         |           |
+| End:                 | tone of subject matter is revealed, and sometimes a moral or lesson is learned                     |              |              |              |         |           |
+| 8. Resolution        | fresh stasis = charcthers should change + story is complete                                        |              |              |              |         |           |
 
 ---
