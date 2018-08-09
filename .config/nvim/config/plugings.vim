@@ -43,9 +43,9 @@ Plug 'kana/vim-operator-user'
 "Plug 'reedes/vim-wordy', { 'for': ['markdown', 'tex'] }
 
 " File browse
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+"Plug 'scrooloose/nerdtree'
+"Plug 'Xuyuanp/nerdtree-git-plugin'
+"Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 " LaTex
 "Plug 'lervag/vimtex', { 'for': 'tex', 'do': 'pip3 install --user --upgrade neovim-remote' }
@@ -93,7 +93,10 @@ Plug 'junegunn/fzf.vim'
 Plug 'ryanoasis/vim-devicons'
 
 "--- abbreviation
+"Plug 'nelstrom/vim-americanize'
 "Plug 'tpope/vim-abolish'
+Plug 'tpope/tpope-vim-abolish'
+Plug 'jdelkins/vim-correction'
 
 " buffer tab list
 "Plug 'ap/vim-buftabline'
@@ -125,13 +128,16 @@ Plug 'jiangmiao/auto-pairs'
 "Plug 'Shougo/neopairs.vim'
 
 "--- Vim Wiki
-" Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
+"Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 
 "--- Vim Notes
 "Plug 'xolox/vim-notes'
 "Plug 'xolox/vim-tools', { 'do': 'pip3 install' }
 Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
+
+"--- Status Line
+ Plug 'itchyny/lightline.vim'
 
 "--- Install vim-plug if it is not installed
 "if empty(glob('~/.config/nvim/autoload/plug.vim'))
