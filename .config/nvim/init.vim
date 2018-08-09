@@ -7,7 +7,7 @@ runtime config/keys.vim	" custon key-bindings
 runtime config/color.vim	" color config
 "runtime config/writers.vim	" writers config
 runtime config/autocmd.vim	" autocmd config
-runtime config/line.vim	" statusline config
+"runtime config/line.vim	" statusline config
 runtime config/vimawesome.vim
 "runtime config/templates.vim  " templates files
 "runtime! config/templates/*.temp    " templates
