@@ -1,1 +1,5 @@
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
+alias dotcommit="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME commit -m"
+alias dotrm="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME rm"
+alias dotadd="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME add"
+alias dotpush="dotfiles push -u origin master"
