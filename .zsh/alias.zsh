@@ -92,14 +92,6 @@ alias -g G='| grep'
 ialias -g grep='grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 
 #### MY OWN ALIAS'S
-# Debian and Ubuntu Systems
-#alias update="sudo apt-get update && sudo apt-get -y upgrade && sudo apt-get autoremove && sudo apt-get autoclean"
-alias dupdate="sudo apt-get update && sudo apt-get -y upgrade"
-alias apt-get="sudo apt-get"
-alias dpkg="sudo dpkg"
-alias store="dpkg --get-selections > ~/.dotfiles/backups/packages.list"
-alias restore="dpkg --get-selections < ~/.dotfiles/backups/packages.list && sudo apt-get -y update && sudo apt-get dselect-upgrade"
-alias restore="apt-get install -y $(cat  ~/.dotfiles/backups/package.list | awk '{print $1}')"
 alias fonts="fc-cache -fv"
 
 
@@ -112,6 +104,10 @@ alias xsel="xsel -b"
 alias fuck='sudo $(fc -ln -1)'
 alias ag="ag --color --color-line-number '0;35' --color-match '46;30' --color-path '4;36'"
 alias tree='tree -CAFa -I "CVS|*.*.package|.svn|.git|.hg|node_modules|bower_components" --dirsfirst'
+alias fstab="sudo vim /etc/fstab"
+alias grub="sudo vim /etc/default/grub"
+alias grubup="sudo update-grub"
+
 # colorized cat
 function c() {
   for file in "$@"
