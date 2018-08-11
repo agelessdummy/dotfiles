@@ -107,6 +107,30 @@ alias tree='tree -CAFa -I "CVS|*.*.package|.svn|.git|.hg|node_modules|bower_comp
 alias fstab="sudo vim /etc/fstab"
 alias grub="sudo vim /etc/default/grub"
 alias grubup="sudo update-grub"
+alias c='clear'
+
+case `uname` in
+  Darwin)
+    # commands for OS X go here
+  ;;
+  Linux)
+    # commands for Linux go here
+# Debian and Ubuntu Systems
+#alias update="sudo apt-get update && sudo apt-get -y upgrade && sudo apt-get autoremove && sudo apt-get autoclean"
+alias dupdate="sudo apt-get update && sudo apt-get -y upgrade && sudo apt autoremove"
+alias apt-get="sudo apt-get"
+alias dpkg="sudo dpkg"
+#alias store="dpkg --get-selections > ~/.dotfiles/backups/packages.list"
+#alias restore="dpkg --get-selections < ~/.dotfiles/backups/packages.list && sudo apt-get -y update && sudo apt-get dselect-upgrade"
+#alias restore="apt-get install -y $(cat  ~/.dotfiles/backups/package.list | awk '{print $1}')"
+# arch linux specipid
+alias pacup="sudo pacman -Syu" 
+alias aup="yaourt -Syu --aur" 
+  ;;
+  FreeBSD)
+    # commands for FreeBSD go here
+  ;;
+esac
 
 # colorized cat
 function c() {
