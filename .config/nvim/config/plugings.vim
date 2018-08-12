@@ -3,7 +3,7 @@ Plug 'junegunn/vim-plug'
 "--- Tab Completion
 "Plug 'autozimu/LanguageClient-neovim', {
 "    \ 'branch': 'next',
-"    \ 'do': [ 'bash install.sh', 'npm i -g bash-language-server' ]
+"    \ 'do': [ 'bash install.sh', 'npm install --upgrade bash-language-server' ]
 "    \ }
 "if has('nvim')
 "    Plug 'Shougo/deoplete.nvim', { 'do': [ ':UpdateRemotePlugins', 'pip3 install --user --upgrade' ] }
@@ -31,10 +31,10 @@ Plug 'shawncplus/phpcomplete.vim', { 'for': 'php' }
 
 "Linters
 Plug 'w0rp/ale', {
-    \ 'do': 'npm i -g',}
+    \ 'do': 'npm i --upgrade',}
 Plug 'prettier/vim-prettier', {
-    \ 'do': 'npm i -g',
-    \ 'for': [ 'markdown', 'yaml' ] }
+    \ 'do': 'npm i --upgrade',
+    \ 'for': [ 'markdown', 'yaml', 'javascript', 'typescript', 'css', 'less', 'scss'] }
 Plug 'PotatoesMaster/i3-vim-syntax'
 
 " Language Tools
@@ -56,24 +56,31 @@ Plug 'donRaphaco/neotex', { 'for': 'tex' }
 
 " Focus Plugins
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
-Plug 'junegunn/limelight.vim', {'on': 'Goyo'}
+"Plug 'junegunn/limelight.vim', {'on': 'Goyo'}
+Plug 'amix/vim-zenroom2', {'on': 'Goyo'}
 
 " Pandoc
-Plug 'vim-pandoc/vim-pandoc', {
-    \ 'for': [ 'pandoc','markdown'] }
+Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-criticmarkup' 
 " post install (yarn install | npm install) then load plugin only for editing supported files
-Plug 'vim-pandoc/vim-pandoc-syntax', {
-    \ 'for': [ 'paandoc','markdown' ] }
+Plug 'vim-pandoc/vim-pandoc-syntax'
 "Plug 'vim-pandoc/vim-pandoc-after'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'derdennis/vim-markdownfootnotes'
 Plug 'mmai/vim-markdown-wiki'
 "Plug 'prashanthellina/follow-markdown-links'
-Plug 'shime/vim-livedown', {
-    \ 'do': 'npm install', 
-    \ 'for': 'markdown' }
-"Plug "fmoralesc/vim-bibliographer"
+Plug 'ferrine/md-img-paste.vim'
+function! BuildComposer(info)
+  if a:info.status != 'unchanged' || a:info.force
+    if has('nvim')
+      !cargo build --release
+    else
+      !cargo build --release --no-default-features --features json-rpc
+    endif
+  endif
+endfunction
+
+Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 
 " Vim Startify
 Plug 'mhinz/vim-startify'
@@ -82,6 +89,7 @@ Plug 'mhinz/vim-startify'
 "--- Colorscheme
 Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'cocopon/iceberg.vim'
 
 "--- Searching
 Plug 'junegunn/fzf', {
@@ -101,6 +109,8 @@ Plug 'jdelkins/vim-correction'
 " buffer tab list
 "Plug 'ap/vim-buftabline'
 Plug 'bagrat/vim-workspace'
+"Plug 'bling/vim-bufferline'
+Plug 'bling/vim-bufferline'
 
 "--- Remname the currect file
 "Plug 'danro/rename.vim'
@@ -109,12 +119,14 @@ Plug 'bagrat/vim-workspace'
 Plug 'tpope/vim-eunuch'
 
 "--- Git Things from NVIM
-"Plug 'tpope/vim-rhubarb'
-"Plug 'tpope/vim-fugitive'
-"Plug 'tpope/vim-git'
+Plug 'tpope/vim-rhubarb'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-git'
 
 " pomodoro
-Plug 'adelarsq/vim-pomodoro'
+"Plug 'pydave/AsyncCommand'
+"Plug 'adelarsq/vim-pomodoro'
+"Plug 'l04m33/vim-skuld'
 
 " FastFolds
 Plug 'wsdjeg/vim-fetch'
@@ -129,6 +141,7 @@ Plug 'jiangmiao/auto-pairs'
 
 "--- Vim Wiki
 "Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
+" Plug 'yysfire/vimwiki2markdown'
 
 "--- Vim Notes
 "Plug 'xolox/vim-notes'
@@ -137,7 +150,10 @@ Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
 
 "--- Status Line
- Plug 'itchyny/lightline.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'mgee/lightline-bufferline'
+Plug 'popkirby/lightline-iceberg'
+Plug 'maximbaz/lightline-ale'
 
 "--- Install vim-plug if it is not installed
 "if empty(glob('~/.config/nvim/autoload/plug.vim'))

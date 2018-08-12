@@ -17,4 +17,5 @@ NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 alias node="sudo node"
 alias npm="sudo npm"
 alias npminstall="sudo rm -rf node_modules && sudo npm cache clear && sudo npm cache clean && npm install"
+alias nup='npm update npm -g; npm update -g '
 # alias npminstall="sudo rm -rf node_modules && sudo npm cache clear && sudo npm cache clean && sudo PYTHON=/usr/bin/python2 npm install"

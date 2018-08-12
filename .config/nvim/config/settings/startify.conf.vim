@@ -14,6 +14,7 @@
 
 		let g:startify_bookmarks = [
 			\ {'v': '$MYVIMRC'},
+		    \ {'w': '~/Documents/Dropbox/Wiki/index'}
 			\ ]
 
 		let g:startify_files_number = 15
@@ -40,12 +41,11 @@
 		let g:startify_custom_footer =
 			\ ['',"This is Startify's Commands: SSave [session]; SDelete [session]; SLoad [session]; SClose; Startify",'']
 
-		autocmd VimEnter *
-		                \   if !argc()
-		                \ |   Startify
-		               \ |   NERDTree
-		               \ |   wincmd w
-		                \ | endif
+"autocmd VimEnter *
+\   if !argc()
+\ |   Startify
+\ |   NERDTree
+\ |   wincmd w
+\ | endif
 
-		"set NERDTreeHijackNetrw = 0
-
+"set NERDTreeHijackNetrw = 0

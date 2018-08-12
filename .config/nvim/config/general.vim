@@ -207,6 +207,7 @@ set autowriteall
 " Backup, Swap and Undo
 set history=1000         " remember more commands and search history
 set undolevels=1000      " use many muchos levels of undo
+set undoreload=10000 " number lines to save for undo on a buffer reload
 
 set wildmode=list:longest,full
 set wildmenu                      " Enable ctrl-n and ctrl-p to scroll thru matches

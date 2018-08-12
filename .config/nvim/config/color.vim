@@ -24,9 +24,12 @@ endif
 "set guifont=Source\ Code\ Pro\ for\ Powerline\ 12
 "set guifont=Source\ Code\ Pro\ for\ Powerline "make sure to escape the spaces in the name properly
 "set antialias                                                                                               
+let g:Powerline_symbols = 'fancy'
 set guicursor+=a:blinkon0   " disable cursor blink
 
-colorscheme dracula
+"colorscheme dracula
+
+colorscheme iceberg
 
 "colorscheme challenger_deep
 "let g:challenger_deep_termcolors = 256
@@ -42,3 +45,9 @@ let g:airline_theme = 'jellybeans'
 " deus
 " solarized
 " let g: airline_solarized_bg=''    " dark or light
+
+
+if !has('gui_running')
+  set t_Co=256
+endif
+

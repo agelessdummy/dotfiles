@@ -58,6 +58,13 @@ nnoremap <space>l :lnext<CR>
 nnoremap <space>p :lprevious<CR>
 nnoremap <space>r :lrewind<CR>
 
+" Skuld ,a pomodoro time
+" Mapping for opening the task buffer
+let g:skuld_buffer_map = '<leader>sb'
+
+" Mapping for displaying the current state
+let g:skuld_state_map = '<leader>ss'
+
 " Tab New
 nmap T :tabnew<cr>
 
@@ -92,6 +99,9 @@ map <F5> zG     " add internal
 nnoremap <leader>y :FZFNeoyank<cr>	" normal mode after cursor
 nnoremap <leader>Y :FZFNeoyank " P<cr>	" visual mode replaces selection
 vnoremap <leader>y :FZFNeoyankSelection<cr>	"  normal mode after cursor
+
+" goyo
+nnoremap <silent> <leader>z :Goyo<cr>
 
 " wordy
 "noremap <silent> <F8> :<C-u>NextWordy<cr>

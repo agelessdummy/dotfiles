@@ -109,6 +109,8 @@ alias grub="sudo vim /etc/default/grub"
 alias grubup="sudo update-grub"
 alias c='clear'
 
+alias zshrc="source ~/.zshrc"
+
 #16: Add safety nets
 # do not delete / or prompt if deleting more than 3 files at a time #
 alias rm='rm -I --preserve-root'

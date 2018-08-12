@@ -1,9 +1,21 @@
 let g:lightline = {
-\ 'mode_map': { 'c': 'NORMAL' },
+\ 'mode_map': { 
+\ 'n' : 'NORMAL',
+\ 'i' : 'INSERT',
+\ 'R' : 'REPLACE',
+\ 'v' : 'VISUAL',
+\ 'V' : 'V-LINE',
+\ "\<C-v>": 'V-BLOCK',
+\ 'c' : 'NORMAL',
+\ 's' : 'SELECT',
+\ 'S' : 'S-LINE',
+\ "\<C-s>": 'S-BLOCK',
+\ 't': 'TERMINAL',
+\ },
 \ 'colorscheme': 'iceberg',
 \ 'active': {
-\   'left': [ [ 'mode', 'paste' ],
-\             [ 'readonly', 'filename', 'modified', 'Tomotoe', ] ],
+\   'left': [ [ 'mode', 'paste', 'spell' ],
+\             [ 'fugitive', 'readonly', 'filename', 'modified', 'Tomotoe', ] ],
 \   'right': [ [ 'lineinfo', 'wordcount', ],
 \              [ 'filetype',  'linter_warnings', 'linter_errors', 'linter_ok' ] ]
 \ },
@@ -29,6 +41,8 @@ let g:lightline = {
 \ },
 \   'component': {
 \     'lineinfo': '%l/%L',
+\     'paste': '%{&paste?"PASTE":""}',
+\     'spell': '%{&spell?&spelllang:""}',
 \   },
 \ 'component_function': {
 \   'Tomotoe': 'PomodoroStatus',
@@ -38,7 +52,12 @@ let g:lightline = {
 \   'filetype': 'LightlineFiletype',
 \   'wordcount': 'WordCount',
 \   'mode': 'MyMode',
+\   'fugitive': 'LightlineFugitive',
 \ },
+\ 'component_visble_condition': {
+\ 'paste': '&paste',
+\ 'spell': '&spell',
+\ }
 \ }
 let g:lightline.separator = {
 \   'left': '', 'right': ''
@@ -46,6 +65,14 @@ let g:lightline.separator = {
 let g:lightline.subseparator = {
 \   'left': '', 'right': '' 
 \ }
+"---
+function! LightlineFugitive()
+		if exists('*fugitive#head')
+			let branch = fugitive#head()
+			return branch !=# '' ? ''.branch : ''
+		endif
+		return ''
+endfunction
 "---
 function! WordCount()
     let currentmode = mode()

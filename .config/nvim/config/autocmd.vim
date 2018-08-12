@@ -31,7 +31,8 @@ autocmd BufEnter *i3/config setlocal filetype=i3
 autocmd FileType markdown setlocal wrap
 
 "au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
-autocmd! BufNewFile,BufFilePRe,BufRead *.markdown,*.mdown,*.mkd,*.mkdn,*.mmd,*.md set filetype=markdown.pandoc
+"autocmd! BufNewFile,BufFilePRe,BufRead *.{markdown,mdown,mkd,mkdn,mmd,md} setlocal filetype=markdown.pandoc
+autocmd! BufNewFile,BufFilePRe,BufRead *.{markdown,mdown,mkd,mkdn,mmd,md} setf markdown.pandoc
 autocmd FileType markdown TableModeEnable
 
 " VimTex Buffer variable
@@ -53,10 +54,10 @@ autocmd FileType tex let b:vimtex_main = 'main.tex'
 "autocmd FileType c,cpp,java,md,tex,go,php,javascript,javascript.jsx,coffee,jade,stylus,css,puppet,python,rust,twig,xml,yml,perl,sql autocmd BufWritePre <buffer> call StripTrailingWhitespace()
 
 "au FileType tex,mmd,md,markdown,html,text $HOME/.config/nvim/config/words/abbrev.vim 
-au FileType tex,mmd,md,markdown,html,txt ~/.config/nvim/config/words/abbrev.vim 
+"au FileType tex,mmd,md,markdown,html,txt ~/.config/nvim/config/words/abbrev.vim 
 
 " AutoSave
-"autocmd TextChanged,TextChangedI <buffer> silent write
+autocmd TextChanged,TextChangedI <buffer> silent write
 "autocmd CursorHold,TextChanged,TextChangedI <buffer> silent write
 "au FocusLost * silent! wa
 
@@ -102,7 +103,7 @@ function! AsciiMode()
   set virtualedit=all
   set colorcolumn=80
 endfunction
-command Ascii :call AsciiMode()
+com! Ascii call AsciiMode()
 "---
 
 augroup END "}
