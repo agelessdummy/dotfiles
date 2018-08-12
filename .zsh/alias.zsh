@@ -93,6 +93,8 @@ ialias -g grep='grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 
 #### MY OWN ALIAS'S
 alias fonts="fc-cache -fv"
+#alias dd="dd status=progress"
+alias dd="progress_bar dd"
 
 
 ## https://raw.githubusercontent.com/xero/dotfiles/master/zsh/.zsh/aliases.zsh 
