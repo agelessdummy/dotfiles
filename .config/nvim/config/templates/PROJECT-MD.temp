@@ -1,0 +1,493 @@
+# Story Dashboard
+
+    * Title:
+
+    * Genre:
+
+    * Series:
+
+    * Idea:
+
+    * Setting:
+
+    * Word Count:
+
+    * Notes:
+
+[Loglines](#loglines)
+
+[Idea](#idea)
+
+[Short Loglines](#short-loglines)
+
+[Long Loglines](#long-loglines)
+
+[Synopsis](#synopsis)
+
+[Characters](#characters)
+
+[Describe Words](#describe-words)
+
+[Story Word Count](#story-word-count)
+
+[Worldbuilding](#worldbuilding)
+
+[Outline](#outline)
+
+[Structure](#structure)
+
+[Acts and Beats](#acts-and-beats)
+
+[3 Acts](#3-acts)
+
+[4 Acts](#4-acts)
+
+[5 Acts](#5-acts)
+
+[8 Sequences](#8-sequences)
+
+[Beats](#beats)
+
+[Beat Master](#beat-master)
+
+
+Status
+
+|                           | Start Date | Complete Date | Propulsed WC | Actual WC  |
+| :------------------:      | :--------- | :------------ | -----------: | ---------: |
+| Idea                      | []         | []            | -            | -          |
+| Logline                   | []         | []            | -            | -          |
+| Synopsis                  | []         | []            | -            | -          |
+| Characters                | []         | []            | -            | -          |
+| Outline                   | []         | []            | -            | -          |
+| Word Count                | []         | []            |              |            |
+| Draft:                    | []         | []            | -            | -          |
+| [TITLE](TITLE/a/1.md)     | []         | []            |              |            |
+| [TITLE](TITLE/a/2.md)     | []         | []            |              |            |
+| [TITLE](TITLE/a/3.md)     | []         | []            |              |            |
+| [TITLE](TITLE/a/4.md)     | []         | []            |              |            |
+| [TITLE](TITLE/a/5.md)     | []         | []            |              |            |
+| [TITLE](TITLE/a/6.md)     | []         | []            |              |            |
+| [TITLE](TITLE/a/7.md)     | []         | []            |              |            |
+| [TITLE](TITLE/a/8.md)     | []         | []            |              |            |
+| [TITLE](TITLE/a/9.md)     | []         | []            |              |            |
+| [TITLE](TITLE/a/10.md)    | []         | []            |              |            |
+| [TITLE](TITLE/a/11.md)    | []         | []            |              |            |
+| [TITLE](TITLE/a/12.md)    | []         | []            |              |            |
+| [TITLE](TITLE/a/13.md)    | []         | []            |              |            |
+| [TITLE](TITLE/a/14.md)    | []         | []            |              |            |
+| [TITLE](TITLE/a/15.md)    | []         | []            |              |            |
+| [TITLE](TITLE/b/1.md)     | []         | []            |              |            |
+| [TITLE](TITLE/b/2.md)     | []         | []            |              |            |
+| [TITLE](TITLE/b/3.md)     | []         | []            |              |            |
+| [TITLE](TITLE/b/4.md)     | []         | []            |              |            |
+| [TITLE](TITLE/b/5.md)     | []         | []            |              |            |
+| [TITLE](TITLE/b/6.md)     | []         | []            |              |            |
+| [TITLE](TITLE/b/7.md)     | []         | []            |              |            |
+| [TITLE](TITLE/b/8.md)     | []         | []            |              |            |
+| [TITLE](TITLE/b/9.md)     | []         | []            |              |            |
+| [TITLE](TITLE/b/10.md)    | []         | []            |              |            |
+| [TITLE](TITLE/b/11.md)    | []         | []            |              |            |
+| [TITLE](TITLE/b/12.md)    | []         | []            |              |            |
+| [TITLE](TITLE/b/13.md)    | []         | []            |              |            |
+| [TITLE](TITLE/b/14.md)    | []         | []            |              |            |
+| [TITLE](TITLE/b/15.md)    | []         | []            |              |            |
+| [TITLE](TITLE/c/1.md)     | []         | []            |              |            |
+| [TITLE](TITLE/c/2.md)     | []         | []            |              |            |
+| [TITLE](TITLE/c/3.md)     | []         | []            |              |            |
+| [TITLE](TITLE/c/4.md)     | []         | []            |              |            |
+| [TITLE](TITLE/c/5.md)     | []         | []            |              |            |
+| [TITLE](TITLE/c/6.md)     | []         | []            |              |            |
+| [TITLE](TITLE/c/7.md)     | []         | []            |              |            |
+| [TITLE](TITLE/c/8.md)     | []         | []            |              |            |
+| [TITLE](TITLE/d/1.md)     | []         | []            |              |            |
+| [TITLE](TITLE/d/2.md)     | []         | []            |              |            |
+| [TITLE](TITLE/d/3.md)     | []         | []            |              |            |
+| [TITLE](TITLE/d/4.md)     | []         | []            |              |            |
+| [TITLE](TITLE/d/5.md)     | []         | []            |              |            |
+| [TITLE](TITLE/d/6.md)     | []         | []            |              |            |
+| [TITLE](TITLE/d/7.md)     | []         | []            |              |            |
+| [TITLE](TITLE/d/8.md)     | []         | []            |              |            |
+| [TITLE](TITLE/e/1.md)     | []         | []            |              |            |
+| [TITLE](TITLE/e/2.md)     | []         | []            |              |            |
+| [TITLE](TITLE/e/3.md)     | []         | []            |              |            |
+| [TITLE](TITLE/e/4.md)     | []         | []            |              |            |
+| [TITLE](TITLE/e/5.md)     | []         | []            |              |            |
+| [TITLE](TITLE/e/6.md)     | []         | []            |              |            |
+| [TITLE](TITLE/e/7.md)     | []         | []            |              |            |
+| [TITLE](TITLE/e/8.md)     | []         | []            |              |            |
+| [TITLE](TITLE/f/1.md)     | []         | []            |              |            |
+| [TITLE](TITLE/f/2.md)     | []         | []            |              |            |
+| [TITLE](TITLE/f/3.md)     | []         | []            |              |            |
+| [TITLE](TITLE/f/4.md)     | []         | []            |              |            |
+| [TITLE](TITLE/g/1.md)     | []         | []            |              |            |
+| [TITLE](TITLE/g/2.md)     | []         | []            |              |            |
+| [TITLE](TITLE/g/3.md)     | []         | []            |              |            |
+| [TITLE](TITLE/g/4.md)     | []         | []            |              |            |
+| Beta Reader Feedback      | []         | []            | -            | -          |
+| [TITLE](TITLE/h/TITLE.md) | []         | []            |              |            |
+| Final Draft               | []         | []            |              |            |
+| [TITLE](TITLE/i/TITLE.md) | []         | []            |              |            |
+
+---
+
+## Loglines
+
+## Idea
+
+    >
+
+### Short Loglines
+
+    * Inciting Incidnet Occurs
+
+    * Specific Protanonist
+
+    * Objective
+
+    * Stakes
+
+    * Angtagonist
+
+We also need to recognize how these components fit into the structure. Like I said before there are numerous formats you can use, and you should always adjust this to suit your particular story. But this structural formula is a great starting point:
+
+    * When [INCITING INCIDENT OCCURS], a [SPECIFIC PROTAGONIST] must [OBJECTIVE], or else [STAKES], against [AN ANTAGONIST].
+
+### Long Loglines
+
+    * SETTING: When and where your story takes place.
+
+    * PROTAGONIST: Who your main character (hero or heroine) is.
+
+    * PROBLEM: The issue or event that causes your Protagonist to take action.
+
+    * ANTAGONIST: Who or what tries to stop your Protagonist.
+
+    * CONFLICT: The major obstacle, difficulty or dilemma your protagonist faces.
+
+    * GOAL: What your Protagonist hopes to win, achieve, find or defeat.
+
+Then insert those archetypes in the [Killogator logline](http://graemeshimmin.com/writing-a-logline-for-a-novel/) formula below to make a sentence, or two, that captures the core of your story.
+
+    * In a (SETTING) a (PROTAGONIST) has a (PROBLEM) (caused by an ANTAGONIST) and (faces CONFLICT) as they try to (achieve a GOAL).
+
+### Synopsis
+
+    * Setting
+        * Place
+
+        * Time
+
+    * Protagonist
+        * Name
+
+        * Background
+
+        * What does the PROTAG want?
+
+    * Antagonist
+        * Name
+
+        * Relationship to PROTAG
+
+        * Background
+
+        * What does the ANTAG want?
+
+    * Situation
+        * What is happening at the begining of the story?
+
+    * Inciting Event
+        * What event upsets the situation and introduces the MAIN CONFLICT?
+
+    * Conflict
+        * How do the characters reat to the inciting event?
+
+        * What sustains the conflict?
+
+        * What are the stakes?
+
+        * What choice must the PROTAG make?
+
+
+    * PREMISE
+
+(Tie all of the above together in a 2-sentence summary:)
+
+---
+
+## Characters
+
+| TRAITS                 | PROTAG   | ANTAG   | OTHERS   |
+| :--------------------- | :------: | :-----: | -------: |
+| Name                   |          |         |          |
+| Gender                 |          |         |          |
+| Race?                  |          |         |          |
+| ---------------------- | -------- | ------- | -------- |
+| Eyes:                  |          |         |          |
+| color                  |          |         |          |
+| adjectives             |          |         |          |
+| ---------------------- | -------- | ------- | -------- |
+| face shape             |          |         |          |
+| Hair:                  | -        | -       | -        |
+| color                  |          |         |          |
+| texture                |          |         |          |
+| style                  |          |         |          |
+| ---------------------- | -------- | ------- | -------- |
+| Visaul hands           |          |         |          |
+| Skin tone              |          |         |          |
+| Body type              |          |         |          |
+| HT                     |          |         |          |
+| Visual posture         |          |         |          |
+| ---------------------- | -------- | ------- | -------- |
+| Speech:                | -        | -       | -        |
+| pace                   |          |         |          |
+| accent/dialect         |          |         |          |
+| tone                   |          |         |          |
+| manisisms              |          |         |          |
+| Archetypes:            | -        | -       | -        |
+| goal                   |          |         |          |
+| fear                   |          |         |          |
+| Temperment:            | -        | -       | -        |
+| weakness               |          |         |          |
+| streght                |          |         |          |
+| social                 |          |         |          |
+| ---------------------- | -------- | ------- | -------- |
+| Dress:                 | -        | -       | -        |
+| headware               |          |         |          |
+| tops                   |          |         |          |
+| bottoms                |          |         |          |
+| footware               |          |         |          |
+| jewelry                |          |         |          |
+| coat                   |          |         |          |
+| ---------------------- | -------- | ------- | -------- |
+| Likes/Dislikes         |          |         |          |
+| food                   |          |         |          |
+| drink                  |          |         |          |
+| color                  |          |         |          |
+| book                   |          |         |          |
+| film                   |          |         |          |
+| music                  |          |         |          |
+| song                   |          |         |          |
+| ---------------------- | -------- | ------- | -------- |
+| Job                    |          |         |          |
+| Relationship           |          |         |          |
+| Fav. thing             |          |         |          |
+| Hated thing            |          |         |          |
+
+### [Describe Words](https://www.nownovel.com/blog/talking-about-your-character-hands/)
+
+| Descriptions |        Emotion States         |
+| :----------: | :---------------------------: |
+|    rough     |         bitten nails          |
+|    clammy    |       cracking knuckles       |
+|   fumbling   | drumming fingers on a surface |
+|    nimble    |                               |
+|     soft     |                               |
+|   gnarled    |                               |
+|   slender    |                               |
+|     dry      |                               |
+|   delicate   |                               |
+|    shaky     |                               |
+|    ample     |                               |
+|  calloused   |                               |
+|     bony     |                               |
+|   leathery   |                               |
+
+---
+
+### Worldbuilding
+
+    - PLACE
+
+        - Where is your story located?
+
+
+        - What is the time period?
+
+
+        - Describe the climate.
+
+
+        - Describe the geography.
+
+
+        - Where are the borders of this location, and what lies beyond?
+
+
+        - What is the architecture like?
+
+
+        - How do people typically get around?
+
+
+        -What are the distinctive sights, sounds, and smells of this place?
+
+
+    - PEOPLE
+
+        - How many people live here?
+
+
+        - Where do they live?
+
+
+        - How do most people make a living?
+
+
+        - How healthy is the economy? Are the people here rich or poor?
+
+
+        - How well-educated are the people?
+
+
+        - How diverse is the population? How well do different types of people get along?
+
+
+        - What is family life like?
+
+    - CULTURE
+
+        - What is the history of this place?
+
+
+        - What is the political situation like? Who are the leaders?
+
+
+        - What languages are spoken?
+
+
+        - How do the people dress?
+
+
+        - What role does religion play in the culture? How about superstition?
+
+
+        - What holidays are important and why?
+
+
+        - What is the local cuisine like?
+
+
+        - What are the popular forms of entertainment?
+
+
+        - How does the younger generation differ from their parents?
+
+---
+### Story Word Count
+
+| Word Count = |   /4   |   /8   |  /15  |
+|:-------------|:------:|:------:|:-----:|
+| 3,000        |   750  |   375  |  200  |
+| 6,000        |  1,500 |   750  |  400  |
+| 60,000       | 15,000 |  7,500 | 4,000 |
+| 100,000      | 25,000 | 12,500 | 6,666 |
+
+---
+## Outline
+
+### Structure
+
+| Screenplay | 4 Act |
+| One act | 30 pages, 3 ten page subacts |
+| Ten pages | # scene sequences|
+| Scene |# beats |
+| Beats | smallest unit|
+
+    - Beats = - setup + cause + effect 
+     - setup: table in a museun 
+     - cause: one bal strikes another 
+     - effect: that ball rolls across the table
+
+### Acts and Beats
+
+#### 3 Acts
+
+| #    | Parts             | Points                                                                        | PWC  | AWC  | POV   |
+| :--- | :---:             | :---                                                                          | ---: | ---: | :---: |
+| -    | Act 1: Setup      | establish the main characters, their relationships and the world they live in |      |      |       |
+|------|-------------------|-------------------------------------------------------------------------------|------|------|-------|
+| -    | Act II: Reponse   | having failed, now does nothing                                               |      |      |       |
+|------|-------------------|-------------------------------------------------------------------------------|------|------|-------|
+| -    | Act 3: Resolution | resolution of the story and its subplots                                      |      |      |       |
+
+#### 4 Acts
+
+| #    | Parts           | Points                           | PWC  | AWC  | POV   |
+| :--- | :---:           | :---                             | ---: | ---: | :---: |
+|------|-----------------|----------------------------------|------|------|-------|
+| 1    | Act I: Start    | safeguard from another attack    |      |      |       |
+|------|-----------------|----------------------------------|------|------|-------|
+| 2    | Act II: Reponse |                                  |      |      |       |
+|     | Act III: Attack | action in response to some event |      |      |       |
+|------|-----------------|----------------------------------|------|------|-------|
+| 3    | Act IIII: End   | they initiate the action.        |      |      |       |
+
+#### 5 Acts
+
+| #                   | Parts                                                              | Points | PWC    | AWC     | POV |
+|---------------------|:-------------------------------------------------------------------|:-------|:-------|:--------|:---:|
+| A: Start            | introduces important background information to the audience        |        |        |         |
+|---------------------|--------------------------------------------------------------------|--------|--------|---------|
+| B: Rising Action    | a series of events build toward the point of greatest interest     |        |        |         |
+|---------------------|--------------------------------------------------------------------|--------|--------|---------|
+| C: Climax           | comedy=things were going badly or tragedy=the opposite state       |        |        |         |
+| ------------------- | ------------------------------------------------------------------ | ------ | ------ | ------- |
+| E: Falling Action   | the conflict between the protagonist and the antagonist unravels   |        |        |         |
+| F: End              | comedy=protag better off or tragedy=ends with a catastrophe        |        |        |         |
+
+#### 8 Sequences
+
+| #               | Points                                                    | PWC  | AWC  | POV   |
+| :---            | :---                                                      | ---: | ---: | :---: |
+| Stasis          | every day life + known charecters                         |      |      |       |
+| Trigger         | beyond the control of the PROTAG{good/bad}                |      |      |       |
+|-----------------|-----------------------------------------------------------|------|------|-------|
+| Quest           | maintain/increase -->status quo<-- return                 |      |      |       |
+| Surprise        | involves --> obstacles+complications                      |      |      |       |
+|-----------------|-----------------------------------------------------------|------|------|-------|
+| Critical Choice | PROTAG's decision to take action{hard/easy}               |      |      |       |
+| Climax          | highest peak of tension --> down to this                  |      |      |       |
+|-----------------|-----------------------------------------------------------|------|------|-------|
+| Reversal        | critical choice + climax = change of status of characters |      |      |       |
+|-----------------|-----------------------------------------------------------|------|------|-------|
+| Resolution      | fresh stasis{good/bad}                                    |      |      |       |
+
+#### Beats
+
+| #    | Points | PWC  | AWC  | POV   |
+| :--- | :---   | ---: | ---: | :---: |
+
+#### Beat Master
+
+| #                            | Points                                                             | PWC  | AWC  | POV   |
+| :---                         | :---                                                               | ---: | ---: | :---: |
+| Beat 1: Opening Image        | snapshot of the main character’s problem                           |      |      |       |
+| - Opening Scene              | PROTAG must be introduced                                          |      |      |       |
+| Beat 2: Establish Univese    | world as it is, and what is missing in their life                  |      |      |       |
+| - Hook Moment                | a itch that needs top be scratched                                 |      |      |       |
+| Beat 3: Spark                | the message, the truth, spoken                                     |      |      |       |
+| Beat 4: Struggle             | moment where life as it is changes                                 |      |      |       |
+| - Inciting Incident          | game-changing event often leading to 1st Plot Point                |      |      |       |
+| Beat 5: Choice               | doubts the journey they must take                                  |      |      |       |
+| - 1st Plot Point             | ANTAG forces fully into play forces for the PROTAG                 |      |      |       |
+|------------------------------|--------------------------------------------------------------------|------|------|-------|
+| Beat 6: Break                | world and enter the upside-down, opposite world                    |      |      |       |
+| Beat 7: B-Story              | a discussion about the Theme                                       |      |      |       |
+| Beat 8: Promise of Premise   | explores the new world and the                                     |      |      |       |
+| - 1st Pitch Point            | reminder of ANTAG is visble to the reader                          |      |      |       |
+| Beat 9: Midpoint             | they think they want (“great”); they think they want (“awful”)     |      |      |       |
+| - Midpoint                   | new info that changes understanding of context                     |      |      |       |
+| Beat 10: Everything Unravels | physical and emotional regroup to defeat the main character’s goal |      |      |       |
+| - 2nd Pitch Point            | ANTAG ups the game against the PROTAG's attack                     |      |      |       |
+| - All is Lost Lull           | a slower paced before the 2nd Plot Point                           |      |      |       |
+| Beat 11: All is Lost         | realizes they’ve lost everything they gained                       |      |      |       |
+| Beat 12: Existencial Crisis  | main character hits bottom, and wallows in hopelessness            |      |      |       |
+| - 2nd Plot Point             | final new info dump, and PROTAGS's quest is accelerated            |      |      |       |
+|------------------------------|--------------------------------------------------------------------|------|------|-------|
+| Beat 13: Break               | fresh idea from the B-Story, the PROTAG chooses to try again       |      |      |       |
+| Beat 14: Denouement          | the nugget of truth that now makes sense to them                   |      |      |       |
+| Beat 15: Final Image         | proving, visually, that a change has occurred                      |      |      |       |
+
+---
