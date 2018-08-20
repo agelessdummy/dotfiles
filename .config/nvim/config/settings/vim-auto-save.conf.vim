@@ -8,20 +8,4 @@ let g:auto_save_events = ["InsertLeave", "TextChanged"]
 "    CompleteDone will also trigger a save after every completion event.
 
 
-" (Pre/Post) save Hooks
-" This will run :TagsGenerate after each save
-let g:auto_save_postsave_hook = 'TagsGenerate'
-
-" This will run AbortIfNotGitDirectory function before each save
-let g:auto_save_presave_hook = 'call AbortIfNotGitDirectory()'
-
-" Example hook from vim-auto-save-git-hook plugin
-function! AbortIfNotGitDirectory()
-  if ...
-    let g:auto_save_abort = 0
-  else
-    let g:auto_save_abort = 1
-  endif
-endfunction
-
-" let g:auto_save_write_all_buffers = 1  " write all open buffers as if you would use :wa
+let g:auto_save_write_all_buffers = 1  " write all open buffers as if you would use :wa
