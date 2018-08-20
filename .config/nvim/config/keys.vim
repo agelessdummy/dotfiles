@@ -99,6 +99,7 @@ map <F5> zG     " add internal
 nnoremap <leader>y :FZFNeoyank<cr>	" normal mode after cursor
 nnoremap <leader>Y :FZFNeoyank " P<cr>	" visual mode replaces selection
 vnoremap <leader>y :FZFNeoyankSelection<cr>	"  normal mode after cursor
+nnoremap <leader>= FZFNeoyank +<cr> " normal mode history buffer
 
 " goyo
 nnoremap <silent> <leader>z :Goyo<cr>

@@ -52,10 +52,12 @@ set iskeyword-=#                    " '#' is an end of word designator
 set iskeyword-=-                    " '-' is an end of word designator
 
 set spell spelllang=en
-set complete+=s,kspell
+"set complete+=s,kspell
+set complete+=kspell
 "faster keyword completion
 set complete-=i   " disable scanning included files
 set complete-=t   " disable searching tags
+set complete+=s   " makes autocompletion search the thesaurus
 "set spellsuggest=15
 set spellsuggest=5
 set spellfile=$HOME/.config/nvim/config/words/en.utf-8.add
@@ -64,10 +66,10 @@ set thesaurus+=$HOME/.config/nvim/config/words/thesaurus/mthesaur.txt
 set thesaurus+=$HOME/.config/nvim/config/words/thesaurus/roget13a.txt
 "-- http://usevim.com/2012/07/06/vim101-completion/
 set dictionary=/usr/share/dict/words
-set dictionary=$HOME/.config/words/spelling/en_US-large.txt
-set dictionary=$HOME/.config/words/spelling/en_GB-large.txt
-set dictionary=$HOME/.config/words/spelling/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/en.txt
-set dictionary=$HOME/.config/words/spelling/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/es.txt
+set dictionary+=$HOME/.config/words/spelling/en_US-large.txt
+set dictionary+=$HOME/.config/words/spelling/en_GB-large.txt
+set dictionary+=$HOME/.config/words/spelling/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/en.txt
+set dictionary+=$HOME/.config/words/spelling/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/es.txt
 "runtime config/words/abbrev.vim
   
 " http://hacktux.com/vim/spellcheck
@@ -240,6 +242,7 @@ set backupskip=/tmp/*,/private/tmp/*
 "set shell=/bin/zsh
 set shell=sh
 
+runtime defaults/yanking.txt
 silent !mkdir -p ~/.config/nvim/defaults/backup > /dev/null 2>&1
 silent !mkdir -p ~/.config/nvim/defaults/vimsessions > /dev/null 2>&1
 silent !mkdir -p ~/.config/nvim/defaults/undo > /dev/null 2>&1
@@ -295,8 +298,8 @@ set autochdir
 " Text Wrapping
 set textwidth=80
 set colorcolumn=80
-set nowrap
-"set wrap
+"set nowrap
+set wrap
 
 "---Automatically install missing plugins on startup-------"
 autocmd VimEnter *
