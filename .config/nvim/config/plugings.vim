@@ -1,4 +1,5 @@
 Plug 'junegunn/vim-plug'
+Plug '907th/vim-auto-save'
 
 "--- Tab Completion
 "Plug 'autozimu/LanguageClient-neovim', {
@@ -36,6 +37,8 @@ Plug 'prettier/vim-prettier', {
     \ 'do': 'npm i --upgrade',
     \ 'for': [ 'markdown', 'yaml', 'javascript', 'typescript', 'css', 'less', 'scss'] }
 Plug 'PotatoesMaster/i3-vim-syntax'
+"Plug 'davidbeckingsale/writegood.vim'
+Plug 'jkirchartz/writegooder.vim'
 
 " Language Tools
 Plug 'rhysd/vim-grammarous', { 'for': ['markdown', 'tex'] }
@@ -46,6 +49,8 @@ Plug 'kana/vim-operator-user'
 "Plug 'scrooloose/nerdtree'
 "Plug 'Xuyuanp/nerdtree-git-plugin'
 "Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+"Plug 'justinmk/vim-dirvish'
+"Plug 'kristijanhusak/vim-dirvish-git'
 
 " LaTex
 "Plug 'lervag/vimtex', { 'for': 'tex', 'do': 'pip3 install --user --upgrade neovim-remote' }
@@ -90,20 +95,37 @@ Plug 'mhinz/vim-startify'
 Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'cocopon/iceberg.vim'
+Plug 'logico-dev/typewriter', {'on': 'Goyo'}
 
 "--- Searching
 Plug 'junegunn/fzf', {
     \ 'dir': '~/.fzf', 
     \ 'do': './install --all' }
 Plug 'junegunn/fzf.vim' 
+function! BuildRG(info)
+  if a:info.status != 'unchanged' || a:info.force
+    if has('nvim')
+      !cargo build --release
+    else
+      !cargo build --release --no-default-features --feature pcre2 simd-accel avx-accel
+    endif
+  endif
+endfunction
+
+Plug 'BurntSushi/ripgrep', { 'do': function('BuildRG') }
+Plug 'jremmen/vim-ripgrep'
+
+"--- Yank
+"Plug 'vim-scripts/YankRing.vim'
 
 "--- Fonts
 Plug 'ryanoasis/vim-devicons'
+"Plug 'powerline/powerline'
 
 "--- abbreviation
 "Plug 'nelstrom/vim-americanize'
-"Plug 'tpope/vim-abolish'
-Plug 'tpope/tpope-vim-abolish'
+Plug 'tpope/vim-abolish'
+"Plug 'tpope/tpope-vim-abolish'
 Plug 'jdelkins/vim-correction'
 
 " buffer tab list
@@ -136,8 +158,6 @@ Plug 'kopischke/vim-stay'
 
 "--- Insert or delete brackets, parens, quotes in pair
 Plug 'jiangmiao/auto-pairs'
-"Plug 'tpope/vim-unimpaired'
-"Plug 'Shougo/neopairs.vim'
 
 "--- Vim Wiki
 "Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
