@@ -2,33 +2,37 @@ Plug 'junegunn/vim-plug'
 Plug '907th/vim-auto-save'
 
 "--- Tab Completion
+"Plug 'ervandew/supertab'
+"Plug 'vim-scripts/SearchComplete'
+"Plug 'shawncplus/phpcomplete.vim', { 'for': 'php' } 
+
 "Plug 'autozimu/LanguageClient-neovim', {
 "    \ 'branch': 'next',
-"    \ 'do': [ 'bash install.sh', 'npm install --upgrade bash-language-server' ]
+"    \ 'do': 'bash install.sh',
 "    \ }
-"if has('nvim')
-"    Plug 'Shougo/deoplete.nvim', { 'do': [ ':UpdateRemotePlugins', 'pip3 install --user --upgrade' ] }
-"else
-"    Plug 'Shougo/deoplete.nvim'
-"    Plug 'roxma/nvim-yarp'
-"    Plug 'roxma/vim-hug-neovim-rpc'
-"endif
-"Plug 'ujihisa/neco-look'
-"Plug 'Shougo/neco-vim'
-"Plug 'zchee/deoplete-zsh'
-"Plug 'Shougo/neco-syntax'
-"Plug 'SevereOverfl0w/deoplete-github'
-"Plug 'thalesmello/webcomplete.vim'
-"Plug 'lionawurscht/deoplete-biblatex', {
-    \ 'do': 'pip3 install --user --upgrade bibtexparser'}
-"---
-Plug 'ervandew/supertab'
-Plug 'vim-scripts/SearchComplete'
-Plug 'shawncplus/phpcomplete.vim', { 'for': 'php' } 
+"Plug 'tjdevries/nvim-langserver-shim'
+
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+
+Plug 'zchee/deoplete-zsh'
+Plug 'zchee/deoplete-go', {'build': {'unix': 'make'}}
+Plug 'jodosha/vim-godebug' " Debugger integration via delve
+Plug 'Shougo/neco-syntax'
+Plug 'thalesmello/webcomplete.vim'
+Plug 'joereynolds/deoplete-minisnip' | Plug 'joereynolds/vim-minisnip'
+
+" quake-like nvim terminal
+"Plug 'https://gitlab.com/Lenovsky/nuake.git'
 
 " Snippets
-"Plug 'SirVer/ultisnips'
-"Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 "Linters
 Plug 'w0rp/ale', {
@@ -39,6 +43,8 @@ Plug 'prettier/vim-prettier', {
 Plug 'PotatoesMaster/i3-vim-syntax'
 "Plug 'davidbeckingsale/writegood.vim'
 Plug 'jkirchartz/writegooder.vim'
+Plug 'fatih/vim-go' 
+Plug 'godoctor/godoctor.vim'  
 
 " Language Tools
 Plug 'rhysd/vim-grammarous', { 'for': ['markdown', 'tex'] }
@@ -117,6 +123,10 @@ Plug 'jremmen/vim-ripgrep'
 
 "--- Yank
 "Plug 'vim-scripts/YankRing.vim'
+"Plug 'Shougo/neoyank.vim' | Plug 'justinhoward/fzf-neoyank'
+
+ "--- Broswer Intergratiion
+Plug 'raghur/vim-ghost', {'do': [ ':GhostInstall', 'pip3 install --user --upgrade' ] }
 
 "--- Fonts
 Plug 'ryanoasis/vim-devicons'
