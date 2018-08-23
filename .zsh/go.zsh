@@ -3,3 +3,7 @@
 export GOROOT=/usr/lib/go
 export PATH=$PATH:$GOROOT/bin
 #export GOPATH=$HOME/go
+
+
+
+# go get github.com/errata-ai/vale
