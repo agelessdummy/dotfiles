@@ -1,0 +1,9 @@
+---
+extends: capitalization
+message: "'%s' should be capitalized."
+link: https://content-guide.18f.gov/capitalization/#headings
+level: suggestion
+scope: heading
+match: $sentence
+raw:
+    - '^(?:#+\s)?[a-z].+'
