@@ -1,8 +1,9 @@
 ---
-message: Craft sentences at 45 words or fewer, whenever possible.
+message: Craft sentences at 28 words or fewer, whenever possible.
 link: 'https://content-guide.18f.gov/be-concise/#keep-sentences-short-and-sweet'
+link: https://github.com/writethedocs/www/tree/master/vale/WTD
 extends: occurrence
 scope: sentence
 level: warning
-max: 25
+max: 28
 token: '\b(\w+)\b'
