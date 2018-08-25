@@ -1,8 +1,8 @@
 " when running at every change you may want to disable quickfix
 let g:prettier#quickfix_enabled = 0
 
-let g:prettier#autoformat = 0
-autocmd BufWritePre,TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
+let g:prettier#autoformat = 1
+"autocmd BufWritePre,TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
 
 " max line lengh that prettier will wrap on
 let g:prettier#config#print_width = 80

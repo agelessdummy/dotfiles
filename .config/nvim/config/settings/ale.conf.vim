@@ -1,11 +1,10 @@
 " change the signs
 let g:ale_sign_error = '✖'
 let g:ale_sign_warning = '⚠'
-"let g:ale_sign_error = '>>'
-"let g:ale_sign_warning = '--'
+
 "For airline integrstion
-let g:airline#extensions#ale#error_symbol = '✖:'
-let g:airline#extensions#ale#warning_symbol = '⚠:'
+"let g:airline#extensions#ale#error_symbol = '✖:'
+"let g:airline#extensions#ale#warning_symbol = '⚠:'
 
 " change the colors
 "highlight clear ALEErrorSign
@@ -13,16 +12,23 @@ let g:airline#extensions#ale#warning_symbol = '⚠:'
 
 let g:ale_fixers = {}
 let g:ale_fixers['markdown'] = ['prettier']
+let g:ale_fixers['latex'] = ['prettier']
 let g:ale_fixers['javascript'] = ['prettier']
+let g:ale_fixers['css'] = ['prettier']
 
 
 let g:ale_linters = {
    \ 'zsh': ['shell'],
    \ 'bash': ['shell'],
-   \ 'sh': [ 'Language_server' ],
-   \ 'latex': ['alex'],
-   \ 'markdown': [ 'alex', 'prettier' ],
+   \ 'sh': [ 'language_server' ],
+   \ 'latex': ['alex', 'vale'],
+   \ 'markdown': [ 'alex', 'vale' ],
+   \ 'reStucturedText': [ 'vale' ],
+   \ 'Text^': [ 'vale' ],
    \ 'vim': ['vint'],
+   \ 'cs':['syntax', 'semantic', 'issues'],
+   \ 'python': ['pylint'],
+   \ 'java': ['javac']
    \}
 
 let g:ale_linter_aliases = {
@@ -50,6 +56,7 @@ let g:ale_lint_on_text_changed = 'never'
 " You can disable this option too
 " if you don't want linters to run on opening a file
 let g:ale_lint_on_enter = 0
+"let g:ale_lint_on_enter = 1
 
 
 let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'

@@ -25,14 +25,18 @@ Plug 'zchee/deoplete-go', {'build': {'unix': 'make'}}
 Plug 'jodosha/vim-godebug' " Debugger integration via delve
 Plug 'Shougo/neco-syntax'
 Plug 'thalesmello/webcomplete.vim'
-Plug 'joereynolds/deoplete-minisnip' | Plug 'joereynolds/vim-minisnip'
+"Plug 'joereynolds/deoplete-minisnip' | Plug 'joereynolds/vim-minisnip'
+"Plug 'KeyboardFire/vim-minisnip'
+"Plug 'joereynolds/deoplete-minisnip'
+Plug 'SevereOverfl0w/deoplete-github'
+Plug 'Shougo/neco-vim'
 
 " quake-like nvim terminal
 "Plug 'https://gitlab.com/Lenovsky/nuake.git'
 
 " Snippets
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+"Plug 'Shougo/neosnippet.vim' | Plug 'Shougo/neosnippet-snippets'
+"Plug 'MarcWeber/vim-addon-mw-utils' | Plug 'tomtom/tlib_vim' | Plug 'garbas/vim-snipmate' | Plug 'honza/vim-snippets' | Plug 'rbonvall/snipmate-snippets-bib'
 
 "Linters
 Plug 'w0rp/ale', {
@@ -42,7 +46,7 @@ Plug 'prettier/vim-prettier', {
     \ 'for': [ 'markdown', 'yaml', 'javascript', 'typescript', 'css', 'less', 'scss'] }
 Plug 'PotatoesMaster/i3-vim-syntax'
 "Plug 'davidbeckingsale/writegood.vim'
-Plug 'jkirchartz/writegooder.vim'
+"Plug 'jkirchartz/writegooder.vim'
 Plug 'fatih/vim-go' 
 Plug 'godoctor/godoctor.vim'  
 
@@ -81,17 +85,17 @@ Plug 'derdennis/vim-markdownfootnotes'
 Plug 'mmai/vim-markdown-wiki'
 "Plug 'prashanthellina/follow-markdown-links'
 Plug 'ferrine/md-img-paste.vim'
-function! BuildComposer(info)
-  if a:info.status != 'unchanged' || a:info.force
-    if has('nvim')
-      !cargo build --release
-    else
-      !cargo build --release --no-default-features --features json-rpc
-    endif
-  endif
-endfunction
+"function! BuildComposer(info)
+"  if a:info.status != 'unchanged' || a:info.force
+"    if has('nvim')
+"      !cargo build --release
+"    else
+"      !cargo build --release --no-default-features --features json-rpc
+"    endif
+"  endif
+"endfunction
 
-Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
+"Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 
 " Vim Startify
 Plug 'mhinz/vim-startify'
@@ -161,10 +165,10 @@ Plug 'tpope/vim-git'
 "Plug 'l04m33/vim-skuld'
 
 " FastFolds
-Plug 'wsdjeg/vim-fetch'
-Plug 'Konfekt/FastFold'
-Plug 'Konfekt/FoldText'
-Plug 'kopischke/vim-stay'
+"Plug 'wsdjeg/vim-fetch'
+"Plug 'Konfekt/FastFold'
+"Plug 'Konfekt/FoldText'
+"Plug 'kopischke/vim-stay'
 
 "--- Insert or delete brackets, parens, quotes in pair
 Plug 'jiangmiao/auto-pairs'

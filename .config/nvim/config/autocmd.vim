@@ -29,11 +29,22 @@ autocmd BufEnter *i3/config setlocal filetype=i3
 
   " Except... on Markdown. That's good stuff.
 autocmd FileType markdown setlocal wrap
+autocmd FileType html setlocal wrap
 
 "au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
 "autocmd! BufNewFile,BufFilePRe,BufRead *.{markdown,mdown,mkd,mkdn,mmd,md} setlocal filetype=markdown.pandoc
 autocmd! BufNewFile,BufFilePRe,BufRead *.{markdown,mdown,mkd,mkdn,mmd,md} setf markdown.pandoc
 autocmd FileType markdown TableModeEnable
+"autocmd FileType markdown WritegoodEnable
+
+" typewriter and GOYO
+" Change the cursor from block to i-beam in INSERT mode
+let &t_SI = "\e[5 q"
+let &t_EI = "\e[1 q"
+augroup myCmds
+  au!
+  autocmd VimEnter * silent !echo -ne "\e[1 q"
+augroup END
 
 " VimTex Buffer variable
 autocmd FileType tex let b:vimtex_main = 'main.tex'
@@ -57,13 +68,13 @@ autocmd FileType tex let b:vimtex_main = 'main.tex'
 "au FileType tex,mmd,md,markdown,html,txt ~/.config/nvim/config/words/abbrev.vim 
 
 " AutoSave
-autocmd TextChanged,TextChangedI <buffer> silent write
+"autocmd TextChanged,TextChangedI <buffer> silent write
 "autocmd CursorHold,TextChanged,TextChangedI <buffer> silent write
 "au FocusLost * silent! wa
 
 "https://www.linux.com/learn/vim-tips-folding-fun
-au BufWinLeave * mkview
-au BufWinEnter * silent loadview
+"au BufWinLeave * mkview
+"au BufWinEnter * silent loadview
 
 " use TAB for everythihng (deoplete)
 "autocmd FileType javascript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"

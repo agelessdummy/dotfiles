@@ -31,10 +31,17 @@
 "
 " 
 " init.vim ("vimrc"): If you already have Vim installed you can copy %userprofile%\_vimrc to %userprofile%\AppData\Local\nvim\init.vim to use your Vim config with Neovim.
+
+" after neovim
+"pip2 install --upgrade --user neovim
+"pip3 install --upgrade --user neovim
 "----------------
 
 
-let g:python_host_prog='/usr/bin/python3'
+" which python2
+" which python3
+let g:python_host_prog='/usr/bin/python2'
+let g:python3_host_prog='/usr/local/bin/python3'
 
 set nocompatible
 filetype plugin indent on
@@ -242,7 +249,7 @@ set backupskip=/tmp/*,/private/tmp/*
 "set shell=/bin/zsh
 set shell=sh
 
-runtime defaults/yanking.txt
+"runtime ~/.config/nvim/defaults/yanking.txt
 silent !mkdir -p ~/.config/nvim/defaults/backup > /dev/null 2>&1
 silent !mkdir -p ~/.config/nvim/defaults/vimsessions > /dev/null 2>&1
 silent !mkdir -p ~/.config/nvim/defaults/undo > /dev/null 2>&1
@@ -286,7 +293,7 @@ set fencs=utf-8
 set enc=utf-8
 scriptencoding utf-8
 
-
+" https://sts10.github.io/2016/02/13/best-of-my-vimrc.html
 " Search and Substitute
 set gdefault " use global flag by default in s: commands
 set hlsearch " highlight searches
@@ -294,12 +301,14 @@ set ignorecase
 set smartcase " don't ignore capitals in searches
 set winminheight=0              " Windows can be 0 line high
 set autochdir
+set incsearch   " search characters as they're entered
+set nohlsearch  " don't highlight all search matches
+
 
 " Text Wrapping
 set textwidth=80
 set colorcolumn=80
-"set nowrap
-set wrap
+set nowrap
 
 "---Automatically install missing plugins on startup-------"
 autocmd VimEnter *

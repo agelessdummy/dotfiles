@@ -56,45 +56,36 @@ zle backward-delete-char
 fi
 
 }
-
 zle -N expand-alias-space
-
 bindkey " " expand-alias-space
-
 bindkey -M isearch " " magic-space
 
 # command aliases
-
 alias jj='java -jar'
-
 alias mcp='mvn clean package'
-
 # blank aliases, without trailing whitespace
-
 balias clh='curl localhost:'
 
 
 
 # "ignored" aliases, not expanded
-
 ialias l='exa -al'
-
 ialias curl='curl --silent --show-error'
 
 
 
 # global aliases
-
 alias -g L='| less'
-
 alias -g G='| grep'
-
 ialias -g grep='grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 
 #### MY OWN ALIAS'S
 alias fonts="fc-cache -fv"
-#alias dd="dd status=progress"
-alias dd="progress_bar dd"
+#alias dd="dd status=progress count=100 "
+#alias dd="progress_bar dd "
+alias dd="dd status=progress"
+alias sha1sum="sha1sum -c"
+alias sha256sum="sha256sum -c SHA256SUMS 2>&1 | grep OK"
 
 
 ## https://raw.githubusercontent.com/xero/dotfiles/master/zsh/.zsh/aliases.zsh 
@@ -134,6 +125,7 @@ alias reboot='sudo /sbin/reboot'
 alias poweroff='sudo /sbin/poweroff'
 alias halt='sudo /sbin/halt'
 alias shutdown='sudo /sbin/shutdown'
+alias sysoff='shutdown -p now'
 
 #21: Control web servers
 # also pass it via sudo so whoever is admin can reload it without calling you #
@@ -165,6 +157,7 @@ alias wget="wget -c"
 
 #  Control cd command behavior
 ## get rid of command not found ##
+#alias cd='cd && ls'
 alias cd..='cd ..'
 alias ..='cd ..'
 alias ...='cd ../../../'

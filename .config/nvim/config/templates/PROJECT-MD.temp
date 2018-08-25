@@ -396,7 +396,7 @@ Then insert those archetypes in the [Killogator logline](http://graemeshimmin.co
 | Beats | smallest unit|
 
     - Beats = - setup + cause + effect 
-     - setup: table in a museun 
+     - setup: table in a museum
      - cause: one bal strikes another 
      - effect: that ball rolls across the table
 
@@ -411,83 +411,183 @@ Then insert those archetypes in the [Killogator logline](http://graemeshimmin.co
 | -    | Act II: Reponse   | having failed, now does nothing                                               |      |      |       |
 |------|-------------------|-------------------------------------------------------------------------------|------|------|-------|
 | -    | Act 3: Resolution | resolution of the story and its subplots                                      |      |      |       |
+|------|-------------------|-------------------------------------------------------------------------------|------|------|-------|
 
 #### 4 Acts
 
+|------|-----------------|----------------------------------|------|------|-------|
 | #    | Parts           | Points                           | PWC  | AWC  | POV   |
 | :--- | :---:           | :---                             | ---: | ---: | :---: |
 |------|-----------------|----------------------------------|------|------|-------|
 | 1    | Act I: Start    | safeguard from another attack    |      |      |       |
 |------|-----------------|----------------------------------|------|------|-------|
 | 2    | Act II: Reponse |                                  |      |      |       |
-|     | Act III: Attack | action in response to some event |      |      |       |
+|      | Act III: Attack | action in response to some event |      |      |       |
 |------|-----------------|----------------------------------|------|------|-------|
 | 3    | Act IIII: End   | they initiate the action.        |      |      |       |
+|------|-----------------|----------------------------------|------|------|-------|
 
 #### 5 Acts
 
-| #                   | Parts                                                              | Points | PWC    | AWC     | POV |
-|---------------------|:-------------------------------------------------------------------|:-------|:-------|:--------|:---:|
-| A: Start            | introduces important background information to the audience        |        |        |         |
-|---------------------|--------------------------------------------------------------------|--------|--------|---------|
-| B: Rising Action    | a series of events build toward the point of greatest interest     |        |        |         |
-|---------------------|--------------------------------------------------------------------|--------|--------|---------|
-| C: Climax           | comedy=things were going badly or tragedy=the opposite state       |        |        |         |
-| ------------------- | ------------------------------------------------------------------ | ------ | ------ | ------- |
-| E: Falling Action   | the conflict between the protagonist and the antagonist unravels   |        |        |         |
-| F: End              | comedy=protag better off or tragedy=ends with a catastrophe        |        |        |         |
+|------|---------------------|----------------------------------------------------------------------|----------|----------|--------------|
+| #    | Parts               | Points                                                               | PWC      | AWC      | POV          |
+| :--- | :---:               | :------------------------------------------------------------------- | :------- | :------- | :--------    |
+| 1    | A: Start            | introduces important background information to the audience          |          |          |              |
+|------|---------------------|----------------------------------------------------------------------|----------|----------|--------------|
+| 2    | B: Rising Action    | a series of events build toward the point of greatest interest       |          |          |              |
+|------|---------------------|----------------------------------------------------------------------|----------|----------|--------------|
+| 3    | C: Climax           | comedy=things were going badly or tragedy=the opposite state         |          |          |              |
+| ---  | ------------------- | ------------------------------------------------------------------   | ------   | -------- | ------------ |
+| 4    | E: Falling Action   | the conflict between the protagonist and the antagonist unravels     |          |          |              |
+|      | F: End              | comedy=protag better off or tragedy=ends with a catastrophe          |          |          |              |
+|------|---------------------|----------------------------------------------------------------------|----------|----------|--------------|
 
 #### 8 Sequences
 
-| #               | Points                                                    | PWC  | AWC  | POV   |
-| :---            | :---                                                      | ---: | ---: | :---: |
-| Stasis          | every day life + known charecters                         |      |      |       |
-| Trigger         | beyond the control of the PROTAG{good/bad}                |      |      |       |
-|-----------------|-----------------------------------------------------------|------|------|-------|
-| Quest           | maintain/increase -->status quo<-- return                 |      |      |       |
-| Surprise        | involves --> obstacles+complications                      |      |      |       |
-|-----------------|-----------------------------------------------------------|------|------|-------|
-| Critical Choice | PROTAG's decision to take action{hard/easy}               |      |      |       |
-| Climax          | highest peak of tension --> down to this                  |      |      |       |
-|-----------------|-----------------------------------------------------------|------|------|-------|
-| Reversal        | critical choice + climax = change of status of characters |      |      |       |
-|-----------------|-----------------------------------------------------------|------|------|-------|
-| Resolution      | fresh stasis{good/bad}                                    |      |      |       |
+|------|-----------------|-----------------------------------------------------------|------|------|-------|
+| #    | Parts           | Points                                                    | PWC  | AWC  | POV   |
+| :--- | :---:           | :---                                                      | ---: | ---: | :---: |
+| 1    | Stasis          | every day life + known charecters                         |      |      |       |
+|      | Trigger         | beyond the control of the PROTAG{good/bad}                |      |      |       |
+|------|-----------------|-----------------------------------------------------------|------|------|-------|
+| 2    | Quest           | maintain/increase -->status quo<-- return                 |      |      |       |
+|      | Surprise        | involves --> obstacles+complications                      |      |      |       |
+|------|-----------------|-----------------------------------------------------------|------|------|-------|
+| 3    | Critical Choice | PROTAG's decision to take action{hard/easy}               |      |      |       |
+|      | Climax          | highest peak of tension --> down to this                  |      |      |       |
+|------|-----------------|-----------------------------------------------------------|------|------|-------|
+| 4    | Reversal        | critical choice + climax = change of status of characters |      |      |       |
+|------|-----------------|-----------------------------------------------------------|------|------|-------|
+| 5    | Resolution      | fresh stasis{good/bad}                                    |      |      |       |
+|------|-----------------|-----------------------------------------------------------|------|------|-------|
 
 #### Beats
 
-| #    | Points | PWC  | AWC  | POV   |
-| :--- | :---   | ---: | ---: | :---: |
+|------|------------------------------|--------------------------------------------------------------------|------|-------|-----|
+| #    | Parts                        | Points                                                             | PWC  | AWC   | POV |
+| :--- | :---:                        | ---:                                                               | ---: | :---: |     |
+| 1    | Beat 1: Opening Image        | snapshot of the main character’s problem                           |      |       |     |
+|      | Beat 2: Establish Univese    | world as it is, and what is missing in their life                  |      |       |     |
+|      | Beat 3: Spark                | the message, the truth, spoken                                     |      |       |     |
+| 2    | Beat 4: Struggle             | moment where life as it is changes                                 |      |       |     |
+|      | Beat 5: Choice               | doubts the journey they must take                                  |      |       |     |
+|------|------------------------------|--------------------------------------------------------------------|------|-------|-----|
+| 3    | Beat 6: Break                | world and enter the upside-down, opposite world                    |      |       |     |
+|      | Beat 7: B-Story              | a discussion about the Theme                                       |      |       |     |
+| 4    | Beat 8: Promise of Premise   | explores the new world and the                                     |      |       |     |
+|      | Beat 9: Midpoint             | they think they want (“great”); they think they want (“awful”)     |      |       |     |
+| 5    | Beat 10: Everything Unravels | physical and emotional regroup to defeat the main character’s goal |      |       |     |
+|      | Beat 11: All is Lost         | realizes they’ve lost everything they gained                       |      |       |     |
+| 6    | Beat 12: Existencial Crisis  | main character hits bottom, and wallows in hopelessness            |      |       |     |
+|------|------------------------------|--------------------------------------------------------------------|------|-------|-----|
+| 7    | Beat 13: Break               | fresh idea from the B-Story, the PROTAG chooses to try again       |      |       |     |
+|      | Beat 14: Denouement          | the nugget of truth that now makes sense to them                   |      |       |     |
+| 8    | Beat 15: Final Image         | proving, visually, that a change has occurred                      |      |       |     |
+|------|------------------------------|--------------------------------------------------------------------|------|-------|-----|
 
 #### Beat Master
 
-| #                            | Points                                                             | PWC  | AWC  | POV   |
-| :---                         | :---                                                               | ---: | ---: | :---: |
-| Beat 1: Opening Image        | snapshot of the main character’s problem                           |      |      |       |
-| - Opening Scene              | PROTAG must be introduced                                          |      |      |       |
-| Beat 2: Establish Univese    | world as it is, and what is missing in their life                  |      |      |       |
-| - Hook Moment                | a itch that needs top be scratched                                 |      |      |       |
-| Beat 3: Spark                | the message, the truth, spoken                                     |      |      |       |
-| Beat 4: Struggle             | moment where life as it is changes                                 |      |      |       |
-| - Inciting Incident          | game-changing event often leading to 1st Plot Point                |      |      |       |
-| Beat 5: Choice               | doubts the journey they must take                                  |      |      |       |
-| - 1st Plot Point             | ANTAG forces fully into play forces for the PROTAG                 |      |      |       |
-|------------------------------|--------------------------------------------------------------------|------|------|-------|
-| Beat 6: Break                | world and enter the upside-down, opposite world                    |      |      |       |
-| Beat 7: B-Story              | a discussion about the Theme                                       |      |      |       |
-| Beat 8: Promise of Premise   | explores the new world and the                                     |      |      |       |
-| - 1st Pitch Point            | reminder of ANTAG is visble to the reader                          |      |      |       |
-| Beat 9: Midpoint             | they think they want (“great”); they think they want (“awful”)     |      |      |       |
-| - Midpoint                   | new info that changes understanding of context                     |      |      |       |
-| Beat 10: Everything Unravels | physical and emotional regroup to defeat the main character’s goal |      |      |       |
-| - 2nd Pitch Point            | ANTAG ups the game against the PROTAG's attack                     |      |      |       |
-| - All is Lost Lull           | a slower paced before the 2nd Plot Point                           |      |      |       |
-| Beat 11: All is Lost         | realizes they’ve lost everything they gained                       |      |      |       |
-| Beat 12: Existencial Crisis  | main character hits bottom, and wallows in hopelessness            |      |      |       |
-| - 2nd Plot Point             | final new info dump, and PROTAGS's quest is accelerated            |      |      |       |
-|------------------------------|--------------------------------------------------------------------|------|------|-------|
-| Beat 13: Break               | fresh idea from the B-Story, the PROTAG chooses to try again       |      |      |       |
-| Beat 14: Denouement          | the nugget of truth that now makes sense to them                   |      |      |       |
-| Beat 15: Final Image         | proving, visually, that a change has occurred                      |      |      |       |
+|------|------------------------------|--------------------------------------------------------------------|------|------|-------|
+| #    | Parts                        | Points                                                             | PWC  | AWC  | POV   |
+| :--- | :---:                        | :---                                                               | ---: | ---: | :---: |
+| 1    | Beat 1: Opening Image        | snapshot of the main character’s problem                           |      |      |       |
+| -    | setup                        |                                                                    |      |      |       |
+| -    | cause                        |                                                                    |      |      |       |
+| -    | effect                       |                                                                    |      |      |       |
+|      | - Opening Scene              | PROTAG must be introduced                                          |      |      |       |
+| -    | setup                        |                                                                    |      |      |       |
+| -    | cause                        |                                                                    |      |      |       |
+| -    | effect                       |                                                                    |      |      |       |
+|      | Beat 2: Establish Univese    | world as it is, and what is missing in their life                  |      |      |       |
+| -    | setup                        |                                                                    |      |      |       |
+| -    | cause                        |                                                                    |      |      |       |
+| -    | effect                       |                                                                    |      |      |       |
+|      | - Hook Moment                | a itch that needs top be scratched                                 |      |      |       |
+| -    | setup                        |                                                                    |      |      |       |
+| -    | cause                        |                                                                    |      |      |       |
+| -    | effect                       |                                                                    |      |      |       |
+|      | Beat 3: Spark                | the message, the truth, spoken                                     |      |      |       |
+| -    | setup                        |                                                                    |      |      |       |
+| -    | cause                        |                                                                    |      |      |       |
+| -    | effect                       |                                                                    |      |      |       |
+| 2    | Beat 4: Struggle             | moment where life as it is changes                                 |      |      |       |
+| -    | setup                        |                                                                    |      |      |       |
+| -    | cause                        |                                                                    |      |      |       |
+| -    | effect                       |                                                                    |      |      |       |
+|      | - Inciting Incident          | game-changing event often leading to 1st Plot Point                |      |      |       |
+| -    | setup                        |                                                                    |      |      |       |
+| -    | cause                        |                                                                    |      |      |       |
+| -    | effect                       |                                                                    |      |      |       |
+|      | Beat 5: Choice               | doubts the journey they must take                                  |      |      |       |
+| -    | setup                        |                                                                    |      |      |       |
+| -    | cause                        |                                                                    |      |      |       |
+| -    | effect                       |                                                                    |      |      |       |
+|      | - 1st Plot Point             | ANTAG forces fully into play forces for the PROTAG                 |      |      |       |
+| -    | setup                        |                                                                    |      |      |       |
+| -    | cause                        |                                                                    |      |      |       |
+| -    | effect                       |                                                                    |      |      |       |
+|------|------------------------------|--------------------------------------------------------------------|------|------|-------|
+| 3    | Beat 6: Break                | world and enter the upside-down, opposite world                    |      |      |       |
+| -    | setup                        |                                                                    |      |      |       |
+| -    | cause                        |                                                                    |      |      |       |
+| -    | effect                       |                                                                    |      |      |       |
+|      | Beat 7: B-Story              | a discussion about the Theme                                       |      |      |       |
+| -    | setup                        |                                                                    |      |      |       |
+| -    | cause                        |                                                                    |      |      |       |
+| -    | effect                       |                                                                    |      |      |       |
+| 4    | Beat 8: Promise of Premise   | explores the new world and the                                     |      |      |       |
+| -    | setup                        |                                                                    |      |      |       |
+| -    | cause                        |                                                                    |      |      |       |
+| -    | effect                       |                                                                    |      |      |       |
+|      | - 1st Pitch Point            | reminder of ANTAG is visble to the reader                          |      |      |       |
+| -    | setup                        |                                                                    |      |      |       |
+| -    | cause                        |                                                                    |      |      |       |
+| -    | effect                       |                                                                    |      |      |       |
+|      | Beat 9: Midpoint             | they think they want (“great”); they think they want (“awful”)     |      |      |       |
+| -    | setup                        |                                                                    |      |      |       |
+| -    | cause                        |                                                                    |      |      |       |
+| -    | effect                       |                                                                    |      |      |       |
+|      | - Midpoint                   | new info that changes understanding of context                     |      |      |       |
+| -    | setup                        |                                                                    |      |      |       |
+| -    | cause                        |                                                                    |      |      |       |
+| -    | effect                       |                                                                    |      |      |       |
+| 5    | Beat 10: Everything Unravels | physical and emotional regroup to defeat the main character’s goal |      |      |       |
+| -    | setup                        |                                                                    |      |      |       |
+| -    | cause                        |                                                                    |      |      |       |
+| -    | effect                       |                                                                    |      |      |       |
+|      | - 2nd Pitch Point            | ANTAG ups the game against the PROTAG's attack                     |      |      |       |
+| -    | setup                        |                                                                    |      |      |       |
+| -    | cause                        |                                                                    |      |      |       |
+| -    | effect                       |                                                                    |      |      |       |
+|      | - All is Lost Lull           | a slower paced before the 2nd Plot Point                           |      |      |       |
+| -    | setup                        |                                                                    |      |      |       |
+| -    | cause                        |                                                                    |      |      |       |
+| -    | effect                       |                                                                    |      |      |       |
+|      | Beat 11: All is Lost         | realizes they’ve lost everything they gained                       |      |      |       |
+| -    | setup                        |                                                                    |      |      |       |
+| -    | cause                        |                                                                    |      |      |       |
+| -    | effect                       |                                                                    |      |      |       |
+| 6    | Beat 12: Existencial Crisis  | main character hits bottom, and wallows in hopelessness            |      |      |       |
+| -    | setup                        |                                                                    |      |      |       |
+| -    | cause                        |                                                                    |      |      |       |
+| -    | effect                       |                                                                    |      |      |       |
+|      | - 2nd Plot Point             | final new info dump, and PROTAGS's quest is accelerated            |      |      |       |
+| -    | setup                        |                                                                    |      |      |       |
+| -    | cause                        |                                                                    |      |      |       |
+| -    | effect                       |                                                                    |      |      |       |
+|------|------------------------------|--------------------------------------------------------------------|------|------|-------|
+| 7    | Beat 13: Break               | fresh idea from the B-Story, the PROTAG chooses to try again       |      |      |       |
+| -    | setup                        |                                                                    |      |      |       |
+| -    | cause                        |                                                                    |      |      |       |
+| -    | effect                       |                                                                    |      |      |       |
+|      | Beat 14: Denouement          | the nugget of truth that now makes sense to them                   |      |      |       |
+| -    | setup                        |                                                                    |      |      |       |
+| -    | cause                        |                                                                    |      |      |       |
+| -    | effect                       |                                                                    |      |      |       |
+| 8    | Beat 15: Final Image         | proving, visually, that a change has occurred                      |      |      |       |
+| -    | setup                        |                                                                    |      |      |       |
+| -    | cause                        |                                                                    |      |      |       |
+| -    | effect                       |                                                                    |      |      |       |
+|------|------------------------------|--------------------------------------------------------------------|------|------|-------|
 
 ---

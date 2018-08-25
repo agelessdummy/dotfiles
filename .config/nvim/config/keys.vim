@@ -22,8 +22,8 @@ let maplocalleader = ","
 "cabbrev bonly WSBufOnly
 
 " markdown footnotes
-"<Leader>f    " Insert new footnote 
-"<Leader>r    " Return from footnote
+"<leader>f    " Insert new footnote 
+"<leader>r    " Return from footnote
 
 " Up and Down
 vmap j gj
@@ -61,9 +61,13 @@ nnoremap <space>r :lrewind<CR>
 " Skuld ,a pomodoro time
 " Mapping for opening the task buffer
 let g:skuld_buffer_map = '<leader>sb'
-
 " Mapping for displaying the current state
 let g:skuld_state_map = '<leader>ss'
+
+" Nuake
+nnoremap <F6> :Nuake<CR>
+inoremap <F6> <C-\><C-n>:Nuake<CR>
+nnoremap <F6> <C-\><C-n>:Nuake<CR>
 
 " Tab New
 nmap T :tabnew<cr>
@@ -103,6 +107,13 @@ nnoremap <leader>= FZFNeoyank +<cr> " normal mode history buffer
 
 " goyo
 nnoremap <silent> <leader>z :Goyo<cr>
+
+" LanguageClient
+nnoremap <F7> :call LanguageClient_contextMenu()<CR>
+" Or map each action separately
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F7> :call LanguageClient#textDocument_rename()<CR>
 
 " wordy
 "noremap <silent> <F8> :<C-u>NextWordy<cr>

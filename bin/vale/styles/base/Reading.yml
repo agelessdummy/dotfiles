@@ -3,4 +3,8 @@ message: "Grade level (%s) too high!"
 level: warning
 grade: 12
 metrics:
-- Flesch-Kincaid
+    - Flesch-Kincaid
+    - Gunning Fog
+    - Coleman-Liau
+    - SMOG 
+    - Automated Readability

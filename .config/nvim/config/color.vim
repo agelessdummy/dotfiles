@@ -27,15 +27,16 @@ endif
 let g:Powerline_symbols = 'fancy'
 set guicursor+=a:blinkon0   " disable cursor blink
 
-"colorscheme dracula
-
-colorscheme iceberg
-
+colorscheme dracula
+"colorscheme iceberg
 "colorscheme challenger_deep
 "let g:challenger_deep_termcolors = 256
+"colorscheme typewriter
+
 
 " PromptLine Theme
-let g:airline_theme = 'jellybeans'
+"let g:airline_theme = 'jellybeans'
+let g:airline_theme = 'typewriter'
 " papercolor
 " jellybeans
 " bubblegum
