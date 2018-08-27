@@ -32,3 +32,5 @@ zpm load bhilburn/powerlevel9k
 # source ~/.local/share/zpm/plugins/powerlevel9k/powerlevel9k.zsh-theme
 source ~/.local/share/zpm/bhilburn---powerlevel9k/powerlevel9k.zsh-theme
 POWERLEVEL9K_MODE='nerdfont-complete'
+zpm load zsh-users/zsh-completions
+zpm load nachoparker/tab_list_files_zsh_widget
