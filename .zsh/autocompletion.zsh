@@ -1,9 +1,7 @@
-fpath=("$HOME/.zsh/functions"
-    "$HOME/.zsh/completions"
-    "${fpath[@]}"
-    )
-
-autoload $(ls $HOME/.zsh/functions)
+#fpath=("$HOME/.zsh/functions"
+#    "$HOME/.zsh/completions"
+#    "${fpath[@]}"
+#    ) && autoload $(ls $HOME/.zsh/functions)
 
 autoload -Uz compinit && compinit
 

@@ -201,6 +201,8 @@ case `uname` in
     alias newbrew='brew install'
     # rebuild Launch Services to remove duplicate entries on Open With menu
     alias rebuildopenwith='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.fram ework/Support/lsregister -kill -r -domain local -domain system -domain user'
+    alias eog='open -a Preview'
+    alias -s {png,jpg,bmp,PNG,JPG,BMP}=eog
   ;;
   Linux)
     # commands for Linux go here
@@ -227,7 +229,9 @@ case `uname` in
   FreeBSD)
     # commands for FreeBSD go here
     alias doas='doas '
-
+    alias make='make config-recursive install clean'
+    alias fupdate='freebsd-update fetch-install'
+    alias portsnap='portsnap fetch extract'
   ;;
 esac
 
@@ -250,3 +254,5 @@ function md() {
 function short() {
   curl -F"shorten=$*" https://0x0.st
 }
+
+alias wiki='vim $HOME/Documents/Dropbox/Wiki/index.md'

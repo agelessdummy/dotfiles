@@ -1,4 +1,5 @@
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
+alias dotclone="/usr/bin/git --bare https://github.com/agelessdummy/dotfiles.git --work-tree=$HOME"
 alias dotcommit="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME commit -m"
 alias dotrm="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME rm"
 alias dotadd="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME add"
