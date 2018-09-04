@@ -1,43 +1,47 @@
 % ls-R -- filename database for kpathsea; do not change this line.
 ./:
+.:
 bibtex
 doc
 ls-R
 tex
 
 ./bibtex:
-.dolphinview
 bib
 bst
+.dolphinview
+.DS_Store
 
 ./bibtex/bib:
-.DS_Store
 all_classes.bib
+.DS_Store
 gilgamesh.bib
 history_myth.bib
 me.bib
+pics.bib
 poetics.bib
 thesis.bib
+wordpress.bib
 
 ./bibtex/bst:
-ChicagoReedWeb.bst
 apa-good.bst
 biblatex.bst
+ChicagoReedWeb.bst
 mla-good.bst
 
 ./doc:
-.DS_Store
-.dolphinview
-LyXBlogger
-TeX
 biblatex
-biblatex-historian
 biblatex_apa
+biblatex-historian
 biblatex_mla
+.dolphinview
 dramatist
+.DS_Store
 eLyXer
 koma
+LuaTeX-and-XeTeX
 lyx
+LyXBlogger
 memoir
 mla_README
 moderncv_examples
@@ -46,173 +50,9 @@ poemscol
 resume_20070128.pdf
 simplecv
 stage-documentation.pdf
+TeX
 tufte-latex-2.0.1
 verse.dvi
-
-./doc/LyXBlogger:
-changelog.html
-devguide.html
-index.html
-raw
-style.css
-userguide.html
-
-./doc/LyXBlogger/raw:
-changelog.lyx
-devguide.lyx
-export.py
-images
-index.lyx
-upload_docs.sh
-userguide.lyx
-
-./doc/LyXBlogger/raw/images:
-screenshot.png
-
-./doc/TeX:
-"nopageno".html
-.DS_Store
-BIB
-Essential LaTeX on Athena.war
-LaTeX
-LaTeX_document_class_options.war
-LyX
-Title_Creation.htm
-Title_Creation_files
-classess
-koma
-ref_sheet
-symbols.html
-symbols_files
-working_with_pics.html
-
-./doc/TeX/BIB:
-BibTeX and bibliography styles.war
-BibTeXstandard.html
-Bibliography_Management_Latex.war
-Choosing_BibTeX_Style.war
-Entry_Types.war
-Fields.war
-Getting Started In LaTeX.war
-Getting to Grips with Latex - Bibliography Management - Latex Tutorials by Andrew Roberts @ School of Computing, University of Leeds.war
-James Bray's Latex Help - Bibliography.war
-LaTeX » Bibliopgraphy In Table Of Contents.war
-LaTeX » Multiple Footnote References.war
-LaTeX » Subscript And Superscript In Text Mode.war
-Natbib reference sheet.war
-Reed College | CIS | Using BibTeX to Create a Bibliography.war
-Test.pdf
-bib_wiki.html
-bibentries.pdf
-bibtex.html
-bibtexbasics.html
-natnotes.pdf
-
-./doc/TeX/LaTeX:
- LaTeX_Your_Thesis.war
-1LaTeX.html
-Document_Structure_Latex.war
-Formatting example for LaTeX using "article".html
-LaTeX Article Template - Engineering Computer Network, Purdue University.html
-LaTeX_Fonts.war
-LaTeX_Thesis.war
-LatexResumeTemplate.html
-More LaTeX: Reports and Advanced Topics.war
-ess-latex.html
-graphics_LaTeX.html
-how to change the margins.html
-introlatexpoemscol.pdf
-latex.html
-latex12000.html
-latexAdvanced.html
-latex_COMMANDS.html
-latex_formatting.html
-latexhelp.txt
-symbols-a4.pdf
-verse_latex.html
-
-./doc/TeX/LyX:
- question label "nopageno".war
-3.4 Version Control.war
-A Guide to LaTeX.war
-Advanced LaTeX Topics.war
-Grammar_Checker.war
-Headers and Footers.war
-HumanitiesLyX.war
-Joergs "Document" Page.war
-LyX wiki | Examples : CV.war
-LyX wiki | LyX : HumanitiesLyX.war
-LyX wiki | LyX : UsingMemoirInLyX.war
-ModernCVClassIssues.war
-Recipebook.war
-Reed College | CIS | LaTeX Your Thesis.war
-Symbols.html
-The \LyX{} Tutorial.war
-Typography.html
-Using LyX For DTP.html
-UsingMemoirInLyX.war
-Writing_thesis_LaTeX.pdf
-bibliography
-graphics
-self_pub_with_LYX
-
-./doc/TeX/LyX/bibliography:
-Biblatex.war
-Bibliography:Footnotes .war
-LyX wiki | BibTeX : Tips.war
-MLA bibliographies.html
-
-./doc/TeX/LyX/graphics:
-A Simple Guide to Latex:Lyx.html
-PlacingPicturesBesideTheText.html
-figure and picture placement.html
-
-./doc/TeX/LyX/self_pub_with_LYX:
-Designing_a_book_LyX.html
-Writing_Books_with_Lyx.html
-lyx_self_pub.pdf
-
-./doc/TeX/Title_Creation_files:
-500px-Latex_wikibook_test_title.png
-ajax.js
-commonPrint.css
-handheld.css
-index.php
-index_002.php
-poweredby_mediawiki_88x31.png
-wikibits.js
-wikimedia-button.png
-
-./doc/TeX/classess:
-dramatist_latex.zip
-mla-good.bst.zip
-mla-paper.zip
-mlawithtitle.sty
-poemscol.tar.gz
-res.tgz
-verse.zip
-
-./doc/TeX/koma:
-LyX wiki | FAQ : Unsorted1.war
-Nabble - LyX - Users - Koma Letter 2 Components Sequence.war
-
-./doc/TeX/ref_sheet:
-LaTeXRefCard.v2.0.pdf
-latexsheet.pdf
-
-./doc/TeX/symbols_files:
-texsym1.gif
-texsym10.gif
-texsym11.gif
-texsym12.gif
-texsym2.gif
-texsym3.gif
-texsym4.gif
-texsym5.gif
-texsym6.gif
-texsym7.gif
-texsym8.gif
-texsym9.gif
 
 ./doc/biblatex:
 biblatex.pdf
@@ -290,7 +130,6 @@ resources
 examples.bib
 
 ./doc/biblatex/resources:
-README
 bibtoolrsc
 latin1.csf
 latin1_de.csf
@@ -302,28 +141,29 @@ latin9_de.csf
 latin9_dk.csf
 latin9_no.csf
 latin9_se.csf
+README
 winansi.csf
 winansi_de.csf
 winansi_dk.csf
 winansi_no.csf
 winansi_se.csf
 
-./doc/biblatex-historian:
+./doc/biblatex_apa:
+biblatex-apa.pdf
+biblatex-apa-test.pdf
 README
+
+./doc/biblatex-historian:
 historian.bib
 historian.pdf
 historian.tex
-
-./doc/biblatex_apa:
 README
-biblatex-apa-test.pdf
-biblatex-apa.pdf
 
 ./doc/biblatex_mla:
-CHANGES
-README
 biblatex-mla.pdf
+CHANGES
 examples
+README
 
 ./doc/biblatex_mla/examples:
 examples-annotations.pdf
@@ -335,18 +175,18 @@ examples-standard.tex
 handbook-british.pdf
 handbook-footnotes.pdf
 handbook-footnotes.tex
-handbook-spanish.pdf
 handbook.pdf
-handbook.tex
 handbooksamples.bib
+handbook-spanish.pdf
+handbook.tex
 samples.bib
 
 ./doc/dramatist:
-README
 dramatist.pdf
 marlowe-poemscol.tex
 marlowe-verse.pdf
 marlowe-verse.tex
+README
 schiller.pdf
 schiller.tex
 
@@ -362,13 +202,13 @@ elyxer.svg
 index.html
 index.lyx
 lyx.css
+math.html
 math-html.html
 math-iso885915.html
 math-jsmath.html
+math.lyx
 math-mathjax.html
 math-unicode.html
-math.html
-math.lyx
 parse tree.png
 parse tree.svg
 pipeline.png
@@ -376,9 +216,9 @@ pipeline.svg
 toc.css
 upload.sh
 userguide-frameset.html
-userguide-toc.html
 userguide.html
 userguide.lyx
+userguide-toc.html
 
 ./doc/koma:
 koma_script.pdf
@@ -387,12 +227,34 @@ tocstyle.pdf
 
 ./doc/lyx:
 ExtendedLyxFeatures.pdf
+lyxguide.pdf
 LyX_Quickstart.war
 LyX_UserGuide.pdf
 Manuals.pdf
-lyxguide.pdf
+
+./doc/LyXBlogger:
+changelog.html
+devguide.html
+index.html
+raw
+style.css
+userguide.html
+
+./doc/LyXBlogger/raw:
+changelog.lyx
+devguide.lyx
+export.py
+images
+index.lyx
+screenshot.png
+upload_docs.sh
+userguide.lyx
+
+./doc/LyXBlogger/raw/images:
+screenshot.png
 
 ./doc/memoir:
+.DS_Store
 ExtendedMemoir.pdf
 memdesign.pdf
 memman.pdf
@@ -400,32 +262,32 @@ memoir-chapterstyles.lyx
 tb89wilson.pdf
 
 ./doc/moderncv_examples:
-README
 letter.pdf
 letter.tex
 picture.eps
 picture.jpg
 publications.bib
+README
 template_en.aux
 template_en.bbl
 template_en.blg
+template_en_casual_blue.pdf
+template_en_classic_green.pdf
 template_en.log
 template_en.lyx
 template_en.out
 template_en.pdf
 template_en.synctex.gz
 template_en.tex
-template_en_casual_blue.pdf
-template_en_classic_green.pdf
 
 ./doc/plari:
-README
 plari.pdf
+README
 
 ./doc/poemscol:
-README
-poemscol.pdf
 poemscolcheatsheet.pdf
+poemscol.pdf
+README
 
 ./doc/simplecv:
 README
@@ -433,11 +295,148 @@ simplecv.pdf
 testcv.pdf
 testcv.tex
 
+./doc/TeX:
+BIB
+.DS_Store
+Eps-Tiff-Conversion.pdf
+Essential LaTeX on Athena.war
+koma
+LaTeX
+LaTeX_document_class_options.war
+LyX
+"nopageno".html
+READ ME FIRST.pdf
+ref_sheet
+symbols_files
+symbols.html
+Title_Creation_files
+Title_Creation.htm
+working_with_pics.html
+
+./doc/TeX/BIB:
+bibentries.pdf
+Bibliography_Management_Latex.war
+BibTeX and bibliography styles.war
+bibtexbasics.html
+bibtex.html
+BibTeXstandard.html
+bib_wiki.html
+Choosing_BibTeX_Style.war
+Entry_Types.war
+Fields.war
+Getting Started In LaTeX.war
+Getting to Grips with Latex - Bibliography Management - Latex Tutorials by Andrew Roberts @ School of Computing, University of Leeds.war
+James Bray's Latex Help - Bibliography.war
+LaTeX » Bibliopgraphy In Table Of Contents.war
+LaTeX » Multiple Footnote References.war
+LaTeX » Subscript And Superscript In Text Mode.war
+Natbib reference sheet.war
+natnotes.pdf
+Reed College | CIS | Using BibTeX to Create a Bibliography.war
+Test.pdf
+
+./doc/TeX/koma:
+LyX wiki | FAQ : Unsorted1.war
+Nabble - LyX - Users - Koma Letter 2 Components Sequence.war
+
+./doc/TeX/LaTeX:
+1LaTeX.html
+Document_Structure_Latex.war
+ess-latex.html
+Formatting example for LaTeX using "article".html
+graphics_LaTeX.html
+how to change the margins.html
+introlatexpoemscol.pdf
+latex12000.html
+latexAdvanced.html
+LaTeX Article Template - Engineering Computer Network, Purdue University.html
+latex_COMMANDS.html
+LaTeX_Fonts.war
+latex_formatting.html
+latexhelp.txt
+latex.html
+LatexResumeTemplate.html
+LaTeX_Thesis.war
+ LaTeX_Your_Thesis.war
+More LaTeX: Reports and Advanced Topics.war
+symbols-a4.pdf
+verse_latex.html
+
+./doc/TeX/LyX:
+3.4 Version Control.war
+Advanced LaTeX Topics.war
+A Guide to LaTeX.war
+bibliography
+Grammar_Checker.war
+graphics
+Headers and Footers.war
+HumanitiesLyX.war
+Joergs "Document" Page.war
+LyX wiki | Examples : CV.war
+LyX wiki | LyX : HumanitiesLyX.war
+LyX wiki | LyX : UsingMemoirInLyX.war
+ModernCVClassIssues.war
+ question label "nopageno".war
+Recipebook.war
+Reed College | CIS | LaTeX Your Thesis.war
+self_pub_with_LYX
+Symbols.html
+The \LyX{} Tutorial.war
+Typography.html
+Using LyX For DTP.html
+UsingMemoirInLyX.war
+Writing_thesis_LaTeX.pdf
+
+./doc/TeX/LyX/bibliography:
+Biblatex.war
+Bibliography:Footnotes .war
+LyX wiki | BibTeX : Tips.war
+MLA bibliographies.html
+
+./doc/TeX/LyX/graphics:
+A Simple Guide to Latex:Lyx.html
+figure and picture placement.html
+PlacingPicturesBesideTheText.html
+
+./doc/TeX/LyX/self_pub_with_LYX:
+Designing_a_book_LyX.html
+lyx_self_pub.pdf
+Writing_Books_with_Lyx.html
+
+./doc/TeX/ref_sheet:
+LaTeXRefCard.v2.0.pdf
+latexsheet.pdf
+
+./doc/TeX/symbols_files:
+texsym10.gif
+texsym11.gif
+texsym12.gif
+texsym1.gif
+texsym2.gif
+texsym3.gif
+texsym4.gif
+texsym5.gif
+texsym6.gif
+texsym7.gif
+texsym8.gif
+texsym9.gif
+
+./doc/TeX/Title_Creation_files:
+500px-Latex_wikibook_test_title.png
+ajax.js
+commonPrint.css
+handheld.css
+index_002.php
+index.php
+poweredby_mediawiki_88x31.png
+wikibits.js
+wikimedia-button.png
+
 ./doc/tufte-latex-2.0.1:
+graphics
 History.txt
 Manifest.txt
 README.txt
-graphics
 sample-handout.bib
 sample-handout.pdf
 sample-handout.tex
@@ -456,6 +455,7 @@ sine.pdf
 ./tex:
 context
 latex
+ls-R
 plain
 
 ./tex/context:
@@ -465,9 +465,13 @@ pdfsync4context.tex
 base
 biblatex
 dramatist
+.DS_Store
+elyx
 epigraph
 lyx
+LyXBlogger_0.42
 mla-paper
+mmd
 moderncv
 pdfsync.sty
 plari
@@ -475,6 +479,7 @@ poemscol
 resume
 simplecv
 tufte
+uman_style
 verse
 
 ./tex/latex/base:
@@ -490,74 +495,72 @@ cbx
 lbx
 
 ./tex/latex/biblatex/bbx:
-alphabetic-verb.bbx
 alphabetic.bbx
+alphabetic-verb.bbx
 apa.bbx
+authortitle.bbx
 authortitle-comp.bbx
 authortitle-ibid.bbx
 authortitle-icomp.bbx
 authortitle-tcomp.bbx
 authortitle-terse.bbx
-authortitle.bbx
+authoryear.bbx
 authoryear-comp.bbx
 authoryear-ibid.bbx
-authoryear.bbx
 debug.bbx
 draft.bbx
 historian.bbx
 mla.bbx
+numeric.bbx
 numeric-comp.bbx
 numeric-verb.bbx
-numeric.bbx
 reading.bbx
 standard.bbx
+verbose.bbx
 verbose-ibid.bbx
 verbose-inote.bbx
 verbose-note.bbx
 verbose-trad1.bbx
 verbose-trad2.bbx
-verbose.bbx
 
 ./tex/latex/biblatex/cbx:
-alphabetic-verb.cbx
 alphabetic.cbx
+alphabetic-verb.cbx
 apa.cbx
+authortitle.cbx
 authortitle-comp.cbx
 authortitle-ibid.cbx
 authortitle-icomp.cbx
 authortitle-tcomp.cbx
 authortitle-terse.cbx
-authortitle.cbx
+authoryear.cbx
 authoryear-comp.cbx
 authoryear-ibid.cbx
-authoryear.cbx
 debug.cbx
 draft.cbx
 historian.cbx
 mla.cbx
+numeric.cbx
 numeric-comp.cbx
 numeric-verb.cbx
-numeric.cbx
 reading.cbx
+verbose.cbx
 verbose-ibid.cbx
 verbose-inote.cbx
 verbose-note.cbx
 verbose-trad1.cbx
 verbose-trad2.cbx
-verbose.cbx
 
 ./tex/latex/biblatex/lbx:
-UKenglish.lbx
-USenglish.lbx
-american-mla.lbx
 american.lbx
+american-mla.lbx
 australian.lbx
 austrian.lbx
 british.lbx
 canadian.lbx
 danish.lbx
-english-mla.lbx
 english.lbx
+english-mla.lbx
 french.lbx
 german.lbx
 italian.lbx
@@ -568,12 +571,436 @@ norsk.lbx
 norwegian.lbx
 nynorsk.lbx
 portuguese-mla.lbx
-spanish-mla.lbx
 spanish.lbx
+spanish-mla.lbx
 swedish.lbx
+UKenglish.lbx
+USenglish.lbx
 
 ./tex/latex/dramatist:
 dramatist.sty
+
+./tex/latex/elyx:
+.DS_Store
+elyxer-1.2.3
+elyxer-1.2.3.tar.tar.tar.gz
+
+./tex/latex/elyx/elyxer-1.2.3:
+build
+convert-guides
+create-version
+docs
+elyxer.py
+gpl-3.0-standalone.html
+install.py
+LICENSE
+loremipsumize.py
+make
+math2html.py
+po
+README
+run-tests
+setup.py
+src
+test
+
+./tex/latex/elyx/elyxer-1.2.3/build:
+scripts-2.7
+
+./tex/latex/elyx/elyxer-1.2.3/build/scripts-2.7:
+elyxer.py
+loremipsumize.py
+math2html.py
+
+./tex/latex/elyx/elyxer-1.2.3/docs:
+changelog.html
+changelog.lyx
+container.png
+container.svg
+converters.png
+devguide.html
+devguide.lyx
+elyxer.png
+elyxer.svg
+index.html
+index.lyx
+lyx.css
+math.css
+math-googlecharts.html
+math.html
+math-html.html
+math-iso885915.html
+math-jsmath.html
+math.lyx
+math-mathjax.html
+math-mathjax-local.html
+math-unicode.html
+parse tree.png
+parse tree.svg
+pipeline.png
+pipeline.svg
+svg
+toc.css
+upload.sh
+userguide-frameset.html
+userguide.html
+userguide.lyx
+userguide-toc.html
+
+./tex/latex/elyx/elyxer-1.2.3/docs/svg:
+elyxer-svg.svg
+svg-test.html
+
+./tex/latex/elyx/elyxer-1.2.3/po:
+createlocale.sh
+de.po
+en.po
+es.po
+fr.po
+locale
+nl.po
+
+./tex/latex/elyx/elyxer-1.2.3/po/locale:
+de
+en
+es
+fr
+nl
+
+./tex/latex/elyx/elyxer-1.2.3/po/locale/de:
+LC_MESSAGES
+
+./tex/latex/elyx/elyxer-1.2.3/po/locale/de/LC_MESSAGES:
+elyxer.mo
+
+./tex/latex/elyx/elyxer-1.2.3/po/locale/en:
+LC_MESSAGES
+
+./tex/latex/elyx/elyxer-1.2.3/po/locale/en/LC_MESSAGES:
+elyxer.mo
+
+./tex/latex/elyx/elyxer-1.2.3/po/locale/es:
+LC_MESSAGES
+
+./tex/latex/elyx/elyxer-1.2.3/po/locale/es/LC_MESSAGES:
+elyxer.mo
+
+./tex/latex/elyx/elyxer-1.2.3/po/locale/fr:
+LC_MESSAGES
+
+./tex/latex/elyx/elyxer-1.2.3/po/locale/fr/LC_MESSAGES:
+elyxer.mo
+
+./tex/latex/elyx/elyxer-1.2.3/po/locale/nl:
+LC_MESSAGES
+
+./tex/latex/elyx/elyxer-1.2.3/po/locale/nl/LC_MESSAGES:
+elyxer.mo
+
+./tex/latex/elyx/elyxer-1.2.3/src:
+coalesce.py
+conf
+css
+elyxer
+exportconfig.py
+freebsd-license
+gpl-license
+javatopy.py
+jtp
+licensify.py
+load-elyxer.py
+loremipsumize.py
+math2html.py
+setup.py
+textchange.py
+
+./tex/latex/elyx/elyxer-1.2.3/src/conf:
+base.cfg
+elyxer.pot
+unimathsymbols.txt
+
+./tex/latex/elyx/elyxer-1.2.3/src/css:
+extras.css
+freebsd-license.css
+gpl-license.css
+master.css
+math.css
+math-extras.css
+obsolete.css
+print.css
+
+./tex/latex/elyx/elyxer-1.2.3/src/elyxer:
+bib
+conf
+gen
+__init__.py
+io
+main
+maths
+out
+parse
+proc
+ref
+tex
+util
+xtra
+
+./tex/latex/elyx/elyxer-1.2.3/src/elyxer/bib:
+biblio.py
+__init__.py
+pub.py
+tag.py
+tex.py
+
+./tex/latex/elyx/elyxer-1.2.3/src/elyxer/conf:
+config.py
+fileconfig.py
+importconfig.py
+__init__.py
+javatopyconf.py
+jtp.cfg
+
+./tex/latex/elyx/elyxer-1.2.3/src/elyxer/gen:
+basket.py
+change.py
+container.py
+factory.py
+float.py
+header.py
+image.py
+include.py
+__init__.py
+inset.py
+integral.py
+layout.py
+list.py
+notes.py
+size.py
+splitpart.py
+styles.py
+table.py
+toc.py
+
+./tex/latex/elyx/elyxer-1.2.3/src/elyxer/io:
+bulk.py
+fileline.py
+__init__.py
+path.py
+
+./tex/latex/elyx/elyxer-1.2.3/src/elyxer/main:
+convert.py
+__init__.py
+
+./tex/latex/elyx/elyxer-1.2.3/src/elyxer/maths:
+array.py
+bits.py
+command.py
+extracommand.py
+formula.py
+hybrid.py
+__init__.py
+macro.py
+misc.py
+postformula.py
+symbol.py
+
+./tex/latex/elyx/elyxer-1.2.3/src/elyxer/out:
+__init__.py
+output.py
+template.py
+
+./tex/latex/elyx/elyxer-1.2.3/src/elyxer/parse:
+formulaparse.py
+glob.py
+headerparse.py
+__init__.py
+parser.py
+position.py
+tableparse.py
+
+./tex/latex/elyx/elyxer-1.2.3/src/elyxer/proc:
+formulaproc.py
+__init__.py
+postprocess.py
+process.py
+
+./tex/latex/elyx/elyxer-1.2.3/src/elyxer/ref:
+index.py
+__init__.py
+label.py
+link.py
+partkey.py
+
+./tex/latex/elyx/elyxer-1.2.3/src/elyxer/tex:
+__init__.py
+texcode.py
+
+./tex/latex/elyx/elyxer-1.2.3/src/elyxer/util:
+clone.py
+clparse.py
+docparams.py
+__init__.py
+numbering.py
+options.py
+trace.py
+translate.py
+
+./tex/latex/elyx/elyxer-1.2.3/src/elyxer/xtra:
+__init__.py
+newfangle.py
+
+./tex/latex/elyx/elyxer-1.2.3/src/jtp:
+exportconfig.sh
+grammar.py
+__init__.py
+parser.py
+porter.py
+
+./tex/latex/elyx/elyxer-1.2.3/test:
+abstract-good.html
+abstract.lyx
+accept-all
+appendix-1-6-frameset.html
+appendix-1-6-good.html
+appendix-1-6.lyx
+appendix-1-6-toc-good.html
+bibtex-alpha.bib
+bibtex-good.html
+bibtex-latin1.bib
+bibtex.lyx
+bibtex-plain.bib
+bibtex-vancouver.bib
+branches-1-5-good.html
+branches-1-5.lyx
+change-good.html
+change.lyx
+compressed-good.html
+compressed.lyx
+copyimages
+decorations-1-6-good.html
+decorations-1-6.lyx
+descriptions-1-5-good.html
+descriptions-1-5.lyx
+docs
+elyxer-eps.eps
+elyxer-eps.png
+elyxer.png
+elyxer-svg.jpg
+elyxer-svg.png
+elyxer-svg.svg
+ert-good.html
+ert.lyx
+figures-good.html
+figures.lyx
+file-1-6-good.html
+file-1-6.lyx
+footnotes-1-6-good.html
+footnotes-1-6.lyx
+formula-good.html
+formula.lyx
+helloworld-embedcss-good.html
+helloworld-good.html
+helloworld.lyx
+helloworld-raw-good.html
+helloworld-template-good.html
+image-scaling-good.html
+image-scaling.lyx
+index-1-6-good.html
+index-1-6-lowmem-good.html
+index-1-6.lyx
+laurindas-anger.png
+laurindas-anger.svg
+lists-1-6-good.html
+lists-1-6.lyx
+lyx credits.png
+math-1-6-good.html
+math-1-6.lyx
+mini-elyxer.jpg
+mourning.png
+mourning.svg
+parts
+plain-text-good.html
+plain-text.lyx
+plain-text.txt
+rabbit-walrus.png
+rabbit-walrus.svg
+random.png
+references-good.html
+references.lyx
+setcounter-good.html
+setcounter.lyx
+spacing-good.html
+spacing.lyx
+square.jpg
+square.png
+subdir
+table-1-6-good.html
+table-1-6.lyx
+template.html
+test.css
+Test.java
+test.py
+toc-article-good.html
+toc-article.lyx
+toc-book-good.html
+toc-book.lyx
+toc-book-notoclabels-good.html
+version2.0-good.html
+version2.0.lyx
+with images-1-5-good.html
+with images-1-5-html-good.html
+with images-1-5-inkscape-good.html
+with images-1-5-jpg-good.html
+with images-1-5.lyx
+with images-1-5-noconvert-good.html
+
+./tex/latex/elyx/elyxer-1.2.3/test/copyimages:
+docs
+elyxer-svg.svg
+mini-elyxer.jpg
+square.png
+with images-1-5-good.html
+with images-1-5-test.html
+
+./tex/latex/elyx/elyxer-1.2.3/test/copyimages/docs:
+elyxer.svg
+
+./tex/latex/elyx/elyxer-1.2.3/test/docs:
+elyxer.jpg
+elyxer.png
+
+./tex/latex/elyx/elyxer-1.2.3/test/parts:
+accept-all
+elyxer-svg.png
+index-1-6-frameset.html
+index-1-6-part-good-1.html
+index-1-6-part-good-2.html
+index-1-6-part-good-3.html
+index-1-6-part-good-4.html
+index-1-6-part-good-5.html
+index-1-6-part-good-A.html
+index-1-6-part-good-Bibliography.html
+index-1-6-part-good-Chapter--1.html
+index-1-6-part-good.html
+index-1-6-part-good-Index.html
+index-1-6-part-good-Nomenclature.html
+index-1-6-part-good-Part--I.html
+index-1-6-part-good-Part-I.html
+index-1-6-part-good-Part-II.html
+index-1-6-part-good-Part-III.html
+index-1-6-part-good-Section--2.html
+index-1-6-toc-good.html
+index-1-6-toc-test.html
+
+./tex/latex/elyx/elyxer-1.2.3/test/subdir:
+appendix-1-6-good.html
+appendix-1-6.lyx
+image-directory-good.html
+image-directory.lyx
+laurindas-anger.png
+mini-elyxer.jpg
+mourning.png
+rabbit-walrus.png
 
 ./tex/latex/epigraph:
 epipart.sty
@@ -585,10 +1012,167 @@ lyxchess.sty
 lyxskak.sty
 revtex.cls
 
+./tex/latex/LyXBlogger_0.42:
+.DS_Store
+INSTALL
+LICENSE
+README
+src
+
+./tex/latex/LyXBlogger_0.42/INSTALL:
+build
+elyxer.py
+INSTALL_GUIDE
+lyxblogger.py
+lyxblogger.pyc
+setup-no-elyxer.py
+setup.py
+wordpresslib.py
+wordpresslib.pyc
+
+./tex/latex/LyXBlogger_0.42/INSTALL/build:
+lib
+
+./tex/latex/LyXBlogger_0.42/INSTALL/build/lib:
+elyxer.py
+lyxblogger.py
+wordpresslib.py
+
+./tex/latex/LyXBlogger_0.42/src:
+coalesce.py
+elyxer_io
+__init__.py
+LyxBlog
+README.build
+seed.py
+svn-commit.tmp
+.temp_in.py
+.temp_out.py
+test_coalesce.py
+test.html
+test_seed.py
+util
+
+./tex/latex/LyXBlogger_0.42/src/elyxer_io:
+bulk.py
+convert.py
+fileline.py
+fileline.pyc
+__init__.py
+__init__.pyc
+output.py
+path.py
+
+./tex/latex/LyXBlogger_0.42/src/LyxBlog:
+cat.py
+cat_test.py
+folder_test
+handle_exceptions.py
+handle_exceptions_test.py
+image.py
+image_test.py
+__init__.py
+interact_test.py
+misc.py
+misc_test.py
+parsing.py
+profiles.py
+profiles_test.py
+term.py
+test_files
+
+./tex/latex/LyXBlogger_0.42/src/LyxBlog/folder_test:
+imáge nes
+
+./tex/latex/LyXBlogger_0.42/src/LyxBlog/folder_test/imáge nes:
+suzanne.jpg
+
+./tex/latex/LyXBlogger_0.42/src/LyxBlog/test_files:
+basic_blog.html
+basic_blog.lyx
+basic_blog.xhtml
+images
+lyxhtml_w_images
+
+./tex/latex/LyXBlogger_0.42/src/LyxBlog/test_files/images:
+table.jpg
+
+./tex/latex/LyXBlogger_0.42/src/LyxBlog/test_files/lyxhtml_w_images:
+5_home_jd_lyxblogger_src_LyxBlog_test_files_lyxhtml_w_images_img_source_jpg_in_same_dir.jpg
+6_home_jd_lyxblogger_src_LyxBlog_test_files_lyxhtml_w_images_img_source_png_in_same_dir.png
+img_source
+LyXHtml_test_with_image.lyx
+LyXHtml_test_with_image.xhtml
+
+./tex/latex/LyXBlogger_0.42/src/LyxBlog/test_files/lyxhtml_w_images/img_source:
+jpg_in_same_dir.jpg
+png_in_same_dir.png
+
+./tex/latex/LyXBlogger_0.42/src/util:
+clone.py
+clparse.py
+__init__.py
+numbering.py
+options.py
+trace.py
+translate.py
+
 ./tex/latex/mla-paper:
 .dolphinview
 mla.sty
 mlawithtitle.sty
+
+./tex/latex/mmd:
+beamer
+letterhead
+mmd-article-begin-doc.tex
+mmd-article-header.tex
+mmd-beamer-begin-doc.tex
+mmd-beamer-footer.tex
+mmd-beamer-header-11pt.tex
+mmd-beamer-header.tex
+mmd-beamer-header-widescreen.tex
+mmd-default-metadata.tex
+mmd-disable-natbib.tex
+mmd-envelope-begin-doc.tex
+mmd-equation-mode.tex
+mmd-letterhead-begin-doc.tex
+mmd-letterhead-footer.tex
+mmd-letterhead-header.tex
+mmd-load-ams.tex
+mmd-manuscript-begin-doc.tex
+mmd-manuscript-header.tex
+mmd-memoir-begin-doc.tex
+mmd-memoir-copyright.tex
+mmd-memoir-footer.tex
+mmd-memoir-header.tex
+mmd-memoir-layout-8.5x11.tex
+mmd-memoir-packages.tex
+mmd-memoir-setup.tex
+mmd-natbib-plain.tex
+mmd-title.tex
+mmd-tufte-book-begin-doc.tex
+mmd-tufte-book-footer.tex
+mmd-tufte-book-header.tex
+mmd-tufte-footer.tex
+mmd-tufte-handout-begin-doc.tex
+mmd-tufte-handout-header.tex
+Organizational Overview.graffle
+Organizational Overview.pdf
+README.md
+shaded-figure.tex
+subscript.sty
+
+./tex/latex/mmd/beamer:
+beamerthemekeynote-gradient.sty
+beamerthemekeynote-portfolio.sty
+beamerthemekeynote-vintage.sty
+Portfolio.png
+Vintage.png
+
+./tex/latex/mmd/letterhead:
+mmd-envelope.sty
+mmd-letterhead.sty
 
 ./tex/latex/moderncv:
 moderncv.cls
@@ -612,6 +1196,18 @@ simplecv.cls
 
 ./tex/latex/tufte:
 tufte-handout.cls
+
+./tex/latex/uman_style:
+.DS_Store
+muthesis.cls
+uman_thesis.aux
+uman_thesis.lof
+uman_thesis.log
+uman_thesis.lot
+uman_thesis.pdf
+uman_thesis.synctex.gz
+uman_thesis.tex
+uman_thesis.toc
 
 ./tex/latex/verse:
 verse.sty
