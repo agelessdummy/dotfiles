@@ -1,0 +1,9 @@
+\contentsline {chapter}{Abstract}{4}
+\contentsline {chapter}{Declaration}{5}
+\contentsline {chapter}{Intellectual Property Statement}{6}
+\contentsline {chapter}{Acknowledgements}{7}
+\contentsline {chapter}{\numberline {1}Introduction}{8}
+\contentsline {chapter}{\numberline {2}Some new theorems that give rise to a very long chapter name}{10}
+\contentsline {chapter}{\numberline {3}Conclusions}{12}
+\contentsline {chapter}{Bibliography}{13}
+\contentsline {chapter}{\numberline {A}A Long Proof}{14}

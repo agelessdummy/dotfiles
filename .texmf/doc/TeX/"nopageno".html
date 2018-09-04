@@ -1,0 +1,119 @@
+
+<html><head>
+<title>TeX Frequently Asked Questions  -- question label "nopageno"</title>
+</head>
+<body>
+<h1 align="center">Welcome to the UK List of<br>
+                TeX Frequently Asked Questions<br>
+                        on the Web</h1>
+
+<h2><a name=search>Searching</a></h2>
+<form action="http://www.tex.ac.uk/cgi-bin/texfaq2html" method=get>
+The index of Frequently Asked Questions about TeX is searchable.<br><br>
+Please enter your keyword here:<input type="text" name="keyword">&#160;&#160;
+then press here: <input type="submit" value="search">, &#160;&#160; or:
+</form>
+<!-- Search Google -->
+<center>
+<FORM method=GET action="http://www.google.com/search">
+<TABLE bgcolor="#FFFFFF"><tr><td>
+<A HREF="http://www.google.com/">
+<IMG SRC="http://www.google.com/logos/Logo_40wht.gif" 
+border="0" ALT="Google" align="absmiddle"></A>
+<INPUT TYPE="text" name="q" size="25" maxlength="255" value="">
+<INPUT TYPE="hidden" name="q" value="TeX Frequently Asked Questions">
+<INPUT TYPE="hidden" name="sitesearch" value="tex.ac.uk">
+<INPUT TYPE="hidden" name="as_eq" value="matches">
+<INPUT type="submit" name="btnG" VALUE="Google Search">
+</td></tr></TABLE>
+</FORM>
+</center>
+<!-- Search Google -->
+<hr>
+
+<h2><a name="[Q-nopageno]">How to get rid of page numbers</a></h2>
+<p/><p/>Very occasionally, one wants a document with no page numbers.  For
+such occasions, the package <i>nopageno</i> will make
+<code>\</code><code>pagestyle{plain}</code> have the same effect as
+<code>\</code><code>pagestyle{empty}</code>; in simple documents, this will suppress
+all page numbering (it will not work, of course, if the document uses
+some other pagestyle than <code>plain</code>).
+<p/>To suppress page numbers from a sequence of pages, you may use
+<code>\</code><code>pagestyle{empty}</code> at the start of the sequence, and restore
+the original page style at the end.  Unfortunately, you still have to
+deal with the page numbers on pages containing a <code>\</code><code>maketitle</code>,
+<code>\</code><code>part</code> or <code>\</code><code>chapter</code> command, since the standard classes; deal
+with those separately, as described below.
+<p/>To suppress page numbers on a single page, use
+<code>\</code><code>thispagestyle{empty}</code> somewhere within the text of the
+page.  Note that, in the standard classes, <code>\</code><code>maketitle</code> and
+<code>\</code><code>chapter</code> use <code>\</code><code>thispagestyle</code> internally, so your call
+must be <em>after</em> those commands.
+<p/>Unfortunately, <code>\</code><code>thispagestyle</code> doesn&#8217;t work for <i>book</i> or
+<i>report</i> <code>\</code><code>part</code> commands: they set the page style (as do
+<code>\</code><code>chapter</code> commands), but then they advance to the next page so
+that you have no opportunity to change the style using
+<code>\</code><code>thispagestyle</code>.  The present author has proposed solving the
+problem with the following &#8220;grubby little patch&#8221;, on
+<i>comp.text.tex</i>:
+<blockquote>
+<pre>
+\makeatletter
+\let\sv@endpart\@endpart
+\def\@endpart{\thispagestyle{empty}\sv@endpart}
+\makeatother
+</pre>
+</blockquote><p>
+<p/>Both the <i>KOMA-script</i> classes and <i>memoir</i> have separate
+page styles for the styles of various &#8220;special&#8221; pages, so, in a
+<i>KOMA</i> class document one might say:
+<blockquote>
+<pre>
+\renewcommand*{\titlepagestyle}{empty}
+</pre>
+</blockquote><p>
+while <i>memoir</i> will do the job with
+<blockquote>
+  <code>\</code><code>aliaspagestyle{title}{empty}</code>
+</blockquote><p>
+<p/>An alternative (in all classes) is to use the rather delightful
+<code>\</code><code>pagenumbering{gobble}</code>; this has the simple effect that any
+attempt to print a page number produces nothing, so there&#8217;s no issue
+about preventing any part of LaTeX from printing the number.
+However, the <code>\</code><code>pagenumbering</code> command does have the side effect that
+it resets the page number (to 1), so it is unlikely to be helpful
+other than at the beginning of a document.
+<p/>The <i>scrpage2</i> package separates out the representation of the
+page number (it typesets the number using the <code>\</code><code>pagemark</code> command) from
+the construction of the page header and footer; so one can say
+<blockquote>
+<pre>
+\renewcommand*{\pagemark}{}
+</pre>
+</blockquote><p>
+which will also suppress the printing of the page number.
+<p/>Neither of these &#8220;suppress the page number&#8221; techniques touches the
+page style in use; in practice this means they don&#8217;t make sense unless
+you are using <code>\</code><code>pagestyle{plain}</code>
+<dl>
+<dt><tt><i>fancyhdr.sty</i></tt><dd><a href="http://mirror.ctan.org/macros/latex/contrib/fancyhdr.zip">macros/latex/contrib/fancyhdr</a> (or <a href="http://mirror.ctan.org/macros/latex/contrib/fancyhdr/">browse the directory</a>); <a href="http://mirror.ctan.org/help/Catalogue/entries/fancyhdr.html">catalogue entry</a>
+<dt><tt><i>KOMA script bundle</i></tt><dd><a href="http://mirror.ctan.org/macros/latex/contrib/koma-script.zip">macros/latex/contrib/koma-script</a> (or <a href="http://mirror.ctan.org/macros/latex/contrib/koma-script/">browse the directory</a>)
+<dt><tt><i>memoir.cls</i></tt><dd><a href="http://mirror.ctan.org/macros/latex/contrib/memoir.zip">macros/latex/contrib/memoir</a> (or <a href="http://mirror.ctan.org/macros/latex/contrib/memoir/">browse the directory</a>); <a href="http://mirror.ctan.org/help/Catalogue/entries/memoir.html">catalogue entry</a>
+<dt><tt><i>nopageno.sty</i></tt><dd><a href="http://mirror.ctan.org/macros/latex/contrib/nopageno.zip">macros/latex/contrib/nopageno</a> (or <a href="http://mirror.ctan.org/macros/latex/contrib/nopageno/">browse the directory</a>); <a href="http://mirror.ctan.org/help/Catalogue/entries/nopageno.html">catalogue entry</a>
+<dt><tt><i>scrpage2.sty</i></tt><dd>Distributed as part of <a href="http://mirror.ctan.org/macros/latex/contrib/koma-script.zip">macros/latex/contrib/koma-script</a> (or <a href="http://mirror.ctan.org/macros/latex/contrib/koma-script/">browse the directory</a>)
+</dl>
+<p/><p>
+<hr/>
+Go to <a href="http://www.tex.ac.uk/cgi-bin/texfaq2html?label=chngmargonfly">
+           previous question</a>, or
+           <a href="http://www.tex.ac.uk/cgi-bin/texfaq2html?label=crop">
+           next question</a>
+<p/>Go to <a href="http://www.tex.ac.uk/faq">FAQ home</a>.<p/>
+URL for this question: http://www.tex.ac.uk/cgi-bin/texfaq2html?label=nopageno<p>
+
+   Comments, suggestions, or error reports? - see
+   &#8220;<a href="http://www.tex.ac.uk/cgi-bin/texfaq2html?label=noans+newans">how to improve the FAQ</a>&#8221;.
+<p>
+   This is FAQ version 3.20, last modified on 2010-08-17.
+</it>
+</body></html>

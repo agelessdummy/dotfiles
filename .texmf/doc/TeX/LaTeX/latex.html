@@ -1,0 +1,1203 @@
+<html><head><title>A Guide to LaTeX</title></head><body><h1>A Guide to LaTeX</h1>
+<p>
+</p><h1>Table of Contents</h1>
+
+<ol>
+<li> <a href="#DESCRIPTION">  DESCRIPTION </a>
+<!-- ---------------------------------------- -->
+</li><li>  <a href="#stupidTricks"> STUPID TEX TRICKS </a>
+<!-- ---------------------------------------- -->
+</li><li>  <a href="#FAQ"> MOST USEFUL (AND MOST ASKED) ANSWERS TO QUESTIONS </a>
+<ul>
+<li><a href="#insertingPostScript">How Do I Insert PostScript Graphics Into LaTeX? </a>
+</li><li><a href="#howToDoubleSpace">How Do I Get LaTeX to Double-Space? </a>
+</li><li><a href="#simpleTable">How Do I Make a Simple Table? </a>
+</li><li><a href="#landscapingPages">How Do I Make A Landscape (Sideways) Page? </a>
+</li></ul>
+<!-- ---------------------------------------- -->
+ </li><li><a href="#SUMMARY">SUMMARY OF LATEX COMMANDS </a>
+<ul>
+<li><a href="#documentWideStuff">Document Wide Stuff </a>
+</li><li><a href="#titlePageStuff">Title Page Stuff </a>
+</li><li><a href="#crossReference">Cross-Reference </a>
+</li><li><a href="#bibliographyAndCitation">Bibliography and Citation </a>
+
+</li><li><a href="#inputFromOtherFiles">Input from Different Files </a>
+</li><li><a href="#mathFormulas">Mathematical Formulas </a>
+</li><li><a href="#greekLetters">Greek letters </a>
+</li><li><a href="#displayedParagraphs">Displayed Paragraphs </a>
+
+</li><li><a href="#lists">Lists </a>
+</li><li><a href="#sentencesAndParagraphs">Sentences and Paragraphs </a>
+</li><li><a href="#typeStyles">Type Styles </a>
+</li><li><a href="#typeSize">Type Size </a>
+
+</li><li><a href="#accentsAndSymbols">Accents and Symbols </a>
+</li><li><a href="#sectioningAndTOC">Sectioning and Table of Contents </a>
+</li><li><a href="#lineBreaking">Line Breaking </a>
+</li><li><a href="#pageBreaking">Page Breaking </a>
+
+</li><li><a href="#boxes">Boxes </a>
+</li><li><a href="#length">Length </a>
+</li><li><a href="#usefulLengths">Some useful length names to know </a>
+</li><li><a href="#addingSpace">Adding/Removing Space </a>
+
+</li><li><a href="#pictures">Pictures </a>
+</li><li><a href="#figuresAndTables">Figures and Tables </a>
+</li><li><a href="#tabbing">The 'tabbing' Environment </a>
+</li><li><a href="#arrayAndTabular">The 'array' and 'tabular' Environments </a>
+</li><li><a href="#definitions">Definitions</a>
+
+</li><li><a href="#rollingYourOwn">Rolling Your Own </a>
+</li><li><a href="#numbering">Numbering </a>
+</li></ul>
+
+<!-- ---------------------------------------- -->
+</li><li><a href="#sampleSession">  SAMPLE SESSION </a>
+
+ </li><li><a href="#latexModes">  THE MANY MODES OF LATEX </a>
+<ul>
+<li>	<a href="#mathMode">Math Mode </a>
+</li></ul>
+<!-- ---------------------------------------- -->
+</li><li> <a href="#bibTEX">  USAGE OF BIBTEX </a>
+<ul>
+<li>	<a href="#referencingBibliographyEntries">Referencing a Bibliography Entry </a>
+</li><li>	<a href="#bibliographyFileFormat">Format of the Bibliography File </a>
+</li><li>	<a href="#notesOnBibTEX">Notes on BibTeX </a>
+</li></ul>
+<!-- ---------------------------------------- -->
+</li><li> <a href="#sliTEXUsage">  USAGE OF SLITEX </a>
+<!-- ---------------------------------------- -->
+</li><li><a href="#sampleDocuments"> SAMPLE DOCUMENTS </a>
+<ul>
+<li><a href="#simpleExample">Simple Example </a>
+</li><li><a href="#nominationForm">Neat Stuff Example (Nomination Form) </a>
+</li><li><a href="#neatLetter">Neat Stuff Example (Letter) </a>
+</li><li><a href="#neatArticle">Article </a>
+</li><li><a href="#neatReport">Report/Book </a>
+</li></ul>
+<!-- ---------------------------------------- -->
+</li><li> <a href="#debuggingHints">  DEBUGGING HINTS </a>
+
+</li><li> <a href="#dumbLatexTricks">  COMMON PROBLEMS AND DUMB LATEX TRICKS </a>
+
+</li><li> <a href="#Acknowledgements">  ACKNOWLEDGEMENTS </a>
+
+</li><li> <a href="#seeAlsoFiles">  SEE ALSO (FILES) </a>
+
+</li><li> <a href="#seeBooksAlso">  SEE ALSO (BOOKS) </a>
+
+</li><li> <a href="#seeProgramsToo">  SEE ALSO (PROGRAMS) </a>
+</li></ol>
+
+<!-- ---------------------------------------- -->
+
+<hr>
+<h2><a name="DESCRIPTION">DESCRIPTION </a></h2>
+
+LaTeX is a document preparation system of relative non-complexity and
+great frustration.  For the most part, it also works.<p>
+
+The best use of LaTeX is for long, complicated documents with lots
+of formulas and few pictures.  Trust me on this one...</p><p>
+
+It does a good job for documents that *need* structure, allowing you
+the flexibility to easily modify the text, without worrying about how
+it's going to turn out.</p><p>
+
+LaTeX is actually a set of macros on top of the TeX document preparation
+system.  This describes only the formats of LaTeX.</p><p>
+
+The format of a document is pretty simple:</p><p>
+
+</p><pre>
+\documentstyle{<insert document="" type="" here="">}
+
+... this is called the preamble ....
+
+\begin{document}
+
+... nice text and actual work here ....
+...  this is called the body  ...
+
+\end{document}
+</insert></pre>
+
+There are, as implied by the comment above, many different 'styles'
+of documents.  The ones that I know of (I haven't bothered to actually
+create any styles of my own :) are:<p>
+ style:  letter  article  report  book  slides</p><p>
+
+There are several nice formatting tricks that LaTeX does, depending
+upon which format you use.</p><p>
+
+</p><h2><a name="stupidTricks">STUPID TEX TRICKS</a></h2>
+
+First of all, file names (except inside your document) NEED the '.tex'
+extension.  You do need it!<p>
+
+The following characters are illegal TeX input (except if you know how
+to use them, of course):</p><p>
+
+ # $ % &amp; ~ _ ^ \ { }</p><p>
+
+  DON'T use these unless you know what you're doing!  In order to get
+what you expect, type a '\' in front of them:</p><p>
+ \# \$ \% \&amp; \~ \_ \^ \\ \{ \}</p><p>
+
+  Notice that the comment character in LaTeX is the '%' character.
+Comments start from the comment character until the end-of-line.</p><p>
+
+LaTeX also allows free-form text input.  This means that it doesn't
+matter how many tabs, spaces you have, LaTeX has its own idea of what
+your document will look like.  It is important to note that a single
+newline is NOT enough to make different paragraphs.  There has to be
+at least two of them to separate the paragraphs.</p><p>
+
+
+
+</p><h2><a name="FAQ">MOST USEFUL (AND MOST ASKED) ANSWERS TO QUESTIONS</a></h2>
+
+
+<h3><a name="insertingPostScript">How Do I Insert PostScript Graphics Into LaTeX?</a></h3>
+
+  It's not nice but it can be done.  Here is a sample document that
+just inserts in an EPS (PostScript) file called 'test.eps' into LaTeX.
+Note that the size of the graphic must be guesstimated and inserted.<p>
+
+</p><pre>
+\documentstyle{article}
+
+% define a macro
+\def\texpsfig#1#2#3{\vbox{\kern #3\hbox{\special{psfile=#1}\kern #2}}\typeout{(#1)}}
+
+\input epsf   % load the epsf library
+
+\begin{document}
+
+%  Insert the graphic and put a border around it
+\centerline{\texpsfig{test.eps}{4.563in}{3.813in}}
+\makebox[4.563in]{\rule{0in}{3.813in}}
+
+\end{document}
+</pre>
+
+   For more information on this (at your own risk), see dvips(1).<p>
+
+
+</p><h3><a name="howToDoubleSpace">How Do I Get LaTeX to Double-Space?</a></h3>
+
+  Simple, just type:<p>
+
+</p><pre>\renewcommand{\baselinestretch}{2}
+</pre>
+
+   For other spacing (ie triple) just change the 2.
+  Now doesn't that just seem intuitively obvious?  :)<p>
+
+
+</p><h3><a name="simpleTable">How Do I Make a Simple Table?</a></h3>
+
+   Not that difficult.  The following creates a table (with lines
+surrounding all of the entries):<p>
+</p><pre>\begin{tabular}{|l|r|c|}
+Person &amp; Money Owing &amp; Silly Comment \\ \hline
+Mr. Cairo &amp; $1943.12 &amp; pay him again, Sam \\ \hline
+Mr. Pink &amp; \$55.55 &amp; what robbery? \\ \hline
+Mr. Scaramanga &amp; \$666.00 &amp; the golden rule \\ \hline
+Mr. Capone &amp; \$300.51 &amp; bad accountants \\ \hline
+\end{tabular}
+</pre>
+  Things to notice:
+<ul>
+<li>the column entries are separated by the ampersand '&amp;'
+ </li><li>  remember that '$' is a naughty character, and must escape
+</li><li> you can get rid of the horizontal lines by deleting the \hline at the end
+ </li><li>  you can get rid of the vertical lines by deleting the '|' symbols at
+      the top of the tabular command
+</li></ul>
+
+<h3><a name="landscapingPages">How Do I Make A Landscape (Sideways) Page?</a></h3>
+
+  There are two universally accepted orientations to pages: landscape
+and portrait.  These refer to how a rectangular piece of paper is
+oriented, and the names are supposed to be indicative of their typical
+use.  A landscape page is flipped in the same way that you would see
+a painting of a lovely hillside scene (ie lambs, shepherds, chainsaw...).
+A portrait page is such that it most tellingly reveals the features of
+the human face -- as awful a concept as that sounds...<p>
+
+   This ought to fix it:</p><p>
+</p><pre> \special{landscape}
+</pre>
+  Note however, that xdvi(1) currently barfs all over the virtual
+rugscape, as it does not understand the landscape option. <p>
+<em>A voice from the Netherland wilderness yells</em>: "No wait! There is a way:</p><p>
+</p><pre>   xdvi -paper a4r <em>filename</em>
+</pre>
+  (Thanks to Peter @ infolab8@kub.nl for this suggestion)<p>
+  Alternatively, use dvips to do it:</p><p>
+</p><pre>   dvips -t landscape
+</pre>
+  See dvips(1) for more information and other options.<p>
+
+
+</p><h3>How Do You Play netrek.paradise?</h3>
+
+   Oops!  How did that get in here?  Sorry, folks!<p>
+
+
+</p><h2><a name="SUMMARY">SUMMARY OF LATEX COMMANDS</a></h2>
+
+Note that some of this won't be useful unless you actually (gasp!)
+buy a book on LaTeX.  A book really does help, by the way...<p>
+
+</p><h3><a name="documentWideStuff">Document Wide Stuff:</a></h3>
+<pre>	\documentstyle[options]{style}
+      style: article  report  book  slides
+    options: 11pt  12pt  twoside  twocolumn  titlepage  leqn  openbib
+             fleqn
+
+	\pagestyle{style}
+		style: plain  empty  headings  myheadings
+
+	\pagenumbering{style}
+		style: arabic  roman  alph  Roman  Alph
+</pre>
+
+<h3><a name="titlePageStuff">Title Page Stuff:</a></h3>
+<pre>	\maketitle
+
+	\begin{titlepage} ... \end{titlepage}
+
+	\begin{abstract} ... \end{abstract}
+</pre>
+
+<h3><a name="crossReference">Cross-Reference:</a></h3>
+<pre>	\label{key} 
+		assign current counter value to key
+
+	\ref{key}  
+		print value assigned to key
+</pre>
+
+<h3><a name="bibliographyAndCitation">Bibliography and Citation</a></h3>
+   There is (well, it'll be here RSN) some more information here in
+this document that gives an example of the bibtex stuff.<p>
+</p><pre>	\bibliography{...}
+
+	\begin{thebibliography}{label} ... \end{...}
+		make bibliography; lable is the widest entry label
+
+	\bibitem[label]{key}
+		begin bibliography entry for citation key
+		 with label as its label
+
+	\cite[note]{keys}
+		cite reference(s) keys with added note
+</pre>
+
+<h3><a name="inputFromOtherFiles">Input from Different Files:</a></h3>
+<pre>	\input{file}  
+		read the file
+
+	\include{file}  
+		read the file unless not in \includeonly{}
+
+	\includeonly{filelist}  
+		exclude any file not in filelist
+</pre>
+
+<h3><a name="mathFormulas">Mathematical Formulas:</a></h3>
+<pre>	$ ... $ or \( ... \)  
+		in-text formulas
+
+	\[ .. \] 
+		displayed formulas
+
+	\begin{equation} ... \end{equation}
+		a numbered equation
+
+	\begin{eqnarray} ... \end{eqnarray}
+		numbered equations, like 3 column array enviroment
+		\nonumber omits one equation number,
+		eqnarray* omits all
+
+	_{ ... }
+		subscript.  NB: don't need the braces for one character
+
+	^{ ... }
+		superscript.  NB: don't need the braces for one character
+
+	'    prime
+
+	\frac{n}{d} print the numerator over the denominator
+
+	\sqrt[n]{arg}   the nth  root of the argument arg
+
+	ellipsis \ldots ...  \cdots ...  \vdots ...
+
+Greek letters \alpha ... \omega  and \Alpha ... \Omega
+
+	delimiters \left or \right followed by delimiters
+
+	\overline{expression}
+		print a rule over the expression
+
+	space thin \.  medium \:  thick \;  negative thin \!
+</pre>
+
+<h3><a name="displayedParagraphs">Displayed Paragraphs:</a></h3>
+<pre>	\begin{quote} ... \end{quote}
+		short displayed quotation
+
+	\begin{quotation} ... \end{quotation}
+		long displayed quotation
+
+	\begin{flushleft} ... \end{flushleft}
+		left flush lines, separated by \\
+
+	\begin{center} ... \end{center}
+		centered lines, separated by \\
+
+	\begin{flushright} ... \end{flushright}
+		right flush lines, separated by \\
+
+	\begin{verse} ... \end{verse}
+		\\ between lines, blank line between stanzas
+
+	\begin{verbatim} ... \end{verbatim}
+		in fixed-length, typewriter face exactly as formated --
+		use any characters you like!
+</pre>
+
+<h3><a name="lists">Lists:</a></h3>
+Begin each item with \item or \item[label]
+<pre>	\begin{itemize} ... \end{itemize}
+   		a 'bulleted' list
+
+	\begin{enumerate} ... \end{enumerate}
+		a numbered list
+
+	\begin{description} ... \end{description}
+		a list of labelled items
+</pre>
+
+<h3><a name="sentencesAndParagraphs">Sentences and Paragraphs:</a></h3>
+<pre>	quotes single ` ... ' and double `` ... ''
+
+	dashes intra-word:  -     number range: --      punctuation: ---
+
+	emphasis  {\em }
+
+	unbreakable text \mbox{ ... }
+
+	footnotes \footnote{ ... }
+
+	date \today
+</pre>
+
+<h3><a name="typeStyles">Type Styles:</a></h3>
+<pre>	\rm roman  \em emphasis  \bf boldface  \it italic  \sl slant
+
+	\sf  sans serif  \sc  small caps  \tt monospace typewriter face
+
+	\boldmath  use bold math symbols
+</pre>
+
+<h3><a name="typeSize">Type Size:</a></h3>
+
+These need to be organized into a reasonable sequence of small to large
+or vice versa<p>
+</p><pre>	\tiny   \small  \large  \huge  \scriptsize  \normalsize  \Large
+
+	\Huge  \footnotesize   \LARGE
+</pre>
+
+<h3><a name="accentsAndSymbols">Accents and Symbols:</a></h3>
+
+You *really* need to see these to make any sense of it!<p>
+</p><pre>	\'{o} \`{o} \~{o} \v{o} \c{o} \={o} \H{o} \d{o} \^{o} \.{o} \t{o} \b{o}
+
+	\"{o} \u{o}
+
+	\dag  \ddag  \S  \P  \copyright  \pounds
+</pre>
+
+<h3><a name="sectioningAndTOC">Sectioning and Table of Contents:</a></h3>
+<pre>	\part  \section  \paragraph  \ chapter  \subsection
+
+	\subsubsection  \subparagraph
+
+	\appendix   
+		no output, but the next sectioning commands are
+		in the appendices
+
+	\tableofcontents  
+		create a table of contents
+</pre>
+
+<h3><a name="lineBreaking">Line Breaking:</a></h3>
+<pre>	\linebreak[n]
+		force [or encourage] a linebreak; 0 &lt;= n &lt;= 4
+
+	\nolinebreak[n]
+		forbid [or discourage] a linebreak; 0 &lt;= n &lt;= 4
+
+	\\[len]
+		start new line and leave len vertical space
+
+	\-	permit hyphenation
+
+	\begin{sloppypar} ... \end{sloppypar}
+		Don't complain about lines that are a bit too long or
+		too short
+</pre>
+
+<h3><a name="pageBreaking">Page Breaking:</a> </h3>
+<pre>	\pagebreak[n]
+		force [or encourage] a page break; 
+		0 &lt;= n &lt;= 4
+
+	\nopagebreak[n]
+		forbid [or discourage] a page break.
+		0 &lt;= n &lt;= 4.  Surprise!
+
+	\samepage
+		Only break pages in between paragraphs
+
+	\newpage
+		Begin a new page
+
+	\clearpage
+		Prints all figures and tables on the page
+		 and begins a new page
+</pre>
+
+<h3><a name="boxes">Boxes:</a></h3>
+<pre>	\mbox{...}
+	\makebox[wd][pos]{...}
+		make box of width wd; pos puts text at (l)eft, (r)ight,
+		or center pos defaults to center
+
+	\fbox{text}
+	\framebox[wd][pos]{text}
+		Same as \mbox or \makebox except draws a box around the box
+
+	\newsavebox{cmd}
+		defines cmd as a "bin" for saving boxes into
+
+	\sbox{cmd}{text}
+	\savebox{cmd}[wd][pos]{text}
+		same as \mbox or \makebox but saves the box in bin cmd
+
+	\usebox{cmd}
+		Print the box saved in bin cmd
+
+	\begin{minipage}[pos]{wd} ... \end{minipage}
+		make a parbox of width wd, aligned by pos at 
+		(t)op, (b)ottom, or center line.
+		center is the default
+
+	\parbox[pos]{wd}{...}
+		same as minipage for small amounts of text,
+		no displayed environments.
+</pre>
+
+<h3><a name="length">Length:</a></h3>
+<pre>units: cm, em, ex, in, pc, pt, mm
+	cm	Centimetres
+	em	The width of the letter M in the current font
+	ex	The height of the letter x in the current font
+	in	Inches
+	pc	Picas (1pc = 12pt)
+	pt	Points (1in = 72.27pt)
+	mm	Millimetres
+
+	\newlength{cmd}
+		define cmd to be a length
+
+	\setlength{cmd}{len}
+		set length of cmd to be len
+
+	\addtolength{cmd}{len}
+		add len to length cmd
+
+	\settowidth{cmd}{txt}
+		set cmd to width of txt
+</pre>
+
+<h3><a name="usefulLengths">Some useful length names to know:</a></h3>
+
+<pre>	\baselinestretch	A decimal value for the spacing.  Example:
+				To set double-spacing on your document,
+				use the command:
+					\renewcommand{\baselinestretch}{2}
+
+	\textwidth		The normal width of the text on the page
+				Example:  To change this, use the command:
+					\setlength{\textwidth}{x}
+				where x is a length.  NOTE: If you change
+				the textwidth, you will almost certainly want
+				to change the evenside- and oddsidemargin
+
+	\textheight		The normal height of the body of a page.
+
+	\oddsidemargin		One inch less than the distance from
+				the left edge of the paper to the left
+				margin of the text on right-hand pages
+
+	\evensidemargin		The same as \oddsidemargin except for
+				left-hand pages
+
+	\marginparwidth		The width of marginal notes
+
+	\marginparsep		The amount of horiz. space between the
+				outer margin and a marginal note
+
+	\topmargin		One inch less than the distance from the
+				top edge of the paper to the top of the
+				page's head
+
+	\headheight		The height of a box containing the header
+
+	\headsep		The amount of vertical space between the
+				header and the body of a page
+
+	\topskip		The minimum distance from the top of the
+				body to the bottom of the first line of text
+
+	\footheight		The height of a box containing the page's
+				footer
+
+	\footskip		The distance from the bottom of the last
+				line of text in the body to the bottom of
+				the footer
+</pre>
+
+<h3><a name="addingSpace">Adding/Removing Space:</a></h3>
+<pre>	\hspace{len}
+		Make len horizontal space.
+		NOTE: len can be negative
+
+	\hfill
+	\hrulefill
+	Fills the current line with space.  With \hrulefill, the space
+	is underlined.  Example:  If you want to create a form that says
+	Name: __________, where the underline is 3 inches long, use this:
+		Name: \makebox[3in]{\hrulefill}
+
+	\vspace{len}
+		Leave len vertical space.
+</pre>
+
+<h3><a name="pictures">Pictures:</a></h3>
+<pre>	\begin{picture}(x,y)(x',y') ... \end{ ... }
+		x by y picture with the lower left corner at (x',y')
+
+	\put(x,y){ ... }  
+		put object at point (x,y)
+
+	\multiput(x,y)(delta-x,delta-y){n}{ ... }
+       make n copies of the picture with the first at (x,y) and
+       others offset by (delta-x,delta-y)
+
+	\makebox(x,y)[pos]{ ... }
+       make x by y box; pos puts object at top (t), bottom (b),
+       left (l), right (r), and / or centered (default);
+       \framebox and \savebox have analogous forms
+
+	\dashbox{d}(x,y)[pos]{ ... }
+		 like \makebox but puts dashed lines of length d
+		 around box
+
+	\line(h,v){l}
+		line of slope h by v and length l; 0 &lt;= h, v &lt;= 6
+
+	\vector{h,v}{l}
+		same as \line but draws arrowhead; 0 &lt;= h, v &lt;= 4
+
+	\shortstack[pos]{ ... }
+		like \begin{tabular[pos] ...
+
+	\circle{d}
+		draw circle of diameter d; * form draws solid disk
+
+	\oval{x,y}[partial]
+		draw x by y (partial) oval
+
+	\frame{ ... }
+		draw frame around object
+
+	line thickness   \thinlines or \thicklines
+
+</pre>
+
+<h3><a name="figuresAndTables">Figures and Tables</a></h3>:
+<pre>	\begin{figure} ... \end{figure}
+		make a floating figure
+
+	\begin{table} ... \end{table}
+		make a floating table
+
+	\caption{ ... }
+		make figure or table caption
+</pre>
+
+<h3><a name="tabbing">The 'tabbing' Environment:</a></h3>
+<pre>Rows are separated by \\; columns determined by:<p>
+
+	\= 		set tab stop
+
+	\&gt; 		go to the next tab stop
+
+	\kill 		throw-away line
+
+</p></pre>
+
+<h3><a name="arrayAndTabular">The 'array' and 'tabular' Environments:</a></h3>
+<pre>	\begin{array}[pos]{cols} ... \end{array}
+
+	\begin{tabular}[pos]{cols} ... \end{tabular}
+</pre>
+   Use array for fomulae; tabular for text.
+   Items separated by '&amp;' and rows by '\\'; pos aligns with top (t),
+   bottom (b); cols entries format columns<p>
+</p><pre> 	 l left-justified column
+
+ 	 r right-justified column
+
+ 	 c centered column
+
+ 	 | vertical rule
+
+  @{ ... } text or space between columns
+
+  *{n}{ ... } equivalent to n copies of ...
+
+	\multicolumn{n}{col}{ ... }
+		span next n columns with col format
+
+	\hline
+		draw horizontal rule between rows
+
+	\cline{i-j} 
+		horizontal rule between columns i-j
+</pre>
+
+<h3><a name="definitions">Definitions:</a></h3>
+<pre>	\newcommand{cmd}[n]{ ... }
+		 define new command cmd with n arguments
+
+	\newenvironment{name}[n]{beg}{end}
+		define new environment name with n arguments
+
+	\newtheorem{name}{caption}
+		define a theorem-like environment name
+		captioned by caption
+</pre>
+
+
+<h3><a name="numbering">Numbering:</a></h3>
+<pre>	\setcounter{ctr}{n}  set counter ctr to n
+
+	\addtocounter{ctr}{n}  add n to counter ctr
+</pre>
+
+<h2><a name="sampleSession">SAMPLE SESSION</a></h2>
+
+Note that, for some reason. LaTeX requires a looong time to start up.
+Wait for it.<p>
+
+The following is an example latex session of a document called 'final.tex'.
+You can see that latex usually complains a lot, for no good reason.
+Don't worry about it.  That's what it does...</p><p>
+
+</p><pre>	cab017% latex final.tex
+This is TeX, C Version 3.14t3
+(final.tex
+LaTeX Version 2.09 &lt;7 Dec 1989&gt;
+(/usr/TeX/tex/macros/report.sty
+Document Style `report' &lt;13 Nov 89&gt;.
+(/usr/TeX/tex/macros/rep10.sty) (/usr/TeX/tex/macros/titlepage.sty))
+(final.aux (budget-mechanical.aux) (budget-electrical.aux) (budget-motor.aux)
+(budget-sensor.aux)) [0] (final.toc [1]) [2]
+Chapter 1.
+[3]
+Chapter 2.
+[4] (budget-mechanical.tex
+Chapter 3.
+[5] [6] [7] [8]) [9] (budget-electrical.tex
+Chapter 4.
+[10] [11]
+Overfull \hbox (24.54887pt too wide) in paragraph at lines 107--120
+ [] 
+[12] [13] [14] [15]
+Overfull \hbox (1.5408pt too wide) in paragraph at lines 356--364
+ [] 
+[16]) [17] (budget-motor.tex
+Chapter 5.
+[18] [19] [20]) [21] (budget-sensor.tex
+Chapter 6.
+[22] [23] [24] [25] [26]) [27] [28]
+Chapter 7.
+(beam.tex [29] [30] [31] (final.aux (budget-mechanical.aux)
+(budget-electrical.aux) (budget-motor.aux) (budget-sensor.aux)) ) )
+(see the transcript file for additional information)
+Output written on final.dvi (32 pages, 69940 bytes).
+Transcript written on final.log.
+</pre>
+
+You can view the document by running xdvi:<p>
+</p><pre>	cab017% xdvi final.dvi &amp;
+</pre>
+  xdvi should be fairly self-explanatory.  Note that you can 'page'
+forward through xdvi with the space bar (or n), backward with p, and
+quit with q.  Those are useful enough, if you find something else,
+tell somebody.<p>
+
+If you find that you like your document, you can pump out a PostScript
+file by using the command dvips, a la:</p><p>
+</p><pre>	cab017% dvips final.dvi
+</pre>
+This creates a PostScript file in your current directory called
+'final.ps'.  You can print it to your local printer using lpr:<p>
+</p><pre>	cab017% lpr -h -Pcab_sparc1 final.ps
+</pre>
+  CAVEAT: DO NOT PRINT THIS TO A DECWRITER!<p>
+ A PostScript file typically contains about 40 pages of crap, then
+the actual document.  You *really* don't want to kill the printer,
+your print quota and the eardrums of people in the room beside you,
+SO DON'T SEND IT TO A DECWRITER!!!!</p><p>
+
+
+</p><h2><a name="latexModes">THE MANY MODES OF LATEX</a></h2>
+
+ So many that I can only remember one right now.  Oh well, if you're
+actually reading this, and know of others, mail pub@cs.ualberta.ca
+Otherwise I just might decide to ramble on somewhat aimlessly for
+no good reason whatsoever.  And believe me, that would be long, boring
+and ultimately very unbenefical to read.  But that's alright, really.<p>
+
+</p><h3><a name="mathMode">Math Mode</a></h3>
+  Math mode is fun, math mode is good for everyone!<p>
+
+</p><h2><a name="bibTEX">USAGE OF BIBTEX</a></h2>
+
+  BibTeX is an organized way of referencing that huge bibliography
+that we all would like to have for all of our papers, assignments,
+obituaries, etc.  Here is (hopefully) a cogent explanation of how
+to do it.<p>
+
+  There are two parts to the process:
+</p><ol>
+<li>Generate your bibliography in a '.bib' file
+</li><li>  Reference your bibliography entry
+</li></ol>
+  Note that the sample document for a book has a complete bibliography
+usage example.<p>
+
+</p><h3><a name="referencingBibliographyEntries">Referencing a Bibliography Entry</a></h3>
+
+  This is the useful bit.  To reference a work, use a \cite with a
+comment.  For example, to reference the forty-second page of
+"The HitchHiker's Guide to the Galaxy", which you have given the
+label 'nopanic', you simply <p>
+</p><pre>   ...text that needs a reference to the Guide\cite{nopanic}(page 42)
+</pre>
+  Simple enough, eh?<p>
+
+</p><h3><a name="bibliographyFileFormat">Format of the Bibliography File</a></h3>
+
+  The name of the file that you create should have a '.bib' extension.
+The format of each entry is:<p>
+  </p><pre>   @<document type="">{label,AUTHOR= "",TITLE= "", ... }
+</document></pre>
+  where the document type is one of:<p>
+</p><pre>	book   unpublished  article  misc  proceedings
+</pre>
+  and 'label' is how you want to refer to the entry.<p>
+
+  Here is a sample bibliography file:</p><p>
+</p><pre>	@book{booklabel,   % Used when you \cite{this work}
+	AUTHOR = "First Last Name",
+	TITLE = "Name of the Book",
+	VOLUME = 2,  % The volume number -- not needed
+	Publisher = {Publisher},
+	Address = {City, Province/State,Country},
+	Year = 1994}  %  The year the book was published
+
+	@unpublished{unpublishedlabel,
+	AUTHOR = "First Last Name",
+	TITLE = "Name of the Work",
+	Publisher = {Publisher},
+	Address = {City, Province/State,Country},
+	note= {Just to let you know that BibTeX is fairly flexible...},
+	Year = 1994}  %  The year the work was published
+
+	@misc{misclabel,
+	TITLE = "Title of whatever it is"}
+
+	@article{articlelabel,
+	AUTHOR = "First Last Name",
+	JOURNAL = {The Harvard Journal of Really Stinky Things},
+	PAGES = {137 -- 142},
+	TITLE = "Spiritual Aspects of Locker Room Socks",
+	VOLUME = 65,
+	NUMBER = 5,
+	YEAR = 1992}
+
+	@proceedings{proceedingslabel,
+	EDITOR = "Name of the Editors",
+	TITLE = "Title of whatever it is"}
+	Publisher = {Publisher},
+	Address = {City, Province/State,Country},
+	Year = 1994}  %  The year the proceedings was published
+</pre>
+
+<h3><a name="notesOnBibTEX">Notes on BibTeX</a></h3>
+
+  Don't forget the '.bib' ending to your bibliography file!
+
+  For books that you want to be listed in your bibliography, but
+you just couldn't reference, use a \nocite{label} to do this.
+
+
+
+<h2><a name="sliTEXUsage">USAGE OF SLITEX</a></h2>
+
+  Slitex is another program that is used to make slides.  This is
+unusual in that you need two files in order to make them.  Oh well...<p>
+
+  The first file is a wrapper for the second file, which actually
+contains all of your slides.  The first file should look like:</p><p>
+</p><pre>	\documentstyle{}
+	\begin{document}
+	\blackandwhite{slideride}
+	\end{document}
+</pre>
+   The second file (which from the file above is called 'slideride.tex')
+contains your slides, which are formatted as follows:<p>
+</p><pre>	\begin{slide}{}
+	   ... some of your fantastic insights <here> ...
+	\end{slide}
+
+	\begin{slide}{}
+	   ... even more of your fantastic insights <here> ...
+	\end{slide}
+</here></here></pre>
+
+    Some things to note:<p>
+</p><ul>
+<li>  instead of just plain ol' black and white, you can also use
+<pre>       \colorslides{slideride}
+       \colors{red,black,blue}
+</pre>
+     This gives you red, black and blue to choose from.  You can use
+the colours like other forms of emphasis.  For example,<p>
+</p><pre>   "... now we need {\red blood} and we can start!" said Papa.
+</pre>
+     Now all you need is a colour printer!  :)
+
+  </li><li> you can't use \includeonly{} in the slidefile
+
+  </li><li> yes, Virginia, you *DO* have to use 'slitex' instead of 'latex'!
+     What will happen is that LaTeX will barf on one of its internal
+     files.  Once this happens to you, you'll recognize it!  :)
+</li></ul>
+
+
+<h2><a name="sampleDocuments">SAMPLE DOCUMENTS</a></h2>
+
+<h3><a name="simpleExample">Simple Example</a></h3>
+
+<h3><a name="nominationForm">Neat Stuff Example (Nomination Form)</a></h3>
+
+  It's nasty, it's brutish, but it works and looks quite nice, thank you
+very much!<p>
+</p><pre>	\documentstyle{article}
+	\renewcommand{\baselinestretch}{1.5}
+	\setlength{\topmargin}{0pt}
+	\setlength{\textheight}{10in}
+	\setlength{\parindent}{0pt}
+	\setlength{\textwidth}{5.5in}
+	\setlength{\topskip}{0in}
+	\setlength{\headheight}{0in}
+	\setlength{\headsep}{0in}
+
+	\pagestyle{empty}
+	\setlength{\oddsidemargin}{.5in}
+
+	\begin{document}
+
+	\begin{center}
+	{\LARGE \bf UACS EXECUTIVE ELECTIONS NOMINATION FORM}
+	\vspace{.25in}
+
+	\begin{tabular}{ll}
+	Position running for: &amp; \makebox[2in]{\hrulefill}\\
+	Name of candidate: &amp; \makebox[2in]{\hrulefill} \\
+	email: &amp; \makebox[2in]{\hrulefill} 
+	\end{tabular}
+	\end{center}
+	\Vspace{.2in}
+
+	\hspace{0.5in}I, \makebox[2in]{\hrulefill}\hspace{-2in}\makebox[2in]{\raisebox{-0.5em}{\tiny Name (please print)}} nominate \makebox[2in]{\hrulefill}\hspace{-2in}\makebox[2in]{\raisebox{-0.5em}{\tiny Name (please print)}} as\\
+
+	a candidate for the position of \makebox[2in]{\hrulefill}.\\
+
+	email: \makebox[2in]{\hrulefill}\hspace{.5in}Signature: \makebox[2in]{\hrulefill}
+
+	\section*{Supporters:}
+
+	\begin{tabular}{lrr}
+	Name: &amp; \makebox[2in]{\hrulefill} &amp; Signature: \makebox[2in]{\hrulefill}\\
+	email: &amp; \makebox[2in]{\hrulefill} &amp; \\ 
+\ \\
+	Name: &amp; \makebox[2in]{\hrulefill} &amp; Signature: \makebox[2in]{\hrulefill}\\
+	email: &amp; \makebox[2in]{\hrulefill} &amp; \\
+\ \\
+	Name: &amp; \makebox[2in]{\hrulefill} &amp; Signature: \makebox[2in]{\hrulefill}\\
+	email: &amp; \makebox[2in]{\hrulefill} &amp; \\
+\ \\
+	Name: &amp; \makebox[2in]{\hrulefill} &amp; Signature: \makebox[2in]{\hrulefill}\\
+	email: &amp; \makebox[2in]{\hrulefill} &amp; \\
+\ \\
+	Name: &amp; \makebox[2in]{\hrulefill} &amp; Signature: \makebox[2in]{\hrulefill}\\
+	email: &amp; \makebox[2in]{\hrulefill} &amp;\\
+	\end{tabular}
+
+	\section*{Candidate Information}
+
+	\begin{tabular}{lll}
+	Are you a UACS member? &amp; Yes: $\bigcirc$ &amp; No: $\bigcirc$ \\
+	Are you in the CS program? &amp; Yes: $\bigcirc$ &amp; No: $\bigcirc$ \\
+	If no: Are you applying for CS? &amp; Yes: $\bigcirc$ &amp; No: $\bigcirc$
+	\end{tabular}
+
+	\vspace{.25in}
+	Current Department: \makebox[1.5in]{\hrulefill}\hspace{.25in}Year: \makebox[.5in]{\hrulefill}\hspace{.25in}ID\#: \makebox[1in]{\hrulefill}
+\ \\
+	Date: \makebox[2in]{\hrulefill} \hspace{.5in} Signature: \makebox[2in]{\hrulefill} 
+
+\end{document}
+</pre>
+
+<h3><a name="neatLetter">Neat Stuff Example - Letter</a></h3>
+
+<pre>	\documentstyle{letter}
+
+	\begin{document}
+	\address{Your name (Confused? Check your Student ID :) \\
+	address \\
+	postie code}
+
+	\begin{letter}{ To whomever you're addressing/threatening  \\
+	their address \\
+	their postie code}
+
+	\opening{addressee}
+
+	...  references to pets, burning, and other childhood activities
+                 <here>  ...
+
+	\signature{Your name (See above)}
+	\closing{Yours untruthfully, and backstabbingly (love),}
+	\end{letter}
+
+	\end{document}
+</here></pre>
+
+<h3><a name="neatArticle">Article</a></h3>
+
+Sample article which has a title page and some sectioning commands.<p>
+
+</p><pre>	\documentstyle{article}
+
+	\begin{document}
+	\title{JFK Assasination: Who Dunnit?}
+	\author{Who Me \and Not U \and Not Me Really}
+
+	% Optional:  LaTeX will put in current date if you don't
+	%            put in the \date command
+	\date{November 22, 1963}
+
+	\maketitle
+	\pagebreak
+
+
+	\section{Dallas, Texas Assisination of JFK}
+
+	... describe this conspiracy ...
+
+	\subsection{The ``Magic Bullet'' Theory}
+
+	... an alternative physical modelling ...
+
+	\subsubsection{The Warren Commission's Findings}
+
+	...  blah, blah, blah ....
+
+
+	\section{The Aftershocks}
+
+	... Yet Another Section ...
+
+	\section{Who Gained From the Murder?}
+
+	... Even more in-depth stuff ...
+
+	\end{document}
+</pre>
+
+<h3><a name="neatReport">Report/Book</a></h3>
+
+This is a sample book format.  The report format is *very* similar.
+Notice that for long documents, it's a good idea to have separate
+files in order to modularize the input, and not create one huge,
+goopy mess.<p>
+
+  Notice that this has a table of contents (toc).  This means that 
+you have to run latex over the file twice in order for the toc entries
+to come out correctly.</p><p>
+
+</p><pre>	\documentstyle{book}
+
+	\begin{document}
+	\tableofcontents
+	\pagebreak
+
+	\chapter{The First Chapter}
+
+	\include{number1}
+	% So this chapter includes a file called 'number1.tex'
+	% in the current directory
+
+	\chapter{Now for the Second Chapter}
+
+	\include{blah/number2}
+	% So this chapter includes a file called 'number2.tex'
+	% that is in the 'blah' directory 
+
+
+	\chapter{The One Worth Waiting For}
+
+	This could have been an interesting bit\footnote{One of eight}
+	except that it has been shown to be injurious to your
+	health \cite{nothealthy}(page 666).
+
+	\begin{quote}
+	``NO, YOU FOOL!!!  Don't you know that process cheese
+	is {\bf CONDUCTIVE}!!!''
+	\end{quote}
+
+	\section{Well, Not Really}
+
+	\subsection*{Umm, Just a Throwaway, Actually}
+
+	\subsubsection*{It Only Fills Space Meaninglessly}
+
+	%  Note that when you put the asterisk '*' in front of
+	% the text, that the section, subsection etc  DOES NOT appear
+	% in the table of contents
+
+	\appendix
+
+	\chapter{And now for the Technical Stuff}
+
+	\include{appendicitis}
+
+	\nocite{notseen}	% Do this so that something you didn't
+				% reference makes into your bibliography
+	\pagebreak
+	\bibliographystyle{plain}
+	\bibliography{different}	% references a file called
+					%   'different.bib'
+	\end{document}
+</pre>
+
+<h2><a name="debuggingHints">DEBUGGING HINTS</a></h2>
+	Before panicking, type the letter 'e' and hit return.  That will
+bring up the editor defined in the TEXEDIT environment variable,
+which can be defined in csh by:<p>
+</p><pre>	setenv TEXEDIT "/usr/ucb/vi +%d %s"
+</pre>
+This sets the editor to be 'vi' and tells 'vi' to put the cursor at
+the '%d'th line of the file.  For bash users, the variable can be
+set by:<p>
+</p><pre>	export TEXEDIT="/usr/gnu/bin/emacs +%d %s"
+</pre>
+This will run the 'emacs' editor.<p>
+
+	The line that LaTeX found the error on will then be displayed.
+At this point, you'll have to know what the error is or you can't
+compile the document.  Sorry, you're on your own.</p><p>
+
+
+</p><h2><a name="dumbLatexTricks">COMMON PROBLEMS AND DUMB LATEX TRICKS</a></h2>
+
+<ul>
+<li>You *cannot* have an empty \begin{verbatim}...\end{verbatim}
+	Put garbage text in until you have some real stuff.
+
+</li><li> Remove *all* whitespace before the closing brace '}' or your
+	document might blow up.
+</li><li> Don't leave extra returns in tables and things -- it's nasty...
+</li></ul>
+
+<h2><a name="Acknowledgements">ACKNOWLEDGEMENTS</a></h2>
+
+  This manpage(?) was created by Kelly Kearney and Geoff Baskwill, who
+have entirely too much time on their hands, seeing as they are both only
+undergraduate students... :) (as of March, '94)<p>
+
+  Further note that the LaTeX book by Leslie Lamport was originally used
+(sigh) without permission to create the Commonly Used Commands section.</p><p>
+
+  For some sample ideas and documents, we have to thank:
+Steve Charlton, Andrew Morris and lots of other people who want
+their names <here>.</here></p><p>
+
+  HINT!! HINT!!      &lt;---- NB.  A hint!
+
+
+</p><h2><a name="seeAlsoFiles">SEE ALSO (FILES)</a></h2>
+
+   Located in the TeX directory is a set of files which seem to provide
+some latex-able documents.<p>
+
+    In the directory /usr/TeX/tex/macros you find the following files:
+</p><pre>btxdoc.tex         lablst.tex         psfig.tex          tb0cyr.tex
+btxhak.tex         latex.tex          rotate.tex         tb0hyf.tex
+btxmac.tex         lfonts.tex         sample.tex         testfont.tex
+epsf.tex           logo.tex           sfonts.tex         testpage.tex
+hyphen.tex         lplain.tex         slides.tex         tryfonts.tex
+idx.tex            manmac.tex         slitex.tex         tubguide.tex
+idxmac-amstex.tex  mftmac.tex         slogofonts.tex     tugbot.tex
+idxmac.tex         nul.tex            small.tex          webmac.tex
+ind+.tex           null.tex           splain.tex
+ind-.tex           plain.tex          story.tex
+</pre>
+   You can copy these and latex 'em, and read 'em.  Won't you?  :)<p>
+
+
+</p><h2><a name="seeBooksAlso">SEE ALSO (BOOKS)</a></h2>
+
+	Leslie Lamport, LaTeX: User's Guide &amp; Reference Manual
+   "It's *MUCH* better than nothing..." -- Kells<p>
+
+</p><h2><a name="seeProgramsToo">SEE ALSO (PROGRAMS)</a></h2>
+
+	tex(1),latex(1),gnuplot(),xpaint(),xdvi(),emacs(),dvips(1),
+dviselect(1)
+
+
+
+
+<!-- ----- footer for the pub account --------->
+<hr>
+<a href="http://www.astro.rug.nl/%7Ekuijken/index.html"><img src="latex_files/pub.html" align="middle"></a>
+June 19, 1994
+<address> pub@cs.ualberta.ca </address>
+</body></html>

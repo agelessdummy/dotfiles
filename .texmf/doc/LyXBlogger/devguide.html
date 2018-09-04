@@ -1,0 +1,442 @@
+<!--
+#####################       A U T H O R       ##########################
+#                                                                      #
+#   Copyright 2010 Jack Desert                                         #
+#   <JackDesert@gmail.com>                                             #
+#   http://TwoMoreLines.com                                            #
+#                                                                      #
+######################      L I C E N S E     ##########################
+#                                                                      #
+#   This file is part of LyXBlogger.                                   #
+#                                                                      #
+#   LyXBlogger is free software: you can redistribute it and/or modify #
+#   it under the terms of the GNU General Public License as published  #
+#   by the Free Software Foundation, either version 3 of the License,  #
+#   or (at your option) any later version.                             #
+#                                                                      #
+#   LyXBlogger is distributed in the hope that it will be useful,      #
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of     #
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the      #
+#   GNU General Public License for more details.                       #
+#                                                                      #
+#   You should have received a copy of the GNU General Public License  #
+#   along with LyXBlogger.  If not, see <http://www.gnu.org/licenses>. #
+#                                                                      #
+########################################################################
+-->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="generator" content="http://www.nongnu.org/elyxer/"/>
+<meta name="create-date" content="2012-06-02"/>
+<link rel="stylesheet" href="style.css" type="text/css" media="all"/>
+<title>LyXBlogger Developer Guide</title>
+</head>
+<body>
+<div id="globalWrapper">
+<h1 class="title">
+LyXBlogger Developer Guide
+</h1>
+<h2 class="author">
+Jack Desert (JackDesert@gmail.com)
+</h2>
+<div class="Standard">
+<div class="wrap-r">
+<div class="table">
+<table>
+<tr>
+<td align="left" valign="top">
+<a class="URL" href="index.html">Home</a>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<a class="URL" href="http://download.savannah.gnu.org/releases-noredirect/lyxblogger/">Download</a>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<a class="URL" href="changelog.html">Change Log</a>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<a class="URL" href="userguide.html">User Guide</a>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<a class="URL" href="devguide.html">Development Guide</a>
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+<div class="fulltoc">
+<div class="tocheader">
+Table of Contents
+</div>
+<div class="tocindent">
+<div class="toc">
+<a class="Link" href="#toc-Section-1">Section 1: The Basics</a>
+</div>
+<div class="tocindent">
+<div class="toc">
+<a class="Link" href="#toc-Subsection-1.1">Subsection 1.1: Getting LyXBlogger</a>
+</div>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Section-2">Section 2: Advanced Features</a>
+</div>
+<div class="tocindent">
+<div class="toc">
+<a class="Link" href="#toc-Subsection-2.1">Subsection 2.1: Unit Testing</a>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Subsection-2.2">Subsection 2.2: Test Caveats</a>
+</div>
+<div class="tocindent">
+<div class="toc">
+<a class="Link" href="#toc-Subsubsection-2.2.1">Subsubsection 2.2.1: image_test.py</a>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Subsubsection-2.2.2">Subsubsection 2.2.2: interact_test.py</a>
+</div>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Subsection-2.3">Subsection 2.3: Running seed.py </a>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Subsection-2.4">Subsection 2.4: Interactive Testing</a>
+</div>
+<div class="tocindent">
+<div class="toc">
+<a class="Link" href="#toc-Subsubsection-2.4.1">Subsubsection 2.4.1: print vs pr3</a>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Subsubsection-2.4.2">Subsubsection 2.4.2: Unicode Strings</a>
+</div>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Subsection-2.5">Subsection 2.5: Distribution </a>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Subsection-2.6">Subsection 2.6: License and Contributions</a>
+</div>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Section-3">Section 3: Important Tidbits</a>
+</div>
+<div class="tocindent">
+<div class="toc">
+<a class="Link" href="#toc-Subsection-3.1">Subsection 3.1: Calling Python Modules as Scripts</a>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Subsection-3.2">Subsection 3.2: Testing a Release</a>
+</div>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Section-4">Section 4: Future Extensions</a>
+</div>
+<div class="tocindent">
+<div class="toc">
+<a class="Link" href="#toc-Subsection-4.1">Subsection 4.1: Republish</a>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Subsection-4.2">Subsection 4.2: Download and Edit Previous Entries</a>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Subsection-4.3">Subsection 4.3: Display UTF-8 Titles</a>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Subsection-4.4">Subsection 4.4: Select Multiple Categories</a>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Subsection-4.5">Subsection 4.5: GUI</a>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Subsection-4.6">Subsection 4.6: Page Creation</a>
+</div>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Section-5">Section 5: Roadmap</a>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Section-6">Section 6: Discarded Bits</a>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Section-7">Section 7: FAQ</a>
+</div>
+</div>
+<div class="toc">
+<a class="Link" href="#References">References</a>
+</div>
+
+</div>
+<h1 class="Section">
+<a class="toc" name="toc-Section-1">1</a> The Basics
+</h1>
+<div class="Standard">
+This document should help you get started if you want to understand how LyXBlogger works, and maybe extending its functionality. The package (including this guide and all accompanying materials) is licensed under the <a class="URL" href="http://www.gnu.org/licenses/gpl-3.0-standalone.html">GPL version 3</a> or, at your option, any later version. See the <tt>LICENSE</tt> file for details. Also visit the <a class="URL" href="index.html">main page</a> to find out about the latest developments.
+</div>
+<div class="Standard">
+In this first section we will outline how LyXBlogger performs the basic tasks. Next section will be devoted to more arcane matters. The third section deals with future planned extensions, and the fourth one includes things that will probably <i>not</i> be implemented. Finally there is a FAQ that contains answers to questions asked privately.
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-1.1">1.1</a> Getting LyXBlogger
+</h2>
+<div class="Standard">
+If you are interested in LyXBlogger from a developer perspective the first thing to do is fetch the code. It is included in the standard distribution, so just navigate to the <tt>src/</tt> folder and take a look at the <tt>.py</tt> Python code files. 
+</div>
+<h1 class="Section">
+<a class="toc" name="toc-Section-2">2</a> Advanced Features
+</h1>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-2.1">2.1</a> Unit Testing
+</h2>
+<div class="Standard">
+Each file in src/LyxBlog/ has a file of unit tests to run. The file ’test_seed.py’ will run all the tests, but here is an example of how to invoke just one of them.
+</div>
+<pre class="LyX-Code">
+cd lyxblogger/src/LyxBlog
+python handle_exceptions.py
+</pre>
+<div class="Standard">
+In this test, it’s testing out the exception screen, so if it looks like it broke, hit ENTER three times, and the test should pass ok. 
+</div>
+<div class="Standard">
+Also note that you must ’cd’ to the same directory the test is in, or else it won’t be able to find the test files to upload.
+</div>
+<div class="Standard">
+To run all the tests together,
+</div>
+<pre class="LyX-Code">
+cd lyxblogger/src/LyxBlog
+python handle_exceptions.py
+</pre>
+<div class="Standard">
+And remember to hit ENTER three times to get past the exception test screens.
+</div>
+<div class="Standard">
+And finally, yes, you do need an internet connection to run the tests.
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-2.2">2.2</a> Test Caveats
+</h2>
+<h3 class="Subsubsection">
+<a class="toc" name="toc-Subsubsection-2.2.1">2.2.1</a> image_test.py
+</h3>
+<div class="Standard">
+Must be run from the same directory as the file
+</div>
+<h3 class="Subsubsection">
+<a class="toc" name="toc-Subsubsection-2.2.2">2.2.2</a> interact_test.py
+</h3>
+<div class="Standard">
+You have to interact with it. Hit enter when it gives you the option.
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-2.3">2.3</a> Running seed.py 
+</h2>
+<div class="Standard">
+If you want to debug LyXBlogger then it is better to run it from the source code folder, instead of the compiled version. For this you need to make just a small change, instead of <tt>INSTALL/lyxblogger.py </tt>run <tt>src/seed.py</tt>. On GNU/Linux or Mac OS X this file can be run as an executable like so:
+</div>
+<pre class="LyX-Code">
+./seed.py [input_file] --run-here
+</pre>
+<div class="Standard">
+The --run-here flag prevents src/term.py from calling the lyxblogger module in an xterm window. This means that everything that’s executed will be done on local files, without the use of the lyxblogger module that may be installed on your system. This is much easier to develop on for most things.
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-2.4">2.4</a> Interactive Testing
+</h2>
+<div class="Standard">
+There is a test file in src/ called test_seed.py. This file calls all the unit tests, and then begins an interative test where seed.py will be invoked to talk to the server with automated responses given. Make sure you are connected to the internet when you run this test, or the test will appear to just run off the screen. If interactive_test.py is not working, first get seed.py to run with the ’--run-here’ option. Once seed.py is running with ’--run-here’, then go back to debugging interactive_test.py. 
+</div>
+<div class="Standard">
+If the test you are working with is not finishing, comment out the other tests in interactivee_test.py so the test suite can finish and show you the results. 
+</div>
+<h3 class="Subsubsection">
+<a class="toc" name="toc-Subsubsection-2.4.1">2.4.1</a> print vs pr3
+</h3>
+<div class="Standard">
+pr3 is used in LyXBlogger to enable messages to be passed back and forth between the interactive LyXBlogger and the interactive tester. Anything that must be passed to the interactive tester must use pr3. Anything else can use a regular print() statement. 
+</div>
+<h3 class="Subsubsection">
+<a class="toc" name="toc-Subsubsection-2.4.2">2.4.2</a> Unicode Strings
+</h3>
+<div class="Standard">
+print() and pr3() don’t always play nicely with strings. This happens most often when using the interactive tester. Hence, some lines that are particularly problematic have been wrapped in a try: clause looking for a UnicodeEncodeError exception.
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-2.5">2.5</a> Distribution 
+</h2>
+<div class="Standard">
+You will notice that in the <tt>src/LyXBlog</tt> folder there are several Python files, while in the INSTALL directory there is just a big one. The reason is that before distributing the source code is coalesced and placed on the main directory, so that users can run it without worrying about libraries, directories and the such. (They need of course to have Python 2.4, 2.5, or 2.6 installed.) And the weapon is a little Python script called <tt>coalesce.py</tt> that does the dirty job of parsing dependencies and inserting them into the main file. There is also a <tt>make</tt> Bash script that takes care of permissions and generates the documentation. Just type
+</div>
+<blockquote class="Quotation">
+<tt><span class="blue">$</span> ./distribute.py</tt>
+</blockquote>
+<div class="Standard">
+at the prompt. It is a primitive way perhaps to generate the &ldquo;binary&rdquo; (ok, not really a binary but a distributable Python file), but it works great. It also runs all of the included tests to check that no functionality has been lost from one release to the next — although some issues in a feature can slip undetected if there is no test for them.
+</div>
+<div class="Standard">
+./distribute.py also invokes test_seed.py to validate that all the tests are passing before creating the binary. 
+</div>
+<div class="Standard">
+At the moment there is no way to do this packaging on non-Unix operating systems with a single script, e.g. a Windows <tt>.bat</tt> script. However the steps themselves are trivial.
+</div>
+<div class="Standard">
+If you are willing to send a patch to the LyXBlogger mailing list then you should patch against the proper sources in <tt>src/</tt> and submit that to the <a class="URL" href="mailto:lyxblogger-users@nongnu.org">mailing list</a>.
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-2.6">2.6</a> License and Contributions
+</h2>
+<div class="Standard">
+LyXBlogger is published under the GPL, version 3 or later <span class="bibcites">[<a class="bibliocite" name="cite-2" href="#biblio-2">2</a>]</span>. This basically means that you can modify the code and distribute the result as desired, as long as you publish your modifications under the same license. But consult a lawyer if you want an authoritative opinion.
+</div>
+<div class="Standard">
+All contributions will be published under this same license, so if you send them this way you implicitly give your consent. An explicit license grant would be even better and may be required for larger contributions.
+</div>
+<h1 class="Section">
+<a class="toc" name="toc-Section-3">3</a> Important Tidbits
+</h1>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-3.1">3.1</a> Calling Python Modules as Scripts
+</h2>
+<div class="Standard">
+See <a class="URL" href="http://www.python.org/dev/peps/pep-0338/">this link</a> on calling python modules as scripts with &ldquo;python -m &lt;module&gt;&rdquo; syntax.
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-3.2">3.2</a> Testing a Release
+</h2>
+<div class="Standard">
+Considerable unit testing and some interactive testing has been added to the code. But to ensure quality release code, the following tests are suggested before publishing a new release. Run then on GNU/Linux and on Windows:
+</div>
+<ul>
+<li>
+Upload a document with at least one picture and a title using eLyXer using AUTO_LOGIN
+</li>
+<li>
+Upload a document with at least one picture and a title using LyXHTML where you type in your url explicitly. 
+</li>
+<li>
+Upload a document using eLyXer that has no title. Make sure it asks for a title and uses it.
+</li>
+<li>
+Upload a document using LyXHTML that has no title. Make sure it asks for a title and uses it.
+</li>
+
+</ul>
+<h1 class="Section">
+<a class="toc" name="toc-Section-4">4</a> Future Extensions
+</h1>
+<div class="Standard">
+The author has plans for the following extensions.
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-4.1">4.1</a> Republish
+</h2>
+<div class="Standard">
+The ability to correct changes in the original LyX file, publish the post, and have the new entry overwrite a previous entry instead of being posted as a new entry.
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-4.2">4.2</a> Download and Edit Previous Entries
+</h2>
+<div class="Standard">
+The author would love to have a bidirectional method in place for editing and republishing blog entries. The biggest question seems to be, &ldquo;What converter will provide xhtml -&gt; LyX conversion the best?&rdquo;
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-4.3">4.3</a> Display UTF-8 Titles
+</h2>
+<div class="Standard">
+Correctly display UTF-8 titles on Windows machines. Works fine on GNU/Linux, but other characters show up on Windows. Either way, the entry is posted perfectly, it just looks funny in the LyXBlogger console window.
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-4.4">4.4</a> Select Multiple Categories
+</h2>
+<div class="Standard">
+The ability to select two or more categories for a single blog entry. 
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-4.5">4.5</a> GUI
+</h2>
+<div class="Standard">
+A graphical user interface where the user can select previously posted blog entries, edit them, push the changes to the server.
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-4.6">4.6</a> Page Creation
+</h2>
+<div class="Standard">
+The ability to create a WordPress page.
+</div>
+<h1 class="Section">
+<a class="toc" name="toc-Section-5">5</a> Roadmap
+</h1>
+<div class="Standard">
+Who needs a map? A map would be nice, actually, but there isn’t one. Feel free to suggest one.
+</div>
+<h1 class="Section">
+<a class="toc" name="toc-Section-6">6</a> Discarded Bits
+</h1>
+<div class="Standard">
+Not everything that has been planned or can be done with LyXBlogger is planned; some extensions have been discarded. However, this means basically that the author is too ignorant to know how to do them right; help (and patches!) towards a sane implementation would be welcome if they fit with the design.
+</div>
+<h1 class="Section">
+<a class="toc" name="toc-Section-7">7</a> FAQ
+</h1>
+<div class="Description">
+<span class="Description-entry">Q:</span> I don’t like how LyXBlogger outputs my document, what can I do?
+</div>
+<div class="Description">
+<span class="Description-entry">A:</span> First make sure that you are using the proper CSS file, i.e. copy the existing <tt>docs/lyx.css</tt> file to your blog’s server. Next try to customize the CSS file to your liking; it is a flexible approach that requires no code changes. Also consider trying both supported converters, as each one puts out somewhat different-looking output. If all else fails, try changing the LyXBlogger code and submitting the patch back.
+</div>
+<div class="Description">
+<span class="Description-entry">Q:</span> Why does your Python code suck so much? You don’t make proper use of most features!
+</div>
+<div class="Description">
+<span class="Description-entry">A:</span> Because I’m mostly a novice with little Python culture. If you want to help it suck less, please send mail and enlighten me.
+</div>
+<div class="Description">
+<span class="Description-entry">Q:</span> I found a bug, what should I do?
+</div>
+<div class="Description">
+<span class="Description-entry">A:</span> Just report it directly to the <a class="URL" href="mailto:mailto:JackDesert@gmail.com">main author</a>.
+</div>
+<div class="Description">
+<span class="Description-entry">Q:</span> Where can I get the latest documentation and information about LyXBlogger?
+</div>
+<div class="Description">
+<span class="Description-entry">A:</span> At <a class="URL" href="http://lyxblogger.nongnu.org">http://lyxblogger.nongnu.org</a>.
+</div>
+<a class="toc" name="References"></a><h1 class="biblio">
+References
+</h1>
+<p class="biblio">
+<span class="entry">[<a class="biblioentry" name="biblio-1">1</a>] </span>Free Software Foundation, Inc.: LyXBlogger summary. <a class="FlexURL" href="https://savannah.nongnu.org/projects/lyxblogger/">https://savannah.nongnu.org/projects/lyxblogger/</a>
+</p>
+<p class="biblio">
+<span class="entry">[<a class="biblioentry" name="biblio-2">2</a>] </span>R S Stallman <i>et al</i>: &ldquo;GNU GENERAL PUBLIC LICENSE&rdquo; version 3, 20070629. <a class="FlexURL" href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a>
+</p>
+<p class="biblio">
+<span class="entry">[<a class="biblioentry" name="biblio-3">3</a>] </span>S Chacon: &ldquo;Git — Download&rdquo;, accessed November 2009. <a class="FlexURL" href="http://git-scm.com/download">http://git-scm.com/download</a>
+</p>
+<p class="biblio">
+<span class="entry">[<a class="biblioentry" name="biblio-4">4</a>] </span>Python community: &ldquo;Download Python&rdquo;, accessed November 2009. <a class="FlexURL" href="http://www.python.org/download/">http://www.python.org/download/</a>
+</p>
+
+</div>
+</body>
+</html>

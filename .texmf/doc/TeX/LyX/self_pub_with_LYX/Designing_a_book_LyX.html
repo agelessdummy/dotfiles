@@ -1,0 +1,348 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html><head><title>Articles</title>
+
+
+<meta name="KEYWORDS" content="index,The Online Newspaper for Linux and Open Source,apache, application development, business technology news, business tools, computer hardware, computer software news, IBM, information technology news, Java, Linux, Linux news, mobile computing news, open source, open source news, operating systems, Perl, Python, Slashdot, Sun Microsystems, tech news, technology news, technology product reviews, technology tools, technology collaboration, technology information, Unix, collaborative software, collaborative development, collaboration tools collaboration systems">
+<meta name="TITLE" content="">
+<link rel="SHORTCUT ICON" href="http://software.newsforge.com/favicon.ico"><!-- start template: ID 93, header;print;default --></head><body>
+
+<h1>NewsForge<br>
+<small>The Online Newspaper for Linux and Open Source</small><br>
+<small>http://software.newsforge.com/</small></h1>
+
+<!-- add code. You can use your own ad system - we use one that 
+sets a env variable in apache that contains the ad itself and just put it
+in this block -->
+<!-- ad position 1 -->
+<div id="fad1">
+<!-- DoubleClick Ad Tag -->
+<script type="text/javascript">
+    document.write('<script type="text/javascript" src="http://ad.doubleclick.net/adj/ostg.newsforge/software_p1_leader;pg=print;logged_in=0;tile='+dfp_tile+';ord='+dfp_ord+'?"><\/script>');
+    dfp_tile++;
+</script>
+</div>
+<!-- End DoubleClick Ad Tag -->
+<!-- end ad code -->
+
+<!-- end template: ID 93, header;print;default -->
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody><tr><td><b>Title</b></td>	<td>&nbsp;&nbsp;</td>	<td>Designing a book with LyX</td></tr>
+<tr><td><b>Date</b></td>	<td>&nbsp;&nbsp;</td>	<td>2006.08.24  3:01</td></tr>
+<tr><td><b>Author</b></td>	<td>&nbsp;&nbsp;</td>	<td>Corinne McKay and Daniel J. Urist</td></tr>
+<tr><td><b>Topic</b></td>	<td>&nbsp;&nbsp;</td>	<td><a href="http://software.newsforge.com/search.pl?tid=132"></a></td></tr>
+</tbody></table>
+<small>http://software.newsforge.com/article.pl?sid=06/08/15/1859251</small>
+
+<p>Self-publishing is becoming easier and cheaper, thanks in part to
+improved printing technologies and desktop publishing tools. If you've
+ever considered writing a book, you may have looked at the layout
+capabilities of OpenOffice.org Writer, AbiWord, KWrite, or other word
+processing programs. While these tools can produce adequate results for
+many types of documents, it's also worth considering <a href="http://www.lyx.org/">LyX</a>,
+an open source (GPL) desktop publishing application that, with a bit of
+work, can create a really professional-looking book that is
+indistinguishable from a book produced by a mainstream publishing house.</p>
+<p></p><p>When we began looking for an application to design Corinne's book <i>How to Succeed as a Freelance Translator</i>
+(Lulu Press, 2006), we road-tested a few pieces of software, including
+the word processors referenced above. The problem? Although features
+such as Writer's PDF export are easy to use and produce clean,
+easy-to-read documents, there was something subtly missing from the
+design; something that didn't quite look "like a book." It's not that
+Writer can't be made to produce a high-quality book layout, but the
+conventions of book design are extremely subtle and tricky to master,
+at least for those of us who are not professional book designers or
+typographers. So, we turned to LyX. Our system is Debian Linux, but LyX
+is packaged and included in the repositories for most of the popular
+Linux distributions, so installation is a breeze. LyX is distributed
+under the GPL, and runs on Unix/Linux, Mac, and Windows operating
+systems.</p>
+
+<p>LyX is "the first WYSIWYM (What You See Is What You Mean) document
+processor." When you start up LyX, the user interface has a look and
+feel similar to that of a word processor with a stripped down set of
+toolbars. It includes all the basic word processing functions, such as
+cut and paste, search and replace, undo, and spell checking. The idea
+behind LyX is that the user selects a document class, such as Article,
+Report, Book, Letter, or Slides, and LyX provides the structure. For
+example, a Book document allows you to identify any given piece of text
+as a Chapter, Section, Subsection, or Subsubsection, etc., and formats
+the document automatically according to the defined styles for the
+category, referred to as the <em>paragraph environment</em>, that the
+user selects. In effect, LyX enforces consistency throughout the
+document, without requiring (but while allowing) you to define the
+style to be used for each paragraph environment. This is especially
+useful in a book-length document, where consistency can be the
+difference between a book that looks like a book, and a book that looks
+like a bound word processing document. </p>
+
+<p>Here's an example from LyX's own Web site: "Let's say you tell LyX
+that a certain line is a Section title. LaTeX adds the Section to your
+table of contents, places the Section name into your page header, gives
+it a special "bold" appearance on the page, assigns it a number or
+label, and tells other parts of your document what page it's on, for
+references and citations." LyX also enforces typographic rules by its
+behavior; for example, pressing the space bar over and over doesn't
+result in a series of blank spaces in the text, since LyX automatically
+inserts the correct number of spaces between different pieces of text. </p>
+
+<p>LyX works its real magic when you select a PDF preview of the
+print-ready document from the View menu. After a small delay, the
+on-screen document is transformed into a PDF that looks, well, exactly
+like a book!</p>
+
+<p>The workhorse behind the magic of LyX is Donald Knuth's legendary
+typesetting system, TeX, and the LaTeX document preparation system
+built on top of TeX. LaTeX provides the structured document classes and
+functions, such as indexing, page numbering, cross-references, and
+bibliographies; the underlying TeX typesetting engine incorporates
+intelligent algorithms for tasks such as hyphenation, paragraph
+breaking, and line breaking, which are largely responsible for the
+"like a book" look of documents produced by LyX.</p>
+
+<p> <b>Creating a book in LyX</b> </p>
+
+<p>There are several document classes available for LyX that are
+suitable for typesetting a book, including the default Book class, the
+KOMA-script Book class (scrbook), and the Memoir class. The default
+Book class is fairly minimal in terms of features. Most notably it
+lacks paragraph environments for standard front matter and end matter
+sections, such as Acknowledgments, Publishers, Dedication, etc., with
+no built-in fine controls for these features. However, you can insert
+LaTeX code directly into a LyX document to create these sections. Such
+code is referred to as ERT (for Evil Red Text).</p>
+
+<p>KOMA-Script, a mature (in active development since 1994) set of
+replacement classes for the standard LaTeX classes, provides the
+scrbook class, which is an excellent option for LyX users, and the one
+we chose for our project. KOMA-Script's original purpose was to provide
+alternative LaTeX classes for German documents, but it is now used by
+authors in a variety of languages. </p>
+
+<p>KOMA-Script's scrbook class offers a comprehensive set of paragraph
+environments. For example, the Uppertitleback and Lowertitleback
+environments allow you to format the upper and lower sections of text
+that appear on the back side of the book's title page, which are
+normally the copyright and cataloging-in-publication data (the book's
+ISBN number and Library of Congress cataloging information) and any
+disclaimers, sales information, author contact information, and so on.
+If you fail to specify a paragraph environment for a section, scrbook
+provides useful generic sections. For example, we wanted <i>How to Succeed as a Freelance Translator</i>
+to include a Colophon, emphasizing the fact that the book was written
+and designed using free and open source software exclusively. To
+accomplish this, we used the <b>Addsec*</b> paragraph environment to add a generic section (the <b>*</b> indicates that the section will not appear in the table of contents). </p>
+
+<p>A notable feature of scrbook is that it produces books laid out
+using European typographic conventions. That means the book's lower
+margin is twice the height of the upper margin, and the inner margin on
+each page is half the width of the outer margin. While this produces a
+classic and elegant finished layout, our publisher (Lulu Press; Global
+Distribution) required equal top and bottom margins and equal side
+margins, which required us to change scrbook's default settings. You
+can do this within the scrbook package by using LaTeX commands, but LyX
+makes it easy to bypass scrbook's layout engine and change the margins
+using the Document -&gt; Settings -&gt; Page Margins menu. </p>
+
+<p>The <a href="http://www.tug.org/tex-archive/macros/latex/contrib/koma-script/scrguien.pdf">KOMA-Script manual</a>,
+weighing in at 227 pages and available in English and German, is not
+only a comprehensive guide to the KOMA-Script package, but an excellent
+overview of typographical conventions and principles. Its dedication
+"To All Friends of Typography!" speaks for itself; this manual is a
+must-read for the novice book designer. The sections on typography are
+worth reading even if you do not intend to use KOMA-Script.</p>
+
+<p>The Memoir class offers another book layout option, with 307 pages of beautifully typeset manual to go with it. The <a href="ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/memoir/memman.pdf">Memoir User Guide</a>,
+written by the Memoir class's developer Peter Wilson, contains a
+thorough introduction to typography (another worthwhile resource for
+the novice book designer), including a section on designing electronic
+books. The Memoir class is now production-grade, and is in active
+development. In terms of functionality, Memoir appears to be comparable
+with scrbook, although it relies more on external LaTeX packages; for
+example, scrbook includes its own header package, whereas Memoir must
+use a separate header package such as <a href="http://www.mackichan.com/index.html?techtalk/488.htm%7EmainFrame">fancyhdr</a>.</p>
+
+<p>In addition to its primary function of typesetting, LyX provides a
+number of helpful features for the self-publisher. For instance, it
+generates a Table of Contents automatically. In researching the market
+for nonfiction books, we learned that having an index greatly adds to
+the saleability of a nonfiction book; in fact, many libraries are
+reluctant to purchase nonfiction books that do not have indexes. Since
+hiring a professional indexer was out of our budget, we turned to LyX's
+indexing feature, which proved itself more than equal to the task. When
+you position the cursor at the end of the word that you want to index
+and select Insert -&gt; Index Entry, a dialog box will pop up, with the
+word automatically inserted in the Keyword field. You can either keep
+the pre-inserted word or edit it. The edit can take the form of a minor
+change, such as case, or you can change the word to an entirely
+different one; for example, you could associate the word "interview"
+with the index entry "job search." You can also create a nested index
+entry by typing an exclamation point after the parent term, then typing
+a sub-term directly after it. For example, "travel!Asia" would result
+in the parent index entry "travel" and the sub-term "Asia." You can
+insert as many index tags after a word as you want. True to its
+typographic genius, LyX (actually LaTeX) is smart enough to notice when
+you insert index tags for the same term on consecutive pages, and will
+create an appropriate index entry -- for example, "travel, 47--50."</p>
+
+<p>LyX also has excellent support for tables. In fact, using tables in
+LyX is similar to using tables in HTML. To insert a table, select
+Insert -&gt; Table, and the efficiently designed Insert Table dialog
+box will pop up and allow you to select the number of rows and columns
+that you want in the table. Then, by right-clicking in the table, you
+can bring up the Table Settings dialog box, where you can adjust the
+table's size, orientation, borders, and so on. To change the font of
+the text in your table, highlight the portion of the table containing
+the text to be changed and select Edit -&gt; Text Style. We used tables
+for a Glossary (there is also a LaTeX package for compiling a glossary)
+and various worksheets, such as Billable Hours and Hourly Rate charts.</p>
+
+<p>LyX's features could be the basis of an article in themselves, but
+it's worth noting that the software includes a math editor; support for
+most European languages and right-to-left languages, including
+documents that contain more than one language; support for footnotes
+and margin notes; comprehensive bibliography support; and figure
+support with rotation, scaling, and captions. There are many more
+features that are relevant to other document classes, such as academic
+journal articles.</p>
+
+<p> <b>Customization in LyX</b> </p>
+
+<p>One of the differences between LyX and a traditional word processor
+is LyX's approach to formatting. Most word processing programs allow
+regions of text to be tagged with a style. In LyX, every piece of text
+belongs to a paragraph environment that has a predefined style. For
+example, someone using OpenOffice.org Writer can choose to use the
+style options offered by the software, such as Heading 1 or Text body.
+However, most word processor users do not employ styles, but instead do
+most of their formatting manually by using different fonts and effects.
+In LyX, it is not impossible to do manual formatting, but the program
+is set up to discourage this behavior by limiting manual formatting
+options.</p>
+
+<p>You can perform some basic customization from the Document -&gt;
+Settings dialog box. For example, you can change the default font for
+the document, the page size and margins, and the bullet styles. For
+finer control, you need to edit the LaTeX Preamble, which is also found
+in the Documents -&gt; Settings dialog box. In the Preamble, you can
+add LaTeX commands to change the default behavior of the document
+class, including the settings for different paragraph environments, as
+well as include and configure additional LaTeX packages to add
+functionality. </p>
+
+<p>While LaTeX code can be daunting, LaTeX's maturity, excellent
+documentation, widespread use, and great support through mailing lists
+and newsgroups means that a solution to most customization questions
+can be found with a quick Web search. But you may not need help; it is
+certainly possible to use a book class such as KOMA-Script or Memoir
+without altering any of the paragraph environments (we did this). </p>
+
+<p>One thing we did want to change was the default header formatting.
+This involved loading and configuring the fancyhdr package in the
+Preamble. <a href="ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.pdf">Fancyhdr</a>
+gives very fine control of the header and footer formatting, including
+font and page numbering style. It allows you to do just about anything
+you've ever seen in a book header (small caps, a line under the header
+text, etc.). </p>
+
+<p>Another extremely useful package is <a href="ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/microtype/microtype.pdf">microtype</a>,
+which provides subtle expansion of fonts in order to make lines of type
+fit better into the allotted space. This gives TeX more options for
+breaking lines, resulting in a more eye-pleasing end product and less
+manual fine-tuning of the finished text. Microtype works only with the
+View -&gt; PDF(pdflatex) command option. Both of microtype and fancyhdr
+were included with the default Debian LaTeX installation, and there are
+many more useful packages available at <a href="http://www.ctan.org/">CTAN</a>.</p>
+
+<p> <b>Finishing touches</b> </p>
+
+<p>When you're done composing all of your text in LyX, you'll want to
+do a little cleanup on your document before sending it to press.
+Because TeX is a typesetting engine, it may occasionally fail to find a
+good place to break a line, resulting in a warning message and a line
+that extends into the margin. When this happens, your options are to
+rewrite the line so that TeX can find a good place to break it;
+manually force a break by using Insert -&gt; Special Formatting -&gt;
+Line Break; or allow TeX to insert extra spacing between words by using
+the command <code>sloppypar</code>. Aesthetically, the third option is
+considered the method of last resort, but you can use it by inserting
+an ERT code box with Insert -&gt; TeX code, typing <code>\begin{sloppypar}</code> at the beginning of the paragraph, and inserting another code box containing <code>\end{sloppypar}</code> at the end. </p>
+
+<p>In the same vein, TeX prefers not to leave blank space at the bottom
+of a page where a section ends. To avoid this, the software will insert
+extra spacing between paragraphs in order to stretch the text
+vertically to fill the page. We preferred to leave the blank space at
+the bottom, which we easily accomplished by using Insert -&gt; Special
+Formatting -&gt; Page Break below the section that did not fill the
+page.</p>
+
+<p>Some publishers, including Lulu Press' Global Distribution option,
+require electronic files submitted in PDF format to be created with
+Adobe Distiller. This wasn't an option for us, but fortunately we could
+also upload the book in PostScript format. To do this, we created a PDF
+of the book using View -&gt; PDF(pdflatex), which brings up a PDF
+version of the book in Adobe Reader. We then saved a copy of the PDF
+from Adobe Reader and converted that file to PostScript format using
+the command:
+<br>
+<br> <code>pdftops -level3 -paperw 432 -paperh 648 Book.pdf Book.ps</code> <br>
+<br>
+where <code>Book.pdf</code> is the PDF saved from Adobe Reader. In
+this command, the paper dimensions are given in points; the points in
+the example command correspond to a 6x9-inch book.</p>
+
+<p> <b>Conclusion</b> </p>
+
+<p>LyX is an excellent tool for authors at all levels of typographic
+knowledge and interest. If you're a first-time author who simply wants
+a great-looking book, LyX's default settings allow you to enter text as
+easily as with a word processor, and out pops a book that does not look
+self-published. For the typographically motivated (those who are
+self-publishing because they lament the decline in editorial and design
+standards at major publishing houses), LyX offers an almost infinite
+array of options to satisfy even the pickiest book designer's
+requirements. Above all, the LaTeX system encourages consistency,
+which, in a book-length document, is critical to a professional-looking
+end product. This is precisely where traditional word processors fall
+short, and is in itself a good reason to investigate LyX. </p>
+
+<p> <em>Corinne McKay is a freelance French to English translator and
+translation industry writer. Daniel J. Urist is a recovering Unix
+systems administrator. They, their daughter, and their one-eyed cat are
+based in Boulder, Colo. </em> </p><p></p>
+
+<table border="0" cellpadding="0" cellspacing="0" width="25%">
+<tbody><tr><td>Links</td></tr>
+<tr><td><hr noshade="noshade"></td></tr>
+</tbody></table>
+
+<ol><li>"LyX" - http://www.lyx.org/</li>
+<li>"KOMA-Script manual" - http://www.tug.org/tex-archive/macros/latex/contrib/koma-script/scrguien.pdf</li>
+<li>"Memoir User Guide" - ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/memoir/memman.pdf</li>
+<li>"fancyhdr" - http://www.mackichan.com/index.html?techtalk/488.htm~mainFrame</li>
+<li>"Fancyhdr" - ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.pdf</li>
+<li>"microtype" - ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/microtype/microtype.pdf</li>
+<li>"CTAN" - http://www.ctan.org/</li>
+</ol><!-- add code. You can use your own ad system - we use one that 
+sets a env variable in apache that contains the ad itself and just put it
+in this block -->
+<!-- ad position 5 -->
+<div id="fad5">
+<!-- DoubleClick Ad Tag -->
+<script type="text/javascript">
+    document.write('<script type="text/javascript" src="http://ad.doubleclick.net/adj/ostg.newsforge/software_p5_bottom_leader;pg=print;logged_in=0;tile='+dfp_tile+';ord='+dfp_ord+'?"><\/script>');
+    dfp_tile++;
+</script>
+</div>
+<!-- End DoubleClick Ad Tag -->
+<!-- end ad code -->
+
+
+<hr>
+<center><small>© Copyright 2007
+- NewsForge, All Rights Reserved</small></center>
+<hr>
+
+<p>
+<small>printed from <a href="http://software.newsforge.com/">NewsForge</a>, <a href="http://software.newsforge.com/article.pl?sid=06/08/15/1859251">Designing a book with LyX</a> on 2007-01-06 01:45:00</small>
+</p>
+</body></html>

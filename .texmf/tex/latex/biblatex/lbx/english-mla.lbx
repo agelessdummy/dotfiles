@@ -1,0 +1,94 @@
+% $Id: english-mla.lbx,v 0.1 2009/05/02 clawson beta $
+
+\ProvidesFile{english-mla.lbx}[\blx@bbxid $Id: english-mla.lbx,v 0.1 2009/05/02 clawson beta$] 
+\InheritBibliographyExtras{english}
+
+\DeclareBibliographyStrings{% 
+  inherit          = {english},
+  bibliography     = {{Works Cited}{Works Cited}},
+  references       = {{Works Cited}{Works Cited}},
+  typecompilerandeditor = {{compiler and editor}{comp\adddotspace and ed\adddot}},% 0.7
+  bytypecompilerandeditor = {{compiled and edited by}{comp\adddotspace and ed\adddot}},% 0.7
+  bytranslator     = {{translated by}{trans\adddot}},
+  byeditor         = {{edited by}{\lbx@bytypeeditor}},
+  % byserieseditor   = {{general editor}{general editor}},% not used?
+  page             = {{\unskip}{\unskip}},
+  pages            = {{\unskip}{\unskip}},
+  byeditortr       = {{\lbx@bytypeeditor\addabbrvspace and trans\adddot}{\lbx@bytypeeditor\addabbrvspace and trans\adddot}},
+  byeditorco       = {{\lbx@bytypeeditor\addabbrvspace and comm\adddot}{\lbx@bytypeeditor\addabbrvspace and comm\adddot}},
+  byeditoran       = {{\lbx@bytypeeditor\addabbrvspace and annot\adddot}{\lbx@bytypeeditor\addabbrvspace and annot\adddot}},
+  byeditorin       = {{\lbx@bytypeeditor\addabbrvspace and introd\adddot}{\lbx@bytypeeditor\addabbrvspace and introd\adddot}},
+  byeditorfo       = {{\lbx@bytypeeditor\addabbrvspace and forew\adddot}{\lbx@bytypeeditor\addabbrvspace and forew\adddot}},
+  byeditoraf       = {{\lbx@bytypeeditor\addabbrvspace and afterw\adddot}{\lbx@bytypeeditor\addabbrvspace and afterw\adddot}},
+  byeditortrco     = {{\lbx@bytypeeditor, trans\adddot, and comm\adddot}{\lbx@bytypeeditor, trans\adddot, and comm\adddot}},
+  byeditortran     = {{\lbx@bytypeeditor, trans\adddot, and annot\adddot}{\lbx@bytypeeditor, trans\adddot, and annot\adddot}},
+  byeditortrin     = {{\lbx@bytypeeditor, trans\adddot, and introd\adddot}{\lbx@bytypeeditor, trans\adddot, and introd\adddot}},
+  byeditortrfo     = {{\lbx@bytypeeditor, trans\adddot, and forew\adddot}{\lbx@bytypeeditor, trans\adddot, and forew\adddot}},
+  byeditortraf     = {{\lbx@bytypeeditor, trans\adddot, and afterw\adddot}{\lbx@bytypeeditor, trans\adddot, and afterw\adddot}},
+  byeditorcoin     = {{\lbx@bytypeeditor, comm\adddot, and introd\adddot}{\lbx@bytypeeditor, comm\adddot, and introd\adddot}},
+  byeditorcofo     = {{\lbx@bytypeeditor, comm\adddot, and forew\adddot}{\lbx@bytypeeditor, comm\adddot, and forew\adddot}},
+  byeditorcoaf     = {{\lbx@bytypeeditor, comm\adddot, and afterw\adddot}{\lbx@bytypeeditor, comm\adddot, and afterw\adddot}},
+  byeditoranin     = {{\lbx@bytypeeditor, annot\adddot, and introd\adddot}{\lbx@bytypeeditor, annot\adddot, and introd\adddot}},
+  byeditoranfo     = {{\lbx@bytypeeditor, annot\adddot, and forew\adddot}{\lbx@bytypeeditor, annot\adddot, and forew\adddot}},
+  byeditoranaf     = {{\lbx@bytypeeditor, annot\adddot, and afterw\adddot}{\lbx@bytypeeditor, annot\adddot, and afterw\adddot}},
+  byeditortrcoin   = {{\lbx@bytypeeditor, trans\adddot, comm\adddot, and introd\adddot}{\lbx@bytypeeditor, trans\adddot, comm\adddot, and introd\adddot}},
+  byeditortrcofo   = {{\lbx@bytypeeditor, trans\adddot, comm\adddot, and forew\adddot}{\lbx@bytypeeditor, trans\adddot, comm\adddot, and forew\adddot}},
+  byeditortrcoaf   = {{\lbx@bytypeeditor, trans\adddot, comm\adddot, and afterw\adddot}{\lbx@bytypeeditor, trans\adddot, comm\adddot, and afterw\adddot}},
+  byeditortranin   = {{\lbx@bytypeeditor, trans\adddot, annot\adddot, and introd\adddot}{\lbx@bytypeeditor, trans\adddot, annot\adddot, and introd\adddot}},
+  byeditortranfo   = {{\lbx@bytypeeditor, trans\adddot, annot\adddot, and forew\adddot}{\lbx@bytypeeditor, trans\adddot, annot\adddot, and forew\adddot}},
+  byeditortranaf   = {{\lbx@bytypeeditor, trans\adddot, annot\adddot, and afterw\adddot}{\lbx@bytypeeditor, trans\adddot, annot\adddot, and afterw\adddot}},
+  bytranslatorco   = {{trans\adddotspace and comm\adddot}{trans\adddotspace and comm\adddot}},
+  bytranslatoran   = {{trans\adddotspace and annot\adddot}{trans\adddotspace and annot\adddot}},
+  bytranslatorin   = {{trans\adddotspace and introd\adddot}{trans\adddotspace and introd\adddot}},
+  bytranslatorfo   = {{trans\adddotspace and forew\adddot}{trans\adddotspace and forew\adddot}},
+  bytranslatoraf   = {{trans\adddotspace and afterw\adddot}{trans\adddotspace and afterw\adddot}},
+  bytranslatorcoin = {{trans\adddot, comm\adddot, and introd\adddot}{trans\adddot, comm\adddot, and introd\adddot}},
+  bytranslatorcofo = {{trans\adddot, comm\adddot, and forew\adddot}{trans\adddot, comm\adddot, and forew\adddot}},
+  bytranslatorcoaf = {{trans\adddot, comm\adddot, and afterw\adddot}{trans\adddot, comm\adddot, and afterw\adddot}},
+  bytranslatoranin = {{trans\adddot, annot\adddot, and introd\adddot}{trans\adddot, annot\adddot, and introd\adddot}},
+  bytranslatoranfo = {{trans\adddot, annot\adddot, and forew\adddot}{trans\adddot, annot\adddot, and forew\adddot}},
+  bytranslatoranaf = {{trans\adddot, annot\adddot, and afterw\adddot}{trans\adddot, annot\adddot, and afterw\adddot}},
+  newseries        = {{ns}{ns}},
+  oldseries        = {{os}{os}},
+  reprintof        = {{reprint of}{rept\adddotspace of}},
+  phdthesis        = {{Diss\adddot}{Diss\adddot}},
+  reviewof         = {{rev\adddotspace of}{rev\adddotspace of}},
+  specissue        = {{spec\adddot\addspace issue of}{spec\adddot\addspace issue of}},
+  section          = {{sec\adddot}{sec\adddot}},
+  withcommentator  = {{comm\adddot}{comm\adddot}},
+  withannotator    = {{annot\adddot}{annot\adddot}},
+  withintroduction = {{introd\adddot}{introd\adddot}},
+  withforeword     = {{forew\adddot}{forew\adddot}},
+  withafterword    = {{afterw\adddot}{afterw\adddot}},
+  phd              = {{Diss\adddot}{Diss\adddot}},
+  dphil            = {{Diss\adddot}{Diss\adddot}},
+  lic              = {{Licentiate thesis}{Licentiate thesis}},
+  ma               = {{{MA}\addabbrvspace thesis}{{MA}\addabbrvspace thesis}},
+  ms               = {{{MS}\addabbrvspace thesis}{{MS}\addabbrvspace thesis}},
+  msc              = {{{MS}c\addabbrvspace thesis}{{MS}c\addabbrvspace thesis}},
+  mphil            = {{{MP}hil\addabbrvspace thesis}{{MP}hil\addabbrvspace thesis}},
+  mlitt            = {{{ML}itt\addabbrvspace thesis}{{ML}itt\addabbrvspace thesis}},
+  manuscript       = {{ms\adddot}{ms\adddot}},
+  typescript       = {{ts\adddot}{ts\adddot}},
+  director         = {{dir\adddot}{dir\adddot}},
+  screenplay       = {{adapt\adddot}{adapt\adddot}},
+  adaptation       = {{adapt\adddot}{adapt\adddot}},
+  adaptor          = {{adapt\adddot}{adapt\adddot}},
+  performer        = {{perf\adddot}{perf\adddot}},
+  performers       = {{perf\adddot}{perf\adddot}},
+  composer         = {{composer\adddot}{composer\adddot}},
+  composedby       = {{composed~by}{composed~by}},
+  producer         = {{prod\adddot}{prod\adddot}},
+  with             = {{with}{with}},
+  proceedings      = {{proc\adddot}{proc\adddot}},
+  transof          = {{translation of}{trans\adddotspace of}},% 0.7
+}%
+
+\endinput
+
+% ignore the below. It's a reference for me so I don't continually need to 
+% teach myself TextMate's implementation of regular expressions. -JC
+% 
+% regex for find and replace (moving from mla.bbx to localized modules)
+% find: {(.*?)},
+% replace: {{$1}{$1}},

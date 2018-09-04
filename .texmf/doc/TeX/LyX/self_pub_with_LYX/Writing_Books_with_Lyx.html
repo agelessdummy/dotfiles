@@ -1,0 +1,2040 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html><head>
+
+
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Steve Litt">
+   <meta name="GENERATOR" content="Mozilla/4.78 [en] (X11; U; Linux 2.4.18-6mdksmp i686) [Netscape]">
+   <meta name="Description" content="Using Lyx to author articles, books, and other content">
+   <meta name="Keywords" content="Lyx,wordprocessing,word processing,wordprocessor,word processor,linux,open source,document processing,books"><title>Writing Self-Published Books with Lyx</title></head><body alink="#ff0000" bgcolor="#ffffff" link="#0000ee" text="#000000" vlink="#551a8b">
+
+<center>
+<h2>
+<a href="http://www.troubleshooters.com/troubleshooters.htm">Troubleshooters.Com</a> and <a href="http://www.troubleshooters.com/linux/index.htm">T.C
+Linux Library</a> Present</h2></center>
+
+<center><font color="#cc0000"><font size="+4">Writing Self-Published Books
+with Lyx</font></font>
+<p><a href="http://www.troubleshooters.com/cpyright.htm">Copyright (C) 2001 by Steve Litt</a>, All
+rights reserved. Material provided as-is, use at your own risk.</p></center>
+
+<h1>
+
+<hr width="100%"></h1>
+LyX gives an author the means to write a uniform and beautifully typeset,
+formatted book with a minimum of effort.
+<center>
+<p><b><font size="+4">But...</font></b></p></center>
+
+<p>Custom paragraph styles and custom character styles are indispensible
+for the book author, and unfortunately the Lyx methods to accomplish these
+two necessities are horrendously underdocumented. In fact, as of LyX 1.1.6fix3,
+LyX doesn't even support character styles. But don't worry, this document
+containss a very nice workaround you can use to achieve the benefits of
+character styles.
+</p><p>The toughest impediment to learning to customize LyX is confusing LyX
+code with LaTeX code. This will be clarified in this document.
+</p><h1>CONTENTS</h1>
+<ul>
+<li><b><a href="#introduction">Introduction to Lyx</a></b></li>
+<li><b><a href="#BuiltinParagraphStyles">Built in Paragraph Styles</a></b></li>
+<li><b><a href="#BuiltinCharacterStyles">Built in Character Styles</a></b></li>
+<li><b><a href="#SimulatingCharacterStylesWithColorPseudostyles">Simulating Character Styles With Color Pseudostyles</a></b></li>
+<li><b><a href="#ParagraphStylesLyXEnvironments">Paragraph Styles (LyX Environments)</a></b></li>
+<li><b><a href="#lyx4me">Will Lyx Suit My Needs?</a></b></li>
+<li><b><a href="#evaluating">Evaluating Lyx for Your Needs</a></b></li>
+<li><b><a href="#fastestLearn">The Fast Way to Learn Lyx</a></b></li>
+<li><b><a href="#textclass_mod_tut">Beginning Textclass Modification Tutorial</a></b></li>
+<li><b><a href="#for_real_tut">For Real Tutorial -- Adding an Environment</a></b></li>
+<li><b><a href="#programs">Programs to help with Lyx</a></b></li>
+<li><b><a href="#_StrongarmingDate">Strongarming the date in a LyX document</a></b></li>
+<li><b><a href="#IncorporatingLayoutFiles">Incorporating Layout Files</a></b></li>
+</ul>
+
+<h1>
+<a name="introduction"></a>Introduction to Lyx</h1>
+This article introduces Lyx from a 10,000 foot overview.
+<h2>
+What Is Lyx?</h2>
+Lyx is a document processor. It handles all document formatting based on
+styles and a set of rules to translate those styles to formatting. Therefore
+your book is consistent throughout. And if you use the same set of rules
+on multiple books, they'll all be formatted consistently.
+<p>Lyx uses paragraph styles (which are called "<i>environments</i>" in
+Lyx parlance) to govern formatting of document pieces. There are styles
+for different level headers, for emphasis, for peoples' names, for code
+snippets. And you can make your own styles, although that isn't simple.
+</p><p>If you use LyX, your documents will output as beautifully typeset documents
+with consistently professional formatting. They'll look like a book you
+see in the bookstore. And because LyX handles the formatting, you can spend
+your time and energy on what you're writing, not how it will look.
+</p><p>As mentioned, the LyX default styles may not format exactly how you
+want. In such cases you can modify styles or even make your own. This web
+page contains <a href="#textclass_mod_tut">tutorials</a> that walk you
+through creating your own style.
+</p><h2>
+What Lyx Isn't</h2>
+Lyx isn't a word processing program. You can't (and shouldn't) format individual
+words or paragraphs. Instead you assign styles to the words or paragraphs.
+Those styles correspond to the words and paragraphs' function, not to the
+way you want them to look. You'd never use Lyx to design a high impact
+flyer, or a poster, or a love letter. Lyx configuration is difficult enough
+that you don't start seeing a return on your configuration investment unless
+you write books or *lots* of reports.
+<h2>
+WYGIWYM</h2>
+We've all heard of WYSIWYG. Lyx is WYGIWYM. WYGIWYM stands for "What You
+Get Is What You Mean". This means if you mean for text to represent source
+code you assign it a source code <i>environment</i> (Lyxese for style),
+and it formats the way you meant it to. You needn't worry about formatting
+during the writing of your document. If you don't like the way it looks
+upon finishing and printing it out, you can change the way styles map to
+formatting, and those styles will consistently change throughout the document.
+<p>WYGIWYM has spacing ramifications. Spaces are considered nothing but
+word separators, and as such multiple spaces are output as a single space.
+Likewise, carriage returns (newlines and the like) are simply paragraph
+separators, and as such you cannot make a blank line by inserting an additional
+return. Blank lines should never be necessary. Instead, each paragraph
+specifies interparagraph spacing, spacing before the first of such paragraphs,
+and spacing after the last of such paragraphs.
+</p><p>This is a matter of philosophy. Do we view a book as 300 pages, each
+of which is a sketch or painting? Or do we view it as parts containing
+chapters containing various levels of headings containing paragraphs of
+varying types, such as normal body text, code examples, notes, tips, warnings
+and the like. LyX takes the latter view, and thus simply declares the formatting
+of various paragraph styles. Such formatting can be complex, including
+lines, graphics, justification, spacing, and almost anything else you can
+think of. The beauty of this philosophy is once you've decided the properties
+of each paragraph style, those decisions are applied uniformly throughout
+your book. If you decide to change one of those styles, every paragraph
+of that style is instantly updated throughout your book.
+</p><p>A cynic might label this as WYGIWWA - "What You Get Is What We Allow".
+Lyx makes the rules and unless you're knowledgeable enough to change those
+rules you just accept what Lyx says you get. This is one of the reasons
+for the paragraph and character style examples on this page -- to let you
+use Lyx without settling for an unsatisfactory format.
+</p><h2>
+Data Safety</h2>
+In this era of software rental licenses and companies going out of business,
+it's nice to know that your documents are in easy to parse ascii text.
+It's quite easy to write a simple computer program to convert Lyx documents
+to other formats. The native Lyx format is even human readable, so there's
+every reason to believe that 20 years from now you'll be able to get your
+hands on your data.
+<p>Data safety was the #1 reason I chose LyX. The books I write are vital
+to my business.
+<br>===============================
+</p><h1>
+<a name="BuiltinParagraphStyles"></a>Built in Paragraph Styles</h1>
+This section details the available paragraph styles contained in the "book"
+document class. There are other document classes such as "article", "letter",
+"seminar", "slides", "broadway" (scripts for plays), "hollywood" (movie
+scripts), and many more, including some specialized styles for different
+types of books. However, this web page discusses the "book" document class,
+because it provides the nicest looking general purpose styles for books.
+This document then goes on to instruct you how to change existing styles
+and make new styles to get exactly the book you want.
+<h2>
+Heading Paragraph Styles</h2>
+This is a list of the heading styles, in order of inclusiveness (i.e. a
+Part contains chapters, not vice versa).
+<br>&nbsp;
+<table nosave="" border="1" cellspacing="4">
+<tbody><tr nosave="" align="left" valign="bottom">
+<td nosave="">Heading&nbsp;
+<br>Paragraph&nbsp;
+<br>Style</td>
+
+<td nosave="">Key
+<br>Binding</td>
+</tr>
+
+<tr>
+<td>Part</td>
+
+<td></td>
+</tr>
+
+<tr>
+<td>Chapter</td>
+
+<td>M-p 1</td>
+</tr>
+
+<tr>
+<td>Section</td>
+
+<td>M-p 2</td>
+</tr>
+
+<tr>
+<td>Subsection</td>
+
+<td>M-p 3</td>
+</tr>
+
+<tr>
+<td>Subsubsection</td>
+
+<td>M-p 4</td>
+</tr>
+
+<tr>
+<td>Paragraph</td>
+
+<td>M-p 5</td>
+</tr>
+
+<tr>
+<td>Subparagraph</td>
+
+<td>M-p 6</td>
+</tr>
+</tbody></table>
+
+<br>&nbsp;
+<center><table nosave="" bgcolor="#ffcccc" border="1" width="60%">
+<tbody><tr>
+<td>
+<center><b>NOTE</b></center>
+
+<p>The preceding styles called "Paragraph" and "Subparagraph" are headings,
+not body text type paragraph styles. Body text is most accurately mapped
+to the LyX environment called "Standard"</p></td>
+</tr>
+</tbody></table></center>
+
+<h2>
+Itemization Type Paragraph Styles</h2>
+&nbsp;
+<table nosave="" border="1" cellspacing="4">
+<tbody><tr nosave="" align="left" valign="bottom">
+<td>List
+<br>Paragraph
+<br>Style</td>
+
+<td nosave="">Key
+<br>Bind</td>
+
+<td>Style Description</td>
+</tr>
+
+<tr nosave="">
+<td>Itemize</td>
+
+<td nosave="">M-p b</td>
+
+<td>Bulleted list</td>
+</tr>
+
+<tr>
+<td>Enumerate</td>
+
+<td>M-p e</td>
+
+<td>Numbered list</td>
+</tr>
+
+<tr>
+<td>Description</td>
+
+<td>M-p d</td>
+
+<td>2 column list of short terms on the left, and a long definition on
+the right. The term on the left is bold</td>
+</tr>
+
+<tr>
+<td>List</td>
+
+<td>M-p l
+<br>(lower
+<br>case L)</td>
+
+<td>Similar to List, but left hand term is not bold.</td>
+</tr>
+</tbody></table>
+
+<h2>
+Styles for Special Paragraphs</h2>
+&nbsp;
+<table nosave="" border="1" cellspacing="4" cols="3" width="100%">
+<tbody><tr nosave="" align="left" valign="bottom">
+<td>Special
+<br>Paragraph
+<br>Style</td>
+
+<td nosave="">Key
+<br>Bind</td>
+
+<td>Style Description</td>
+</tr>
+
+<tr>
+<td>LyX-Code</td>
+
+<td>M-p c</td>
+
+<td>Use this for a source code listing. Fixed width font. Unlike other
+LyX styles, this one allows multiple spaces in order to accurately reflect
+a source file.</td>
+</tr>
+
+<tr>
+<td>Quotation</td>
+
+<td>M-p Q</td>
+
+<td>Used for a long quote (i.e. quoting a paragraph of the State of the
+Union Address).</td>
+</tr>
+
+<tr>
+<td>Quote</td>
+
+<td>M-p q</td>
+
+<td>Used for a short quote (i.e. "A penny saved is a penny earned".)</td>
+</tr>
+
+<tr>
+<td>Verse</td>
+
+<td>M-p v</td>
+
+<td>Used for poetry and prose. All lines after the first line of the paragraph
+are indented.</td>
+</tr>
+
+<tr>
+<td>Caption</td>
+
+<td>M-p M-c</td>
+
+<td>This is a mechanism to title figures and tables, and must be used in
+conjunction with figure floats and table floats.</td>
+</tr>
+</tbody></table>
+
+<h2>
+Book Structure Paragraph Styles</h2>
+&nbsp;
+<table nosave="" border="1" cols="3" width="100%">
+<tbody><tr>
+<td>Special
+<br>Paragraph
+<br>Style</td>
+
+<td>Key
+<br>Bind</td>
+
+<td>Style Description</td>
+</tr>
+
+<tr>
+<td>Title</td>
+
+<td>M-p t</td>
+
+<td>Title of the book</td>
+</tr>
+
+<tr>
+<td>Author</td>
+
+<td>M-p A</td>
+
+<td>Author of the book</td>
+</tr>
+
+<tr>
+<td>Date</td>
+
+<td>M-p D</td>
+
+<td>Date of the book</td>
+</tr>
+
+<tr>
+<td>Bibliography</td>
+
+<td>M-p B</td>
+
+<td>Bibliography</td>
+</tr>
+</tbody></table>
+
+<h1>
+<a name="BuiltinCharacterStyles"></a>Built in Character Styles</h1>
+There are no built in character styles as a book author would think of
+them. This is a serious deficiency which the LyX people plan to correct
+in the future. So this deficiency won't hurt your long term use of LyX.
+<p>Frustratingly, fonts like font-code are sometimes referred to as styles
+in the LyX world. In fact, using font-code introduces a \family typewriter
+into the LyX file, so it's no different from using &lt;tt&gt; in your HTML
+to represent code. There's not a one to one correspondence.
+</p><p>Nevertheless, it's easiest to use font-code to represent a small slice
+of code within a larger paragraph. Here are some of the other fonts I use
+to represent things:
+<br>&nbsp;
+<br>&nbsp;
+<table nosave="" border="1" cols="3" width="100%">
+<tbody><tr>
+<td></td>
+
+<td></td>
+
+<td></td>
+</tr>
+
+<tr>
+<td>font-emph</td>
+
+<td>C-e</td>
+
+<td>Emphasized text (italicized)</td>
+</tr>
+
+<tr>
+<td>font-code</td>
+
+<td>Create in ~/.lyx/ui/default.ui.</td>
+
+<td>Filenames, tiny commands and other code like things within a larger
+paragraph (fixed spaced text)</td>
+</tr>
+
+<tr>
+<td>font-noun</td>
+
+<td>M-c c</td>
+
+<td>Terminology -- words to be defined, etc. (small caps)</td>
+</tr>
+</tbody></table>
+
+</p><p>Styles are supposed to map to usages, and it's obvious that the preceding
+fonts do not. So they're a compromise. But it works as long as you don't
+use italics, smallcaps or monofonts for other things. If you do not, then
+when LyX gains character style capabilities it will be trivial to search/replace
+these fonts with real styles.
+</p><p>But of course you will use italicized, fixed space and small cap text
+for other things. That's OK as long as those other usages are done with
+color pseudostyles.
+</p><h1>
+<a name="SimulatingCharacterStylesWithColorPseudostyles"></a>Simulating
+Character Styles With Color Pseudostyles</h1>
+This section will show you how to set up a one to one correspondence between
+character color and a LaTeX character style. This allows you to easily
+convert to real character styles when LyX gains that feature. Place the
+following code near the top of your .layout file.
+<br>&nbsp;
+<table nosave="" bgcolor="#ccffff" border="1">
+<tbody><tr nosave="">
+<td nosave="">
+<pre>Preamble
+% %%% Pseudo character styles indexed by color %%%
+\usepackage{ifthen}
+\renewcommand{\textcolor}[2]{%
+\ifthenelse{\equal{#1}{blue}}{{\textsl{\textsf{#2}}}}{}%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Steps
+\ifthenelse{\equal{#1}{magenta}}{{\textsl{\textsf{#2}}}}{}%&nbsp;&nbsp;&nbsp; Chapters
+\ifthenelse{\equal{#1}{magenta}\or\equal{#1}{blue}}{}{#2}%&nbsp;&nbsp;&nbsp;&nbsp; fallthrough
+}
+EndPreamble</pre>
+</td>
+</tr>
+</tbody></table>
+
+<p>The <tt>Preamble</tt> and <tt>EndPreamble</tt> keywords are LyX code.
+Everything between them is LaTeX code. In fact, it's safe to assume that
+any code between&nbsp; <tt>Preamble</tt> and <tt>EndPreamble</tt> is LaTeX
+code.
+</p><p>The <tt>ifthen</tt> package bestows the ability to assign according
+to choices -- in this case colors. the \usepackage keyword incorporates
+that package much the same as a Perl <tt>use</tt> or a&nbsp; C <tt>include</tt>.
+</p><h1>
+<a name="ParagraphStylesLyXEnvironments"></a>Paragraph Styles (LyX Environments)</h1>
+Books need styles like Tip, Note, Warning and the like. The following code
+implements a Note style, narrower than normal text, contained between lines,
+and titled with the word <tt>NOTE</tt>.
+<br>&nbsp;
+<table nosave="" bgcolor="#ccffff" border="1">
+<tbody><tr nosave="">
+<td nosave="">
+<pre>Style Note
+&nbsp; LatexType&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Environment
+&nbsp; LatexName&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; note_l
+&nbsp;&nbsp;
+&nbsp; LabelType&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Centered_Top_Environment
+&nbsp; LabelString&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "NOTE"
+&nbsp; AlignPossible&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Left
+&nbsp; LeftMargin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "MMMMM"
+&nbsp; RightMargin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "MMMMM"
+&nbsp; ParSkip&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.7
+&nbsp; ParSep&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.7
+&nbsp; TopSep&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.7
+&nbsp; BottomSep&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.7
+
+&nbsp; Font
+&nbsp; EndFont
+&nbsp; Preamble
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \setlength{\scratchLength}{\leftmargin}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \addtolength{\scratchLength}{1cm}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \newenvironment{note_l}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \begin{list}{}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \setlength{\leftmargin}{\scratchLength}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \setlength{\rightmargin}{\leftmargin}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \setlength{\parsep}{1cm}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \item[]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \hrulefill
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \\[0.1cm]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {\centering\large NOTE \\[0.2cm]}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \\[0.2cm] .\hrulefill \\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \par
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \end{list}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp; EndPreamble
+End</pre>
+</td>
+</tr>
+</tbody></table>
+
+<p>In the preceding, the style is described first in LyX code (everything
+except that between <tt>Preamble</tt> and <tt>EndPreamble</tt>), and a
+parallel description in LaTeX (everything between <tt>Preamble</tt> and
+<tt>EndPreamble</tt>).
+You'll note that I didn't bother to put the lines in the LyX version.
+</p><p>Note also there are plenty other ways to do this. The best way is probably
+to enclose the note in a minipage, but I don't know how to do that yet.
+</p><h1>
+<a name="lyx4me"></a>Will Lyx Suit My Needs?</h1>
+Why use LyX?
+<p>Because once you learn it, you can easily and quickly produce books,
+reports and other large documents that are professionally formatted and
+typeset. These documents can be put into Postscript or PDF format so they
+print correctly everywhere.
+</p><p>I chose LyX after getting tired of inconsistent typefaces. After getting
+tired of having to remember whether I made a style for things. After getting
+tired of trying to remember what font I made a given entity the last time.
+</p><p>I got tired of manually tweaking books to get the paging right. I got
+tired of inaccurate tables of contents. I got tired of printing inconsistencies.
+</p><p>I got tired of my word processor slowing me down. That same word processor
+that seemed so easy to learn ages ago, but now confounded me with an array
+of formatting choices seemingly every paragraph.
+</p><p>Now I can reasonably expect to write a professional looking book, and
+send a postscript file to the print shop of my choice.
+</p><p>But LyX requires a serious committment. A person who could learn MS
+Word or Star Office in a day could take a week or more to learn Lyx unless
+they approach that learning process the right way. The creation and modification
+of environments (styles) in LyX are inobvious to say the least. You will
+not successfully write books with Lyx unless you make a serious committment
+to learn the program and style modification. This page contains an article
+called <a href="#fastestLearn">The Fast Way to Learn Lyx</a>, designed
+to make your committment much more achievable.
+</p><p>LyX suits your needs if you need its benefits and can handle its costs.
+The benefit is uniformly consistent formatting of your books, reports and
+other large documents, without your needing to oversee that consistency.
+The cost is learning LyX (easy) and learning to create and modify its styles
+(difficult, but made much easier by the <a href="#textclass_mod_tut">tutorials
+on this page</a>).
+</p><h1>
+<a name="evaluating"></a>Evaluating Lyx for Your Needs</h1>
+First, know that you can use LyX to produce almost any type of printed
+document you can imagine. It's that flexible. It's VERY doubtful that LyX
+would not be able to produce what you need, unless what you need is formatted
+on the fly stuff like flyers, posters, invitations and the like. But for
+serious documents like books, reports, and even business letters, you can
+be 99% certain that LyX can be made to produce the format you need. LyX
+is ALMOST NEVER a dead end. As a matter of fact, it's much less likely
+to be a dead end than more mainstream word processors.
+<p>But that doesn't mean it will be easy. Changing default environment
+to format mappings is much more difficult with LyX than with standard word
+processors. See the article titled <a href="#fastestLearn">The Fast Way
+to Learn Lyx</a> to minimize the LyX training period.
+</p><p>Here are some of the questions you'll need to answer in order to decide
+for or against Lyx:
+</p><ul>
+<li>
+How important is consistency in my documents (Lyx is very consistent)</li>
+
+<li>
+Can I live with Lyx's default document classes and formatting? (If so,
+go
+with LyX -- it's a no brainer)</li>
+
+<li>
+Do I or somebody in my organization have the ability to learn to I create
+and modify Lyx styles to produce output suiting my needs? (Before answering,
+read the rest of this web page. After reading the web page, if the answer
+is No, LyX doesn't suit your needs).</li>
+
+<li>
+Is the Lyx program's performance sufficient for books the size I want to
+write, and if my books are big enough to slow it down, am I willing to
+write the books in parts and put everything together in the end (makes
+crossreferencing harder)</li>
+
+<ul>
+<li>
+Note: My dual 450mhz Celeron with 512Meg and a 7200rpm hard drive can load,
+reformat, or output to Postscript in less than 20 seconds for a 100,000
+word (about 250-300page) document. On the same document I can save in less
+than 5 seconds. However, on a 550,000 word doc (about 1200-1400 pages)
+it takes about 3 minutes to load or reformat.</li>
+</ul>
+
+<li>
+How important is a good index to me? (LyX is great at indexing)</li>
+
+<li>
+How important is a good, accurate table of contents to me? (LyX produces
+good looking and accurate tables of contents)</li>
+
+<li>
+How important is guaranteed future access to my book's data (proprietary
+wordprocessors are often hard to export from).</li>
+
+<li>
+Are you proficient with a capable text editor with macros and search/replace?
+(Proper use of a text editor on your LyX files can greatly enhance your
+LyX capabilities, although this isn't absolutely necessary for profitable
+use of LyX).</li>
+</ul>
+I'd recommend starting by using Lyx for reports (they have a Report document
+class). If that works out use their Letter document class to produce letters
+whose format isn't important (personal letters and the like).
+<p>Take the tutorial later in this web page. If you're successful with
+it you'll probably be able to commit to Lyx. If you cannot do the tutorial
+after many repeated attempts, Lyx is probably not for you. That is, unless
+you have a consultant who can modify document classes and environments.
+Many businesses have computer experts create macros and templates so that
+less technical people can produce corporate standard documents.
+</p><p>Run performance tests to see how Lyx works on your computer with books
+resembling the size and structure of yours. This page contains a C program
+you can use to create just such a test book. If you can't compile the program,
+have a programmer friend do it. If the performance is insufficient, you'll
+need to
+</p><h1>
+<a name="fastestLearn"></a>The Fast Way to Learn Lyx</h1>
+LyX can take a day or two to learn, or it could take weeks, depending on
+how you approach learning it. This article describes how to learn LyX in
+a day or two.
+<p>LyX has two distinct aspects:
+</p><ol>
+<li>
+Creating content</li>
+
+<li>
+Controlling the format of that content in the output</li>
+</ol>
+#1 is no harder than any other word processor, and it's probably actually
+easier than most word processors. The best way to learn #1 is to run the
+LyX tutorial (Help-&gt;Tutorial from the menu). Once finished with the LyX
+tutorial, you'll have an excellent grasp of how to write content in LyX.
+That leaves #2:
+<p>#2 is much harder than with other word processors. First, most word
+processors allow you to format content on the fly. LyX doesn't allow that
+because on-the-fly formatting leads to inconsistant and amatuerish documents.
+If you want professional looking documents, LyX is your product.
+</p><p>But changing the mapping of styles to formatting is much harder than
+in programs like WordPerfect, MS Word or StarOffice. It requres knowledge
+of LyX coding and the LaTeX markup language. Both are extensively documented,
+but unfortunately the documentation is a reference, not a tutorial.
+</p><p>So I created some tutorials to walk you through creating and formatting
+your first LyX style (LyX styles are actually called "environments"). Those
+tutorials appear <a href="#textclass_mod_tut">on this page</a>. These tutorials
+will take you one to four hours, after which you'll be ready to create
+custom environments to make your document look the way you want it to,
+consistently.
+</p><p>In summary, if you'd like to trim the LyX learning process down to a
+day or two, do the LyX tutorial, and then do the <a href="#textclass_mod_tut">tutorial
+on this page</a>.
+</p><p>To shorten the learning time, use tutorials. Start with the tutorial
+that comes with LyX (Help-&gt;Tutorial).
+</p><h1>
+<a name="textclass_mod_tut"></a>Beginning Textclass Modification Tutorial</h1>
+Lyx is a wonderful program with wonderful documentation. The docs tell
+you every aspect of Lyx user operation, as well as giving you all sorts
+of Lyx functions and Latex codes (the latter being in /usr/share/texmf...).
+But there's a gaping hole in the docs when it comes to exactly how you
+create new environments in a real life situation. All too often the documentation
+tells you what to insert but assumes you know where to insert it. All too
+often you get your new environment into Lyx, only to find that it doesn't
+render in Postscript or DVI.
+<p>This tutorial and the next one are designed to condense a week of manual
+reading, emailing and experimentation into two 1 hour tutorials. This is
+the first tutorial, designed to give you the fundimentals. Read on...
+</p><h2>
+Proof of Concept</h2>
+This proof of concept does nothing but enable a new textclass to appear
+in your Layout-&gt;Document-&gt;Document-&gt;Class dropdown list. It has no practical
+use, and must be reversed out, meaning that you must make a backup of the
+file you modify.
+<ol>
+<li>
+Log in as root</li>
+
+<li>
+Find your system's Lyx layout directory.&nbsp; It's typically in /usr/share/lyx/layouts,
+but of course can vary. The following two commands may help you find it:</li>
+
+<br><tt>locate -r "article\.layout$"</tt>
+<br><tt>find / -type f | grep "article\.layout$"</tt>
+<br>Note however that your system contains other copies of article.layout.
+The one you want should have "lyx" in the directory path.
+<li>
+<tt>cd</tt> to the Lyx layout directory. From there, the <tt>pwd</tt> command
+should reveal "lyx" somewhere in the directory name, and there should exist
+several <tt>.layout</tt> files.</li>
+
+<li>
+Back up the <tt>article.layout</tt> file with the following command:</li>
+
+<br><tt>cp -p article.layout article.layout.org</tt>
+<li>
+Edit article.layout. Change the second line, which looks like this:</li>
+
+<br><tt>#&nbsp; \DeclareLaTeXClass{article}</tt>
+<br>to this:
+<br><tt>#&nbsp; \DeclareLaTeXClass{Hello World}</tt>
+<li>
+Reconfigure Lyx with Edit-&gt;Reconfigure</li>
+
+<li>
+Close all copies of Lyx, open a Lyx session, open a file, and note that
+the Layout-&gt;Document-&gt;Document-&gt;Class dropdown list now contains a class
+called "Hello World".</li>
+</ol>
+
+<h3>
+Discussion</h3>
+You have just changed the name of the "Article" class to "Hello World".
+For reasons you'll see later, this is useless except as a confidence building
+exercise.
+<h2>
+Changing an Environment's Font in the Proof of Concept</h2>
+In this exercise you will change the font and alignment of the Author environment
+(an environment is Lyx's word for a paragraph style), to see what it affects,
+and perhaps more importantly, what it does not effect.
+<ol>
+<li>
+Create a baseline article</li>
+
+<ol>
+<li>
+Use Lyx to create a new two line document of type "Hello World". The first
+line should be "Title" and should be formatted to the <i>Title</i> environment
+(chosen from the Layout-&gt;Document-&gt;Document-&gt;Class dropdown list).&nbsp;
+The second line should be "Author" and should be formatted to the <i>Author</i>
+environment picked from the same dropdown.</li>
+
+<li>
+Save as <tt>z.lyx</tt>.</li>
+
+<li>
+Notice that in Lyx both the words "Title" and "Author" are centered, and
+that the word "Title" is much bigger than the word "Author".</li>
+
+<li>
+Use View-&gt;Postscript to view the document in a viewer. Notice that the
+words "Title" and "Author" are centered but skewed toward the right (they're
+right of center), and that the word "Title" is much bigger than the word
+"Author". Notice that there's a third line containing a date, but ignore
+that line, as it's not relevant to the point being made. The main point
+is that "Title" is bigger than "Author", and that they're both centered
+toward the right.</li>
+
+<li>
+Exit the Lyx program.</li>
+</ol>
+
+<li>
+Edit <tt>article.layout</tt></li>
+
+<ol>
+<li>
+Add the following lines to the bottom of <tt>article.layout</tt>:</li>
+
+<br><tt>Style Author</tt>
+<br><tt>&nbsp; Align&nbsp;&nbsp; Left</tt>
+<br><tt>&nbsp; AlignPossible&nbsp; Left</tt>
+<p><tt>&nbsp; Font</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; Size&nbsp; Giant</tt>
+<br><tt>&nbsp; EndFont</tt>
+</p><li>
+Understand that what you just did is modify the existing Article environment,
+changing the alignment to left and the font size to <i>Giant</i>.</li>
+
+<li>
+Save <tt>article.layout</tt>.</li>
+</ol>
+
+<li>
+Tell Lyx about the layout change.</li>
+
+<ol>
+<li>
+In Lyx, Edit-&gt;Reconfigure</li>
+
+<li>
+Exit Lyx and run it again.</li>
+</ol>
+
+<li>
+Notice the changes, and also notice what doesn't change</li>
+
+<ol>
+<li>
+Pull up <tt>z.lyx</tt> in Lyx.</li>
+
+<li>
+Notice that now the word "Author" is larger than the word "Title", and
+that the word "Author" is now left justified instead of centered.</li>
+
+<li>
+Use View-&gt;Postscript to view the document in a viewer. Notice that the
+Postscript article is identical to the one formatted before the change.
+"Author" is NOT bigger than "Title", nor is it left justified.</li>
+</ol>
+</ol>
+
+<h3>
+Discussion</h3>
+File <tt>article.layout</tt> changes the layout of the article under Lyx,
+but not the finished product. You must modify other files to change the
+output.
+<h2>
+Exploring the Role of Layout Filenames</h2>
+This exercise introduces the fact that filenames matter, and methods of
+specifying the mapping between files and layouts initially appears almost
+magical.
+<ol>
+<li>
+Verify once more that environment "Hello World" appears in the Layout-&gt;Document-&gt;Document-&gt;Class
+dropdown list.</li>
+
+<li>
+Rename <tt>article.layout</tt> to <tt>aarticle.layout.</tt></li>
+
+<li>
+In Lyx, Edit-&gt;Reconfigure</li>
+
+<li>
+Exit Lyx and run it again.</li>
+
+<li>
+Pull up <tt>z.lyx</tt> in Lyx</li>
+
+<li>
+Notice an error message saying "unknown textclass article".</li>
+
+<li>
+Notice that environment "Hello World" is now missing in the Layout-&gt;Document-&gt;Document-&gt;Class
+dropdown list.</li>
+
+<li>
+Verify the following:</li>
+
+<ul>
+<li>
+Changing <tt>\textclass article</tt>&nbsp; to <tt>\textclass aarticle</tt>
+does not restore environment "Hello World".</li>
+
+<li>
+<tt>grep -r "article\.layout$" /usr/share/lyx</tt> reveals no config files
+mapping to filename article.layout.</li>
+
+<li>
+Likewise, <tt>grep -r "article\.layout$" ~/.lyx</tt> reveals no config
+files mapping to filename article.layout.</li>
+
+<li>
+Removing the "\.layout" from the preceding commands also reveals no information
+on why filename <tt>article.layout</tt> is so special.</li>
+</ul>
+</ol>
+
+<h3>
+Discussion</h3>
+Obviously, something declares the filename <tt>article.layout</tt> to be
+special, but at this point it's difficult to find. How do you get Lyx to
+recognize a layout file of arbitrary filename? Read on...
+<h2>
+Recognizing a Layout with Arbitrary Filename</h2>
+This exercise gets Lyx to recognize <tt>aarticle.layout</tt>, and postulates
+the reason such a procedure was necessary.
+<ol>
+<li>
+Edit <tt>aarticle.layout</tt>.</li>
+
+<li>
+Replace the current #&nbsp; \DeclareLaTeXClass line (should be the second
+line) with the following:</li>
+
+<br><tt>#&nbsp; \DeclareLaTeXClass[article]{Hello World}</tt>
+<li>
+Save aarticle.layout.</li>
+
+<li>
+In Lyx, Edit-&gt;Reconfigure</li>
+
+<li>
+Exit Lyx and run it again.</li>
+
+<li>
+Pull up <tt>z.lyx</tt> in Lyx</li>
+
+<li>
+Notice that the error message has disappeared.</li>
+
+<li>
+Notice that environment "Hello World" has returned to the Layout-&gt;Document-&gt;Document-&gt;Class
+dropdown list.</li>
+</ol>
+
+<h3>
+Discussion</h3>
+You just proved that Lyx DOES INDEED read every <tt>.layout</tt> file in
+the lyx/layout directory, and that there's nothing magical about the filename.
+This exercise makes that obvious because you renamed the file to an arbitrary
+filename (<tt>aarticle.layout</tt> is definitely arbitrary -- a filename
+that's mentioned nowhere except this tutorial.
+<p>The key distinction is that the <tt>.layout</tt> file must name an existing
+document class in order to be included in the Layout-&gt;Document-&gt;Document-&gt;Class
+dropdown list. So once we referenced existing document class article (inside
+the brackets), we get what we want. Almost.
+</p><p>There are still 2 problems:
+</p><ul>
+<li>
+We must have root access and are making the new layout system wide instead
+of per user.</li>
+
+<li>
+We are still not modifying the finished product (Postscript or dvi or whatever)
+to our desire.</li>
+</ul>
+The next exercise fixes the first problem...
+<br>&nbsp;
+<br>&nbsp;
+<center><table nosave="" bgcolor="#ffcccc" border="1" width="80%">
+<tbody><tr nosave="">
+<td nosave=""><b><font size="+2">Now copy <tt>article.layout.org</tt> back to
+<tt>article.layout</tt>
+with the following command:</font></b>
+<br><b><tt><font size="+2">cp -p article.layout.org article.layout</font></tt></b>
+<br><b><font size="+2">Also, delete <tt>aarticle.layout</tt>.</font></b></td>
+</tr>
+</tbody></table></center>
+
+<h2>
+Modifying a Layout File the Right Way</h2>
+The preceding exercises were done because they are easy to describe and
+perform. However, they were useless because they cannibalized the Article
+layout instead of using it as the basis of a more specialized layout. Also,
+this method does not require being logged in as root.
+<p>A couple facts for those of you trying to transpose this to a Windows-based
+system:
+<br><tt>~/.lyx</tt> means the <tt>.lyx</tt> directory (yes, it starts with
+a dot) off your home directory. The tilde is UNIX shorthand for "home".
+</p><ol>
+<li>
+Set the system back to original state</li>
+
+<ol>
+<li>
+If you haven't yet, restore the original <tt>article.layout</tt> as described
+preceding this exercise.</li>
+
+<li>
+rm <tt>aarticle.layout</tt></li>
+
+<li>
+In Lyx, Edit-&gt;Reconfigure</li>
+
+<li>
+Exit Lyx and run it again.</li>
+
+<li>
+Pull up <tt>z.lyx</tt> in Lyx</li>
+
+<li>
+Notice that there are no error messages</li>
+
+<li>
+Notice that the "Author" line is centered and smaller than the "Title"
+line.</li>
+
+<li>
+Notice that environment "Hello World" is gone, but has been replaced by
+environment "Article" in the Layout-&gt;Document-&gt;Document-&gt;Class dropdown
+list.</li>
+
+<li>
+Understand that you have restored the system back to its original state.</li>
+</ol>
+
+<li>
+Make a user-specific layout file</li>
+
+<ol>
+<li>
+Log out and log back in as your normal username. For safety and security,
+real work should not be done as a priveleged user.</li>
+
+<li>
+<tt>cp /usr/share/lyx/layouts/article.layout ~/.lyx/layouts/aarticle.layout</tt></li>
+
+<li>
+Edit file ~/.lyx/layouts/aarticle.layout</li>
+
+<li>
+Replace the current #&nbsp; \DeclareLaTeXClass line (should be the second
+line) with the following:</li>
+
+<br><tt>#&nbsp; \DeclareLaTeXClass[article]{Hello World}</tt>
+<li>
+Add the following lines to the bottom of <tt>aarticle.layout</tt>:</li>
+
+<br><tt>Style Author</tt>
+<br><tt>&nbsp; Align&nbsp;&nbsp; Left</tt>
+<br><tt>&nbsp; AlignPossible&nbsp; Left</tt>
+<p><tt>&nbsp; Font</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; Size&nbsp; Giant</tt>
+<br><tt>&nbsp; EndFont</tt>
+</p><li>
+Understand that what you just did is modify the existing Article environment,
+changing the alignment to left and the font size to <i>Giant</i>.</li>
+
+<li>
+Save the file.</li>
+
+<li>
+In Lyx, Edit-&gt;Reconfigure</li>
+
+<li>
+Exit Lyx and run it again.</li>
+
+<li>
+Pull up <tt>z.lyx</tt> in Lyx</li>
+
+<li>
+Notice that the Layout-&gt;Document-&gt;Document-&gt;Class dropdown list contains
+both document classes <i>article</i> and <i>Hello World</i>. Note that
+toggling between the two document classes toggles the size and alignment
+of the "Author line.</li>
+</ol>
+</ol>
+
+<h3>
+Discussion</h3>
+You have extended the concept of configuring an arbitrarily named file
+to link to an existing document class (Article in this case) to work with
+your own personal Lyx directory. Without disturbing the existing Article
+document class or layout, you've created your own document class, called
+<i>Hello
+World</i>, that implements a changed <i>Author</i> environment. Unfortunately,
+the modifications to the <i>Author</i> environment do not show up in the
+finished product (a Postscript, DVI or PDF file). Making the changes show
+up in the finished product requires some additional exercises.
+<h2>
+Directly Inserting Code into the Document's Preamble</h2>
+This exercise gives you a trivially simple example of changing the finished
+document's appearance using the Document Preamble.
+<ol>
+<li>
+View the original</li>
+
+<ol>
+<li>
+View-&gt;Postscript</li>
+
+<li>
+Notice the layout</li>
+</ol>
+
+<li>
+Change and view again</li>
+
+<li>
+Layout-&gt;Latex Preamble...</li>
+
+<ol>
+<li>
+In the input box that appears, type these two commands:</li>
+
+<br><tt>\setlength{\hoffset}{2 in}</tt>
+<br><tt>\setlength{\voffset}{2 in}</tt>
+<li>
+Click the OK button.</li>
+
+<li>
+Save the file (File-&gt;Save)</li>
+
+<li>
+View-&gt;Postscript</li>
+
+<li>
+Notice that the output is now approximately 2 inches down and to the right.</li>
+</ol>
+</ol>
+
+<h3>
+Discussion</h3>
+This exercise illustrates the simplist possible way to insert code in the
+document preamble in order to change the output. If you remember up until
+this time everything we did changed the layout in Lyx, but not the final
+Postscript output. In subsequent exercises you will expand on placing code
+in the preamble in order to get the final output you want.
+<br>&nbsp;
+<h1>
+<a name="for_real_tut"></a>For Real Tutorial -- Adding an Environment</h1>
+Rename <tt>aarticle.layout</tt> to <tt>aarticle.layout.newbie</tt> so the
+layout you declared there doesn't conflict with this exercise.
+<p>Create the following file, called barticle.layout, in your <tt>lyx/layouts</tt>
+directory:
+<br>&nbsp;
+<table nosave="" bgcolor="#ccffff" border="1">
+<tbody><tr>
+<td>
+<pre>#% Do not delete the line below; configure depends on this
+#&nbsp; \DeclareLaTeXClass[article]{article (Whopper Enabled)}
+# Article textclass definition file. Taken from initial LyX source code
+# Author : Matthias Ettrich &lt;ettrich@informatik.uni-tuebingen.de&gt;
+# Transposed by Pascal André &lt;andre@via.ecp.fr&gt;
+# Heavily modifed and enhanced by serveral developers.
+
+# Input general definitions
+Input stdclass.inc
+
+# There are no chapters in an article.
+NoStyle Chapter
+NoStyle Chapter*
+
+MaxCounter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Counter_Section
+SecNumDepth&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3
+TocDepth&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3
+
+Preamble
+\newenvironment{whopr}{\begin {Huge}}{\end{Huge}\linebreak}
+EndPreamble
+
+Style Whopper
+&nbsp; LatexType&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Environment
+&nbsp; LatexName&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; whopr
+&nbsp; Align&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Left
+&nbsp; AlignPossible&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Left
+
+&nbsp; Font
+&nbsp;&nbsp;&nbsp; Size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Giant
+&nbsp; EndFont
+End</pre>
+</td>
+</tr>
+</tbody></table>
+
+</p><p>Next reconfigure Lyx with Edit-&gt;Reconfigure. This reads in your new<tt>
+barticle.layout</tt>., which implements a style called "article (Whopper
+Enabled)".
+</p><p>Create a new file called <tt>y.lyx</tt>, giving it a title, author and
+a couple sections.
+</p><p>Layout-&gt;Document-&gt;Document-&gt;Class dropdown list, and select article
+(Whopper Enabled).
+</p><p>Type a couple lines in the standard environment, then press Enter to
+start a new line, and select Whopper from the environment list, and type
+a couple lines. You'll notice that the font is very large.
+</p><p>Hit Enter, note that you're still in Whopper environment, and type some
+more.
+</p><p>Save the file, then View-&gt;Postscript, and note that the lines formatted
+as Whopper are large in the output also.
+</p><h2>
+Discussion</h2>
+This is the Real McCoy. The extra large font is seen in both Lyx and in
+the output (Postscript). This is because the Lyx style, which starts with
+keyword Style, points to the LaTeX code in the Preamble/EndPreamble section,
+by virtue of the fact that the style's Latexname value is the same as the
+LaTeX code's name.
+<h3>
+Explanation of Strategic Lines</h3>
+
+<h4>
+#&nbsp; \DeclareLaTeXClass[article]{article (Whopper Enabled)}</h4>
+This declaration on the second line declares a new class called "article
+(Whopper Enabled)" to be a class inheriting properties from already defined
+class "article". The parentheses in the name are just text -- they have
+no specific syntax function. This is the second line of the .layout file.
+You'll notice every .layout file has something similar as its second line.
+<h4>
+Input stdclass.inc</h4>
+This includes an include file called stdclass.inc, which contains definitions
+required by any document class. It must appear near the top.
+<h4>
+Preamble</h4>
+This line declares that everything between it and the EndPreamble line
+go in the document's preamble. The preamble is the text above the authored
+material.
+<h4>
+\newenvironment{whopr}{\begin {Huge}}{\end{Huge}\linebreak}</h4>
+This is a LaTeX statement, not a Lyx function or keyword. This statement
+is passed right through to Latex2e, the LaTeX interpreter.
+<p>This command creates a new LaTeX (not LyX) environment. It therefore
+is reflected in the appearance of the Postscript or DVI output, not in
+the Lyx program.
+</p><p>The general form for this type of command is:
+</p><pre>\newenvironment{name}[num]{before}{after}</pre>
+<tt>{name}</tt> is the name of the environment. <tt>[num]</tt> is optional
+(all LaTeX encased in square brackets is optional). {begin} contains all
+text and commands to be executed before printing the content typed into
+the environment. {after} contains all text and commands to be executed
+after the content typed into the environment. In this case before the content
+the font is changed to Huge. After the content the Huge font is removed,
+reverting text back to its original condition. And then a linebreak is
+inserted, because we want the Whopper environment to resemble a heading
+style.
+<h4>
+Style Whopper</h4>
+This declares a LyX style governing the appearance in LyX. All the text
+between this statement and its corresponding End statement (the last line
+of the file in this case) pertain to this style.
+<h4>
+LatexType&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Environment</h4>
+The Environment value of LatexType tells Lyx that the style has blocks
+of commands and text at both the beginning and the end. Other valid values
+are <tt>Paragraph, Command, Environment, Item_Environment, and List_Environment</tt>.
+List and Item Environments are similar to <tt>Environment</tt>, except
+they're part of enumerations. <tt>Command</tt> issues commands only in
+the beginning, not begin and end like <tt>Environment</tt>. <tt>Paragraph</tt>
+issues no commands at all.
+<h4>
+LatexName&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; whopr</h4>
+This is it folks. This is the link between the LyX appearance and the LaTeX
+appearance, by linking the LyX style with the LaTeX commands in the Preamble.
+<h4>
+Font</h4>
+Between this line and its corresponding EndFont line go all the attributes
+of the font.
+<h4>
+Size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Giant</h4>
+This says the Size attribute of the font is Giant, which is the largest
+possible in the LyX font size naming system.
+<br>&nbsp;
+<h3>
+Font Sizes</h3>
+Speaking of fonts, Lyx and LaTeX have different names for various font
+sizes. Use the LaTex font sizes in LaTeX commands destined to change the
+font size in the finished product, and the LyX size designations in LyX
+style statements.
+<br>&nbsp;
+<table nosave="" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td><i>LaTeX Font Sizes</i></td>
+
+<td>&nbsp;</td>
+
+<td><i>LyX Font Sizes</i></td>
+</tr>
+
+<tr nosave="">
+<td>\tiny</td>
+
+<td nosave=""></td>
+
+<td>Tiny</td>
+</tr>
+
+<tr>
+<td>\scriptsize</td>
+
+<td></td>
+
+<td>Smallest</td>
+</tr>
+
+<tr>
+<td>\footnotesize</td>
+
+<td></td>
+
+<td>Smaller</td>
+</tr>
+
+<tr>
+<td>\small</td>
+
+<td></td>
+
+<td>Small</td>
+</tr>
+
+<tr>
+<td>\normalsize</td>
+
+<td></td>
+
+<td>Normal</td>
+</tr>
+
+<tr>
+<td>\large</td>
+
+<td></td>
+
+<td>Large</td>
+</tr>
+
+<tr>
+<td>\Large</td>
+
+<td></td>
+
+<td>Larger</td>
+</tr>
+
+<tr>
+<td>\LARGE</td>
+
+<td></td>
+
+<td>Largest</td>
+</tr>
+
+<tr>
+<td>\huge</td>
+
+<td></td>
+
+<td>Huge</td>
+</tr>
+
+<tr>
+<td>\Huge</td>
+
+<td></td>
+
+<td>Giant</td>
+</tr>
+</tbody></table>
+
+<h3>
+\newcommnd, \newenvironment, et al</h3>
+You just used \newcommand to implement a font size in the finished product,
+but there are actually several similar LaTeX commands.
+<h4>
+\newenvironment</h4>
+The syntax here is:
+<pre>\newenvironment{name}[num]{before}{after}</pre>
+Where <tt>{name}</tt> is the name of the new environment, <tt>[num]</tt>
+is optional and beyond the scope of this discussion, <tt>{before}</tt>
+is text and commands run before the content, and <tt>{after}</tt> is the
+text and commands run after the content. Typically the <tt>{after}</tt>
+"undoes"&nbsp; the effect of the <tt>{before}</tt>.
+<p><tt>\newenvironment</tt> must be used ONLY when the environment didn't
+yet exist. To modify an existing environment use <tt>\renewenvironment</tt>.
+</p><h4>
+\renewenvironment</h4>
+Syntax and functionality is the same as \newenvironment, except it modifies
+an already existing environment.
+<pre>\newenvironment{name}[num]{before}{after}</pre>
+
+<h4>
+\newcommand</h4>
+\newcommand{name}[num]{definition}
+<br>&nbsp;
+<h1>
+<a name="programs"></a>Programs to help with Lyx</h1>
+
+<h2>
+makelyxbook.cpp</h2>
+This software allows you to make dummy Lyx books for the purposes of format
+and performance testing. You can modify the nature of the book (how many
+Subsections per Section, and how much standard text gets printed in that
+subsection), by modifying the source code. At the top of the file (just
+after the top of file comments) are the following constants you can modify:
+<pre>#define PARTSPERBOOK 2
+#define CHAPTERSPERPART 4
+#define SECTIONSPERCHAPTER 4
+#define SUBSECTIONSPERSECTION 2
+#define SUBSUBSECTIONSPERSUBSECTION 1
+#define PARAGRAPHSPERSUBSUBSECTION 2
+#define SUBPARAGRAPHSPERPARAGRAPH 2</pre>
+Because of a bug in the program you can't set any of them to zero, but
+you can keep them from printing.
+<p>At the bottom of the program are the print() methods for each of the
+Environment objects (Subparagraph, Paragraph, Subsubsection, Subsection,
+Section, Chapter, Part, Book). To keep one from printing, simply give it
+an empty print method (or comment out the existing print method code. Code
+in the print method must print the appropriate header, print the text under
+the header, and update the Stats object with what has been printed. It's
+fairly obvious.
+</p><p>Here's how you use the program:
+</p><blockquote>
+<li>
+Create a new Lyx document</li>
+
+<blockquote>
+<li>
+File/New</li>
+
+<li>
+Layout/Document/Document</li>
+
+<li>
+In the Class dropdown, select either Book, Book (AMS), or Book (Koma-Script)</li>
+
+<li>
+Click the OK button to return to the Lyx document</li>
+
+<li>
+Type in the word "placeholder".</li>
+
+<li>
+File/Save as, and save as x.lyx.</li>
+</blockquote>
+
+<li>
+Modify makelyxbook.cpp:</li>
+
+<blockquote>
+<li>
+Modify the per-parent constants</li>
+
+<li>
+Modify the various class's print() methods</li>
+
+<li>
+Compile the program to <tt>a.out</tt></li>
+</blockquote>
+
+<li>
+Create the document</li>
+
+<ul>
+<li>
+<tt>./a.out &gt; temp.tmp</tt></li>
+
+<li>
+<tt>vim temp.tmp x.lyx</tt></li>
+
+<li>
+Yank entirety of <tt>temp.tmp</tt></li>
+
+<li>
+Switch to <tt>x.lyx</tt></li>
+
+<li>
+Paste just before the line saying <tt>\the_end</tt></li>
+
+<li>
+Save <tt>x.lyx</tt> and quit vim</li>
+
+<li>
+Pull up <tt>x.lyx</tt> in lyx</li>
+</ul>
+</blockquote>
+
+<table nosave="" bgcolor="#ccffff" border="1">
+<tbody><tr>
+<td>
+<pre>// #######################################################################
+// makelyxbook.cpp: Lyx test book creator, version 0.2.0
+//&nbsp;&nbsp; Copyright (C) 2001 by Steve Litt (Steve Litt's email address)
+//
+//&nbsp;&nbsp; This program is free software; you can redistribute it and/or modify
+//&nbsp;&nbsp; it under the terms of the GNU General Public License as published by
+//&nbsp;&nbsp; the Free Software Foundation version 2 of the License.
+//
+//&nbsp;&nbsp; This program is distributed in the hope that it will be useful,
+//&nbsp;&nbsp; but WITHOUT ANY WARRANTY; without even the implied warranty of
+//&nbsp;&nbsp; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.&nbsp; See the
+//&nbsp;&nbsp; GNU General Public License for more details.
+//
+//&nbsp;&nbsp; You should have received a copy of the GNU General Public License
+//&nbsp;&nbsp; along with this program; if not, write to the Free Software
+//&nbsp;&nbsp; Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+//
+// Steve Litt, Steve Litt's email address, http://www.troubleshooters.com
+// #######################################################################
+// #######################################################################
+// #######################################################################
+// #######################################################################
+// HISTORY
+// V0.1.0
+//&nbsp;&nbsp;&nbsp; Creates test book in lyx format
+//
+//&nbsp;&nbsp;&nbsp; BUGS:
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The contstants controlling child environment objects must be
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; one or greater, even if you do not wish any child objects.
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Placing a value of 0 for any of these will cause in infinite
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; loop.
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; To implement zero child environments in the book, simply
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; empty the corresponding class's print() method.&nbsp; #
+//
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Version 0.1.0 was a lame OOP implementation.
+//Steve Litt, 8/16/2001
+//End of version 0.1.0
+// V0.2.0
+//&nbsp;&nbsp;&nbsp; Replaced OOP with simple loops. Fixed but where you couldn't
+//&nbsp;&nbsp;&nbsp; have PER vars with a zero value. Shortened the code.
+//
+//&nbsp;&nbsp;&nbsp; User modifications happen in the PER constants at the top,
+//&nbsp;&nbsp;&nbsp; and the print routines at the bottom.
+//
+//&nbsp;&nbsp;&nbsp; BUGS:
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The contstants controlling child environment objects must be
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; one or greater, even if you do not wish any child objects.
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Placing a value of 0 for any of these will cause in infinite
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; loop.
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; To implement zero child environments in the book, simply
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; empty the corresponding class's print() method.&nbsp; #
+//
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Version 0.1.0 was a lame OOP implementation.
+//Steve Litt, 8/17/2001
+//End of version 0.2.0
+//END OF HISTORY
+//
+//SOURCE CODE CONFIGURATION:
+//&nbsp;&nbsp;&nbsp; The test book output is controlled by source code changes to
+//&nbsp;&nbsp;&nbsp; two sections of this program. First are the child per parent
+//&nbsp;&nbsp;&nbsp; constants (PARTSPERBOOK, CHAPTERSPERPART,
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SECTIONSPERCHAPTER, SUBSECTIONSPERSECTION,
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SUBSUBSECTIONSPERSUBSECTION,
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PARAGRAPHSPERSUBSUBSECTION,and
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SUBPARAGRAPHSPERPARAGRAPH). These constants
+//&nbsp;&nbsp;&nbsp; are located at the top of the source file. These constants
+//&nbsp;&nbsp;&nbsp; control how many children each environment object has. For
+//&nbsp;&nbsp;&nbsp; instance, a CHAPTERSPERPART of 3 would mean each part
+//&nbsp;&nbsp;&nbsp; contains three chapters. These constants are at the top
+//&nbsp;&nbsp;&nbsp; of the program, just below these comments.
+//&nbsp;&nbsp;&nbsp;&nbsp;
+//&nbsp;&nbsp;&nbsp; Secondly, each environment has a print routine that
+//&nbsp;&nbsp;&nbsp; controls how it prints and how it reports that printing to
+//&nbsp;&nbsp;&nbsp; the Stats object. Here is where you control how much
+//&nbsp;&nbsp;&nbsp; standard text is printed for each environment object.&nbsp;
+//&nbsp;&nbsp;&nbsp; Those print routines are at the bottom of the program.
+//&nbsp;&nbsp;&nbsp;&nbsp;
+// #######################################################################
+#include &lt;iostream.h&gt;
+
+//**********************************************************
+//**********************************************************
+// Modify the following constants to achieve the best structure
+// and size for your Lyx test document
+//**********************************************************
+//**********************************************************
+#define PARTSPERBOOK 2
+#define CHAPTERSPERPART 4
+#define SECTIONSPERCHAPTER 4
+#define SUBSECTIONSPERSECTION 2
+#define SUBSUBSECTIONSPERSUBSECTION 1
+#define PARAGRAPHSPERSUBSUBSECTION 0
+#define SUBPARAGRAPHSPERPARAGRAPH 0
+//**********************************************************
+//**********************************************************
+// End of modifiable constants
+//**********************************************************
+//**********************************************************
+
+
+void printBook(int n);
+void printPart(int n);
+void printChapter(int n);
+void printSection(int n);
+void printSubsection(int n);
+void printSubsubsection(int n);
+void printParagraph(int n);
+void printSubparagraph(int n);
+
+
+//*******************************************************
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Stats class
+//*******************************************************
+class Stats
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; long Words;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; long Lines;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; long Subparagraphs;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; long Paragraphs;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; long Subsubsections;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; long Subsections;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; long Sections;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; long Chapters;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; long Parts;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public:
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; long getWords(){return Words;};
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; long getLines(){return Lines;};
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; long getSubparagraphs(){return&nbsp; Subparagraphs;};
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; long getParagraphs(){return&nbsp; Paragraphs;};
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; long getSubsubsections(){return&nbsp; Subsubsections;};
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; long getSubsections(){return&nbsp; Subsections;};
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; long getSections(){return&nbsp; Sections;};
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; long getChapters(){return&nbsp; Chapters;};
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; long getParts(){return&nbsp; Parts;};
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; void incWords(long a){Words += a;};
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; void incLines(long a){Lines += a;};
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; void incSubparagraphs(long a){Subparagraphs += a;};
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; void incParagraphs(long a){ Paragraphs+=a;};
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; void incSubsubsections(long a){ Subsubsections+=a;};
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; void incSubsections(long a){ Subsections+=a;};
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; void incSections(long a){ Sections+=a;};
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; void incChapters(long a){ Chapters+=a;};
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; void incParts(long a){ Parts+=a;};
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; void setWords(long a){Words = a;};
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; void setLines(long a){Lines = a;};
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; long setSubparagraphs(long a){ Subparagraphs=a;};
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; long setParagraphs(long a){ Paragraphs=a;};
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; long setSubsubsections(long a){ Subsubsections=a;};
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; long setSubsections(long a){ Subsections=a;};
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; long setSections(long a){ Sections=a;};
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; long setChapters(long a){ Chapters=a;};
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; long setParts(long a){ Parts=a;};
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; void show();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; };
+
+void Stats::show()
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; endl &lt;&lt; endl;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; "Words = " &lt;&lt; getWords() &lt;&lt; "," &lt;&lt; endl;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; "Lines = " &lt;&lt; getLines() &lt;&lt; "," &lt;&lt; endl;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; "Subparagraphs = " &lt;&lt; getSubparagraphs() &lt;&lt; "," &lt;&lt; endl;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; "Paragraphs = " &lt;&lt; getParagraphs() &lt;&lt; "," &lt;&lt; endl;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; "Subsubsections = " &lt;&lt; getSubsubsections() &lt;&lt; "," &lt;&lt; endl;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; "Subsections = " &lt;&lt; getSubsections() &lt;&lt; "," &lt;&lt; endl;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; "Sections = " &lt;&lt; getSections() &lt;&lt; "," &lt;&lt; endl;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; "Chapters = " &lt;&lt; getChapters() &lt;&lt; "," &lt;&lt; endl;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; "Parts = " &lt;&lt; getParts() &lt;&lt; endl &lt;&lt; "." &lt;&lt; endl;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+
+Stats stats;
+
+long printLine(long a)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; "\\layout Standard" &lt;&lt; endl &lt;&lt; endl;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for(int n=0;n&lt;a;n++)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; "abcde ";
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if((n+1)%12 == 0) cout &lt;&lt; endl;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; endl;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return(a);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+
+//*******************************************************
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; End of Stats class
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Note declaration of stats var above.
+//*******************************************************
+
+
+void do1Subparagraph(int n)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printSubparagraph(n);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+
+
+void do1Paragraph(int n)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printParagraph(n);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for(int n=0; n &lt; SUBPARAGRAPHSPERPARAGRAPH; n++)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; do1Subparagraph(n+1);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+
+
+void do1Subsubsection(int n)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printSubsubsection(n);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for(int n=0; n &lt; PARAGRAPHSPERSUBSUBSECTION; n++)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; do1Paragraph(n+1);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+
+
+void do1Subsection(int n)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printSubsection(n);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for(int n=0; n &lt; SUBSUBSECTIONSPERSUBSECTION; n++)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; do1Subsubsection(n+1);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+
+
+void do1Section(int n)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printSection(n);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for(int n=0; n &lt; SUBSECTIONSPERSECTION; n++)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; do1Subsection(n+1);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+
+
+void do1Chapter(int n)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printChapter(n);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for(int n=0; n &lt; SECTIONSPERCHAPTER; n++)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; do1Section(n+1);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+
+
+void do1Part(int n)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printPart(n);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for(int n=0; n &lt; CHAPTERSPERPART; n++)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; do1Chapter(n+1);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+
+void do1Book(int n)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printBook(n);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for(int n=0; n &lt; PARTSPERBOOK; n++)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; do1Part(n+1);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+
+main(void)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; do1Book(1);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; endl;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+
+//**********************************************************
+//**********************************************************
+// This section contains the print routines for each environment
+// type. By modifying these you can customize your test document.
+//
+// Note that if you don't want lower level environments like
+// paragraphs or subparagraphs you can simply create them with
+// empty print routines.
+//
+// Be sure to always change your ::stats.inc calls to accurately
+// reflect the totals for words and heading types.
+//**********************************************************
+//**********************************************************
+void printBook(int n)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; "\\layout Title" &lt;&lt; endl &lt;&lt; endl;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; "Automatically Produced Test Lyx Book" &lt;&lt; endl;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incWords(5);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; };
+
+void printPart(int n)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; "\\layout Part" &lt;&lt; endl &lt;&lt; endl;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incParts(1);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incWords(6);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; "This is a Part: ";
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; ::stats.getParts() &lt;&lt; " : ";
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; n &lt;&lt; endl;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incWords(printLine(20));
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incLines(1);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incWords(printLine(20));
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incLines(1);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; };
+
+void printChapter(int n)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; "\\layout Chapter" &lt;&lt; endl &lt;&lt; endl;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incChapters(1);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incWords(6);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; "This is a Chapter: ";
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; ::stats.getChapters() &lt;&lt; " : ";
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; n &lt;&lt; endl;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incWords(printLine(20));
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incLines(1);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incWords(printLine(20));
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incLines(1);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; };
+
+void printSection(int n)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; "\\layout Section" &lt;&lt; endl &lt;&lt; endl;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incSections(1);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incWords(6);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; "This is a Section: ";
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; ::stats.getSections() &lt;&lt; " : ";
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; n &lt;&lt; endl;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incWords(printLine(20));
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incLines(1);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incWords(printLine(20));
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incLines(1);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; };
+
+void printSubsection(int n)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; "\\layout Subsection" &lt;&lt; endl &lt;&lt; endl;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incSubsections(1);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incWords(6);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; "This is a Subsection: ";
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; ::stats.getSubsections() &lt;&lt; " : ";
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; n &lt;&lt; endl;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incWords(printLine(200));
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incLines(1);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incWords(printLine(200));
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incLines(1);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incWords(printLine(200));
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incLines(1);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incWords(printLine(200));
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incLines(1);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incWords(printLine(200));
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incLines(1);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incWords(printLine(320));
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incLines(1);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; };
+
+void printSubsubsection(int n)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; "\\layout Subsubsection" &lt;&lt; endl &lt;&lt; endl;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incSubsubsections(1);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incWords(6);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; "This is a Subsubsection: ";
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; ::stats.getSubsubsections() &lt;&lt; " : ";
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; n &lt;&lt; endl;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incWords(printLine(100));
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incLines(1);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incWords(printLine(100));
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incLines(1);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incWords(printLine(100));
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incLines(1);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; };
+
+void printParagraph(int n)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; "\\layout Paragraph" &lt;&lt; endl &lt;&lt; endl;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incParagraphs(1);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incWords(6);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; "This is a Paragraph: ";
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; ::stats.getParagraphs() &lt;&lt; " : ";
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; n &lt;&lt; endl;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incWords(printLine(120));
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incLines(1);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incWords(printLine(120));
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incLines(1);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; };
+
+void printSubparagraph(int n)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; "\\layout Subparagraph" &lt;&lt; endl &lt;&lt; endl;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incSubparagraphs(1);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incWords(6);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; "This is a Subparagraph: ";
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; ::stats.getSubparagraphs() &lt;&lt; " : ";
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; n &lt;&lt; endl;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incWords(printLine(20));
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incLines(1);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incWords(printLine(20));
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::stats.incLines(1);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; };
+
+
+//**********************************************************
+//**********************************************************
+// End of print routines
+//**********************************************************
+//**********************************************************</pre>
+</td>
+</tr>
+</tbody></table>
+
+<h2>
+otl2lyx.vim</h2>
+The following Vim script converts an outline with tab defined indentation
+into Lyx code suitable for the structure of a book:
+<br>&nbsp;
+<table nosave="" bgcolor="#ccffff" border="1">
+<tbody><tr nosave="">
+<td nosave="">
+<pre>:%s/^/lyxxyl/
+:%s/^lyxxyl^I^I^I^I^I^I/\\layout Subparagraph\r\r/
+:%s/^lyxxyl^I^I^I^I^I/\\layout Paragraph\r\r/
+:%s/^lyxxyl^I^I^I^I/\\layout Subsubsection\r\r/
+:%s/^lyxxyl^I^I^I/\\layout Subsection\r\r/
+:%s/^lyxxyl^I^I/\\layout Section\r\r/
+:%s/^lyxxyl^I/\\layout Chapter\r\r/
+:%s/^lyxxyl/\\layout Part\r\r/</pre>
+</td>
+</tr>
+</tbody></table>
+
+<h3>
+Note the following:</h3>
+
+<ul>
+<li>
+Replace each ^I with a tab character.</li>
+
+<li>
+Because of the \r substitutions, this works only in UNIX like environments.</li>
+
+<li>
+Because of the use of \r\r the preceding works only on Linux/Unix/BSD boxes.
+It won't work in a Windows environment.</li>
+
+<li>
+The preceding is for Book or Koma-script Book or AMS Book document class.</li>
+
+<li>
+You must append it onto a empty lyx file created with the Book or Koma
+book document class. Use Vim or other quality text editor to do the appending.</li>
+
+<li>
+WARNING! Do not use otl2lyx.vim directly, as it could mess up your outline.
+Instead call it from a script that first copies your outline to a temporary
+file so the vim script can work on the temporary file.</li>
+
+<li>
+Note that lyxxyl is simply a place holder -- it could be any string unlikely
+to occur in the original outline.</li>
+
+<li>
+If you're looking for an outline processor to do tab indented outlines,
+and you know VI, you can use VimOutliner at http://www.troubleshooters.com/projects/vimoutliner/index.htm.</li>
+</ul>
+
+<h3>
+Using otl2lyx.vim to Fill a Lyx Book With Your Outline Structure</h3>
+
+<ul>
+<li>
+Create a new Lyx document</li>
+
+<ul>
+<li>
+File/New</li>
+
+<li>
+Layout/Document/Document</li>
+
+<li>
+In the Class dropdown, select either Book, Book (AMS), or Book (Koma-Script)</li>
+
+<li>
+Click the OK button to return to the Lyx document</li>
+
+<li>
+Type in the word "placeholder".</li>
+
+<li>
+File/Save as, and save as x.lyx.</li>
+</ul>
+
+<li>
+Run otl2lyx.vim</li>
+
+<ul>
+<li>
+Make a temporary copy of the outline to be converted to Lyx. To preserve
+the integrity of your original outline, you'll process only the temporary
+copy.</li>
+
+<li>
+Edit the temporary copy in the Vim editor on a UNIX, BSD, Linux, or any
+other UNIX workalike. Because of the \r line insertions, this won't work
+on Windows.</li>
+
+<li>
+From within Vim, run otl2lyx.vim with the following command:</li>
+
+<br><tt>: source otl2lyx.vim</tt>
+<li>
+Note that your file now looks like Lyx code.</li>
+
+<li>
+Save with the <tt>:w</tt> command.</li>
+</ul>
+
+<li>
+Insert the Lyx-ized outline into your new Lyx document</li>
+
+<ul>
+<li>
+From the top of the file, type <tt>yG</tt> to yank (copy) the entire file
+into the main register</li>
+
+<li>
+Edit the Lyx doc you created earlier with the following command:</li>
+
+<br><tt>: e x.lyx</tt>
+<li>
+Place your cursor on the word "placeholder" you typed earlier. It will
+be near the bottom of <tt>x.lyx</tt>.</li>
+
+<li>
+Copy the lyx-ized version of your outline by pressing <tt>P</tt> (upper
+case P).</li>
+
+<li>
+Go to the bottom of the file again and find the line that says "placeholder".</li>
+
+<li>
+Delete the line that says "placeholder".</li>
+
+<li>
+File/save</li>
+
+<li>
+<tt>x.lyx</tt> now contains the exact structure of your original outline.</li>
+</ul>
+</ul>
+
+<h1>
+<a name="_StrongarmingDate"></a>Strongarming the date in a LyX document</h1>
+Many LyX documents "help" you by automatically inserting a date in the
+document, and if you don't say otherwise, it will be the date it's printed
+or converted to postscript or PDF. Obviously this isn't what you want.
+<p>To fix the date at the date the doc was written, do one of these two
+things:
+</p><ol>
+<li>
+Hardcode the desired date in the Date environment.</li>
+
+<li>
+Hardcode \date{1/30/2002} as ERT (TeX) at the top of the document</li>
+</ol>
+Note that because the Letter document class has no date environment, only
+#2 will work in letters.
+<h1>
+<a name="IncorporatingLayoutFiles"></a>Incorporating Layout Files</h1>
+LyX finds its layout files in two places:
+<ol>
+<li>
+In <tt>~/.lyx/layouts/</tt>.</li>
+
+<li>
+In the <tt>/usr/local/texmf/tex/latex/</tt> tree</li>
+</ol>
+But maybe you really want your layout (<tt>mybook.layout</tt>) in the directory
+containing <tt>mybook.lyx</tt> (<tt>/data/books/mybook</tt>). That way
+the layout file is always backed up with the book, and isn't trashed when
+you reinstall the operating sytsem. To accomplish that, you simply create
+a symbolic link:
+<br>&nbsp;
+<pre>ln -s /d/at/books/utp/utpbook.layout /home/slitt/.lyx/layouts/utpbook.layout</pre>
+After doing this, you might need to run the texhash program, and you'll
+probably need to perform Edit-&gt;Reconfigure from the Lyx menu.
+<br>&nbsp;
+<br>&nbsp;
+<p>However, you might want your layout file to accompany your book document's
+file. Remember, your book document is worthless without the layout file
+that produced it, and even if you manage to recreate the layout file, any
+differences will cause big changes in the book.
+</p><p>You can
+<br>.
+</p><center>
+<h2>
+<a href="http://www.troubleshooters.com/troubleshooters.htm">Back to Troubleshooters.Com</a> * <a href="http://www.troubleshooters.com/linux/index.htm">Back
+to Linux Library</a></h2></center>
+
+
+</body></html>

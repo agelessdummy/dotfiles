@@ -1,0 +1,1288 @@
+<html>
+<head>
+<title>Essential LaTeX on Athena</title>
+</head>
+
+<body>
+
+<h1><img src="../graphics/owl.gif"> Essential LaTeX on Athena (AC-50)</h1>
+
+<hr>
+
+<a href="ess-toc.html">Table of Contents</a> ||
+<a href="ess-revision.html">Revision history</a> ||
+<a href="http://web.mit.edu/is/lib/copyright.html">Copyright information</a>
+
+<!-- NEWPAGE -->
+<hr>
+
+<a name="intro"><h1>Introduction</h1></a>
+
+
+<p>LaTeX is a program that formats text for printing.  It makes producing
+attractive, professional-looking documents as easy as making a text file.
+This document introduces you to the principles of LaTeX and teaches you the
+basic commands.
+
+<p>LaTeX is based on TeX, a sophisticated typesetting program. LaTeX adds a
+set of commands to simplify using TeX.
+
+<p>Although LaTeX's syntax may not seem very straightforward, its ability to
+typeset math and foreign characters makes it ideal to use for technical
+papers.  For example, this document was formatted with LaTeX, including all
+the sections and subsections, the margins and math, etc.
+
+<p>To create a document with LaTeX on Athena you need to:
+<UL>
+<LI> create a source file with a text editor
+<LI> process the source file with the <strong>latex</strong> program
+<LI> preview your document
+<LI> revise your source file as necessary
+<LI> print the final formatted version of the document
+</UL>
+
+<p>This document discusses each of these tasks.  After reading this, you
+should be able to use LaTeX to produce a printed copy of a straightforward
+paper with title page, quotations, footnotes, and section headings.
+
+<p>This document assumes that you are familiar with the basic techniques of
+file handling and that you are acquainted with a text editor such as Emacs.
+There is information on Emacs available in on-line help (type
+<strong>help</strong> at the <samp>athena%</samp> prompt).
+
+<p><a
+href="http://www.mit.edu:8001/afs/sipb/project/doc/current/iLaTeX.dvi">Inessential
+LaTeX</a>, published by the Student Information Processing Board (SIPB,
+W20-557, 253-7788), was invaluable in compiling this document.  Most of the
+tables of symbols in this document were copied (with permission) directly from
+SIPB's document.  <strong>LaTeX: A Document Preparation System, User's Guide
+and Reference Manual</strong>, the official LaTeX Manual, was also used
+extensively in preparing this documentation.  For more information about LaTeX
+not covered here, see either of these documents.
+
+
+<a name="produce"><h1>Producing a Simple Document</h1></a>
+
+<p>The first step in producing a LaTeX-formatted document is to create a plain
+text file with a text editor such as Emacs.  This file must be named with a
+file suffix of <samp>.tex</samp> (for example, <samp>myfile.tex</samp>), so that the
+programs you will be using will recognize your file as a LaTeX source file.
+This file will contain:
+
+<UL>
+
+<LI> the text of the your paper
+
+<LI> commands that tell LaTeX how the paper should be formatted (commands
+are usually regular English words preceded by the backslash character,
+``\'', like this: <strong>\begin</strong>)
+
+<LI> certain characters, that have a special meaning in LaTeX, such as #,
+$, %, &, _, {, }, ~, ^, and \
+
+</UL>
+
+<p>Once this file has been created, you format it as described in <a
+href="#process">Processing Your Document</a>.
+
+<a name="begindoc"><h2>Creating a Manuscript File</h2></a>
+
+
+<p>There are two commands which every LaTeX source file must have.
+Unless you're specifying an initial command, the first non-empty line
+in the source file should begin with the command
+
+<PRE>
+  <strong>\documentclass{</strong><em>doc-class</em><strong>}</strong>
+</PRE>
+
+<p>where <em>doc-class</em> is one of the four predefined document styles:
+<strong>article</strong>, <strong>report</strong>, <strong>book</strong>, or
+<strong>letter</strong>.
+
+<p>The text of the document itself must fall between the two commands:
+<PRE>
+  <strong>\begin{document}</strong>
+</PRE>
+and
+<PRE>
+  <strong>\end{document}</strong>
+</PRE>
+
+<p>These commands divide the contents of the file into two parts:
+<PRE>
+  <strong>\documentclass{</strong><em>doc-class</em><strong>}</strong><BR>
+  <em> preamble</em><BR>
+  <strong>\begin{document}</strong><BR>
+  <em> body</em><BR>
+  <strong>\end{document}</strong>
+</PRE>
+
+<UL>
+
+<LI> The part of the source file that comes after the
+<strong>\documentclass</strong> command and before the
+<strong>\begin{document}</strong> command is called the <em>preamble</em>.  It
+should contain any special style declarations for that document.  See <a
+href="#preamble">Preamble Commands: Changing Defaults</a> for more information
+about preamble commands.
+
+<LI> Between the <strong>\begin{document}</strong> and
+<strong>\end{document}</strong> commands is the <em>body</em> of your
+document.
+
+</UL>
+
+<p>Any text that comes after the
+<strong>\end{document}</strong> command is ignored.  You can put comments here
+if you like.  
+
+<p>The bulk of your manuscript file will be the text of your paper or report.
+When entering plain text (not LaTeX commands or special <em>
+environments</em>, which are discussed in <a href="#environ">Environments:
+LaTeX Command Syntax</a>), there are three conventions to keep in mind:
+
+<UL>
+
+<LI> To separate words from each other, simply use a single space.  If you
+leave any extra spaces, LaTeX ignores them unless they follow a full stop
+character (``.'' or ``?'' or ``!''), in which case LaTeX recognizes an end of
+sentence.  If you need to produce an extra space, there are different spacing
+commands.  See <a href="#space">Horizontal Spacing</a> for information.
+
+<LI> To start a new paragraph, leave a blank line before you start typing the
+first line of the next paragraph.  (A blank line is one that looks blank on
+your screen, i.e., two <strong>RETURN</strong>'s in a row.)
+
+<LI> To insert comments which are ignored by LaTeX and do not appear in the
+output, use the % character to precede the text of the comment.  A % at the
+beginning of the line causes the text on that line to be ignored; a % in the
+middle of a line causes all the text to the right of the % character to be
+ignored.
+
+</UL>
+
+<p> LaTeX does the following formatting by default:
+<UL>
+<LI> ignores line breaks and extra spaces in the source file
+
+<LI> makes appropriate line and page breaks, hyphenating words if necessary
+
+<LI> justifies the text in each paragraph (adjusts the spacing to line up the
+text against both margins)
+
+<LI> leaves no blank line between paragraphs
+
+<LI> indents each paragraph, except the first paragraph of a section or
+subsection 
+
+<LI> produces large, book-size margins
+
+<LI> sets text in a 10 point font
+
+<LI> sets text that looks ``single-spaced''
+</UL>
+
+<p>This chapter gives you the information necessary to create a document using
+these defaults.  The rest of this document discusses how to override some of
+these defaults.  (In fact, many of them have been overridden in this document
+for the sake of Athena consistency of style.)
+
+<a name="process"><h2>Processing Your Document</h2>
+</a>
+
+<p>Once you have created a source file with an extension of <samp>.tex</samp>,
+containing the text and commands for your document, you need to have the
+<strong>latex</strong> program read it and produce a formatted
+<samp>.dvi</samp> file to preview or send to a printer.  To process your file
+with LaTeX, type:
+
+<PRE>
+  <strong>latex</strong>  <em>filename</em><strong>.tex</strong>
+</PRE>
+
+<p>at the <samp>athena%</samp> prompt.  You may type the <em>filename</em>
+with or without the <samp>.tex</samp> extension.
+
+<p>LaTeX prints preliminary information on your screen, then begins to process
+your source file:
+<PRE>
+  athena%  <strong>latex  myfile.tex</strong><BR>
+  This is TeX, C Version 3.141 (C version d)<BR>
+  (myfile.tex<BR>
+  LaTeX Version 2.09 &lt;25 Mar 1992&gt;
+</PRE>
+
+<p>If there are no errors in your source file, LaTeX completes its formatting
+process and the <samp>athena%</samp> prompt appears again.  In this case,
+LaTeX has created three new files in the current working directory.  Each one
+has the same root name as your source file and a different extension:
+
+<a name="dotfiles"><UL>
+
+<LI> <samp>myfile</samp><strong>.dvi</strong> contains the formatted document
+which can be sent to a previewer or a printer.
+
+<LI> <samp>myfile</samp><strong>.log</strong> contains a record of what
+happened while LaTeX was processing the source file.  The
+<strong>.log</strong> file contains more information than the screen messages.
+You can delete this if you want the space and you're not trying to trace
+errors.
+
+<LI> <samp>myfile</samp><strong>.aux</strong> is an auxiliary file used by the
+<strong>latex</strong> program.  You don't need to read this.  If you delete
+this file, you may have to run your file through LaTeX at least twice next
+time you process it, although you can delete without harm to your file if you
+need the space.
+
+</UL>
+</a>
+<a name="preview"><h2>Previewing Your Document</h2></a>
+
+
+<p>If you are using a computer which supports the X Window System, you can use
+the <strong>xdvi</strong> program to look at your document on screen.  It
+reads a <samp>.dvi</samp> file and places a window on your screen which
+displays on your screen almost exactly what the final copy will look like when
+printed, so that you can revise your document before printing out a draft.  To
+use <strong>xdvi</strong>, enter a command of the form:
+
+<PRE>
+  athena%  <strong>xdvi</strong>  <em>filename</em><strong>.dvi &</strong>
+</PRE>
+
+<p>Here <em>filename</em><strong>.dvi</strong> is the name of the file that
+LaTeX created when it read your <strong>.tex</strong> file.  The following
+options are available to you when the mouse cursor is in the xdvi window:
+
+<UL> 
+
+<LI> <strong>f</strong> causes xdvi to move forward one page
+
+<LI> <strong>b</strong> causes xdvi to move back one page
+
+<LI> pressing and holding down a mouse button magnifies the section of
+the text around the mouse cursor -- the left button shows a small area, the
+middle button shows a larger area, and the right button a still larger area.
+</UL>
+
+<p>Note that <strong>xdvi</strong> is not able to display all the fonts that
+are available.  In general, <strong>xdvi</strong> only displays TeX fonts,
+even though LaTeX can produce some PostScript fonts, which are available on
+Athena printers.  Instead of stopping (giving error messages and refusing to
+preview at all) if it can't find the bitmap version of a font (the version
+needed to display on the screen), it substitutes a similar font.
+
+
+<a name="print"><h2>Printing Your Document</h2></a>
+
+
+<p>A <samp>.dvi</samp> file prepared with LaTeX is not in a form ready to send
+directly to a standard Athena PostScript printer.  Before you can send the
+file to the printer, you must use the <strong>dvips</strong> program to
+convert it to PostScript format:
+
+<PRE>
+  <strong>dvips</strong>  <strong>-P</strong><em>printername  filename</em><strong>.dvi</strong>
+</PRE>
+
+<p>To print out selected pages of a file, use the <strong>-p</strong> (page)
+and <strong>-l</strong> (last) options to <strong>dvips</strong>.  For
+example, to print out the pages numbered 22 to 31, you type:
+
+<PRE>
+   athena%  <strong>dvips -Pajax -p 22 -l 31 main.dvi</strong>
+</PRE>
+
+<p>To print out the first 7 pages of the file named <samp>main.dvi</samp> on
+the Athena printer <samp>ajax</samp>, you type:
+
+<PRE>
+   athena%  <strong>dvips -Pajax -l =7 main.dvi</strong>
+</PRE>
+
+<p>Use the = sign before the number to specify a sequence number rather than a
+real number, so that you print the first 7 pages regardless of how the pages
+are actually numbered.
+
+<p>The HP LaserJets on Athena support the capability for printing on both
+sides of the page, rather than just one.  This is called ``duplex printing.''
+To use <strong>dvips</strong> to print duplex, use the printer name follwed by
+a ``2,'' as in most printing commands.
+
+<p>There are many useful options to <strong>dvips</strong>.  Type <strong>man
+dvips</strong> for more information.
+
+<a name="domore"><h1>Doing More With Your Document</h1></a>
+
+
+<p>Writers know the power of the printed word.  Typesetters and publishers know
+the power of the look of the printed word.  Not only do features such as
+<i>italics</i> and <b>boldface</b> make a document look nicer and more
+pleasing to the eye, something about a professional-looking document adds
+weight to the contents.  It is worth your while to learn and use some basic
+typesetting conventions.
+
+<a name="preamble"><h2>Preamble Commands:  Changing Defaults</h2>
+</a>
+
+<p>Many popular class options and packages (i.e., sets of LaTeX
+defaults) are available through the <strong>\documentclass</strong>
+and <strong>\usepackage</strong> command lines:
+
+<PRE>
+  <strong>\documentclass[</strong><em>options</em><strong>]{doc-class}</strong>
+  <strong>\usepackage[</strong><em>options</em><strong>]{packages}</strong>
+</PRE>
+
+<p>Options specified in <tt>\documentclass</tt> are specific to the
+document class (book, article, report, or letter) you
+specify. <tt>\usepackage</tt> tells LaTex to load packages any
+document class can use. Square brackets indicate optional arguments,
+curly braces required. Note that the <tt>\usepackage</tt> command is
+<i>not</i> a required part of the preamble. The preamble options
+available vary from changing font size and type
+(<tt>\documentclass[11pt,times]</tt>) to using the fullpage package
+(<tt>\usepackage{fullpage}</tt>) to specify normal margins.
+
+<p>You can specify mulitple class options, packages, or package
+options by separating them with a comma.
+
+<pre>
+  \documentclass[11pt,times,twoside]{book}
+  \usepackage{fullpage,epsfig}
+</pre>
+
+
+<a name="fontfamily"><h3>Font Families</h3></a>
+
+
+<p>For the PostScript fonts, there are LaTeX class options that work as
+follows: 
+<PRE>
+  <strong>\documentclass[11pt,times]{article}</strong>
+</PRE>
+
+<p>This line specifies Times Roman as the font family (it also specifies
+<samp>11pt</samp> as the base size and <samp>article</samp> as the document
+style).  The following PostScript families are currently available, in the
+standard path or in the SIPB locker:
+
+<PRE>
+ <strong>avantgarde</strong>      Avant-Garde<BR>
+ <strong>bookman</strong>         Bookman<BR>
+ <strong>chancery</strong>        Zapf Chancery<BR>
+ <strong>helvetica</strong>       Helvetica<BR>
+ <strong>lucida</strong>          Lucida<BR>
+ <strong>newcen</strong>          New Century Schoolbook<BR>
+ <strong>palatino</strong>        Palatino<BR>
+ <strong>souvenir</strong>        Souvenir<BR>
+ <strong>times</strong>           Times
+</PRE>
+
+<a name="margin"><h3>Changing the Margins</h3></a>
+
+
+<p>LaTeX's margins are by default 1.75 inches wide on 11pt documents, 1.5
+inches wide on 12pt documents, and 1.875 inches wide on 10pt documents.  This
+is the standard for book margins.  If you want to change it to 1 inch on all
+sides, add the <strong>fullpage</strong> package to your
+<strong>\userpackage</strong> line:
+
+<PRE>
+  <strong>\usepackage{fullpage}</strong>
+</PRE>
+
+
+<a name="2space"><h3>Double Spacing</h3></a>
+
+
+<p>To doublespace a LaTeX document, include <strong>doublespace</strong> in
+your list of packages; in other words, if you have:
+
+<PRE>
+  <strong>\usepackage{fullpage}</strong>
+</PRE>
+at the top of your document after your documentclass, change it to:
+<PRE>
+  <strong>\usepackage{fullpage,doublespace}</strong>
+</PRE>
+<p>This makes the text of the whole document doublespaced.  Footnotes, figures,
+and tables will still be singlespaced, however.
+
+<p>In order to make a part of a doublespaced document use singlespacing, you
+can put:
+
+<PRE>
+  <strong>\begin{singlespace}</strong>
+</PRE>
+<p>and
+<PRE>
+  <strong>\end{singlespace}</strong>
+</PRE>
+<p>around the text you want to be singlespaced.
+
+
+<a name="titlepage"><h2>Making a Title Page</h2></a>
+
+
+<p>LaTeX automatically formats title information for you if you supply it with
+the name of the author and the title of the document.  Place the following
+commands in the <em> preamble</em> (after the <strong>\usepackage</strong>
+command and before the <strong>\begin{document}</strong> command):
+
+<PRE>
+<strong>
+  \author{author's name}<BR>
+  \title{title}<BR>
+  \date{date}
+</strong>
+</PRE>
+
+<p>Then place the <strong>\maketitle</strong> command in your source file
+wherever you would like the title to appear (usually at the beginning!).  The
+<strong>\date</strong> command is optional.  Giving the command
+<strong>\today</strong> as an argument to the <strong>\date</strong> command
+inserts the date on which the file is processed:
+
+<PRE>
+<strong>
+  \documentclass{article}<BR>
+  \author{Jimi Hendrix}<BR>
+  \title{If 6 was 9}<BR>
+  \date{\today}<BR>
+  \begin{document}<BR>
+  \maketitle<BR>
+  Yeah!  Sing a song! <BR>
+  ...  <br>
+  \end{document}
+</strong>
+</PRE>
+
+<p>In the <strong>report</strong> and <strong>book</strong> document styles,
+the titling is placed on a separate page.  In the <strong>article</strong>
+document style, the titling appears at the top of the first page.  
+
+
+<a name="section"><h2>Chapters, Sections, and Subsections</h2>
+</a>
+
+<p>For any substantial paper, it is helpful to organize the text into parts,
+such as chapters and sections.  The document begins with a
+<strong>\documentstyle</strong> command, as mentioned in <a
+href="#begindoc">Creating a Manuscript File</a>.  The document style
+determines the section commands that are available; here are the standards:
+
+<menu>
+<LI> <strong>\part</strong>
+
+<LI> <strong>\chapter</strong>
+
+<LI> <strong>\section</strong>
+
+<LI> <strong>\subsection</strong>
+
+<LI> <strong>\subsubsection</strong>
+
+<LI> <strong>\paragraph</strong>
+
+<LI> <strong>\subparagraph</strong>
+</menu>
+
+<p>These commands go in the body of the file at the beginning of the section
+you wish to label, taking the name of that section as an argument, as in:
+
+<PRE>
+<strong>\chapter{Introduction}</strong>
+</PRE>
+
+<p>The <strong>article</strong> document class does not recognize the
+<strong>\chapter</strong> command.  Each of the sectional units must come as a
+subunit of the previous command: don't break chapters directly into
+paragraphs.
+
+<p>These commands automatically assign numbers in sequence to the sectional
+units.  For instance, the command <strong>\section{Environments: LaTeX Command
+Syntax}</strong> would assign a number to the next section.
+
+<p>The <strong>\part</strong> command is used in long documents, such as a
+book, for major divisions.
+
+<p>To include an appendix, use the <strong>\appendix</strong> command; then
+use the same subunit commands as above.  The <strong>\appendix</strong>
+command does not take an argument.  For example, if you have been using
+chapters, use the <strong>\appendix</strong> command, followed by
+<strong>\chapter{Mathematical Symbols}</strong>, etc.
+
+<a name="toc">
+
+<p>To include a table of contents, put the <strong>\tableofcontents</strong>
+command in your source file wherever you would like the table of contents to
+appear.  The sections are numbered automatically when you use sectioning
+commands such as <strong>\chapter</strong> and <strong>\section</strong>.
+When you create a table of contents, you may have to run your document through
+LaTeX two or three times to make sure it gets numbered correctly.  The
+<strong>latex</strong> program normally tells you at the end of the process if
+you need to run <strong>latex</strong> again.  When you have a table of
+contents, another auxiliary file with the extension <samp>.toc</samp> is
+created for LaTeX's reference.  (See <a href="#dotfiles">Processing Your
+Document</a>.)
+
+</a>
+
+<a name="environ"><h2>Environments:  LaTeX Command Syntax</h2>
+</a>
+
+<p>An environment is a region of your source file which LaTeX treats in a
+special way.  There are many LaTeX environments.  Any text enclosed by the
+commands <strong>\begin{</strong><em>environment</em><strong>}</strong> and
+<strong>\end{</strong><em>environment</em><strong>}</strong>, where
+<em>environment</em> is the name of a LaTeX environment, is considered to be
+within the named environment and is given the special treatment dictated by
+the particular environment.  For example, LaTeX centers the text in a
+<strong>center</strong> environment between the left and right margins instead
+of making it flush with the margins:
+
+<PRE>
+<strong>
+  \begin{center}<BR>
+  In the final copy, this sentence will be centered.<BR>
+  \end{center}
+</strong></PRE>
+
+<p>If you begin a second environment before ending a first one, the
+special treatments of both environments are applied to the text that
+follows.  (Except when the environments conflict).  You in fact
+already know about one environment, the <strong>document</strong>
+environment.  It is a very important one; it causes the text in the
+environment to be put in the printed copy.
+
+<a name="fontface"><h3>Font Faces</h3></a>
+
+<p>To emphasize some text in your document, use the <strong>\em</strong>
+(``emphasis'') command.  It normally italicizes that text, but using
+<strong>\em</strong> is preferred to using <strong>\it</strong> (see below),
+because you can nest <strong>\em</strong> commands: 
+
+<PRE>
+  {\em This sentence is {\em emphasized}, with emphasis on the word 
+  {\em emphasized}.}
+</PRE>
+
+Produces:
+<pre>
+  <em> This sentence is </em>emphasized<em>, with emphasis on the word
+  </em> emphasized. 
+</pre>
+
+
+<p>If you want to put a small piece of text in a specific type style, you can
+do it as follows:
+
+<pre>
+
+{<strong>\em</strong> This text will be in italics.} <br>
+{<strong>\bf</strong> This text will be bold!}       <br>
+{<strong>\tt</strong> This will be in a "typewriter font."} <br>
+{<strong>\sf</strong> This is sans serif type.} <br>
+{<strong>\sl</strong> This is slanted -- not italic.} <br>
+{<strong>\sc</strong> This is in Small Caps.} <br>
+{<strong>\rm</strong> This is normal, or ``roman'' type.}
+</pre>
+
+<p>If you want to put larger amounts of text into these type styles, you can
+use <strong>\begin</strong> and <strong>\end</strong> commands:
+
+<PRE>
+<strong>
+  \begin{it}<BR>
+  All this text will be italicized.<BR>
+  \end{it}<BR>
+</strong>
+</PRE>
+<p>Which produces:
+<PRE>
+  <em>All this text will be italicized.</em>
+</PRE>
+
+<p>If you want to be able to "stack" type styles (bold and italic, for
+example), then you need to use slightly different commands:
+
+<pre>
+  {\bfseries This is in bold {\em This is italic bold}}
+</pre>
+
+<P>The equivalents to <tt>bfseries</tt> for the other type styles are
+<tt>rmfamily</tt>, <tt>sffamily</tt>, <tt>ttfamily</tt>,
+<tt>mdseries</tt>, <tt>upshape</tt>, <tt>itshape</tt>,
+<tt>slshape</tt>, and <tt>scshape</tt>.
+
+<p>Each of these change one attribute of the font (series and shape
+for a bold italic). Note that not all combinations of styles will have
+a font associated with them.
+
+<a name="fontsize"><h3>Font Sizes</h3></a>
+
+<p>There are two basic ways to change font sizes in LaTeX.  The first way is
+to change the base font size used all the way through your paper.  There are
+three sizes available for the base size: 10pt, 11pt, and 12pt.  (A
+<em>point</em> is 1/72 inch.) To change the base size (10pt is default), put
+either <strong>11pt</strong> or <strong>12pt</strong> in your
+<strong>\documentclass</strong> line.  For example, if you had:
+
+<PRE>
+<strong>
+  \documentclass[times]{report}
+</strong></PRE>
+<p>you would change it to:
+<PRE>
+<strong>
+  \documentclass[times,12pt]{report}
+</strong></PRE>
+<p>if you wanted to use 12 point type size.
+
+<p>If you want to change just a part of your paper into a different font size,
+you can use one of the sizing environments.  In increasing size, they are:
+
+<pre>
+
+{<strong>\tiny</strong> Gnat size.}
+{<strong>\scriptsize</strong>  Cockroach.}
+{<strong>\footnotesize</strong>  Hamster.}
+{<strong>\small</strong>  Rabbit size.}
+{<strong>\normalsize</strong>  Garfield.}
+{<strong>\large</strong>  Irish setter.}
+{<strong>\Large</strong>  Saint Bernard.}
+{<strong>\LARGE</strong>  Hippopotamus size!}
+{<strong>\huge</strong>  White elephant sale.}
+{<strong>\Huge</strong>  Save the whales.}
+
+</pre>
+
+<p>Two items to note:
+<UL>
+<LI> The case is important in these commands (large, Large, LARGE), as in
+all LaTeX commands.
+
+<LI> In some document styles, some of these commands may produce the same
+size font.
+</UL>
+
+<p>For example, if you wanted to just make a few words of your text in a
+different font, you would use something like:
+<PRE>
+  This is in normal text, while {\Large these words are not}.
+</PRE>
+
+<p>Or, if you wanted to put a larger region in a different size, you'd use
+something like:
+<PRE>
+  \begin{scriptsize}<BR>
+  This entire paragraph will be in scriptsize text.<BR>
+  \end{scriptsize}
+</PRE>
+
+<a name="center"><h3>Centering</h3></a>
+
+<p>Text within the center environment is centered between the left and right
+margins.  To indicate a line break (which is like a <strong>RETURN</strong>),
+use <strong>\\</strong> (except after the last line), like this: 
+
+<PRE>
+  \begin{center}<BR>
+  First centered line.  \\ Second centered line. \\ <BR>
+  Third centered line.<BR>
+  \end{center}
+</PRE>
+
+<p>Centered text draws the reader's eye away from the left margin.  Avoid
+overusing the center environment for text; use the other environments which
+LaTeX provides.  Centering is best used for the non-text parts of your
+documents like figures and tables, and for the titling material.  You will
+learn more about how to do these things later.
+
+<a name="quote"><h3>Quotations</h3></a>
+
+
+<p>Use the <strong>quote</strong> environment for a short quotation and the
+<strong>quotation</strong> environment for a longer quote.  For each of these
+environments, LaTeX uses larger left and right margins; in the
+<strong>quotation</strong> environment, paragraphs are indented and spaced as
+they would be in normal text.  Here is an example using
+<strong>quote</strong>:
+
+<PRE> 
+  ... about the Olympians.<BR>
+  \begin{quote}<BR>
+  Athena, born out of the head of Zeus, is the goddess of wisdom, skills, and
+  warfare.  Her Roman name is Minerva.
+  \end{quote}<BR>
+  Then there was ...
+</PRE>
+
+<p>The <strong>quote</strong> environment produces:
+<pre>
+  ... about the Olympians.<BR>
+       Athena, born out of the head of Zeus, is the goddess of  <br>
+       wisdom, skills, and warfare.  Her Roman name is Minerva. <br>
+  Then there was ...
+</pre>
+
+<p>Here is an example using the <strong>quotation</strong> environment:
+<PRE>
+  ... about the twelve Olympians.
+  \begin{quotation}
+  Athena, born out of the head of Zeus, is the goddess of wisdom, skills, and
+  warfare.  Her Roman name is Minerva.
+
+  Zeus is the most powerful of all the ancient gods --- ruler of heaven and
+  earth, of all gods and all men.
+  \end{quotation}
+  And the others.
+</PRE>
+<p>The <strong>quotation</strong> environment produces:
+<PRE>
+  ...about the twelve Olympians.<BR>
+	  Athena, born out of the head of Zeus, is the goddess of wisdom,
+      skills, and warfare.  Her Roman name is Minerva.<BR>
+	  Zeus is the most powerful of all the ancient gods --- ruler of 
+      heaven and earth, of all gods and all men.<BR>
+  And the others.
+</PRE>
+
+<a name="list"><h3>Lists</h3></a>
+
+
+<p>There are several environments which display their contents as lists.  All
+of them require the <strong>item</strong> command to begin each list member.
+
+<UL>
+<LI> The <strong>enumerate</strong> environment sequentially numbers each list
+member, beginning each on a new line and indenting them all from the left
+margin.
+
+<LI> The <strong>itemize</strong> environment uses a bullet instead of a
+number.
+
+<LI> The <strong>description</strong> environment is used to specify item
+labels.
+
+</UL>
+
+<p>Here is a list environment using <strong>enumerate</strong>:
+<PRE>
+  \begin{enumerate}<BR>
+  \item Developer<BR>
+  \item Stop bath<BR>
+  \item Fixer \item Wash<BR>
+  \end{enumerate}
+</PRE>
+<p>Which produces:
+<PRE>
+<ol>
+<LI> Developer
+<LI> Stop bath
+<LI> Fixer <LI> Wash
+</ol>
+</PRE>
+
+<p>Here is a list using <strong>itemize</strong>:
+<PRE>
+  \begin{itemize}<BR>
+  \item Julia Child<BR>
+  \item The Frugal Gourmet<BR>
+  \item Yan Can Cook<BR>
+  \end{itemize}
+</PRE>
+<p>Which produces:
+<PRE>
+<UL>
+<LI> Julia Child
+<LI> The Frugal Gourmet
+<LI> Yan Can Cook
+</UL>
+</PRE>
+
+<p>And finally, a <strong>description</strong> list:
+<PRE>
+  \begin{description}<BR>
+  \item[Fred] The patriarch of this stone-age family, he likes to eat,
+  especially Brontosaurus burgers.<BR>
+  \item[Wilma] Fred's petite wife who lives to shop.<BR>
+  \item[Barney] Fred's simple-minded next door neighbor and best friend.<BR>
+  \end{description}
+</PRE>
+<p>Which produces:
+<pre>
+<dl>
+<dt> <strong>Fred</strong>
+<dd> The patriarch of this stone-age family, he likes to eat,
+ especially Brontosaurus burgers.
+
+<dt> <strong>Wilma</strong>
+<dd> Fred's petite wife who lives to shop.
+
+<dt> <strong>Barney</strong>
+<dd> Fred's simple-minded best friend and next door neighbor.
+</dl>
+</pre>
+
+<a name="footnote"><h3>Footnotes</h3></a>
+
+<p>Footnotes are very easy in LaTeX. You simply place the footnote text where
+you want the footnote number to appear and LaTeX takes care of everything
+else, including the numbering and placement.  To put a footnote into text,
+just type the command <strong>\footnote</strong> right where you want the
+reference number to go:
+
+<PRE>
+  To put a footnote\footnote{Whether long, short, or medium-sized.} 
+  into text, just type the command \footnote right 
+  where you want the reference number to go.
+</PRE>
+
+<a name="punctuation"><h2>Punctuation</h2></a>
+ 
+<a name="spec"><h3>Special Punctuation</h3>
+</a>
+
+<p>The special characters mentioned earlier as having special meaning in LaTeX
+may appear in your writing.  If you put them in your text file as is, LaTeX
+tries to interpret them.  For most of them, you can get them by using a
+backslash in front of the character:
+
+<PRE>
+   \#  \$  \%  \&  \_  \{  \}
+</PRE>
+Produces:
+<PRE>
+  #   $   %   &   _   {   }
+</PRE>
+
+<p>To get the others, it's a little trickier:
+<PRE>
+  \~{ }   \^{ }   $\backslash$
+</PRE>
+<p>Produces:
+<PRE>
+  ~   ^   \
+</PRE>
+
+See <a href="#runmath">Math in Running Text</a> for information on formatting
+mathematical symbols.
+
+<a name="quotemark"><h3>Quotation Marks</h3></a>
+
+
+<p>You may have noticed in books that the double quotation marks are not the
+same as on a typewriter (<strong>"</strong>), but rather there is a difference
+between the left and right quotes: `` and ''.  (These are sometimes referred
+to as 66-99 quotes, because of the way they look in most fonts.) In LaTeX, you
+can produce them by typing two single quotes.  (On many keyboards, the left
+single quote is at the top left corner of the keyboard, and the right single
+quote is to the right of the semi-colon.)
+
+<p>If you are in LaTeX mode in Emacs, typing a <strong>"</strong> produces a
+<strong>``</strong> or <strong>''</strong> as appropriate; that is, Emacs
+knows what LaTeX will process, and keeps track of matching left and right
+quotation marks.  This saves you a keystroke or two.  To get into LaTeX mode
+in Emacs, type <strong>M-x latex-mode</strong>.  (Note: the command notation
+used here is the same as in the <a href="../Emacs/index.html">Emacs on
+Athena</a> document.  <strong>M-x</strong> means hold down the <strong>Compose
+Character</strong> or <strong>Alt</strong> key (depending on your keyboard)
+and press the <strong>x</strong> key.) You will see <samp>LaTeX</samp> in the
+bar at the bottom of the window, indicating LaTeX mode.  Emacs should enter
+LaTeX mode automatically when you edit a file with the <samp>.tex</samp>
+extension.  LaTeX mode has other useful features which you can see by typing
+<strong>C-h m</strong> once you're in Emacs LaTeX mode.
+
+<a name="dash"><h3>Dashes</h3></a>
+
+<p>LaTeX can produce three different sizes of dash: 
+<UL>
+
+<LI> Use one dash (<strong>-</strong>) for an intra-word dash or hyphen.
+
+<LI> Use two dashes (<strong>--</strong>) for a medium (en) dash, as in number
+ranges: 1--2.
+
+<LI> Use three dashes to get a punctuation (em) dash --- like this.
+</UL>
+
+<p>Usually there should be no space before and after a dash.  Minus signs are
+different, and are discussed in the math section.
+
+<a name="space"><h3>Horizontal Spacing</h3></a>
+
+<p>A space at the end of a sentence should be larger than the space between
+words within a sentence.  You sometimes have to type special commands in
+conjunction with punctuation characters to get this right, as in the following
+sentence.
+
+<PRE>
+  Gnats, gnus, etc.\ all begin with G\@.  Hogs, horses, ....
+</PRE>
+
+<p>The word ``etc.'' should be followed by a "\ " (a backslash and a space) to
+show that it is not the end of a sentence.  The ``G.'', since it is a single
+letter followed by a ``.'', should be typed <samp>G\@.</samp> to indicate that
+it <em>is</em> the end of a sentence, otherwise LaTeX would assume it to be an
+initial, as in E. B. White.
+
+<p>To indicate a space where a linebreak should not occur, use the
+<strong>~</strong> character, as in <samp>E.~B.~White</samp>.
+
+<p>To help LaTeX switch from italic to roman type, add a little extra space to
+cushion the bump using the <samp>\/</samp> command.  
+
+<a name="foreign"><h2>Foreign Symbols</h2>
+</a>
+
+<p>Many Western languages use symbols and accents that do not appear in normal
+English.  LaTeX provides a convenient method of generating accents and other
+symbols.  Accents that can be placed on any existing character.  These do
+<em>not</em> have to be in math mode, i.e., no dollar signs are necessary, as
+described in the next chapter.  (These commands work in LaTeX, even if the
+results don't show up in your Web browser.)
+
+<!-- START HERE -->
+<pre>
+  \'{o}          &oacute;
+  \`{o}          &ograve;
+  \^{o}          &ocirc;
+  \"{o}          &ouml;
+  \~{o}          &otilde; 
+  \={o}          
+  \.{o}          
+  \u{o}          
+  \v{o}          
+  \H{a}          &#227;
+  \t{oo}         
+  \c{c}          &ccedil;
+  \d{o}          
+  \b{o}          
+</pre>
+
+<p>Some other foreign characters are encoded directly, when they cannot be
+built as combinations. Here are some available foreign language symbols, and
+some special non-English symbols.
+
+<pre>
+<a name="fig:syms">
+\oe         
+\OE         
+\ae         &#230;
+\AE         &#198;
+\aa         &#229;
+\AA         &#197;
+\o          &#248;
+\O          &#216;
+\l          
+\L          
+\ss         &#223;
+?`          &#191;
+!`          &#161;
+</a>
+</pre>
+
+<pre>
+<a name="fig:spsyms">
+\dag        
+\ddag       
+\S          &#167;
+\P          &#182;
+\copyright  &#169;
+\pounds     &#163;
+</a>
+</pre>
+
+
+<a name="formatmath"><h1>Formatting Mathematical Formulas</h1></a>
+
+
+<p>LaTeX is designed to make it easy for you to typeset mathematical
+expressions.  An advanced user could typeset a math textbook with LaTeX.
+
+<p>A complex mathematical expression is made up of several simpler
+subexpressions each of which, in turn, is made up of simpler ones, and so on.
+If you learn how to write simple expressions and then learn how to combine
+expressions into larger ones, then you can handle virtually any expression.
+
+<a name="runmath"><h2>Math in Running Text</h2>
+</a>
+
+<p>The simplest expression is a single letter or number, like ``x'' or ``2''.
+To put a simple expression like that in your text, type <samp>$x$</samp> or
+<samp>$2$</samp>, which produce x and 2, respectively.  Anything between a
+pair of dollar signs is interpreted by LaTeX as <em> mathematical</em> text.
+The first dollar sign marks the beginning of the math environment; the second
+marks the end of it.  They are shorthand for the commands
+<strong>\begin{math}</strong> and <strong>\end{math}</strong>.
+
+<p>LaTeX typesets letters in the math environment in an italic font.  Numbers
+are typeset in a roman (normal) font.  The spacing rules are also changed so
+that the text is spaced correctly for math.  LaTeX ignores all spaces in the
+math environment (although you may need to include spaces to signal the end of
+a command that begins with a backslash).  Put spaces in wherever you want;
+LaTeX does all the spacing itself for math.  If you put <samp>$ x$</samp> or
+<samp>$ 2 $</samp> in your file, the result would be the same as the first
+example.
+
+<p>The next step is to write simple equations or inequalities, like this:
+
+<pre>
+<samp>$x = 2$</samp>
+<samp>$x=2$</samp>  
+<samp>$ x= 2 $</samp>              
+<samp>$2x + 7 = 94 - 1$</samp>     
+<samp>$x > 52$</samp>              
+<samp>$z/(4 + x) - y = M$</samp>   
+</pre>
+
+<p>Note that the first three equations all look the same in the final copy. 
+
+<p>The =, +, &gt;, &lt;, (, ), and / characters all indicate the symbol they
+look like.  In the math environment, a single ``-'' (hyphen) prints as a minus
+sign.
+
+<p>Some LaTeX commands are only used in a math environment.  The following are
+several of the most useful ones.
+
+<a name="subscript"><h3>Superscripts and Subscripts</h3></a>
+
+
+<p>Superscripts and subscripts are indicated with the <strong>^</strong>
+and <strong>_</strong> commands, respectively.  While they do not begin with
+a backslash (which is unusual in LaTeX) they take as an argument the text of
+the superscript or the subscript:
+
+<pre>
+<samp>$x^{4}$</samp>           x to the fourth power 
+<samp>$y_{4}$</samp>           y subscript 4        
+<samp>$x^{y_{4}}$</samp>      x to the (y subscript 4)
+<samp>$x_{4}^{y}$</samp>     (x subscript four) to the y power  
+<samp>$x^{y}_{4}$</samp>     (x to the y power) subscript four      
+<samp>$E = mc^{2}$</samp>    E = mc-squared<BR>
+</pre>
+
+
+<a name="fraction"><h3>Fractions</h3></a>
+
+
+<p>Fractions are made either with a ``/'' or with the <strong>\frac</strong>
+command, which places the numerator directly above the denominator with a
+horizontal line between.  The <strong>\frac</strong> command takes two
+arguments, the numerator and denominator:
+
+<pre>
+<samp>$1/32$</samp>         
+<samp>$\frac{1}{32}$</samp> 
+<samp>$\frac{x^{2}}{a(1 + b_{0})}$</samp>
+<samp>$\frac{y + 3z/2}{b}$</samp>        
+<samp>$\frac{y + \frac{3z}{2}}{b}$</samp>
+</pre>
+
+
+<a name="greek"><h3>Greek Letters</h3></a>
+
+
+<p>A Greek letter is placed in the expression by a command with the name of
+the Greek letter.  For the uppercase version of the letter, capitalize the
+first letter of the command:
+
+<pre>
+<samp>$\theta$</samp>          
+<samp>LaTeX is as easy as a little $\pi$.</samp>
+<samp>LaTeX is as easy as a big $\Pi$.</samp>   
+<samp>$\Sigma$</samp>          
+</pre>
+
+
+<p>Note that <samp>$\Sigma$</samp> is <em>not</em> the way to get a summation
+sign, which is produced as <samp>\(\sum_{i=1}^{n} x_{i} = \int_{0}^{1} f
+\)</samp>.  See the LaTeX manual for more information.
+
+<a name="sqroot"><h3>Square Roots</h3></a>
+
+<p>The <strong>\sqrt</strong> command places its argument in a square root
+symbol:
+
+<pre>
+<samp>$i = \sqrt{-1}$</samp>       
+<samp>$\sqrt{a + b\sqrt{2}}$</samp>
+</pre>
+
+
+<a name="symbol"><h3>Other Symbols</h3></a>
+
+
+<p>LaTeX can make dozens of mathematical symbols, probably every one you've
+ever seen.  If you still need more information, <strong>The TeXbook</strong>
+is available at the Coop and in the consultants' office (N42 1st Floor).
+
+<p>Two important ones are the <strong>\cdot</strong> command, which prints a
+centered multiplication dot, and the <strong>\not</strong> command, which
+places a slash through the following symbol.  To write ``a is not an element
+of B'', for example, type <samp>$a \not \in B$</samp>.
+
+See <a href="#foreign">Foreign Symbols</a> for a list of accents and other
+non-English symbols.
+
+<a name="display"><h2>Displayed Math</h2></a>
+
+
+<a name="dismath"><h3>The Displaymath Environment</h3>
+</a>
+
+<p>If you enclose your mathematical text with <em>pairs</em> of dollar signs,
+LaTeX displays the math much like a quotation (with increased margins on a
+line of its own).  You may also use the <strong>\begin{displaymath}</strong>
+and <strong>\end{displaymath}</strong> commands.
+
+<PRE>
+<samp>
+  ...when Einstein came up with that doozy of an equation, 
+  $$E = mc\^{2}$$ he was one happy man.
+</samp></PRE>
+
+<p>The <strong>displaymath</strong> environment is almost exactly the same as
+the <strong>math</strong> environment.  The two differences are that LaTeX
+positions the text differently in displaymath and uses larger versions of some
+symbols.
+
+<a name="equation"><h3>The Equation Environment</h3></a>
+
+
+<p>The <strong>equation</strong> environment is identical to the displaymath
+environment except that LaTeX adds an equation number in parentheses at the
+right margin.  Equations are numbered sequentially from the beginning of the
+document.
+
+<PRE>
+<samp>
+  ...when Einstein came up with that doozy of an equation<BR>
+  \begin{equation} <BR>
+  E=mc\^{2} <BR>
+  \end{equation} <BR>
+  he was one happy man. </samp>
+</PRE>
+
+
+<a name="error"><h1>Errors in Processing</h1></a>
+
+
+<a name="memory"><h2>Memory Problems</h2></a>
+
+
+<p>LaTeX is a program that takes a lot of memory to run, that is, the amount
+of swap space the workstation uses, <em>not</em> the amount of disk space
+allotted to the user (quota).  Many people who run out of memory with LaTeX
+have interrupted previous LaTeX sessions with Ctrl-Z.  This only stops a
+process, and does not kill it, so it still uses memory.  To exit LaTeX, you
+should type ``<strong>X</strong>'' at the prompt you get after it finds an
+error.
+
+<p>If you are truly running out of memory (i.e., you do not have stopped LaTeX
+jobs), the only solution is to kill off some other processes you don't want
+and try again.
+
+<a name="nofile"><h2>``File Not Found''</h2></a>
+
+
+<p>If you get a ``file not found'' message, enter <strong>Ctrl-d</strong> to
+exit (neither <strong>Ctrl-z</strong>, <strong>Ctrl-c</strong>, nor
+``<strong>X</strong>'' work).
+
+<a name="debug"><h2>Dealing with Errors</h2></a>
+
+
+<p>More often than not LaTeX reports an error in the source file.  Do not be
+intimidated by long, complex error reports.  Very often the error is trivial
+and only LaTeX's response is obtuse.  When LaTeX finds an error, it prints
+some relevant information on the screen (and in the <samp>.log</samp> file),
+and prompts you for an instruction with a question mark.  From this prompt you
+may type any of the following:
+
+<UL>
+<LI> <strong>?</strong> to display a list of commands
+
+<LI> <strong>x</strong> to exit LaTeX after writing the output created up to
+the point of error
+
+<LI> <strong>i</strong> to insert some text at the point where LaTeX stopped
+
+<LI> <strong>h</strong> to display a help message (if one available) about the
+error
+
+<LI> <strong>RETURN</strong> or <strong>ENTER</strong> to have LaTeX try to
+recover and continue on 
+</UL>
+
+<p>If you have made a typo in a command, type <strong>i</strong><em>
+correction</em>, where <em> correction</em> is the properly spelled command.
+This corrects the error for the moment, but the change is not permanent.  You
+need to edit the file to fix the error.
+
+<p>For other errors, try letting LaTeX recover and continue by typing
+<strong>RETURN</strong>.  If that leads to a string of other errors, type
+<strong>x</strong> to exit.  Unless you know what you are doing, do not type
+<strong>e</strong> to edit the source file.  See the LaTeX Manual for more
+information.
+
+<p>If you cannot eliminate an error from your source file, consult the LaTeX
+manual in the cluster documentation racks or a friendly Athena consultant
+(type <strong>olc</strong> at the <samp>athena%</samp> prompt).
+
+<a name="sample"><h1>Sample Files</h1></a>
+
+<p>Before preparing your own documents, you may want to get acquainted with
+LaTeX by running it on a small input file.  To do this, first make your own
+copy of the file <samp>small.tex</samp> by typing the following commands:
+
+<PRE>  
+  <samp>athena%</samp> <strong>add</strong> tex
+  <samp>athena%</samp>  <strong>cp  /mit/tex/src/lib/tex/macros/latex/small.tex  .</strong>
+</PRE>
+
+<p>(You must type the space followed by the period at the end.)  You have added the tex locker to your path and a copy of the
+file <samp>small.tex</samp> is now in your current directory; you can edit it
+just like any other file.  If you destroy or mess up your copy, typing the
+above command again gets you a fresh one.  There is also a larger sample file
+called <samp>sample.tex</samp> which you can copy the same way:
+
+<PRE>
+  <samp>athena%</samp>  <strong>cp  /mit/tex/src/lib/tex/macros/latex/sample.tex  .</strong>
+</PRE>
+
+
+<P>  
+
+<hr>
+
+<table border=0 cellspacing=0>
+
+  <tr valign="middle">
+    <!-- IS logo/link -->
+    <td align="center">
+      <a href="http://web.mit.edu/is/"><img src="http://web.mit.edu/is/graphics/is-logo-small.gif" alt="MIT Information Systems" width=13 height=25 border=0></a>
+
+    </td>
+    <!-- feedback/last modified info -->
+    <td>
+      <small>
+Comments and feedback to <a href="http://web.mit.edu/olh/olh-suggest.html">olh-suggest@mit.edu</a>
+
+      <br>
+<!-- hhmts start -->
+
+<!-- hhmts end -->
+      </small>
+    </td>
+  </tr>
+</table>
+
+</html>
+
+<hr>
+
+</body>

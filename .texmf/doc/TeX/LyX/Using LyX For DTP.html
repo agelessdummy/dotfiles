@@ -1,0 +1,782 @@
+<!DOCTYPE html 
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Using LyX For DTP</title>
+
+<link rel="stylesheet" href="/styles/layout_bonny.css" type="text/css" />
+
+<link rel="stylesheet" title="comp" href="/styles/theme_comp.css" type="text/css" />
+
+
+  <!--[if lte IE 7 ]>
+  <link href="/styles/layout_ie.css" rel="stylesheet" type="text/css" media="screen" />
+  <![endif]-->
+
+
+<link rel="alternate" type="application/x-wiki" title="Edit this page" href="http://www.katspace.org/ikiwiki/ikiwiki.cgi?page=computers%2FLyx_How&amp;do=edit" />
+
+
+
+
+
+
+<!-- non-standard meta tags for internal search -->
+
+
+
+<script src="/javascript/jquery/jquery.js"></script>
+<script src="/include/knav.js"></script>
+<script>
+<!--
+$(document).ready(function(){KatSpace.setup()});
+//-->
+</script>
+
+
+</head>
+
+<body class='left snug'>
+
+<!-- noindex -->
+<div id="header">
+<div id="skiplink">
+<a href="#main">skip to content</a>
+</div>
+<span class="breadcrumb">
+
+<a href="../../">KatSpace</a> &gt;
+
+<a href="../">computers</a> &gt;
+
+
+<strong>Using LyX For DTP</strong>
+
+</span>
+
+
+<div class="actions">
+<ul class="show">
+
+<li><a href="../../recentchanges/">RecentChanges</a></li>
+
+
+<li><a href="/cgi-bin/gitweb.cgi?p=katspace_site.git;a=history;f=computers/Lyx_How.pmwiki">History</a></li>
+
+</ul>
+<ul class="cloak">
+
+<li><a href="http://www.katspace.org/ikiwiki/ikiwiki.cgi?page=computers%2FLyx_How&amp;do=edit" rel="nofollow">Edit</a></li>
+
+
+<li><a href="http://www.katspace.org/ikiwiki/ikiwiki.cgi?page=computers%2FLyx_How&amp;do=getsource">Source</a></li>
+
+
+<li><a href="http://www.katspace.org/ikiwiki/ikiwiki.cgi?do=prefs">Preferences</a></li>
+
+</ul>
+</div>
+
+
+<div id="logo"><a href="/"><span>KatSpace</span></a></div>
+
+
+<div id="navbar">
+
+<ul><li><a href="/">Home</a></li></ul>
+
+<ul><li><a href="/about/">About</a></li>
+<li><span class="current"><a href="/computers/">Computers</a></span></li>
+<li><a href="/contact/">Contact</a></li>
+<li><a href="/enarrare/">Enarrare</a></li>
+<li><a href="/events/">Events</a></li>
+<li><a href="/fandom/">Fandoms</a></li>
+<li><a href="/fiction/">Fan Fiction</a></li>
+<li><a href="/games/">Games</a></li>
+<li><a href="/graphics/">Graphics</a></li>
+<li><a href="/gusto/">Gusto</a></li>
+<li><a href="/history/">History</a></li>
+<li><a href="/links/">Links</a></li>
+<li><a href="/lists/">Lists</a></li>
+<li><a href="/sitemap/">Site Map</a></li>
+<li><a href="/reviews/">Reviews</a></li>
+<li><a href="/search/">Search</a></li>
+<li><a href="/tools/">Tools</a></li>
+<li><a href="/updates/">Updates</a></li>
+<li><a href="/zines/">Zines</a></li></ul>
+</div>
+
+
+</div>
+    <div id="middle">
+      <div id="main">
+<!-- index -->
+<div class="main_content">
+
+<h1><a name="index1h1"></a>Using LyX For DTP</h1>
+
+<h2><a name="index1h2"></a>Disclaimer</h2>
+
+<p>I am not a LaTeX guru. I am not a TeX guru. I am not even a LyX guru.
+Therefore, there are likely to be portions in this document at which a
+guru will cringe, groan and rant over (indeed, I have already been told
+I am an arrogant pretentious so-and-so by one such person). I am
+temporarily putting this page back up until such time as I can rewrite
+it, but until then, please note that this document contains things which
+may not be the &#34;best&#34; way of doing things, or statements which proclaim
+my ignorance of esoteric LaTeX/TeX methods, but what <em>is</em> here does
+work.</p>
+<h2><a name="index2h2"></a>Background</h2>
+
+<p>Prompted by a query from a fellow LyX-er who volunteered to do a club
+newsletter, I thought I&#39;d share my findings and experiences of the joys
+and pitfalls of using LyX to produce a magazine-like publication.</p>
+<p>A magazine is quite different to the default uses that LyX gets put to;
+it isn&#39;t an article for a journal, nor is it a technical manual.
+Therefore I had to resort to learning a bit of LaTeX and dotting ERT
+here and there. I even wrote myself a class! (Actually, three of them)
+But this is all done from a LyX perspective, not from a LaTeX one: the
+LaTeX I learned was bits and pieces. Others may not need to do half the
+ERT I did, because their needs won&#39;t be quite the same as I had for my
+fiction magazine. (Well, it&#39;s a fanzine, not anything professional!)</p>
+<p>What I needed:</p>
+<ol>
+    <li>a mixture of one and two-column format</li>
+    <li>table of contents and title together on the first page</li>
+    <li>lots of included graphics which were bitmap rather than vector graphics (illustrations, not diagrams)</li>
+    <li>said pictures needed to be varying sizes and placed where I wanted</li>
+    <li>fancy page headers and footers</li>
+    <li>a compact format, fitting in a fair amount of text while still looking good</li>
+    <li>Story titles without &#34;Chapter&#34; naming or numbers</li>
+    <li>non-standard table of contents (Story-Title by Author)</li>
+    <li>Story titles in fancy fonts</li>
+    <li>Story titles as images</li>
+    <li>Poetry in calligraphic font</li>
+    <li>fancy scene-separators in stories</li>
+    <li>produce a list of illustrations, by illustrator</li>
+    <li>to be able to produce good PDF format</li>
+    <li>to be able to produce PDF format in small enough chunks to be downloaded from a web page</li>
+</ol>
+<p>The solutions I found are probably quite inelegant, but they worked well
+enough. See the result with the <a href="../../zines/online/stakedb7/">Staked Blake</a>
+fanzine.</p>
+<p>I was using RedHat 7.1 Linux, with the standard teTeX installation which
+comes with that. When I started I was using LyX 1.1.6fix1, but upgraded
+to version 1.1.6fix2.</p>
+<h1><a name="index2h1"></a>The Solutions</h1>
+
+<div class="toc">
+	<ol>
+		<li class="L2"><a href="#index1h2">Disclaimer</a>
+		</li>
+		<li class="L2"><a href="#index2h2">Background</a>
+		</li>
+		<li class="L2"><a href="#index3h2">A mixture of one and two-column format</a>
+		</li>
+		<li class="L2"><a href="#index4h2">Table of contents and title together on the first page</a>
+		</li>
+		<li class="L2"><a href="#index5h2">Lots of included graphics which were bitmap rather than vector graphics (illustrations, not diagrams)</a>
+		</li>
+		<li class="L2"><a href="#index6h2">Pictures of varying sizes and placed where I wanted</a>
+		</li>
+		<li class="L2"><a href="#index7h2">Fancy page headers and footers</a>
+		</li>
+		<li class="L2"><a href="#index8h2">A compact format, fitting in a fair amount of text while still looking good</a>
+		</li>
+		<li class="L2"><a href="#index9h2">Story titles without "Chapter" naming or numbers</a>
+		</li>
+		<li class="L2"><a href="#index10h2">Non-standard table of contents (Story-Title by Author)</a>
+		</li>
+		<li class="L2"><a href="#index11h2">Story titles in fancy fonts</a>
+		</li>
+		<li class="L2"><a href="#index12h2">Story titles as images</a>
+		</li>
+		<li class="L2"><a href="#index13h2">Poetry in calligraphic font</a>
+		</li>
+		<li class="L2"><a href="#index14h2">Fancy scene-separators in stories</a>
+		</li>
+		<li class="L2"><a href="#index15h2">Produce a list of illustrations, by illustrator</a>
+		</li>
+		<li class="L2"><a href="#index16h2">To be able to produce good PDF format</a>
+		</li>
+		<li class="L2"><a href="#index17h2">To be able to produce PDF format in small enough chunks to be downloaded from a web page</a>
+		</li>
+		<li class="L2"><a href="#index18h2">Fancy Borders around things</a>
+		</li>
+		<li class="L2"><a href="#index19h2">Fancy Borders by using included images</a>
+		</li>
+		<li class="L2"><a href="#index20h2">Problem with Times font and PDF</a>
+		</li>
+		<li class="L2"><a href="#index21h2">Afterword</a>
+		</li>
+		<li class="L2"><a href="#index22h2">Even more!</a>
+		</li>
+	</ol>
+</div><h2><a name="index3h2"></a>A mixture of one and two-column format</h2>
+
+<p>My first attempt was to use \twocolumn and \onecolumn, since I wanted
+one-column pages for the table of contents and editorial, and two-column
+pages for the stories. I wanted the story titles to be the whole width
+of the page, and I thought I could do that by making them a wide float.
+Unfortunately, even with the H option of the &#34;float&#34; package, all I
+ended up with was the title at the top of the next page, or no title at
+all.</p>
+<p>So I used the multicol package. This requires the use of ERT at the
+start end end of each group of two-columns, but it worked.</p>
+<p>Of course, as fate would have it, later I found out that \twocolumn has
+an optional argument that might have solved my problem... So I then used
+that instead, making my own environment which used \twocolumn and passed
+on its argument as the first argument to \twocolumn. The reason I made
+my own environment was because I didn&#39;t like the way that \twocolumn
+broke up the words, it was too \fussy. I preferred the level of
+hyphenation that multicol had, so I checked what it did, and put a
+\tolerance5000 into my \fztwocolumn environment, so that I could have my
+cake and eat it too.</p>
+<p>Depending on the particular layout required, either one of the above
+solutions is useful. The multicol package is useful when I need a
+mixture of one- and two-column output on the same page. The downside of
+multicol is that one can&#39;t use non-wide floats, which is a problem for
+the placement of illustrations that are only the width of a column. So
+if I can, I prefer to use twcolumn.</p>
+<h2><a name="index4h2"></a>Table of contents and title together on the first page</h2>
+
+<p>I originally was using the report document class (and as I said, ended up writing my own class) but that put the table of contents on a separate page of its own, so I ended up making my &#34;fanzine&#34; class based on the &#34;article&#34; class instead.</p>
+<p>This is the start of my fanzine.cls file:</p>
+<p>\NeedsTeXFormat{LaTeX2e}
+   \ProvidesClass{fanzine}[2001/06/03
+   Fanzine customization package
+   : Kathryn Andersen]
+   %%
+   %% based on Article
+   %% I chose Article because Chapters in reports
+   %% always started on a new page.
+   %% Even the table of contents.
+   %%
+   %% Force this to be two-sided ten point.
+   \DeclareOption{oneside}{\OptionNotNeeded}
+   \DeclareOption{11pt}{\OptionNotNeeded}
+   \DeclareOption{12pt}{\OptionNotNeeded}
+   \DeclareOption<em>{\PassOptionsToClass{\CurrentOption}{article}}%</em>
+   \ProcessOptions
+   \LoadClass[10pt,twoside]{article}</p>
+<p>(so I&#39;m basically forcing it to be 10pt and two-sided)</p>
+<h2><a name="index5h2"></a>Lots of included graphics which were bitmap rather than vector graphics (illustrations, not diagrams)</h2>
+
+<p>So of course one needs to use the graphics package.</p>
+<p>If using bitmap graphics, it&#39;s best to have them in jpg and/or png
+format (though if you aren&#39;t producing PDF it may be moot). Keep the jpg
+and png files in the same directory as your lyx files, and produce eps
+files from the originals. That way you can see your picture in LyX,
+which you wouldn&#39;t be able to do if you used the &#34;include external
+materials&#34; command.</p>
+<p>I used gimp to produce the EPS files from the png files. One can also
+use the &#34;convert&#34; program from the ImageMagick suite, but the EPS files
+you get using that are bigger than the ones from GIMP (well at least,
+from Gimp 1.2.1 which is what I&#39;m using)</p>
+<p>For the Jpeg files, there&#39;s a program one can download from CTAN
+<a href="http://www.ctan.org">http://www.ctan.org</a> called jpeg2ps, which gives you a much better result
+for your EPS files than convert does; it takes advantage of the fact
+that Level 2 Postscript understands about Jpeg, and keeps your jpeg info
+intact, merely adding extra info to help Postscript understand it. This
+results in much smaller EPS files. (If you are a Debian user, you can
+just use apt-get to install jpeg2ps)</p>
+<p>Also, because these are illustrations, not figures, I had to figure out
+(no pun intended) how to <em>not</em> have those wretched Figure: captions on
+them. It wasn&#39;t that difficult:</p>
+<ol>
+    <li>include float <br />
+You then get that Figure: thing inside the float box</li>
+    <li>the style box has Caption in it. Change that to Standard. The &#34;Figure:&#34; bit dissappears!</li>
+</ol>
+<p>Then you can include your &#34;figure&#34;.</p>
+<h2><a name="index6h2"></a>Pictures of varying sizes and placed where I wanted</h2>
+
+<p>This is actually two problems. The first problem was that pictures would
+go onto float pages by themselves when I didn&#39;t want them to; they&#39;d be
+displaced if they were anything bigger than 50% of the page length!</p>
+<p>So this is what went in my class file:</p>
+<p>%% fix up float positioning
+   %% -- enable pictures to be at the bottom of the page
+   %% -- enable pictures to take up more space without being
+   %%    floated to their own float page
+   \renewcommand{\topfraction}{.95}
+   \renewcommand{\dbltopfraction}{.95}
+   \renewcommand{\bottomfraction}{.7}
+   \renewcommand{\textfraction}{.05}
+   \renewcommand{\floatpagefraction}{.8}
+   \renewcommand{\dbltopfraction}{.95}
+   \renewcommand{\dblfloatpagefraction}{.8}</p>
+<p>This basically means that a picture won&#39;t be stuck on a float-page
+unless it&#39;s 80% of the page height.</p>
+<p>The other factor was, with my original layout, I was able to make
+pictures, say, be 2/3 of the page width and have the text wrap around
+them. In two columns.</p>
+<p>Unfortunately, I have not found a way to do it with LyX/LaTeX.</p>
+<p>The floatflt package does allow text to wrap around your figures, but
+with limitations. There are also limitations imposed by the multicol
+package as well. So with your figures you have three choices:</p>
+<p>a) Use a wide figure float, making it the width of the page. You can
+make the actual picture smaller than the width of the page, but it will
+then have white space around it, which can look okay so long as there
+isn&#39;t too much of it.</p>
+<p>b) use a non-floating figure inserted into the text directly, which is
+exactly the width of the column. This means you have to position it
+yourself, it won&#39;t be nicely floated for you. Unfortunately, the
+multicol package won&#39;t allow you to have non-wide floats. If you put
+them in, they never appear in the output. If you use \twocolumn rather
+than multicol, this isn&#39;t a problem, you can use non-wide floats.</p>
+<p>c) figures wider than a column and less wide than a page, <em>can</em> have
+text wrapped around them (use the floatflt package) <em>if</em> you are in
+one-column mode. So, again, this requires you to work things out for
+yourself, so you can decide when to switch from two-column to one-column
+mode (and back again). Again, losing the advantage of letting LaTeX do
+the work for you. But sometimes ya gotta...</p>
+<h2><a name="index7h2"></a>Fancy page headers and footers</h2>
+
+<p>I used the fancyhdr package. I never did end up putting graphical
+objects around my page-numbers though.</p>
+<p>Read the documentation for the fancyhdr package, it&#39;s got a lot of info
+about page layout.</p>
+<h2><a name="index8h2"></a>A compact format, fitting in a fair amount of text while still looking good</h2>
+
+<p>In the Document Layout, I used the geometry package, set narrow margins,
+and made the header and footer space smaller as well.</p>
+<p>One wierd thing, though: I set the Left margin to be 2.5cm, and the
+Right margin to be 1.7cm... and when I get the result, the inner margin
+is 3cm wide, and the outer margin is 1cm wide. It isn&#39;t an odd offset
+thing, because it happens on both odd and even pages. That is, on an odd
+page, the left margin is 3cm and the right margin is 1cm, and on an even
+page, the left margin is 1cm and the right margin is 3cm. I have no idea
+why it did that.</p>
+<p>In regard to the columns, I&#39;ve found in the past, that making a 6mm gap
+between the two columns makes it more readable (I don&#39;t know what the
+default is with LaTeX, but I&#39;ve found other programs make it too
+narrow).</p>
+<p>%% multi-columns
+   \setlength{\columnsep}{6mm}</p>
+<h2><a name="index9h2"></a>Story titles without "Chapter" naming or numbers</h2>
+
+<p>Document Layout -&#62; Extra <br />
+ Section number depth -2 <br />
+ Table of contents depth 2</p>
+<p>(I actually made myself a lyx layout class for Fanzine which set this as
+a default).</p>
+<p>That was only one half of the solution: I still had to change the
+definitions of sectioning commands so that it wasn&#39;t trying to put
+things like &#34;Chapter&#34; on there. For this I used the titlesec package
+(other packages I tried first didn&#39;t quite do) with the [nops] option
+(because I was using the fancyhdr package for the page headers and
+footers).</p>
+<p>Here&#39;s the section from fanzine.cls:</p>
+<p>(assuming I have earlier defined the \fzhdrfamily for using a fancy
+font, see below)</p>
+<p>%% Section -- no label, centred block in the header font
+   \titleformat{\section}[block]
+   {\fzhdrfamily\Huge\bfseries\filcenter}{}{0pt}{}
+   \titlespacing<em>{\section}{0pt}{1pt}{2pt}   %% SubSection -- no label, centred block in the header font   \titleformat{\subsection}[block]   {\fzhdrfamily\Large\bfseries\filcenter}{}{0pt}{}   \titlespacing</em>{\subsection}{0pt}{5pt}{2pt}</p>
+<h2><a name="index10h2"></a>Non-standard table of contents (Story-Title by Author)</h2>
+
+<p>After trying a few different things out, I used the titletoc package
+(rather than the tocloft package) because it gave more control over
+things.</p>
+<p>This was how I defined my Section and SubSection table-of-contents entries:</p>
+<p>%% Section TOC -- no label, no indent, line of dots
+   \titlecontents{section}[0pt]{}
+   {}
+   {\hspace<em>{2.3em}}   {\bfseries\titlerule</em>[5pt]{.}\contentspage}</p>
+<p>%% SubSection TOC -- no label, line of dots
+   \titlecontents{subsection}[1.5em]{}
+   {}
+   {\hspace<em>{2.3em}}   {\bfseries\titlerule</em>[5pt]{.}\contentspage}</p>
+<p>The other thing was, I wanted things in the table-of-contents that
+weren&#39;t in the actual header; rather than having just the title, I
+wanted the title and author. So I made some new commands of my own:</p>
+<p>% format the TOC entry
+   \newcommand{\sbtocentry}[2]{%
+   {\bfseries #1} by \textsc{#2}
+   }</p>
+<p>% add story to TOC
+   \newcommand\sbaddplainstory[2]{
+   \thispagestyle{plain}% force first page to have no header
+   \section[{\sbtocentry{#1}{#2}}]{#1}
+   % &#34;short&#34; form has Title + Author, &#34;long&#34; form has Title only
+   \chead{\large\texthdr{#1}}% set the header at the same time
+   }</p>
+<p>(\texthdr was defined to use one of the fancy fonts, to be used in page
+headers and footers, see below)</p>
+<h2><a name="index11h2"></a>Story titles in fancy fonts</h2>
+
+<p>I have alluded above as to how I put the fancy fonts into the section
+definitions.</p>
+<p>That was the easy part -- relatively easy, that is. But I did that
+second. The first part was getting the fancy fonts. A saga. All I can
+say is, even though one is supposed to be able to use TrueType fonts
+with TeX, I couldn&#39;t get it to work. X-Windows had no problem with them,
+Ghostscript had no problem with them -- all I had to do was tell them
+what directories to look in, and construct one simple file (which I
+ended up writing a small script to do)... but TeX! In the end I gave up
+and converted selected fonts into Type1 (Postscript) fonts, and used
+vfontinstall (which I can&#39;t remember how I tracked down, actually) to
+install the resultant fonts.</p>
+<p>In tracking down How-To-Install-Fonts-Into-TeX information, I was
+mightily confused by the seemingly constant reference to the program
+ttf2tfm -- which didn&#39;t exist on my system. It apparently comes with
+MikTex, but I have teTeX... which doesn&#39;t have it. It wasn&#39;t until a
+friend pointed out that the beauty of Unix is pipes... yes, there are
+indeed two commands which teTeX has, which if added together, do the
+same thing as ttf2tfm: ttf2afm + afm2tfm</p>
+<p>What I&#39;ve actually ended up with is a bit of a hybrid: Ghostscript knows
+about the TrueType fonts, but TeX knows about the Type1 fonts which were
+constructed from them. (after all, they&#39;re already installed in my
+system, X-Windows knows about them, and Ghostscript (once I created the
+relevant Fontmap file) knows about them already, so why install the
+converted Type1 fonts again?)</p>
+<p>Strangely enough, it seems to work.</p>
+<p>There&#39;s an article on CTAN about How-To-Use-True-Type-Fonts-With-Tex
+(which is really about How-To-Convert-True-Type-Fonts-And-Install-Them)
+which was helpful, but I only did the first part, the conversion. I
+can&#39;t remember where I tracked down the actual program used, sorry. But
+CTAN is a good place to start. And <a href="http://www.google.com">http://www.google.com</a> to do searches.</p>
+<p>The actual installation I did with vfontinstall (aka vfontinst) which is
+a godsend for the quite complicated process of installing fonts into TeX
+-- considering the demand that one rename all the files to fit with
+Berry&#39;s font naming conventions... (a point slightly moot for me, since
+(a) I&#39;m not planning on exchanging LaTeX source with anyone, just PDF
+files and (b) a lot of the fancy fonts I use are non-standard anyway)</p>
+<p>However, vfontinst is still worth it, because, besides renaming the font
+files for you, it creates the various different files, and moves them
+into the right spots as well. I had to change some of the things it did
+(fortunately it builds scripts do do each step of the process, so you
+can change them before you call them) -- for example, make it do a
+separate file for the font information rather than modifying the psfonts
+file.</p>
+<p>Fonts require research...</p>
+<h2><a name="index12h2"></a>Story titles as images</h2>
+
+<p>What I wanted here was to be able to use a graphic <em>instead</em> of a
+title, for the actual story-title, but still have it appear sensibly in
+the table of contents. This was so that I could use interesting effects
+in my graphics program (Gimp) and also not have to install every single
+TrueType font I had into TeX; if I was only using that particular font
+once, for one title, it was not worth the effort (particularly as some
+fonts simply wouldn&#39;t convert -- X-Windows liked them, but the
+conversions didn&#39;t).</p>
+<p>This was a big challenge. I had to resort to a large amount of ERT,
+rather than being able to use Section or Figure commands from LyX. I
+ended up making my own command, as follows, with three arguments -- the
+title, the author, and the name of the file containing the
+title-graphic. (And yes, there were two versions of the file -- the EPS
+file and the PNG file)</p>
+<p>This was the command:</p>
+<p>\newcommand\sbaddstory[3]{
+   \thispagestyle{plain}% no page header first page
+   \section[{\sbtocentry{#1}{#2}}]% the &#34;short form&#34; has the info
+   {\resizebox<em>{1\textwidth}{!}{\includegraphics{#3}} }%</em>
+   % the &#34;long form&#34; has the graphic
+   \chead{\large\texthdr{#1}}% set the page header with the title
+   }</p>
+<p>I figured out what commands to use for the graphic by the expedient of
+making a test file in LyX which had the graphic the way I wanted it, and
+then exporting to LaTeX and seeing what the commands were. Not having a
+copy of the LaTeX book at the time, that was what I was reduced to...</p>
+<p>Oh, and I forgot to mention, each story was in a separate file, and
+included in a master file; therefore each new story started on a new
+page.</p>
+<h2><a name="index13h2"></a>Poetry in calligraphic font</h2>
+
+<p>First I had to import the caligraphic font (see above). The Berry font
+name for this particular font ended up being &#34;ome&#34;.</p>
+<p>Then more ERT and more commands.</p>
+<p>%% Fonts for poems -- Merlin font
+   \newcommand\fzpoemfamily{\usefont{T1}{ome}{m}{n}}
+   \DeclareTextFontCommand{\textpoem}{\fzpoemfamily}</p>
+<p>%% a Poem environment
+   %% the argument is the size of the font
+   \newenvironment{fzpoem}[1]
+   {\fzpoemfamily #1}
+   {}
+   %% a Poem title
+   \DeclareTextFontCommand{\fzpoemtitle}
+   {\fzpoemfamily \Huge}</p>
+<p>So, for the poem title I did ERT saying</p>
+<p>\fzpoemtitle{Title}</p>
+<p>(and more ERT adding it to the table of contents (there was another
+command I had which was similar to the addplainstory one))</p>
+<p>and then I did the poem in a Verse environment, and surrounded it with ERT saying <br />
+ \begin{fzpoem} and \end{fzpoem}</p>
+<p>That gave me the poem in the caligraphic font (with its title in the
+same font, rather than in the fancy Section-header font).</p>
+<p>I have since discovered (thanks to
+<a href="http://www.troubleshooters.com/lpm/200210/200210.htm">Lyx Quickstart</a>)
+that one can (a) make a new environment recognisable by
+adding it to your .layout file (though it seems that they have to be
+environments which don&#39;t have any arguments) and (b) can change the font
+style using a pseudocolour character style on the characters. Both these
+techniques have been added to my current class/layout files. (see below
+for links to the source). For the environment, I made a new fzpoemverse
+environment which was just an fzpoem environment which also used a Verse
+environment (since LyX doesn&#39;t seem to be able to nest environments
+without using ERT).</p>
+<h2><a name="index14h2"></a>Fancy scene-separators in stories</h2>
+
+<p>After all the messing about with fonts, this was relatively easy. I just
+had to figure out what the name of the Zaph Dingbat font was, and create
+the following commands:</p>
+<p>% commands to select the Zaph Dingbat font
+   \newcommand\fzdingbatfamily{\usefont{U}{pzd}{m}{n}}
+   \DeclareTextFontCommand{\fzdingbat}{\fzdingbatfamily}</p>
+<p>% generic separator
+   \newcommand{\fzsep}[1]{
+   \medskip{}
+   {\centering \large\fzdingbat{#1}\par}
+   \medskip{}
+   }</p>
+<p>% large separator, laid out like a cross
+   \newcommand{\fzseplarge}[1]{
+   \medskip{}
+   {\centering \large\fzdingbat{#1}\par}
+   {\centering \large\fzdingbat{#1#1#1}\par}
+   {\centering \large\fzdingbat{#1}\par}
+   \medskip{}
+   }</p>
+<p>Then one just had to decide which dingbat character to use as one&#39;s
+separator. I made it generic because I have two different fanzines that
+I do, and they have different styles of separator.</p>
+<p>This is what I did for Staked Blake (the &#34;v&#34; gives a crossed diamond):</p>
+<p>\newcommand{\sbsep}{
+   \fzsep{v}
+   }
+   \newcommand{\sbsepwide}{
+   \fzsep{vvv}
+   }
+   \newcommand{\sbseplarge}{
+   \fzseplarge{v}
+   }</p>
+<p>There&#39;s two ways of using these; one is to use ERT at each scene break, for example <br />
+ \sbsep <br />
+ The other is to add a Separator &#34;style&#34; or three to your Layout file for that particular class. For example:</p>
+<p>Style FZSeparator
+           LatexType             Command
+           LatexName             fzsep
+           Margin                Dynamic
+           ParSkip               0.4
+           TopSep                0.7
+           BottomSep             0.7
+           ParSep                0.7
+           LabelType             No_Label
+           Align                 Center
+           AlignPossible         Center</p>
+<p>Font
+             Series              Bold
+             Size                Large
+           EndFont
+         End</p>
+<p>See the layout files below for all the examples. With the FZSeparator
+style, you type in the characters you&#39;re going to use for the
+separators. For the Refractions and Staked Blake Separator styles, you
+don&#39;t type in anything, so they are slightly different.</p>
+<h2><a name="index15h2"></a>Produce a list of illustrations, by illustrator</h2>
+
+<p>What I used to do (before LyX) was create this by hand -- I would print
+out a version of the document, and make note of what page each
+illustration was on, and then go back and write it into the table of
+illustrators.</p>
+<p>With LyX, I can use cross-references! Put a label next to each
+illustration. Then, on the first page, create a table with two columns,
+one containing the name of the illustrator, and the second column in
+that row, containing Page references to the particular illustrations
+that that person did. No tedious page-number-noting required!</p>
+<p>This is one bit where LyX is definitely a plus.</p>
+<h2><a name="index16h2"></a>To be able to produce good PDF format</h2>
+
+<p>Firstly, use the pslatex package, so that your default fonts are the
+same as the PDF default fonts (that is, Times, Helvetica, Courier,
+rather than Computer Modern). Also, Zaph Dingbats are standard for PDF,
+so if you want to use dingbats for something (like separators), use
+those.</p>
+<p>If you want to use extra fancy fonts, make sure that they are Type1
+fonts, not Metafont. Even though Metafont is standard for TeX, it
+doesn&#39;t convert well into PDF.</p>
+<p>Secondly, if one is going to use pdflatex, then have two versions of
+each illustration (as mentioned above); one in either JPG or PNG, and
+the other in EPS format. Now some people might point out that it would
+be easier to use the tex2pdf script (which is on Sourceforge, I think)
+which automatically converts the EPS files into PDF files which can be
+included into the produced PDF file. I have two reasons for not doing
+this: the most important one was that all my greyscale pictures got
+scrambled when I did this. The second reason is that if the original
+file is a bitmap JPG or PNG, then it&#39;s better to include the original
+file than to do too many conversions. But those who are using vector
+graphics would probably prefer another method.</p>
+<p>As has been pointed out before, there is a bug with Ghostscript 5.50
+which means that ps2pdf puts bitmap fonts rather than outline fonts into
+the PDF file, which makes it bigger and uglier. Unfortunately, 5.50 is
+the version which comes standard with RedHat 7.1 (sigh). So I tracked
+down an RPM (I&#39;m using RedHat, remember) of a more recent version of
+Ghostscript, on <a href="http://rpmfind.net">http://rpmfind.net</a> and found one for version 6.50
+(actually, I also found one for version 6.0, but I had trouble
+installing it). Of course, this isn&#39;t so much of a problem now, since
+most current distros have moved beyond that old version of Ghostscript,
+but I thought it was still worth mentioning, since some people may still
+have old distros.</p>
+<h2><a name="index17h2"></a>To be able to produce PDF format in small enough chunks to be downloaded from a web page</h2>
+
+<p>The output produced by pdflatex with the hyperref package is very nice,
+with bookmarks and links from the table of contents... but with my
+fanzine, the resultant file was 3.7M! And compressing the file wouldn&#39;t
+reduce it very much.</p>
+<p>I could have split the file with &#34;split&#34; I suppose, but that wouldn&#39;t
+give people workable files (and not everyone would be able to figure out
+how to put the bits back together again, either).</p>
+<p>What I did with my original publication (when I used MS Publisher) was
+that I had the whole publication split into multiple files (each one
+with its starting page-number set by hand) and I would produce a PDF
+file from each separate file.</p>
+<p>Unfortunately, with LyX/LaTeX you can&#39;t do that, because the document
+and all its included files has to be treated as a whole, or the
+page-numbering won&#39;t be correct.</p>
+<p>But there&#39;s a way around this limitation, if one doesn&#39;t mind producing
+PDF files without any bookmarks or linking: print the document to a
+file, a certain number of pages at a time. The LyX print dialogue allows
+you to print to a file (which will be a Postscript file), and select the
+page-range you want to print.</p>
+<p>So I printed it out, 20 pages at a time, and produced a number of
+Postscript files. Then I ran ps2pdf over the Postscript files. Voila!
+The whole document, in smaller, palatable chunks.</p>
+<h2><a name="index18h2"></a>Fancy Borders around things</h2>
+
+<p>There is a package on CTAN called &#34;niceframe&#34; which does the trick. It
+uses characters from a few dingbat-type fonts to define some fancy
+frames, and a command, &#34;generalframe&#34; where you can go off and define
+more frames (you just have to tell it what characters to use for the
+sides and corners). It includes a few dingbat fonts in the bundle, and
+one of them is just nothing but border characters -- very nice!</p>
+<p>Some words of warning, though:</p>
+<ul>
+    <li>you will get errors complaining that \ding has already been defined. This is because pifont.sty (a standard sty file in teTex) defines \ding as a command, but niceframe has defined it as a font. Edit the niceframe.sty (and/or the niceframe.dtx file) to change \ding to \dingfont everywhere, and that will fix it.</li>
+    <li>because the dingbat fonts are metafonts, they will be included in your PDF files as bitmaps. Either make sure that your dvips setup gives you sufficiently high resolution bitmapping (or the frames will look horribly jaggy when printed out) or find some way of converting them to Type1 fonts.</li>
+    <li>it goes without saying that the thing with the border around it needs to be less than a page...</li>
+    <li>this also only works when in one-column format</li>
+</ul>
+<h2><a name="index19h2"></a>Fancy Borders by using included images</h2>
+
+<p>I also wanted to be able to use an image for a fancy border; to include
+an image (a graphic file) which is a border image (that is, is has nice
+things all around the edges, and is empty in the middle) and be able to
+plonk something (like a poem, for example) in the middle of it.</p>
+<p>One possible solution is to include it as part of a &#34;picture&#34;
+environment, while telling LaTeX that this picture takes up zero space.
+So, say a border around a whole page, like this:</p>
+<p>\setlength{\unitlength}{\textheight}
+   \begin{picture}(0,0)
+   \put(0,-1){</p>
+<p><em>(include your picture here)</em></p>
+<p>}
+   \end{picture}</p>
+<p><em>(followed by the text to be bordered)</em></p>
+<p>Setting the unitlength to the height of the page means you don&#39;t have to
+be calculating the height of the page in order to figure out where the Y
+position of the bottom left-hand-corner of the border picture is, though
+you may have to adjust the thing slightly, like \put(-0.05, 0.95) for
+example. Then you include your picture, making it 100% of the page
+height.</p>
+<p>Then the next tricky bit is positioning the text to be included inside
+the border -- you will need to put in a vertical space above the first
+line of the text which is the length of the top of the border, and
+indent the text the width of the side of the border. You can do this
+with the Layout-&#62;Paragraph window; the Vertical Space Above, make it
+Length, and give a length. Then in the Extra tab, give the paragraph(s)
+an indent of some length.</p>
+<h2><a name="index20h2"></a>Problem with Times font and PDF</h2>
+
+<p>I ran into an unfortunate problem with my font usage, when I was
+attempting to give my resultant PDF files to my agent overseas to print
+out. The files had been created with Times (the Postscript Times font
+that comes with TeX). Acrobat does not store Times, Helvetica or Courier
+fonts, as we well know. But this was unfortunate in this case, because
+my agent was reading the file with Times New Roman, which is very
+slightly different -- different enough that the kerning of the letters
+was inconsistent, and looked quite odd if one was paying attention. So,
+after all the effort of using pslatex and so on... I ended up not using
+Times after all, so as to force the inclusion of the font I used, so
+that it would look the same for my agent and for me.</p>
+<p>I ended up using Utopia. The files generated weren&#39;t actually all that
+much larger, presumably because embedding an outline font doesn&#39;t take
+up huge amounts of space (unlike embedding a bitmap font).</p>
+<h2><a name="index21h2"></a>Afterword</h2>
+
+<p>I actually ended up doing the cover as a separate document, because I
+wanted different page margins for it. I used the &#34;scalefont&#34; package to
+do the title on the cover and on the first page (since <em>those</em> fancy
+fonts were already installed, and outlines do look better than bitmaps).</p>
+<p>Here are links to my source files:</p>
+<ul>
+    <li>Attach:fanzine_cls.txt The base class for fanzines which does all the work</li>
+    <li>Attach:fanzine_layout.txt The LyX layout file for fanzines -- the other layout files #include this one.</li>
+    <li>Attach:stakedb7_cls.txt The class built on fanzine.cls which was used for Staked Blake.</li>
+    <li>Attach:stakedb7_layout.txt The LyX layout file for Staked Blake</li>
+    <li>Attach:refract_cls.txt The class built on fanzine.cls for Refractions (note that this only defines separators -- 99% of the work is done in fanzine.cls). I split it up this way because I have different fanzines which need to look different, but have a lot of common needs.</li>
+    <li>Attach:refract_layout.txt The LyX layout file for Refractions</li>
+    <li>Attach:fzframes_sty.txt This is a style sheet built on the niceframes.sty style sheet, which uses it, and the fonts which come with niceframes to define an exhaustive collection of frames (so that one doesn&#39;t have to go through all those fonts picking out characters more than once).</li>
+</ul>
+<p>Well, I hope that this long rambling thing has been helpful to somebody.</p>
+<p>Kathryn Andersen</p>
+<h2><a name="index22h2"></a>Even more!</h2>
+
+<p>Problem with pdflatex, running into TeX capacity exceeded problem, when
+ordinary latex was fine. Found this useful tip at
+<a href="http://www.tug.org/pipermail/pdftex/2001-October/001678.html">http://www.tug.org/pipermail/pdftex/2001-October/001678.html</a> the pdftex
+mailing list.</p>
+
+
+</div> <!-- /main_content -->
+</div> <!-- /main -->
+<!-- noindex -->
+
+<div id="leftbar">
+<div class="sidebar">
+<ul><li><a href="/computers/GentooZ60t/">GenToo Linux on a Lenovo ThinkPad Z60t</a></li>
+<li><a href="/computers/Grub_Splash/">Making a custom grub splash image</a></li>
+<li><a href="/computers/Images_From_Videos/">Images From Videos</a></li>
+<li><a href="/computers/Linux/">Linux - What is it, and Why Should I Care?</a></li>
+<li><a href="/computers/Linux_Burn_DVD/">Burning Video DVDs on Linux</a></li>
+<li><a href="/computers/Linux_DVD/">Viewing DVDs on Linux</a></li>
+<li><a href="/computers/Linux_Tips/">Linux Tips + Tricks</a></li>
+<li><a href="/computers/Lyx/">Lyx</a></li>
+<li><strong>Using LyX For DTP</strong></li>
+<li><a href="/computers/Web_Design/">Do's and Don'ts of Web Design</a></li>
+<li><a href="/computers/Xubuntu_Jaunty_ThinkPad_SL500/">Xubuntu Linux on a Lenovo ThinkPad SL500</a></li>
+</ul>
+ 
+</div>
+</div> <!-- leftbar -->
+
+
+
+
+</div> <!-- /middle -->
+<div id="footer">
+
+
+<div id="backlinks">
+Links:
+
+<a href="../Lyx/">Lyx</a>
+
+
+</div><!-- #backlinks -->
+
+
+
+
+<div class="pagedate">
+Last edited <span class="date">Tue Jan  5 17:28:32 2010</span>
+<!-- Created <span class="date">Tue Nov  3 23:05:10 2009</span> -->
+</div>
+
+
+</div>
+</body>
+</html>

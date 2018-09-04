@@ -1,0 +1,166 @@
+
+<html>
+	<head>
+   <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+   </script>
+   <script type="text/javascript">
+   _uacct = "UA-344082-1";
+   urchinTracker();
+   </script>
+   <script language="javascript" src="/yyue.js">
+   </script>
+   <title>Latex Resume Template</title>
+   <meta http-equiv="Content-Language" content="en-us">
+   <META name=description content="Yisong Yue's Webpage">
+   <META name=keyword content="Yisong, Yue">
+   <link rel="stylesheet" type="text/css" href="/yyue.css">
+         <!-- <link rel="icon" type="image/ico" href="/images/yue.ico" /> -->
+
+   </head>
+	<body>
+		<center>
+			<table width="100%" height="100%" cellpadding="20px"><tr><td valign="top">
+			<center>
+            <table class="top" cellpadding="0" cellspacing="0" style="BORDER-COLLAPSE: collapse" width="815" id="table1" height="100">
+					<tr>
+            <td width="8" height="8" class="corner"><img src="/images/topleft.jpg" width="8" height="8"></td>
+						<td class="main" height="8"></td>
+						<td class="corner" width="8" height="8">
+               <img src="/images/topright.jpg" width="8" height="8"></td>
+					</tr>
+					<tr>
+						<td class="main" width="8"></td>
+						<td class="main" align="justify" valign="top">
+							<table border="0" cellpadding="0" cellspacing="0" style="BORDER-COLLAPSE: collapse" width="100%" id="Table2">
+								<tr>						
+<td width="100%" valign="top" height="450">	
+<center>
+<font class="header">
+Latex Resume Template</font>
+</center>
+<center>
+<font class="navbar">
+<a href="/index.php" class="navbar">Home</a> -
+<a href="/personal.php" class="navbar">Personal</a> -
+<a href="/research.php" class="navbar">Research</a> - 
+<a href="/potpourri.php" class="navbar">Potpourri</a> - 
+<a href="/feedback.php" class="navbar">Feedback</a> - 
+<a href="/links.php" class="navbar">Links</a> 
+</font>
+</center>
+<hr>
+   <b>Files</b><br>
+   <li><a href="res_yy.sty">res_yy.sty</a> - this file contains the resume style<br>
+   <li><a href="yue_resume.tex">yue_resume.tex</a> - this is my resume, which you can modify<br>
+   <li><a href="yue_resume.pdf">yue_resume.pdf</a> - my resume in pdf form<br>
+   <br><br>
+   <b>Synopsis</b><br>
+   <br>
+   This is a fairly simple template to create a resume in LaTeX.  It uses a latex style written by Michael DeCorte (<a href="mailto:mrd@sun.soe.clarkson.edu">mrd@sun.soe.clarkson.edu</a>) that I've modified slightly.  If you're fairly familiar with LaTeX or programming in general, you probably don't need to read the rest of this and just go from using my TeX file as an example.  Keep in mind that res_yy.sty must be in the path somewhere.<br>
+   <br>
+   This is not intended to be a tutorial on LaTeX.  You can find plenty of good ones <a href="http://www.google.com/search?q=latex+tutorial">on the internet</a>.  For those using Windows and looking for a good LaTex package, I recommend <a href="http://www.miktex.org/">MikTeX</a>.<br>  
+   <br><br>
+   <b>A Quick Reference</b><br>
+   <br>
+   <li><b>\documentstyle[...]{res_yy}</b> - make sure to reference res_yy in the document style<br>
+   <br>
+   <li><b>\name{your name}</b> - this places your name on the top left of your resume<br>
+   <br>
+   <li><b>\address{...}</b> - places any contact information, right aligned, below your name<br>
+   <br>
+   <li><b>\section{name}</b> - the body of the resume is broken up into a table with two columns, with the left column being section names.  This command creates a new row and fills the left column.<br>
+   <br>
+   <li><b>\begin{formatb}...\end{formatb}</b> - this defines the job description format.  For example, I use the following configuration:<br>
+   <ul>
+      <b>
+	 \begin{formatb}<br>
+	 &nbsp;&nbsp;&nbsp;\employer{l} \title{r} \\<br>
+	 &nbsp;&nbsp;&nbsp;\location{l} \dates{r} \\<br>
+	 &nbsp;&nbsp;&nbsp;\body \\<br>
+	 \end{formatb}
+      </b>
+   </ul>
+   You can use any combination of employer, title, location, and dates fields in your format.  The 'r' and 'l' values specify the alignment of the text, and '\\' means new line.  Each format then concludes with a \body for any details and comments.<br>
+   <br>
+   The above code just defines the format, to use it to create content, you have to populate the various fields you used to define the format.  For example:
+   <ul>
+      <b>
+	 \employer{ The Evil Empire }<br>
+	 \title{ Ultimate Slacker }<br>
+	 \location{ Middle of nowhere}<br>
+	 \dates{ Since I was born - Present }<br>
+	 \begin{position}<br>
+	 Took Uncle Bill's money and ate lots of gross pizza.<br>
+	 \end{position}<br>
+      </b>
+   </ul>
+   The above code fills the employer, title, location and dates fields, which will be formatted according to how the format was defined.  \being{position} populates the content in the body field.  The resulting output will look like:<br>
+   <ul>
+      <table width=400 border=0>
+	 <tr>
+	    <td width="50%" align=left><b>The Evil Empire</b></td>
+	    <td align=right><b>Ultimate Slacker</b></td>
+	 </tr>
+	 <tr>
+	    <td width="50%" align=left><b>Middle of nowhere</b></td>
+	    <td align=right><b>Since I was born - Present</b></td>
+	 </tr>
+	 <tr>
+	    <td colspan=2><b>Took Uncle Bill's money and ate lots of gross pizza.</b></td>
+	 </tr>
+      </table>
+   </ul>
+   <br>
+   NOTE - you can use this formatting for anything, not just job descriptions.  For example, I'm using the same formatting for my project descriptions.
+<br>			
+</td>
+								</tr>
+								<tr>
+								<td>
+								<hr>
+								<center>
+<font class="navbar">
+<a href="/index.php" class="navbar">Home</a> -
+<a href="/personal.php" class="navbar">Personal</a> -
+<a href="/research.php" class="navbar">Research</a> - 
+<a href="/potpourri.php" class="navbar">Potpourri</a> - 
+<a href="/feedback.php" class="navbar">Feedback</a> - 
+<a href="/links.php" class="navbar">Links</a> 
+</font>
+</center>
+								<center>
+								<font class="small">
+                     [<a href="/pink.php?referUrl=/resume/index.php">Switch to Pink Mode</a>] - [All Content &copy; 2008 Yisong Yue]
+								</font>
+								</center>
+								</td>
+								</tr>
+							</table>
+						</td>
+                  <td width="8" class="main"></td>
+					</tr>
+					<tr>
+						<td width="8" height="8" class="corner">
+               <img src="/images/bottomleft.jpg" width="8" height="8"></td>
+						<td height="8" class="main"></td>
+						<td width="8" height="8" class="corner">
+               <img src="/images/bottomright.jpg" width="8" height="8"></td>
+					</tr>
+				</table>
+			</td></tr></table>
+			</font>
+		</center>
+
+        <!-- Start of StatCounter Code -->
+        <script type="text/javascript" language="javascript">
+        var sc_project=1987806; 
+        var sc_invisible=1; 
+        var sc_partition=18; 
+        var sc_security="396324b8"; 
+        </script>
+
+        <script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c19.statcounter.com/counter.php?sc_project=1987806&java=0&security=396324b8&invisible=1" alt="counter stats" border="0"></a> </noscript>
+        <!-- End of StatCounter Code -->
+
+	</body>
+</html>

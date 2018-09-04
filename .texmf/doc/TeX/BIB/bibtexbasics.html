@@ -1,0 +1,273 @@
+<HTML>
+<HEAD>
+   <meta name="KeyWords" content="BibTeX, document preparation, LaTeX,
+   emacs, introduction, bibliography">
+<TITLE> Rough Guide to BibTeX </TITLE>
+</HEAD>
+
+<BODY TEXT="#000000"  BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<A NAME="top"></A>
+<CENTER><H1> How to use BibTeX </H1></CENTER>
+
+<H3> Contents </H3></CENTER>
+
+<UL>
+<A HREF="#intro">Intro - Why use BibTeX?</A>
+<BR> <A HREF="#60seconds">BibTeX in 60 seconds</A>
+<BR> <A HREF="#howto">How to use BibTeX - the slightly more-detailed version</A>
+<BR> <A HREF="#nicethings">Some nice things about BibTeX</A>
+<BR> &nbsp;&nbsp;&nbsp;<A HREF="#format">Entries in appropriate
+format exist</A>
+<BR> &nbsp;&nbsp;&nbsp;<A HREF="#emacs">Emacs has a BibTeX mode</A>
+<BR> &nbsp;&nbsp;&nbsp;<A HREF="#entrytypes">Types of entries</A>
+<BR> &nbsp;&nbsp;&nbsp;<A HREF="#styles">Changing styles</A>
+<BR> &nbsp;&nbsp;&nbsp;<A HREF="#submission">When you want to submit
+articles</A>
+<BR> <A HREF="#example"> For example...</A>
+</UL>
+
+<hr>
+<A NAME="intro"></A>
+<H2> Intro - Why use BibTeX? </H2>
+
+BibTeX is a package for creating bibliographies in LaTeX
+documents. One needs only to maintain one database file with
+bibliography information, which can then be read into any number of
+documents, and the bibliography is automatically made when the file is
+processed. Advantages over making manual bibliographies include:
+consistency in presentation of entries, ease of changing bibliography
+style, correct numbering and sequential ordering of entries, and the
+only entries in the bibliography of the final document are those that
+are cited in the body of the document.
+
+<P>When compiling the document you need to LaTeX the file, then BibTeX
+it, then LaTeX it twice. When you do this BibTeX finds all the papers
+you have cited using the <I>\cite{...}</I> command in your LaTeX
+document and makes an auxiliary file with the extension <B>.bbl</B>
+which contains the bibliography information the papers cited in your
+document, and numbers them all in order of appearance.
+
+<P>Since you only need one file, you don't need to create a bibliography
+for each new document - it happens automatically when you compile the
+document!
+
+<A NAME="60seconds"></A>
+<H2> BibTeX in 60 seconds </H2>
+
+Ok, so you just want to give it a whirl. No worries, just:
+
+<OL>
+<LI> Download a bibliography style file such as 
+<A HREF="h-physrev3.bst"><I>h-physrev3.bst</I>,</A>&nbsp; into the
+directory where your document is.  (There are many options about -
+just look around the web.)
+<LI> Create your bibliography database file by downloading (into the
+directory where your document is) and editing the example
+file  <A HREF="tau.bib"><I>tau.bib</I></A>.
+<LI> Remove any &nbsp;<TT>\begin{thebibliography}</TT>&nbsp; ...
+&nbsp;<TT>\end{thebibliography}</TT>&nbsp; commands from your
+document.
+<LI> Just before the &nbsp;<TT>\end{document}</TT>&nbsp; command, add
+<P>
+<PRE>
+\bibliographystyle{h-physrev3.bst}
+\bibliography{tau}
+</PRE>
+<P> (Alternatively, just download and edit this <A
+HREF="example.tex">
+example</A>&nbsp; file.)
+
+<LI> When processing the file, you need to do:
+<B>latex</B><I> filename</I>,
+<B>bibtex</B><I> filename</I>,
+<B>latex</B><I> filename</I>,
+<B>latex</B><I> filename</I>.
+</OL>
+
+<A NAME="howto"></A>
+<H2> How to use BibTeX - the slightly more-detailed version </H2>
+
+To run BibTeX you need two extra files, one a bibliography
+<I>style</I> file (which has the extension <B>.bst</B>)
+which tells BibTeX how to display your bibliography, and a
+<I>database</I> (which has extension <B>.bib</B>)
+with your bibliography information.
+
+<P> When you run BibTeX (using the <I>latex-bibtex</I> commands
+in the sequence described above), an auxilliary file is created called
+<I>filename.bbl</I>, which stores the bibliography information specific
+to your document. If you change the document, e.g., by adding more
+citations, when you run <I>latex-bibtex</I> again, this file will be
+updated.
+
+<P>Examples of style files and a starter bibliography database file:
+
+<DL>
+<DT> Style File:
+<DD> There are several styles in common use, my favourites
+being&nbsp;
+<A HREF="prsty.bst"><I>prsty.bst</I>,</A>&nbsp;
+<A HREF="h-elsevier2.bst"><I>h-elsevier2.bst</I>,</A>&nbsp;
+<A HREF="h-physrev3.bst"><I>h-physrev3.bst</I></A>&nbsp;
+
+<P>The latter two show also eprint numbers, which can be rather useful if
+some of your papers appear only in pre-print form. However, it's a
+rather easy job to edit this bit into the <I>.bbl</I> file produced
+from <I>prsty.bst</I>. The best thing to do is to try out the style
+files and choose the one that looks best, or that gives the format of
+the journal you're writing for.
+
+<P>
+<DT> Bibliography Database:
+<DD> This is the users own file that contains all the information for
+bibliography entries on a range of papers, books, etc., that you might
+want to cite. The file must have the extension <I>.bib</I>. The
+syntax for a range of entries is shown in the example file <A
+HREF="tau.bib"><I>tau.bib</I></A>&nbsp;
+</DL>
+
+Instead of the manual bibliography information with
+&nbsp;<TT>\begin{thebibliography}...\end{thebibliography}</I>&nbsp;
+information, you just enter (just before the
+&nbsp;<TT>\end{document}</TT>&nbsp; command):  
+
+<P>
+<PRE>
+\bibliographystyle{h-physrev3}
+\bibliography{physics}
+</PRE>
+
+<P> This tells BibTeX which style to use for displaying the
+bibliography (in this example, it uses the <I>h-elsevier2</I> style,
+where the full filename is <I>h-elsevier2.bst</I>),
+and the name of the bibliography database file (which will have the
+full filename <I>physics.bib</I>).
+
+<p>
+Actually, you can use multiple bibliographies in a LaTeX document by
+just having a series of <code><b>\bibliography{...}</b></code>
+commands. This allows you to use, for example, a set of bibliography
+items used and maintained by a group of people, and additionally a set
+of your own private bibliography entries, with
+
+<p>
+<pre>
+\bibliographystyle{h-physrev3}
+\bibliography{groupbibentries}
+\bibliography{mybibentries}
+</pre>
+
+
+<A NAME="nicethings"></A>
+<H2> Some nice things about BibTeX </H2>
+
+<A NAME="format"></A>
+<H4> Entries in an appropriate format already exist
+</H4>
+
+The nice people at SLAC have a BibTeX format in their search options
+for hep articles in the <A HREF="
+http://www-spires.slac.stanford.edu/find/hep">Spires
+Database</A>&nbsp; and choosing the BibTeX format in the format
+options just below where you enter the search command. This means that
+for the vast majority of papers you don't even have to enter the
+bibliography information by hand!
+
+<A NAME="emacs"></A>
+<H4> <TT>Emacs</TT> has a BibTeX mode </H4>
+
+When you load up a <I>.bib</I> database file, <TT>Emacs</TT>
+recognises it as a BibTeX file and enters the BibTeX format, which
+includes a menu bar with drop-down menus for features like
+preformatted entry templates (just in case the entry you want to
+create isn't available on the Spires database), and other utilities
+for checking the syntax of bibliography entries. (AFAIK, this feature
+isn't available on MS-Word). 
+
+<A NAME="entrytypes"></A>
+<H4> Types of entries </H4>
+
+There are many types of entries that one might want to include in a
+bibligraphy, and it can be hard to get them standardized with the rest
+of the world, for example: Articles in Journals, Contributions to
+Conference Proceedings, Theses (published and otherwise), etc. Using
+either templates available from the BibTeX mode of Emacs, or from
+looking at similar entries on Spires, you can find a suitable and
+consistent layout for all such entries.
+
+<A NAME="styles"></A>
+<H4> How about changing styles? </H4 >
+
+Just change the BibTeX style file. Other types of style file can be
+found in places like CTAN sites, for example: <A
+HREF="ftp://ftp.uni-augsburg.de/pub/tex/ctan/"> CTAN-Germany</A>
+
+<A NAME="submission"></A>
+<H4> When you want to submit articles? </H4>
+
+When submitting articles, one really wants the bibliography in the
+body of the document. This is easily done:
+
+<UL>
+<LI> First remove the <TT>\bibliography{...}</TT> and
+<TT>\bibliographystyle{...}</TT> commands from the document,
+<LI> Then insert the auxilliary file, that BibTeX created when you
+processed the document, called <I>filename.bbl</I> just before the
+<TT>\end{document}</TT> command
+</UL>
+
+<P> Now you have what looks (and acts) like a document with a manual
+(and hence editable if you want to do some fine-tuning) bibliography.
+
+<A NAME="example"></A>
+<H2> For example.</H2>
+
+The document <A
+HREF="example.tex">
+<I>example.tex</I></A>&nbsp; a very basic LaTeX document with the
+commands to make a BibTeX bibliography. Note that the bibliography it
+produces has only 2 entries, although the following bibliography
+database has 3 entries. This is because only 2 of these are cited in
+<I>example.tex</I>.
+
+<P> To process this file, the style file <A
+HREF="h-physrev3.bst"><I>h-physrev3.bst</I>,</A>&nbsp; is needed, as
+well as the BibTeX database file <A
+HREF="tau.bib"><I>physics.bib</I></A>. On processing (remember:
+<I> latex, bibtex, latex, latex</I>), the auxilliary file
+<I>example.bbl</I> is created which has the bibliography information
+for <I>example.tex</I> in it.
+
+<P>
+<P>
+<CENTER>
+<A HREF="#top">Return to top</A>
+</CENTER
+
+<P>
+
+<hr WIDTH="100%">
+<table WIDTH="100%" NOSAVE >
+<tr NOSAVE>
+<td NOSAVE align=left>
+<center><a href="mailto:jenny@hep.man.ac.uk">Feedback</a></center>
+</td>
+
+<td NOSAVE align=center>
+<center><font size=-1>Last updated: 26Jan01</font></center>
+</td>
+
+<td NOSAVE align=right>
+<center><font size=-1>Copyright &copy; 1999-2001 Jenny Williams</font>
+<br><font size=-1>All Rights Reserved</font></center>
+</td>
+</tr>
+</table>
+
+<center>
+<hr WIDTH="100%"></center>
+
+</BODY>
+</HTML>
+

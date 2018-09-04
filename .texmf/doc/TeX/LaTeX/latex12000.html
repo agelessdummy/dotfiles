@@ -1,0 +1,1095 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><html><head><title>All you need to know about Latex, Finishing</title>
+
+<meta name="generator" content="txt2html v1.35">
+<link rel="stylesheet" type="text/css" href="Latex12.000_files/style.css"></head>
+
+<body background="Latex12.000_files/back048.gif">
+<a name="page_top">
+  </a><p align="right">
+<a name="page_top">   </a><a href="#page_top" target="_top">Click here to get rid of any annoying frames</a> 
+ </p>
+
+<hr size="3">
+<h1><a name="section_1">\backmatter</a></h1>
+
+<!-- New Message -->
+<p>
+<a name="0">Newsgroups:</a> <a href="news://comp.text.tex/">comp.text.tex</a><br>
+
+</p><p>
+&gt;What is the \backmatter for? 
+
+</p><p>
+"A Guide to LaTeX" says:
+
+</p><pre>    In the book class, introduces the material that comes at the end
+    (bibliography, index) by turning off the chapter numbering of the
+    \chapter command.
+</pre>
+
+<p>
+In my book, I have:
+
+</p><pre>    \backmatter
+    \chapter*{\glossaryname}
+    \addcontentsline{toc}{chapter}{\glossaryname}
+    \printglossary
+    \addcontentsline{toc}{chapter}{\indexname}
+    \printindex
+    \end{document}
+</pre>
+
+
+<hr size="3">
+<h1><a name="section_2">Booklets</a></h1>
+
+<!-- New Message -->
+<p>
+<a name="1">Newsgroups:</a> <a href="news://comp.text.tex/">comp.text.tex</a><br>
+
+</p><p>
+&gt; Is their some nice and easy (or even not-so-easy) way to produce a booklet<br>
+with LaTeX2e? prefably with A5 pages on A4 sheets
+
+</p><p>
+The following approach is for letter paper folded in half, but could be
+modified for other sizes.  Start by creating the document in the size
+desired, e.g.,
+
+</p><p>
+\documentclass[twoside,11pt]{article}<br>
+\setlength{\paperwidth}{5.5in}   % half the long dimension
+\setlength{\paperheight}{8.5in}<br>
+\setlength{\topmargin}{2.8in}<br>
+\setlength{\textheight}{6.9in}<br>
+\setlength{\oddsidemargin}{0.0in}<br>
+\setlength{\evensidemargin}{-0.3in}<br>
+\setlength{\textwidth}{4.0in}<br>
+\begin{document}<br>
+etc.
+
+</p><p>
+Then  run latex/bibtex/makeindex/dvips as usual to generate the ps file
+(e.g., manual.ps), followed by:<br>
+# Reorder pages in booklet order<br>
+psbook manual.ps manual1.ps<br>
+# Merge pages in 2up landscape format<br>
+psnup -pletter -l -s1.0 -2 manual1.ps manual2.ps
+
+</p><p>
+Psbook and psnup are part of psutils, which comes with Miktex.  Manual2.ps
+is the result.  If not using a duplex printer, print even pages followed by
+odd using gsview.
+
+</p><p>
+Gordon Everstine
+
+
+</p><hr size="3">
+<h1><a name="section_3">Number the pages from the real content</a></h1>
+
+<p class="quote_mail">
+&gt; &gt; &gt; My cover page, table of content/tables are all counting as normal<br>
+&gt; &gt; &gt; pages. How can I count them separately?<br>
+&gt; <br>
+&gt; Since nobody give me the anwser I want, I dig around myself and<br>
+&gt; found a solution, hopefully will help some newbie else:<br>
+&gt; \pagenumbering{roman}<br>
+&gt; \pagenumbering{arabic}
+
+</p><p>
+Good for you!  Note that you should put \clear[double]page before
+\pagenumbering{arabic} to make sure the numbering changes at the 
+right place.
+
+</p><p>
+If you use documentlass book, this is somewhat automated by the
+\frontmatter and \mainmatter commands.
+
+</p><p>
+Donald Arseneau 
+
+
+</p><hr size="3">
+<h1><a name="section_4">example of a good titlepage</a></h1>
+
+<!-- New Message -->
+<p>
+<a name="2">Newsgroups:</a> <a href="news://comp.text.tex/">comp.text.tex</a><br>
+
+</p><p>
+With the titlepage environment you get to choose exactly the layout you want
+
+</p><p>
+\begin{titlepage}<br>
+\vspace*{5cm}<br>
+\begin{center}<br>
+\Large<br>
+My title here\\<br>
+\vspace{2cm}<br>
+\large<br>
+I, the author\\<br>
+\vspace{2cm}<br>
+\today\\<br>
+\end{center}<br>
+\vspace{2cm}
+
+</p><p>
+\begin{abstract}<br>
+...<br>
+\end{abstract}<br>
+Rest of page...<br>
+\end{titlepage}
+
+</p><p>
+Cheers,
+
+</p><p>
+Sebastian
+
+</p><hr align="center" width="50%">
+<h2><a name="section_4_1">example of a good titlepage</a></h2>
+
+<p class="quote_mail">
+&gt; I'm trying to make a good titlepage and want to include \title, \abstract<br>
+&gt; \author \date \thanks \keywords \note. I have tried the following<br>
+&gt; \begin{titlepage}<br>
+&gt;     \title{\bf xxx}<br>
+&gt;     \author{xxx}<br>
+&gt;     \date{\today}<br>
+&gt;     \thanks{xxx}<br>
+&gt; \end{titlepage}<br>
+&gt; \maketitle<br>
+&gt; <br>
+&gt; but is ending up with a empty first page and problems 
+
+</p><p>
+That blank page is the title page. If you want the title to be on the 
+title page you should put \maketitle in the the titlepage environment. 
+The same is mostly true of the abstract, but in some classes 
+\begin{abstract} may start a new page. If so, you could 
+\renewenvironment{abstract}, defining however you like, but it might be 
+best to start with a copy of your class's definition, removing anything 
+that would start a new page.
+
+</p><p>
+Dan Luecking
+
+
+</p><hr size="3">
+<h1><a name="section_5">maketitle</a></h1>
+
+<!-- New Message -->
+<p>
+<a name="3">Newsgroups:</a> <a href="news://comp.text.tex/">comp.text.tex</a><br>
+&gt; I am just wondering if I can make a front-page including a figure (for<br>
+&gt; example, sample.eps) using the "maketitle" command. Is it possible ?<br>
+&gt;<br>
+&gt; ex)<br>
+&gt;<br>
+&gt; Title of the document<br>
+&gt;<br>
+&gt;         author<br>
+&gt;<br>
+&gt;         figure (sample.eps)<br>
+&gt;<br>
+&gt;          date<br>
+&gt;
+
+</p><p>
+I don't think that it is possible with \maketitle. But there is the
+environment
+
+</p><p>
+\begin{titlepage}
+
+</p><p>
+%  everything you want
+
+</p><p>
+\end{titlepage}
+
+</p><p>
+That should work.
+
+</p><p>
+Leonard
+
+</p><hr align="center" width="50%">
+<h2><a name="section_5_1">maketitle</a></h2>
+
+<p class="quote_mail">
+&gt; I just found that I can put a figure on the title page using the "maketitle"<br>
+&gt; command if I modify my current style file. Anyway, thanks again.<br>
+&gt; <br>
+&gt; Cheers!!!<br>
+&gt; <br>
+&gt; Jin<br>
+&gt; <br>
+&gt; <br>
+&gt; <br>
+I have been able to do this:<br>
+\title{<br>
+{\scalebox{0.75}{\includegraphics{/path/to/my/frontpage graphic.epsi}}} \\
+\vspace{10pt}<br>
+{\bf {\sc Title}}}<br>
+\author{Robert Lopez}<br>
+\date{\pubdate\footnote{bla bla bla}}<br>
+\maketitle
+
+
+
+</p><p>
+Robert.Lopez
+
+
+</p><hr size="3">
+<h1><a name="section_6">center titlepage</a></h1>
+
+<p class="quote_mail">
+&gt; &gt; Can someone tell me how to center the titlepage, (the page, not the<br>
+lines).
+</p><p class="quote_mail">
+&gt;<br>
+&gt; Try putting a \vfill before and after the text you want vertically<br>
+&gt; centered.<br>
+&gt;<br>
+&gt; -- Scott
+
+</p><p>
+\begin{titlepage}<br>
+ \vspace*{\fill}
+</p><pre>    bla bla
+</pre>
+<p>
+ \vspace*{\fill}<br>
+\end{titlepage}
+
+</p><p>
+Martin
+
+
+</p><hr size="3">
+<h1><a name="section_7">abstract on titlepage</a></h1>
+
+<!-- New Message -->
+<p>
+<a name="4">Newsgroups:</a> <a href="news://comp.text.tex/">comp.text.tex</a><br>
+&gt; <br>
+&gt; I want to place the abstract on the titlepage.  The way it is usually setup<br>
+&gt; (article.cls) is to have an the titlepage and abstract as separate<br>
+&gt; environments.  The \maketitle command constructs the titlepage using the<br>
+&gt; titlepage environment.  The abstract, which is usually declared in its<br>
+&gt; environment after \maketitle, is then on a separate page.<br>
+&gt; <br>
+&gt; Is there anyway to declare the abstract separately from the titlepage<br>
+&gt; declarations but have it appear on the titlepage?
+
+</p><p>
+\documentclass{article}  % no titlepage option
+...<br>
+\title{...} \author{...} \date{...}<br>
+\begin{document}
+</p><pre>\bgroup           % fake a titlepage
+</pre>
+<p>
+  \let\footnoterule\relax  % no rule above thanks footnotes
+  \maketitle<br>
+  \begin{abstract}...\end{abstract}<br>
+  \thispagestyle{empty}  % no page number
+  \clearpage<br>
+\egroup<br>
+\setcounter{page}{1}  % start next page as page 1
+...
+
+</p><pre>    If you find the title is too high on the page, try:
+</pre>
+<p>
+\title{\vspace*{1in}Title text}<br>
+which will move the title down by 1 inch (adjust 1in to suit).
+
+</p><p>
+Peter W.
+
+
+</p><hr size="3">
+<h1><a name="section_8">style of thesis/presentation</a></h1>
+
+<!-- New Message -->
+<p>
+<a name="5">Newsgroups:</a> <a href="news://comp.text.tex/">comp.text.tex</a><br>
+&gt; Is there a well-known thesis style that I can use? 
+
+</p><p>
+It is always difficult to give a unique solution in order to write a
+thesis.  It all depends on Universities, colleges and of course, your own
+taste.  I wrote an example document on how to write a thesis using LaTeX.
+Feel free to use it and modify it to your own needs:
+
+</p><p>
+<a href="ftp://ftp.mrao.cam.ac.uk/pub/sergio/thesis">ftp://ftp.mrao.cam.ac.uk/pub/sergio/thesis</a>
+
+</p><p>
+Sergio.
+
+</p><hr align="center" width="50%">
+<h2><a name="section_8_1">style of thesis/presentation</a></h2>
+
+<p>
+<a href="http://www.ctan.org/cgi-bin/CTANcataloguesearch.pl?CATSTRING=thesis">http://www.ctan.org/cgi-bin/CTANcataloguesearch.pl?CATSTRING=thesis</a>
+
+</p><p>
+[]University of Toronto thesis style<br>
+<a href="ftp://ftp.rge.com/pub/tex/macros/latex/contrib/supported/ut-thesis">ftp://ftp.rge.com/pub/tex/macros/latex/contrib/supported/ut-thesis</a>
+- have a long long version log<br>
+- not using geometry package
+
+</p><hr align="center" width="50%">
+<h2><a name="section_8_2">style of thesis/presentation</a></h2>
+
+<p>
+Hello active usenet guy :-)
+
+</p><p>
+Here's one, relatively new, though:
+
+</p><p>
+   <a href="http://pantheon.yale.edu/%7Euna/yalephd/">http://pantheon.yale.edu/~una/yalephd/</a>
+
+</p><p>
+Chris
+
+</p><p>
+<em>N</em>:
+
+</p><ul>
+  <li>LaTeX2e document class for Yale PhD dissertations 
+  </li><li>first to figure then to table
+  </li><li>not using geometry package
+
+
+</li></ul>
+<hr size="3">
+<h1><a name="section_9">General thesis structure</a></h1>
+
+<!-- New Message -->
+<p>
+<a name="6">Newsgroups:</a> <a href="news://comp.text.tex/">comp.text.tex</a><br>
+
+</p><p>
+&gt; I've been using the frontmatter (as per a suggestion) for my thesis<br>
+&gt; writing,<br>
+&gt; <br>
+&gt; It works fine until now, when I want to put all those abstract,<br>
+&gt; acknowledgments etc stuff in, before the \mainmatter. I got:<br>
+&gt; <br>
+&gt; ! LaTeX Error: Environment abstract undefined.<br>
+&gt; <br>
+&gt; What is the suggested way for a thesis, that includes everything<br>
+&gt; title page, signature page, glossary, acknowledgments and<br>
+&gt; dedication?<br>
+&gt; <br>
+</p><p>
+    It seems as though you are using the book class as that does not
+have an abstract environment.
+
+</p><pre>    Because the requirements for theses tend to be idiosynchratic you
+</pre>
+<p>
+have to do most of the work youself, particulary designing the title and
+signature pages.
+
+</p><pre>    I presume you could do \chapter{Abstract},
+</pre>
+<p>
+\chapter{Acknowledgements}, etc. 
+
+</p><p>
+Perhaps use a centered heading for the dedication. E.g.,
+
+</p><p>
+\clearpage<br>
+\nul\vfil  % or it might be \null<br>
+\begin{center}\textbf{DEDICATION}\end{center}
+I couldn't have done this without parents.
+\vfil<br>
+\clearpage
+
+</p><p>
+(The \vfil s will vertically center the dedication).
+
+
+</p><p>
+Peter W.
+
+</p><hr align="center" width="50%">
+<h2><a name="section_9_1">General thesis structure</a></h2>
+
+<p>
+Take a look at the thesis-package, which did (o.K., does) a good job for me.
+
+</p><p>
+An English page can be found at<br>
+<a href="ftp://ftp.dante.de/tex-archive/help/Catalogue/entries/thesis.html">ftp://ftp.dante.de/tex-archive/help/Catalogue/entries/thesis.html</a>
+
+</p><p>
+or the files directly at
+
+</p><p>
+<a href="ftp://ftp.dante.de/tex-archive/macros/latex/supported/thesis/">ftp://ftp.dante.de/tex-archive/macros/latex/supported/thesis/</a>
+
+</p><pre>        Hinnerk
+</pre>
+
+<hr align="center" width="50%">
+<h2><a name="section_9_2">thesis</a></h2>
+
+<p>
+  []Typeset thesis<br>
+<a href="http://www.ctan.org/tex-archive/macros/latex/contrib/supported/thesis">http://www.ctan.org/tex-archive/macros/latex/contrib/supported/thesis</a>
+
+</p><p>
+  A class for producing a thesis based on the report class for a
+  more European and more flexible look. Supports options like
+  noindent, noitemization, headline, nocenter, crosshair, and
+  chapterbib. 
+
+
+</p><hr size="3">
+<h1><a name="section_10">How to use appendix for my thesis</a></h1>
+
+<!-- New Message -->
+<p>
+<a name="7">Newsgroups:</a> <a href="news://comp.text.tex/">comp.text.tex</a><br>
+
+</p><p>
+&gt; Could anyone help me out on how to use appendix in latex?
+
+</p><p>
+\chapter|section{Last non-appendix}<br>
+....<br>
+\appendix<br>
+\chapter|section{First appendix}<br>
+....<br>
+\chapter|section{Second appendix}<br>
+...<br>
+(using \chapter if in book or report class, or \section for article
+class).
+
+</p><pre>    You may like to try the appendix package from CTAN which gives you
+</pre>
+<p>
+more felixibility.
+
+</p><p>
+Peter W.
+
+
+</p><hr size="3">
+<h1><a name="section_11">Thesis formatting questions, please help!</a></h1>
+
+<!-- New Message -->
+<p>
+<a name="8">Newsgroups:</a> <a href="news://comp.text.tex/">comp.text.tex</a><br>
+
+</p><p>
+&gt; Hi, I checked our graduate college's manual, I think they are
+
+</p><p>
+Here are some partial answers. You can change the name of the table of
+contents (and other section names) by using the commands:
+
+</p><p>
+\contentsname{Table of contents}<br>
+\figurename{Fig.}<br>
+(etc.)
+
+</p><p>
+Here is a list of the items whose names can be changed:
+
+</p><p>
+\abstractname<br>
+\contentsname<br>
+\listfigurename<br>
+\listtablename<br>
+\indexname<br>
+\chaptername<br>
+\figurename<br>
+\partname<br>
+\tablename<br>
+\appendixname<br>
+\bibname
+
+</p><p>
+If you're using the babel package however, you have to use commands
+like
+
+</p><p>
+\addto\captionsfrench{\renewcommand{\contentsname}{Table des
+matières}}
+
+</p><p>
+where French language is used here.
+
+</p><p>
+You can also change the format of the sections by redefining them
+through a command like for example:
+
+</p><p>
+\renewcommand{\section}{\@startsection%
+  {section}{1}{0pt}{-3.5ex plus -1ex minux -.2ex}%
+  {2.3ex plus .2ex}{\centering\normalfont\Large\MakeUppercase}}
+
+</p><p>
+Here the \section command was redefined to start a new section of name
+"section", level "1", with a 0pt indent, -3.5ex pre-skip (with some
+rubber lengths), 2.3 post-skip (with some rubber lengths), and that
+will appear centered, large and in uppercase. May I suggest that you
+get a LaTeX book such as the LaTeX Companion by Leslie Lamport, or "A
+Guide to LaTeX" by Helmut Kopka and Patrick Daly, in which all of this
+is described in much more details
+
+</p><p>
+As for having "Table of contents (continued)" on the second page of
+the TOC, I don't have any easy answer. Note that by issuing
+
+</p><p>
+\pagestyle{headings}
+
+</p><p>
+you will get a header with the current chapter name, thus providing
+the text "Table of contents" at the top of the second page of the TOC.
+
+</p><p>
+I hope this was useful to you.
+
+</p><p>
+François Bouffard
+
+
+</p><hr size="3">
+<h1><a name="section_12">bibliography heading</a></h1>
+
+<p>
+Try the following:
+
+</p><p>
+\renewcommand{\bibname}{References}
+
+</p><p>
+Success,
+
+</p><p>
+Erwin.
+
+
+</p><hr size="3">
+<h1><a name="section_13">How to add the Index to TOC?</a></h1>
+
+<!-- New Message -->
+<p>
+<a name="9">Newsgroups:</a> <a href="news://comp.text.tex/">comp.text.tex</a><br>
+
+</p><p>
+&gt; How to add the Index to TOC?<br>
+&gt; I tried a few things but nothing worked...
+
+</p><p>
+\clear[double]page<br>
+\addcontentsline{toc}{section}{index}<br>
+\printindex
+
+</p><p>
+Donald Arseneau   
+
+
+</p><hr size="3">
+<h1><a name="section_14">Bibliography in TOC</a></h1>
+
+<!-- New Message -->
+<p>
+<a name="10"></a> Newsgroups: <a href="news://comp.text.tex/">comp.text.tex</a><br>
+ Date: 1996/09/10 
+
+</p><p class="quote_mail">
+&gt;I am using the book format with Latex2e. I have difficulty to make<br>
+&gt;the Bibliography "chapter" shows up in the Table of Content correctly.
+
+</p><p>
+\addcontentsline{toc}{chapter}{Bibliography}.
+
+</p><p>
+Albert van Beek
+
+</p><hr align="center" width="50%">
+<h2><a name="section_14_1">Bibliography in TOC</a></h2>
+
+<p>
+\usepackage[...]{tocbibind}<br>
+\settocbibname{References}
+
+</p><pre>    tocbibind is a package for adding extra titles (like the
+</pre>
+<p>
+bibliography, or index, or List of Figures, or ...) to the Table of
+Contents.
+
+</p><p>
+Peter W.
+
+
+</p><hr size="3">
+<h1><a name="section_15">Including "Bibliography" item in table of contents</a></h1>
+
+<!-- New Message -->
+<p>
+<a name="11">Newsgroups:</a> <a href="news://comp.text.tex/">comp.text.tex</a><br>
+
+</p><p>
+&gt; I'm using BiBTeX for my Bibliography and I would like that when I'm using<br>
+&gt; \bibliography{Bib} , Bibliography also appears in the table of contents. How<br>
+&gt; do I do that?
+
+</p><p>
+If you use Koma-script: \documentclass[bibtotoc,...]{...} or
+</p><pre>                        \documentclass[bibtotocnumbered,...]{...}
+</pre>
+
+<p>
+Else: tocbibind.sty <br>
+(e.g. <a href="ftp://ftp.dante.de/tex-archive/macros/latex/contrib/supported/tocbibind">ftp://ftp.dante.de/tex-archive/macros/latex/contrib/supported/tocbibind</a>)
+
+</p><p>
+HTH, Joh
+                        
+
+</p><hr size="3">
+<h1><a name="section_16">change table 1: to tab.1: in caption</a></h1>
+
+<p class="quote_mail">
+&gt; I would like to change the caption of floating tables<br>
+&gt; from table 1: title to tab.1: title?<br>
+&gt; How can I do this?
+
+</p><p>
+\renewcommand{\tablename}{Tab.}
+
+</p><p>
+This will not remove the space between \figurename and the number,
+though. Are you sure you want this? I don't know the German convention
+for, but it sounds (and looks) strange to me.
+
+
+</p><p>
+Magnus
+
+
+</p><hr size="3">
+<h1><a name="section_17">Footnote</a></h1>
+
+<hr align="center" width="50%">
+<h2><a name="section_17_1">My explicitly designed footnote</a></h2>
+
+<p>
+\def\cprfootstring{<br>
+\begin{tabular*}{6in}[t]{c}<br>
+\vspace{3pt} \\ \hline \\ <br>
+\small courtesy of the lecture slides for textbook {\em Machine Learning},
+\copyright Tom M. Mitchell, 1997<br>
+\end{tabular*}
+
+</p><h4><a name="section_17_1_1_1">Pros</a></h4>
+
+<ul>
+  <li>fully control the style
+
+<h4><a name="section_17_1_1_2">Cons</a></h4>
+
+  </li><li>no reference point
+  </li><li>whole line separation instead of half line
+  </li><li>font not small enough (should use \footnodesize?)
+
+</li></ul>
+<hr align="center" width="50%">
+<h2><a name="section_17_2">Right way</a></h2>
+
+<p>
+at this point \footnote{blah blah blah}
+
+
+</p><hr size="3">
+<h1><a name="section_18">footnote problem</a></h1>
+
+<!-- New Message -->
+<p>
+<a name="12">Newsgroups:</a> <a href="news://comp.text.tex/">comp.text.tex</a><br>
+
+</p><p>
+&gt;Please provide your suggestions on using the footnote. <br>
+&gt;<br>
+&gt;The problem I'm facing now is that, I want to avoid Arabic number <br>
+&gt;for the footnote index. They look no different than $a^4$. So I<br>
+&gt;changed to symbolic footnote index:<br>
+&gt;<br>
+&gt;\renewcommand{\thefootnote}{\fnsymbol{footnote}}<br>
+&gt;<br>
+&gt;But the new problem  I'm facing now is that I've run out of the<br>
+&gt;footnote index numbers:<br>
+&gt;<br>
+&gt;! LaTeX Error: Counter too large.
+
+</p><p>
+there are only 10 footnote symbols (or something equally feeble).
+symbols are only really usable if you number your footnotes per page.
+
+</p><p class="quote_mail">
+&gt;I can't split my chapter, my Prof asked me to squeeze many of my<br>
+&gt;chapters into one. I'm running out of time soon too. So I'd be very<br>
+&gt;grateful that you reply earlier. Thanks a lot.
+
+</p><p>
+\usepackage[perpage,symbol*]{footmisc}
+
+</p><p>
+this numbers per page, and replace your \thefootnote command with
+something that's not fazed by footnote numbers &gt;10 (in case some such
+appears while it's thinking) -- it switches to arabic footnote
+numbering in this case.
+
+</p><p>
+(best get the latest footmisc from ctan: its perpage is more stable
+than the one you'll likely find in your distribution.)
+
+
+</p><p>
+Robin Fairbairns, Cambridge
+
+
+</p><hr size="3">
+<h1><a name="section_19">Multiple references to same footnote</a></h1>
+
+<!-- New Message -->
+<p>
+<a name="13">Newsgroups:</a> <a href="news://comp.text.tex/">comp.text.tex</a><br>
+
+</p><p>
+First make your footnote:<br>
+\footnote{This is a footnote}
+
+</p><p>
+Then refer to it a second time:<br>
+\footnotemark[\value{footnote}]
+
+
+</p><p>
+Koos Pol - Systems Administrator
+
+</p><hr align="center" width="50%">
+<h2><a name="section_19_1">Multiple references to same footnote</a></h2>
+
+<p>
+\footnotemark will step the footnote counter and produce the
+reference. In this case, you don't want to step the counter, 
+which is why there is an optional argument to \footnotemark. 
+That value will be used instead, and the counter will not be
+stepped. 
+
+</p><p>
+Magnus 
+
+
+</p><hr size="3">
+<h1><a name="section_20">Define my own style</a></h1>
+
+<!-- New Message -->
+<p>
+<a name="14">Newsgroups:</a> <a href="news://comp.text.tex/">comp.text.tex</a><br>
+
+</p><p>
+&gt;I want to define a style, say relax, as simple as this:<br>
+&gt;<br>
+&gt;\newcommand{\relax}[1]{<br>
+&gt;\textsf{#1}<br>
+&gt;}<br>
+&gt;<br>
+&gt;When I use "\relax{some words}", the font didn't change. How can I<br>
+&gt;fix it? thanks
+
+</p><p>
+when reporting a problem, tell us what you actually wrote, or tell us
+about any error messages you encountered: \newcommand\relax produces
+an error since \relax is already defined.
+
+</p><p>
+if you ignored an error message on defining \relax, then the result is
+expected.  the command \relax says "do nothing" (to first order).
+
+</p><p>
+note: if you want to write your commands on several lines, terminate
+the lines with comment signs.
+
+</p><p>
+\newcommand{\fred}[1]{%<br>
+  \textsf{#1}%<br>
+}
+
+</p><p>
+works, and doesn't convert unprotected line ends into spaces in your
+output.
+
+
+</p><p>
+Robin Fairbairns, Cambridge
+
+
+</p><hr size="3">
+<h1><a name="section_21">split file = page break?</a></h1>
+
+<!-- New Message -->
+<p>
+<a name="15">Newsgroups:</a> <a href="news://comp.text.tex/">comp.text.tex</a><br>
+
+</p><p>
+&gt; I split a large chapter into 2 files. I noticed that the 2nd file<br>
+&gt; always begins on a new page. I didn't specify and page break<br>
+&gt; commands, not even any line skipping.<br>
+&gt;<br>
+&gt; Is this the normal way Latex handle files? Is there a way to avoid<br>
+&gt; such page breaks? Thanks
+
+</p><p>
+It's the way LaTeX handles \include.  Try using \input instead.
+
+</p><p>
+ Scott
+
+</p><hr size="3">
+<h1><a name="section_22">How to set page number start??</a></h1>
+
+<!-- New Message -->
+<p>
+<a name="16"></a> Newsgroups: <a href="news://comp.text.tex/">comp.text.tex</a><br>
+ Date: 1997/09/01 
+
+</p><p class="quote_mail">
+&gt; by chapter basis, how can I set the page number to other<br>
+&gt; than one? The same goes for section numbers. A sample of
+
+</p><p>
+Put something like this in your tex-file. More of this stuff can be found
+in the aux-files.
+
+</p><p>
+\setcounter{page}{59}<br>
+\setcounter{chapter}{3}<br>
+\setcounter{section}{2}<br>
+\setcounter{subsection}{4}<br>
+\setcounter{subsubsection}{6}<br>
+\setcounter{figure}{11}<br>
+\setcounter{table}{8}
+
+</p><p>
+Lars Otto
+
+</p><hr align="center" width="50%">
+<h2><a name="section_22_1">How to set page number start??</a></h2>
+
+<p>
+You could use \setcounter{page}{25} to start at page 25, but there is a
+much better way...
+
+</p><p>
+You can \include your chapters. If you place your chapters in files like
+chapter1.tex, chapter2.tex, etc. you can use something like
+
+</p><p>
+\documentclass{book}<br>
+\begin{document}<br>
+\include{chapter1}<br>
+\include{chapter2}<br>
+ .<br>
+ .<br>
+ .<br>
+\end{document}
+
+</p><p>
+you can use \includeonly{...} before the \begin{document} to specifie
+which chapters you would like to (re)compile. So to recompile chapter 3,
+use \includeonly{chapter3}. The others are just ignored. Well, not
+enitrely. There are just not typeset again. The information about
+references and pages is preserved, and can be used in the other
+chapters. These will have the value of the last compilation.
+If you only recompile part of your document, the page numbers of the
+other chapters may be wrong if the recompiled chapter does not contain
+exactly the right number of pages. So for a final run, always remove the
+\includeonly and recompile the entire file twice, or if you don't use
+separate numbering for the front-matter, such as acknowledgements and
+table of contents, you might have to recompile three times. It is
+customary to use roman numbering for the front matter. You can do this
+by saying \pagenumbering{roman} and use \pagenumbering{arabic} for the
+rest. In this way the length of the table of contents does not interfere
+with the pagenumerbing in the rest of the document. But we were tackling
+a different problem.
+
+</p><p>
+If you do this the \tableofcontents etc. will be correct and you can
+still compile only one chapter at a time, if you want to... So, instead
+of having to manually change to pagenumbering you can let LaTeX do the
+work for you.
+
+</p><p>
+To change the numbers of chapter sections etc.. You can also use
+\setcounter{chapter}{...}, \setcounter{section}{...}, etc.
+
+</p><p>
+Timco Visser
+
+</p><hr size="3">
+<h1><a name="section_23">Defining my own heading levels</a></h1>
+
+<!-- New Message -->
+<p>
+<a name="17">Newsgroups:</a> <a href="news://comp.text.tex/">comp.text.tex</a><br>
+
+</p><p>
+I am now adapting my thesis short for a conference, which requires
+scaling down all my headers. I.e., \chapter to \section, \section to
+\subsection, etc. Besides, all references to "Chapter" would change
+to "Section" accordingly. Please somebody provide me a macro so that
+my individual .tex files can suit both cases, so that:
+
+</p><p>
+\H1 would be \chapter for my thesis and \section for the conference
+paper, and \H1Name(what's better name for this?) would be "Chapter"
+or "Section" accordingly. Thanks!
+
+</p><hr align="center" width="50%">
+<h2><a name="section_23_1">Defining my own heading levels</a></h2>
+
+<p>
+I would probably have two document classes, and leave the commands as 
+\chapter, \section,....  but in the conference class, \chapter
+would typeset accordingly.  I would use something like smartref.sty (?)
+for controlling the "Section 4.2" cross referencing.
+
+</p><p>
+Donald Arseneau 
+
+</p><hr align="center" width="50%">
+<h2><a name="section_23_2">Defining my own heading levels</a></h2>
+
+<p>
+I just finished my thesis a few months ago, and I was using the following to
+be able to have one .tex file for both the official thesis version and for a
+paper to be submitted.  You'll obviously have to change it to suit your
+needs, but it might get you started.  Basically you decide which of the two
+documentclasses you want to use (uncomment the appropriate one), and then
+you \setboolean the isthesis variable.  then you get a command
+"\ifthesis{}{}" that takes two arguments, and depending on whether you're
+set at thesis mode or not will substitute the first or the second argument
+for that command.  You can see at the end of this snippet how I redefine
+"\sec" and "\subsec" to do what you want with sectioning, but this goes much
+farther -- if you have a lemma you want in the thesis but not in the paper,
+put it in an \ifthesis command, etc.
+
+
+</p><p>
+% To typeset as a thesis, use the uclathes documentclass line, and change the
+% ``isthesis'' variable to ``true''.<br>
+% To typeset as a paper, use the ``amsart'' documentclass line, and change the
+% ``isthesis'' variable to ``false''.
+
+</p><p>
+%\documentclass[PhD]{uclathes}<br>
+\documentclass[12pt]{amsart}
+
+</p><p>
+\usepackage{ifthen}<br>
+\newboolean{isthesis} % Is this being typeset for thesis purposes or paper
+</p><pre>                      % purposes?
+</pre>
+
+<p>
+\setboolean{isthesis}{false}<br>
+%\setboolean{isthesis}{true}
+
+</p><p>
+%Usage: \ifthesis{thesiscommands}{papercommands}
+\newcommand{\ifthesis}[2]{\ifthenelse{\boolean{isthesis}}{#1}{#2}}
+
+</p><p>
+\ifthesis{}{<br>
+  \usepackage[margin=1in]{geometry}<br>
+  }
+
+</p><p>
+\ifthesis{\usepackage{oldlfont}}
+
+</p><p>
+\begin{document}<br>
+\ifthesis{}{\Now \ \ $Revision: 1.74 $}
+\ifthesis{<br>
+  \renewcommand{\sec}{\chapter}<br>
+  \newcommand{\subsec}{\section}<br>
+}{<br>
+  \renewcommand{\sec}{\section}<br>
+  \newcommand{\subsec}{\subsection}<br>
+}
+
+</p><p>
+[...]
+
+</p><p>
+  Ami Fischman
+
+</p><hr align="center" width="50%">
+<h2><a name="section_23_3">Numbers allowed in command?</a></h2>
+
+<!-- New Message -->
+<p>
+<a name="18">Newsgroups:</a> <a href="news://comp.text.tex/">comp.text.tex</a><br>
+
+    &gt; &gt; \H1 would be \chapter for my thesis and \section for the conference<br>
+    &gt; Hmm, just want to confirm that numbers are not allowed in command,<br>
+</p><pre>    &gt; correct? Meaning that I can't define commands like \H1, \H2, etc?
+</pre>
+
+<p>
+Yes and no.  You can make<br>
+\def\H#1{\csname H#1\endcsname}
+
+</p><p>
+and then define<br>
+\expandafter\def\csname H1\endcsname{\chapter}
+\expandafter\def\csname H2\endcsname{\section}
+
+</p><p>
+David Kastrup
+
+</p><hr align="center" width="50%">
+<h2><a name="section_23_4">Numbers allowed in command?</a></h2>
+
+<p>
+\def\H#1{\csname H#1\endcsname}<br>
+\expandafter\def\csname H1\endcsname{\chapter}
+\expandafter\def\csname H2\endcsname{\section}
+
+</p><p>
+\def\Hname#1{\csname Hname#1\endcsname}
+\expandafter\def\csname Hname1\endcsname{Chapter}
+
+</p><p>
+\H2{My own 2nd level title}
+
+</p><p>
+something useful in \Hname1  2.
+
+
+
+</p><hr>
+Last updated on: Tue Mar 04 00:32:36 EST 2003
+
+<p align="right">
+<a href="http://sourceforge.net/"><img src="Latex12.000_files/sflogo.png" width="88" height="31" border="0" alt="SourceForge.net Logo"></a>
+</p>
+</body></html>

@@ -1,0 +1,711 @@
+<!--
+#####################       A U T H O R       ##########################
+#                                                                      #
+#   Copyright 2010 Jack Desert                                         #
+#   <JackDesert@gmail.com>                                             #
+#   http://TwoMoreLines.com                                            #
+#                                                                      #
+######################      L I C E N S E     ##########################
+#                                                                      #
+#   This file is part of LyXBlogger.                                   #
+#                                                                      #
+#   LyXBlogger is free software: you can redistribute it and/or modify #
+#   it under the terms of the GNU General Public License as published  #
+#   by the Free Software Foundation, either version 3 of the License,  #
+#   or (at your option) any later version.                             #
+#                                                                      #
+#   LyXBlogger is distributed in the hope that it will be useful,      #
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of     #
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the      #
+#   GNU General Public License for more details.                       #
+#                                                                      #
+#   You should have received a copy of the GNU General Public License  #
+#   along with LyXBlogger.  If not, see <http://www.gnu.org/licenses>. #
+#                                                                      #
+########################################################################
+-->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="generator" content="http://www.nongnu.org/elyxer/"/>
+<meta name="create-date" content="2012-06-02"/>
+<link rel="stylesheet" href="style.css" type="text/css" media="all"/>
+<title>LyXBlogger User Guide</title>
+</head>
+<body>
+<div id="globalWrapper">
+<h1 class="title">
+LyXBlogger User Guide
+</h1>
+<h2 class="author">
+Jack Desert (JackDesert@gmail.com)
+</h2>
+<div class="Standard">
+<div class="wrap-r">
+<div class="table">
+<table>
+<tr>
+<td align="left" valign="top">
+<a class="URL" href="index.html">Home</a>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<a class="URL" href="http://download.savannah.gnu.org/releases-noredirect/lyxblogger/">Download</a>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<a class="URL" href="changelog.html">Change Log</a>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<a class="URL" href="userguide.html">User Guide</a>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<a class="URL" href="devguide.html">Development Guide</a>
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+</div>
+ 
+</div>
+<div class="fulltoc">
+<div class="tocheader">
+Table of Contents
+</div>
+<div class="tocindent">
+<div class="toc">
+<a class="Link" href="#toc-Section-1">Section 1: The Basics</a>
+</div>
+<div class="tocindent">
+<div class="toc">
+<a class="Link" href="#toc-Subsection-1.1">Subsection 1.1: System Requirements--Client</a>
+</div>
+<div class="tocindent">
+<div class="toc">
+<a class="Link" href="#toc-Subsubsection-1.1.1">Subsubsection 1.1.1: Special Notes about Windows Installs</a>
+</div>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Subsection-1.2">Subsection 1.2: System Requirements--Server </a>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Subsection-1.3">Subsection 1.3: xhtml Converters</a>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Subsection-1.4">Subsection 1.4: Installation</a>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Subsection-1.5">Subsection 1.5: Command-Line Usage</a>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Subsection-1.6">Subsection 1.6: Test Drive</a>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Subsection-1.7">Subsection 1.7: Profiles</a>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Subsection-1.8">Subsection 1.8: Password Prompt</a>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Subsection-1.9">Subsection 1.9: Image Uploads</a>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Subsection-1.10">Subsection 1.10: LyX Integration</a>
+</div>
+<div class="tocindent">
+<div class="toc">
+<a class="Link" href="#toc-Subsubsection-1.10.1">Subsubsection 1.10.1: LyXBlogger with LyX 1.6.x </a>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Subsubsection-1.10.2">Subsubsection 1.10.2: LyXBlogger with LyX 2.0.x </a>
+</div>
+</div>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Section-2">Section 2: Interface</a>
+</div>
+<div class="tocindent">
+<div class="toc">
+<a class="Link" href="#toc-Subsection-2.1">Subsection 2.1: LyXBlogger</a>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Subsection-2.2">Subsection 2.2: Format</a>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Subsection-2.3">Subsection 2.3: Title</a>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Subsection-2.4">Subsection 2.4: Cut Flag</a>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Subsection-2.5">Subsection 2.5: Domain</a>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Subsection-2.6">Subsection 2.6: New or Existing</a>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Subsection-2.7">Subsection 2.7: Category</a>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Subsection-2.8">Subsection 2.8: Images</a>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Subsection-2.9">Subsection 2.9: Words</a>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Subsection-2.10">Subsection 2.10: Success</a>
+</div>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Section-3">Section 3: Advanced Use</a>
+</div>
+<div class="tocindent">
+<div class="toc">
+<a class="Link" href="#toc-Subsection-3.1">Subsection 3.1: Delay</a>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Subsection-3.2">Subsection 3.2: Capital or Lowercase</a>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Subsection-3.3">Subsection 3.3: What do the Parentheses Mean? (Y) N</a>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Subsection-3.4">Subsection 3.4: Command Line Options</a>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Subsection-3.5">Subsection 3.5: Unsupported eLyXer options</a>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Subsection-3.6">Subsection 3.6: CSS</a>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Subsection-3.7">Subsection 3.7: Title</a>
+</div>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Section-4">Section 4: Work in Progress</a>
+</div>
+<div class="tocindent">
+<div class="toc">
+<a class="Link" href="#toc-Subsection-4.1">Subsection 4.1: Known Issues</a>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Subsection-4.2">Subsection 4.2: Contact Information</a>
+</div>
+</div>
+<div class="toc">
+<a class="Link" href="#toc-Section-5">Section 5: FAQ</a>
+</div>
+</div>
+
+</div>
+<h1 class="Section">
+<a class="toc" name="toc-Section-1">1</a> The Basics
+</h1>
+<div class="Standard">
+LyXBlogger (pronounced <i>licks blogger</i>) is a blog publishing tool. It doesn’t walk your dog, insult your mother, or assert world peace. But it does make composing and uploading blog entries simple and straightforward. 
+</div>
+<div class="Standard">
+LyXBlogger (including this guide and all accompanying materials) is licensed under the <a class="URL" href="http://www.gnu.org/licenses/gpl-3.0-standalone.html">GPL version 3</a> or, at your option, any later version. See the <tt>LICENSE</tt> file for details.
+</div>
+<div class="Standard">
+Please visit the <a class="URL" href="index.html">main page</a> to find out about the latest developments.
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-1.1">1.1</a> <a class="Label" name="sub:System-Requirements"> </a>System Requirements--Client
+</h2>
+<div class="Standard">
+The computer that LyXBlogger is installed on will be referred to as the <i>client </i>machine. This is likely the same computer that you use to compose your LyX documents and to convert them to xhtml.
+</div>
+<div class="Standard">
+Required:
+</div>
+<ul>
+<li>
+Python version between 2.4 and 2.6.<span class="FootOuter"><span class="SupFootMarker"> [A] </span><span class="HoverFoot"><span class="SupFootMarker"> [A] </span>(Python 3.1 will be supported once the xmlrpclib module is ported to it.)</span></span> Python 2.7.2 (full installs) seem to work on Windows, but Python 2.7.0 on Linux is still throwing errors for the developer. 
+</li>
+<li>
+LyX
+</li>
+<li>
+A LyX -&gt; xhtml converter (see <a class="Reference" href="#sub:xhtml-Converters">1.3↓</a>)
+</li>
+<li>
+xterm (only required for GNU/Linux and Mac OSX, but they are generally already installed)
+</li>
+
+</ul>
+<h3 class="Subsubsection">
+<a class="toc" name="toc-Subsubsection-1.1.1">1.1.1</a> Special Notes about Windows Installs
+</h3>
+<div class="Standard">
+The popular way to install LyX on Windows is to use the binary installer available at <a class="URL" href="http://www.lyx.org/Download">http://www.lyx.org/Download</a>. This will install Python onto your system, but it may not work with LyXBlogger. To check it out, open python by typing <i>python</i> at the command prompt. 
+</div>
+<pre class="LyX-Code">
+c:\&gt;python 
+Python 2.7.2 (default, Jun 12 2011, 15:08:59) [MSC v.1500 32 bit (Intel)] on win 32 
+Type "help", "copyright", "credits" or "license" for more information. 
+&gt;&gt;&gt; import socket 
+&gt;&gt;&gt;
+</pre>
+<div class="Standard">
+If it imports the <i>socket</i> module with no errors, your python installation is fine. If, however, you get an error 
+</div>
+<pre class="LyX-Code">
+ImportError: No module named _socket
+</pre>
+<div class="Standard">
+Then you have a problem. The easy way around this is to rename your c:\Program Files\LyX20\Python directory to something like c:\Program Files\LyX20\Python_Renamed so that LyX won’t use that install. Then proceed to <a class="URL" href="http://python.org/download/">http://python.org/download/</a> and download and install the latest version of Python2.7. Open Control Panes -&gt; Classic View -&gt;System -&gt; Advanced System Settings -&gt; &ldquo;Advanced&rdquo; tab -&gt; Environment Variables. Open the one called <i>path</i> and append ;c:\Python27 to the end of it (or wherever you installed Python. Then go on to <a class="Reference" href="#sub:Installation">1.4↓</a> to install LyXBlogger. Once the LyXBlogger module is installed (under your new version of Python), reopen LyX, click Tools -&gt; Reconfigure. Restart LyX, and if it’s LyX 2.0 or later, <i>LyXBlogger</i> will automatically show up in your export menu. 
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-1.2">1.2</a> System Requirements--Server 
+</h2>
+<div class="Standard">
+The computer that WordPress is installed on will be referred to as the <i>server</i>, since WordPress is often installed on a remote server. 
+</div>
+<div class="Standard">
+Required:
+</div>
+<ul>
+<li>
+WordPress
+</li>
+
+</ul>
+<div class="Standard">
+WordPress can be installed on most web servers that support PhP and MySQL. Many web hosting companies even offer &ldquo;one click install&rdquo; of WordPress. For more information on installing WordPress on your site, see <a class="URL" href="http://codex.wordpress.org/Hosting_WordPress">wordpress.org</a>. Also check the documentation for your particular web server.
+</div>
+<div class="Standard">
+If you want to blog without the hassle of setting up the WordPress software yourself, you can sign up for a <a class="URL" href="http://www.wordpress.com">wordpress.com</a> hosted blog. If you go this route, I recommend paying the small fee (about $10/year) for the ability to modify your own CSS file. That way you can customize the look and feel of your entries. 
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-1.3">1.3</a> <a class="Label" name="sub:xhtml-Converters"> </a>xhtml Converters
+</h2>
+<div class="Standard">
+An xhtml converter is required as an intermediate step between LyX and your WordPress blog. You may use eLyXer, which comes bundled with LyXBlogger, or you may use LyX 2.0’s native LyXHTML converter. 
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-1.4">1.4</a> <a class="Label" name="sub:Installation"> </a>Installation
+</h2>
+<div class="Standard">
+First you will need to fetch the official distribution file from the <a class="URL" href="https://savannah.nongnu.org/files/?group=lyxblogger">download area</a>. Start by uncompressing the distributed file to a suitable directory. Just write at the command prompt<span class="FootOuter"><span class="SupFootMarker"> [B] </span><span class="HoverFoot"><span class="SupFootMarker"> [B] </span>On Windows operating systems, right click on <tt><i>LyXBlogger_[version].zip</i></tt> and click <i>Extract</i>.</span></span>.
+</div>
+<pre class="LyX-Code">
+<tt><span class="blue">$</span> tar -xzf<i> LyXBlogger_[version]</i>.tar.gz</tt>
+</pre>
+<div class="Standard">
+A directory called <tt>LyXBlogger_[version]</tt> should appear. 
+</div>
+<pre class="LyX-Code">
+$ cd LyXBlogger_x.xx/ 
+$ cd INSTALL/ 
+$ python setup.py install
+</pre>
+<div class="Standard">
+This default installation includes wordpresslib and eLyXer. To install without affecting your current eLyXer installation, you may use the alternate installer, 
+</div>
+<pre class="LyX-Code">
+$ python setup-no-elyxer.py install
+
+</pre>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-1.5">1.5</a> <a class="Label" name="sub:Command-Line-Usage"> </a>Command-Line Usage
+</h2>
+<div class="Standard">
+LyXBlogger is generally used from the export menu of LyX. (To set up your export menu, see section <a class="Reference" href="#sub:LyX-Integration">1.10↓</a>.) However, at its roots LyXBlogger is perfectly happy being called from the command line. To invoke LyXBlogger from the command line, first generate xhtml by previewing LyXHTML from LyX 2.0, or by either previewing or manually invoking eLyXer. Then change to the directory where the xhtml file resides. The location is shown in your browser window when you preview. Invoke LyXBlogger as 
+</div>
+<pre class="LyX-Code">
+$ python -m lyxblogger &lt;input_file&gt; 
+
+</pre>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-1.6">1.6</a> <a class="Label" name="sub:Test-Drive"> </a>Test Drive
+</h2>
+<div class="Standard">
+LyXBlogger comes out of the box ready to upload to a test site (blogtest.twomorelines.com) where you can test its posting capability. LyXBlogger will ask you whether to post to the test site or not. Once you can post to the test site, just run LyXBlogger again, this time telling it to use a different site instead. It will prompt you for your domain name, user name, and password.
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-1.7">1.7</a> Profiles
+</h2>
+<div class="Standard">
+New in version 0.38 is the ability to save several profiles. LyXBlogger comes out of the box with a profile called test@blogtest.twomorelines.com. Anyone may post to this blog. It’s for practicing. Then once you get the hang of how LyXBlogger works, add your own profile to the list and post to it.
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-1.8">1.8</a> Password Prompt
+</h2>
+<div class="Standard">
+The most secure method is to enter an empty password. This method does not save your password--you will be prompted to type it in each time you make a post. 
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-1.9">1.9</a> Image Uploads
+</h2>
+<div class="Standard">
+HTML pages do not contain images, as PDF documents; rather they have pointers to image locations on disk. (Luckily LyX documents are the same in this respect.) LyXBlogger will find all the image tags in your xhtml document and upload them one by one to your blog site. Thus far JPG images have been tested. 
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-1.10">1.10</a> <a class="Label" name="sub:LyX-Integration"> </a>LyX Integration
+</h2>
+<div class="Standard">
+You may choose to use LyXBlogger solely from the command line. But it is often more convenient to set up LyXBlogger as a converter inside LyX so that you can just click a couple buttons when you are ready to upload your content. Then LyX automatically generates the xhtml for you using your selected xhtml converter, copies the xhtml file and any associated image files to a temporary directory, and uses those files when invoking LyXBlogger. 
+</div>
+<h3 class="Subsubsection">
+<a class="toc" name="toc-Subsubsection-1.10.1">1.10.1</a> LyXBlogger with LyX 1.6.x 
+</h3>
+<div class="Standard">
+If you used the standard installation of LyXBlogger, eLyXer is already installed on your system as a Python module. To set up LyX to use the eLyXer xhtml format when using LyXBlogger, use these standard options in your converter line: 
+</div>
+<pre class="LyX-Code">
+Converter: python -m elyxer --nofooter --directory $$r $$i $$o
+</pre>
+<div class="Standard">
+For more information about eLyXer, see http://www.nongnu.org/elyxer/. Next you need to find out what your eLyXer output format is called in LyX. By default LyX calls it simply html. So as long as you haven’t changed it, that’s what it will still be called. Now go to <i>Tools-&gt; Preferences-&gt; File Handling-&gt; File Formats</i>. Create a new file format. Give it a descriptive name like <i>LyXBlogger (eLyXer)</i>
+</div>
+<div class="Standard">
+Make sure you check Document Format. 
+</div>
+<pre class="LyX-Code">
+Short name: blog 
+Extension: blog 
+</pre>
+<div class="Standard">
+Then click on Converters and define a new converter as follows: (This assumes that the format produced by eLyXer is still set to the default of "html") 
+</div>
+<pre class="LyX-Code">
+From_Format: HTML 
+To_Format: LyXBlogger (eLyXer)
+Converter: python -m lyxblogger $$i
+</pre>
+<div class="Standard">
+Now you can invoke this converter from within LyX by clicking <i>File-&gt; Export-&gt; LyXBlogger (eLyXer)</i>
+</div>
+<h3 class="Subsubsection">
+<a class="toc" name="toc-Subsubsection-1.10.2">1.10.2</a> LyXBlogger with LyX 2.0.x 
+</h3>
+<div class="Standard">
+LyX 2.0 comes with LyXHTML support already built in. Once you have installed LyXBlogger, open LyX 2.0 and click <i>Tools -&gt; Reconfigure</i>. Then restart LyX. LyX should have detected that LyXBlogger is installed and automatically set up the file format and converter for you. Click File -&gt; Export-&gt; LyXBlogger. 
+</div>
+<div class="Paragraph-">
+<a class="toc" name="toc-Paragraph--1"></a>Using eLyXer with LyXBlogger and LyX 2.0
+</div>
+<div class="Standard">
+In LyX 2.0, LyXBlogger comes preconfigured to use the internal LyXHTML format. The other format supported is eLyXer xhtml format. If you used the standard installation of LyXBlogger, eLyXer is already installed on your system as a Python module. To use eLyXer instead of LyXHTML:
+</div>
+<ol>
+<li>
+Open LyX 2.0 and go to <i>Tools-&gt; Preferences-&gt; External Formats -&gt; Converters.</i> 
+</li>
+<li>
+Select the converter named <i>LyXHTML to LyXBlogger</i>. 
+</li>
+<li>
+Grab the <i>From Format</i> drop-down menu where <i>LyXHTML</i> is showing, and select <i>HTML</i> instead. (This assumes that your eLyXer format is still called HTML in LyX, which it is by default.) 
+</li>
+<li>
+Click <i>Add</i> and then <i>Apply</i>. 
+</li>
+<li>
+Highlight the original <i>LyXHTML to LyXBlogger</i> converter again.
+</li>
+<li>
+Remove it by clicking <i>Remove</i>, and then <i>Save</i>. 
+</li>
+<li>
+Click <i>Tools -&gt; Reconfigure</i>. 
+</li>
+<li>
+Restart LyX. 
+</li>
+<li>
+Run LyXBlogger again by clicking <i>File -&gt; Export -&gt; LyXBlog</i>ger. When LyXBlogger opens it will tell you it is using the eLyXer format.
+</li>
+
+</ol>
+<h1 class="Section">
+<a class="toc" name="toc-Section-2">2</a> Interface
+</h1>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-2.1">2.1</a> LyXBlogger
+</h2>
+<div class="Standard">
+This is the welcome screen.
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-2.2">2.2</a> Format
+</h2>
+<div class="Standard">
+This explains which format was detected, and tells you what the other options are, so no format is left behind.
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-2.3">2.3</a> Title
+</h2>
+<div class="Standard">
+If you tag a line in your document as the title, LyXBlogger uses that as your posting title. If no title was detected, LyXBlogger will ask you to provide one.
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-2.4">2.4</a> Cut Flag
+</h2>
+<div class="Standard">
+Cut flag is a feature which allows you to put things end of your LyX document that will not be included in your post. That way, you don’t have to delete all your thoughts and musings from the document — you can keep them in your working copy without publishing them. If a cut flag is found, it will tell you so. If you thought you defind a cut flag, and it says it’s not found-- double check how you defined it to make sure your extra notes are not included in your post. The test site is good for trying this out, too, since if you make a mistake there, it’s not so obvious to the world. If you don’t get the cut flag right the first time, you can always re-post it later when you figure it out. 
+</div>
+<div class="Standard">
+The default cut flag is defined in the USER DEFINED VARIABLES section of the code. :
+</div>
+<pre class="LyX-Code">
+CUT_FLAG = ’#! CUT MATERIAL’
+</pre>
+<div class="Standard">
+It’s what’s inside the single quotations that counts. So with the default cut flag, the next paragraph will be found as the cut flag.
+</div>
+<div class="Standard">
+#! CUT MATERIAL
+</div>
+<div class="Standard">
+See how the single quotes are gone? Note the single space between ’!’ and ’C’ and between ’T’ and ’M’? See how the cut flag is at the beginning of a paragraph? That will be picked up as a valid cut flag, and everything I write down here below it will not be posted. I can tell all the funny jokes I want down here and no one will ever read them. 
+</div>
+<div class="Standard">
+If you want to change what is recognized as a cut flag, just edit lyxblogger.py and run
+</div>
+<pre class="LyX-Code">
+python setup.py install
+</pre>
+<div class="Standard">
+again from the INSTALL directory. On GNU/Linux this must be run as a super user.
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-2.5">2.5</a> Domain
+</h2>
+<div class="Standard">
+This asks you where you want to post to. The default is to the test site. If you type ’N’, you will be asked where you want to post to. If you want to change what site your LyXBlogger posts to by default, just edit lyxblogger.py and run
+</div>
+<pre class="LyX-Code">
+python setup.py install
+</pre>
+<div class="Standard">
+again from the INSTALL directory. On GNU/Linux this must be run as a super user. 
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-2.6">2.6</a> New or Existing
+</h2>
+<div class="Standard">
+New means you’ve never posted this document before. Existing means you already posted this document, but now you’ve made a few changes to in and you want to replace the version that’s currently on the server with your latest changes. If you type ’E’ for Existing, you are provided with a short list of up to nine recent posts to choose from. If you are updating an existing post from further back than that, use the ’A’ option to bring in all your previous posts. This can take some time, depending on your internet connection. On fairly fast connection, with about 200 posts on the server, it takes my system about 30 seconds to bring these in. 
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-2.7">2.7</a> Category
+</h2>
+<div class="Standard">
+The categories brought in are ones already set up in your blog. LyXBlogger is expecting a numerical input. If you type out the whole name of the title, if will ask to type it in again. To add additional categories to the list, log in to your wordpress site using your web browser and add them there. Then LyXBlogger can pick them up. 
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-2.8">2.8</a> Images
+</h2>
+<div class="Standard">
+Before the post is published, each image in your LyX document is uploaded to the wordpres server. This may come as a surprise, but the bigger the image (in MegaBytes), the longer it takes to upload the image. The connectivity speed of your server plays a role here, as well. If it’s taking a long time, try posting to the test site at blogtest.twomorelines.com to compare upload speed. 
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-2.9">2.9</a> Words
+</h2>
+<div class="Standard">
+Once any images are uploaded, the xhtml formatted text will be uploaded
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-2.10">2.10</a> Success
+</h2>
+<div class="Standard">
+This means you’re done. Note where it said your post was published to. Go to that address, and you’ll find your post. 
+</div>
+<h1 class="Section">
+<a class="toc" name="toc-Section-3">3</a> Advanced Use
+</h1>
+<div class="Standard">
+There are some advanced uses for eLyXer if you want to extract the most of it.
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-3.1">3.1</a> Delay
+</h2>
+<div class="Standard">
+the DELAY parameter in USER_DEFINED_VARIABLES just puts a small pause in after the Copyright information displays. This gives the user a chance to read it. If you’ve already read it once, you can change it to 
+</div>
+<pre class="LyX-Code">
+DELAY = 0
+</pre>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-3.2">3.2</a> Capital or Lowercase
+</h2>
+<div class="Standard">
+Anytime LyXBlogger asks for a response, such as ’Y’ for Yes, either an uppercase or lowercase response will do.
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-3.3">3.3</a> What do the Parentheses Mean? (Y) N
+</h2>
+<div class="Standard">
+This format means the one in parentheses will be selected if you press ENTER.
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-3.4">3.4</a> Command Line Options
+</h2>
+<div class="Standard">
+Running in Same Window
+</div>
+<div class="Standard">
+On GNU/Linux and Mac OS X, you can also run LyXBlogger without spawning a separate xterm window. 
+</div>
+<pre class="LyX-Code">
+<tt><span class="blue">$</span> python -m lyxblogger [source file] --run-here</tt>
+</pre>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-3.5">3.5</a> Unsupported eLyXer options
+</h2>
+<div class="Standard">
+eLyXer has an option called <i>--html</i>. It causes eLyXer to output html instead of xhtml. Basically this means that it will not include closing tags. LyXBlogger is specifically looking for opening and closing tags in order to locate the title of your document. Therefore, the --html option is not supported.
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-3.6">3.6</a> CSS<a class="Label" name="sub:CSS"> </a>
+</h2>
+<div class="Standard">
+The look of your blog entries when you publish from LyXBlogger is entirely dependent on your CSS style file. If you are using eLyXer, a good starting place is to copy the eLyXer CSS file from http://www.nongnu.org/elyxer/lyx.css. It comes with sane defaults for getting your site going. Then you can tweak it as you go along to get a customized look.
+</div>
+<div class="Standard">
+If you are using LyXHTML format, you can build your own CSS style by first copying the embedded CSS styles. Just preview the LyXHTML, then from your browser click View-&gt; Source Code. Copy all the CSS info to your own CSS file, and then edit to your liking. Since LyXHTML automatically wraps all paragraphs in an &lt;a&gt; tag, I recommend changing it so that each paragraph doesn’t underline itself when you mouseover it. This can be as simple as:
+</div>
+<pre class="LyX-Code">
+a:hover{
+    text-decoration: none;
+}
+</pre>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-3.7">3.7</a> Title
+</h2>
+<div class="Standard">
+If a title is found in your LyX document, it will be used as your blog entry’s title. If one is not found, you will be prompted to enter one. By default eLyXer adds a title for you if you didn’t put one in. It is called &ldquo;Converted Document&rdquo;. This auto-generated title will be ignored, and you will be prompted for a proper title.
+</div>
+<div class="Standard">
+hat, but a planned extension will.
+</div>
+<h1 class="Section">
+<a class="toc" name="toc-Section-4">4</a> Work in Progress
+</h1>
+<div class="Standard">
+Work on LyXBlogger began in early 2010, has been gaining features as the months roll by. It’s still a work in progress, whose future depends largely on the tastes of those that use it. If you have suggestions for improving LyXBlogger, make them!
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-4.1">4.1</a> Known Issues
+</h2>
+<div class="Standard">
+Not running yet with Python 2.7 on Linux. Don’t know why. (Python 2.5, 2.6 work fine. Python 2.7.2 on Windows works fine.)
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-4.2">4.2</a> Contact Information
+</h2>
+<div class="Standard">
+If your problem does not appear in the above list, please let the author know; you can find him at <a class="URL" href="mailto:mailto:JackDesert@gmail.com">JackDesert@gmail.com</a>. By doing so you can help the author improve LyXBlogger for future users. You can send your sample documents with a description of the errors encountered. Any documents sent will be treated with the utmost confidentiality.
+</div>
+<h1 class="Section">
+<a class="toc" name="toc-Section-5">5</a> FAQ
+</h1>
+<div class="Description">
+<span class="Description-entry">Q:</span> What versions of LyX, Python, and operating systems are supported?
+</div>
+<div class="Description">
+<span class="Description-entry">A:</span> It has been tested with LyX versions 1.6.4, 1.6.5, and 2.0.0. It has been tested with eLyXer version 0.41, 0.42, and 1.04. It has been tested with Python version 2.4 and 2.6. (Python 2.7.2 on Windows also works if it’s a full install, but Python 2.7.0 on Ubuntu is not working yet). It has been tested on Ubuntu 9.10, Mac OS X and Windows Vista 32-bit.
+</div>
+<div class="Description">
+<span class="Description-entry">Q:</span> There are indeed <i>a ton</i> of blogging clients over the web. Why add another one?
+</div>
+<div class="Description">
+<span class="Description-entry">A:</span> Because none of them allow composition from LyX. 
+</div>
+<div class="Description">
+<span class="Description-entry">Q:</span> I don’t like how LyXBlogger outputs my document, what can I do?
+</div>
+<div class="Description">
+<span class="Description-entry">A:</span> First make sure that you are using an appropriate CSS file. i.e. copy the existing <tt>docs/lyx.css</tt> file to your blog’s server. Next try to customize the CSS file to your liking; it is a flexible approach that requires no code changes. Also consider trying both supported converters, as each one puts out somewhat different-looking output. 
+</div>
+<div class="Description">
+<span class="Description-entry">Q:</span> Why are only LyXHTML and eLyXer formats supported?
+</div>
+<div class="Description">
+<span class="Description-entry">A:</span> Other formats were tested in the early development stages of LyXBlogger. Namely <i>HeVea</i>, <i>TtH</i>, and <i>latex2html</i>. Basically, it was simplest to find one or two formats that worked well and only support them. Perhaps future versions will support additional formats if users ask for it enough. Here is a rundown of features I liked and didn’t like about the formats I tried:
+</div>
+<div class="Description">
+<span class="Description-entry">Supported:</span> 
+</div>
+<div class="Labeling">
+LyXHTML: Good support for footnotes. Built in to future versions of LyX. Integration is simple.
+</div>
+<div class="Labeling">
+eLyXer: Good support for footnotes. Very easy to get a working CSS file together which takes care of all usage scenarios.
+</div>
+<div class="Description">
+<span class="Description-entry">Unsupported:</span> 
+</div>
+<div class="Labeling">
+HeVeA Manages to insert a bunch of extra ’br’ tags into the html which makes the right edge all raggedy. And the numbered list issue is also that there’s an extra ’br’ tag inside the first item in each list, which looks weird.The four tools supported by LyX (tex4ht, HeVeA, TtH and latex2html) gave inferior results a couple of years ago, and were quite inflexible. The author found the need for a good converter, while at the same time acknowledging the difficulty of the problem.
+</div>
+<div class="Labeling">
+LaTeX2Html This rendition is quite sophisticated, and it ultimately makes one little blog into a multiple page linked document. Nice for some things, but not what I was after. 
+</div>
+<div class="Labeling">
+TtH: Works quite well, and could be easily incorporated into LyXBlogger, but it does put footnotes at the bottom of the blog, where readers are unlikely to recognize them as footnotes.
+</div>
+<div class="Description">
+<span class="Description-entry">Q:</span> Why did you leave out my favorite feature <i>&lt;insert random LyX command here&gt;</i>?
+</div>
+<div class="Description">
+<span class="Description-entry">A:</span> In short, because nobody asked for it. Usually it is better to first aim for your own needs and what others request, and then worry about supporting everything, or you will never get anything done. Just let the <a class="URL" href="mailto:mailto:JackDesert@gmail.com">author</a> know what features you would like to see added. 
+</div>
+<div class="Description">
+<span class="Description-entry">Q:</span> Is there a mailing list? I need help with installation / configuration.
+</div>
+<div class="Description">
+<span class="Description-entry">A:</span> Check out the lyxblogger-users <a class="URL" href="mailto:http://lists.nongnu.org/mailman/listinfo/lyxblogger-users">mailing list</a>. 
+</div>
+<div class="Description">
+<span class="Description-entry">Q:</span> I found a bug, what should I do?
+</div>
+<div class="Description">
+<span class="Description-entry">A:</span> Just send it to the author at <a class="URL" href="mailto:mailto:JackDesert@gmail.com">JackDesert@gmail.com</a>. 
+</div>
+<div class="Description">
+<span class="Description-entry">Q:</span> Where did LyXBlogger start?
+</div>
+<div class="Description">
+<span class="Description-entry">A:</span> You can read about the initial work on LyXBlogger <a class="URL" href="http://twomorelines.com/lyxposter-blogging-with-lyx/">here</a>, <a class="URL" href="http://twomorelines.com/lyxblogger/">here</a>, and <a class="URL" href="http://twomorelines.com/lyxblogger-goes-xml-rpc/">here</a>.
+</div>
+<div class="Description">
+<span class="Description-entry">Q:</span> How can I try out LyXBlogger without having to set up a WordPress blog? 
+</div>
+<div class="Description">
+<span class="Description-entry">A:</span> Upload one of your documents to the <a class="URL" href="http://blogtest.twomorelines.com">LyXBlogger test site</a>, which is what LyXBlogger will try to do anyway until you change this default behavior. 
+</div>
+<div class="Description">
+<span class="Description-entry">Q:</span> Why does LyXBlogger take a long time to open when used with large documents?
+</div>
+<div class="Description">
+<span class="Description-entry">A:</span> Most of that time is waiting for the xhtml converter to run.
+</div>
+<div class="Description">
+<span class="Description-entry">Q:</span> Where can I get the latest documentation and information about LyXBlogger?
+</div>
+<div class="Description">
+<span class="Description-entry">A:</span> At <a class="URL" href="http://lyxblogger.nongnu.org">http://lyxblogger.nongnu.org</a>.
+</div>
+
+</div>
+</body>
+</html>

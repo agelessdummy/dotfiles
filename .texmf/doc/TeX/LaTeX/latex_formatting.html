@@ -1,0 +1,610 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="keywords" content="LaTeX:Formatting,LaTeX,LaTeX:Absolute Beginners,LaTeX:Bibliography Management,LaTeX:Document Structure,LaTeX:Floats, Figures and Captions,LaTeX:Importing Graphics,LaTeX:Mathematics,LaTeX:Page Layout,LaTeX:Tables,LaTeX: Introduction" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="copyright" href="http://www.gnu.org/copyleft/fdl.html" />
+				<title>LaTeX:Formatting - Wikibooks, collection of open-content textbooks</title>
+		<style type="text/css" media="screen,projection">/*<![CDATA[*/ @import "/skins-1.5/monobook/main.css?5"; /*]]>*/</style>
+		<link rel="stylesheet" type="text/css"  href="/skins-1.5/common/commonPrint.css" />
+		<!--[if lt IE 5.5000]><style type="text/css">@import "/skins-1.5/monobook/IE50Fixes.css";</style><![endif]-->
+		<!--[if IE 5.5000]><style type="text/css">@import "/skins-1.5/monobook/IE55Fixes.css";</style><![endif]-->
+		<!--[if IE 6]><style type="text/css">@import "/skins-1.5/monobook/IE60Fixes.css";</style><![endif]-->
+		<!--[if IE 7]><style type="text/css">@import "/skins-1.5/monobook/IE70Fixes.css?1";</style><![endif]-->
+		<!--[if lt IE 7]><script type="text/javascript" src="/skins-1.5/common/IEFixes.js"></script>
+		<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+		<script type="text/javascript" src="/w/index.php?title=-&amp;action=raw&amp;gen=js"><!-- site js --></script>
+		<script type="text/javascript" src="/skins-1.5/common/wikibits.js"><!-- wikibits js --></script>
+		<style type="text/css">/*<![CDATA[*/
+@import "/w/index.php?title=MediaWiki:Common.css&action=raw&ctype=text/css&smaxage=2678400";
+@import "/w/index.php?title=MediaWiki:Monobook.css&action=raw&ctype=text/css&smaxage=2678400";
+@import "/w/index.php?title=-&action=raw&gen=css&maxage=2678400";
+/*]]>*/</style>
+	</head>
+<body  class="ns-0 ltr">
+	<div id="globalWrapper">
+		<div id="column-content">
+	<div id="content">
+		<a name="top" id="top"></a>
+				<h1 class="firstHeading">LaTeX:Formatting</h1>
+		<div id="bodyContent">
+			<h3 id="siteSub">From Wikibooks, the open-content textbooks collection</h3>
+			<div id="contentSub"></div>
+									<div id="jump-to-nav">Jump to: <a href="#column-one">navigation</a>, <a href="#searchInput">search</a></div>			<!-- start content -->
+			<table style="margin:0 auto" align="center" class="toccolours">
+<tr>
+<td align="center">
+<p><small><a href="/wiki/LaTeX" title="LaTeX">Main Page</a> - <a href="/wiki/LaTeX:_Introduction" title="LaTeX: Introduction">Introduction</a> - <a href="/wiki/LaTeX:Absolute_Beginners" title="LaTeX:Absolute Beginners">Absolute Beginners</a> - <a href="/wiki/LaTeX:Document_Structure" title="LaTeX:Document Structure">Document Structure</a> - <a href="/wiki/LaTeX:Bibliography_Management" title="LaTeX:Bibliography Management">Bibliography Management</a> - <a href="/wiki/LaTeX:Tables" title="LaTeX:Tables">Tables</a> - <a href="/wiki/LaTeX:Importing_Graphics" title="LaTeX:Importing Graphics">Importing Graphics</a><br />
+<a href="/wiki/LaTeX:Floats%2C_Figures_and_Captions" title="LaTeX:Floats, Figures and Captions">Floats, Figures and Captions</a> - <strong>Formatting</strong> - <a href="/wiki/LaTeX:Page_Layout" title="LaTeX:Page Layout">Page Layout</a> - <a href="/wiki/LaTeX:Mathematics" title="LaTeX:Mathematics">Mathematics</a> - <a href="/wiki/LaTeX:_Links" title="LaTeX: Links">External Links</a></small></p>
+</td>
+</tr>
+</table>
+<p>The term formatting is rather broad, but in this case it needs to be as this section will guide you various text, paragraph and page formatting techniques. Formatting tends to refer to most things to do with appearance, it makes the list of possible topics quite eclectic: text style, font, size; paragraph alignment, interline spacing, indents; special paragraph types; list structures; footnotes, margin notes, etc.</p>
+<p>A lot of the formatting techniques are required to differentiate certain elements from the rest of the text. It is often necessary to add emphasis to key words or phrases. A numbered or bulleted list is also commonly used as a clear and concise way of communicating an important issue. Footnotes are useful for providing extra information or clarification without interrupting the main flow of text. So, for these reasons, formatting is very important. However, it is also very easy to abuse, and a document that has been over-done can look and read worse than one with none at all.</p>
+<table id="toc" class="toc" summary="Contents">
+<tr>
+<td>
+<div id="toctitle">
+<h2>Contents</h2>
+</div>
+<ul>
+<li class='toclevel-1'><a href="#Text_formatting"><span class="tocnumber">1</span> <span class="toctext">Text formatting</span></a>
+<ul>
+<li class='toclevel-2'><a href="#Quotes"><span class="tocnumber">1.1</span> <span class="toctext">Quotes</span></a></li>
+<li class='toclevel-2'><a href="#Dots_and_Dashes"><span class="tocnumber">1.2</span> <span class="toctext">Dots and Dashes</span></a></li>
+<li class='toclevel-2'><a href="#Accents"><span class="tocnumber">1.3</span> <span class="toctext">Accents</span></a></li>
+<li class='toclevel-2'><a href="#Symbols"><span class="tocnumber">1.4</span> <span class="toctext">Symbols</span></a></li>
+<li class='toclevel-2'><a href="#Emphasising_text"><span class="tocnumber">1.5</span> <span class="toctext">Emphasising text</span></a></li>
+<li class='toclevel-2'><a href="#Font_styles"><span class="tocnumber">1.6</span> <span class="toctext">Font styles</span></a></li>
+</ul>
+</li>
+<li class='toclevel-1'><a href="#Paragraph_Formatting"><span class="tocnumber">2</span> <span class="toctext">Paragraph Formatting</span></a>
+<ul>
+<li class='toclevel-2'><a href="#Paragraph_Alignment"><span class="tocnumber">2.1</span> <span class="toctext">Paragraph Alignment</span></a></li>
+<li class='toclevel-2'><a href="#Paragraph_Indents"><span class="tocnumber">2.2</span> <span class="toctext">Paragraph Indents</span></a></li>
+<li class='toclevel-2'><a href="#Line_Spacing"><span class="tocnumber">2.3</span> <span class="toctext">Line Spacing</span></a></li>
+</ul>
+</li>
+<li class='toclevel-1'><a href="#Special_paragraphs"><span class="tocnumber">3</span> <span class="toctext">Special paragraphs</span></a>
+<ul>
+<li class='toclevel-2'><a href="#Verbatim_Environment"><span class="tocnumber">3.1</span> <span class="toctext">Verbatim Environment</span></a></li>
+<li class='toclevel-2'><a href="#Listing_Environment"><span class="tocnumber">3.2</span> <span class="toctext">Listing Environment</span></a></li>
+<li class='toclevel-2'><a href="#Quote_and_Quotation_Environment"><span class="tocnumber">3.3</span> <span class="toctext">Quote and Quotation Environment</span></a></li>
+<li class='toclevel-2'><a href="#Abstract_Environment"><span class="tocnumber">3.4</span> <span class="toctext">Abstract Environment</span></a></li>
+<li class='toclevel-2'><a href="#Verse_Environment"><span class="tocnumber">3.5</span> <span class="toctext">Verse Environment</span></a></li>
+</ul>
+</li>
+<li class='toclevel-1'><a href="#List_structures"><span class="tocnumber">4</span> <span class="toctext">List structures</span></a>
+<ul>
+<li class='toclevel-2'><a href="#Itemize"><span class="tocnumber">4.1</span> <span class="toctext">Itemize</span></a></li>
+<li class='toclevel-2'><a href="#Enumerate"><span class="tocnumber">4.2</span> <span class="toctext">Enumerate</span></a></li>
+<li class='toclevel-2'><a href="#Description"><span class="tocnumber">4.3</span> <span class="toctext">Description</span></a></li>
+<li class='toclevel-2'><a href="#Nested_Lists"><span class="tocnumber">4.4</span> <span class="toctext">Nested Lists</span></a></li>
+</ul>
+</li>
+<li class='toclevel-1'><a href="#Customising_Lists"><span class="tocnumber">5</span> <span class="toctext">Customising Lists</span></a>
+<ul>
+<li class='toclevel-2'><a href="#Customising_Enumerated_Lists"><span class="tocnumber">5.1</span> <span class="toctext">Customising Enumerated Lists</span></a></li>
+<li class='toclevel-2'><a href="#Customising_Itemised_Lists"><span class="tocnumber">5.2</span> <span class="toctext">Customising Itemised Lists</span></a></li>
+</ul>
+</li>
+<li class='toclevel-1'><a href="#Footnotes"><span class="tocnumber">6</span> <span class="toctext">Footnotes</span></a></li>
+<li class='toclevel-1'><a href="#Margin_notes"><span class="tocnumber">7</span> <span class="toctext">Margin notes</span></a></li>
+<li class='toclevel-1'><a href="#Summary"><span class="tocnumber">8</span> <span class="toctext">Summary</span></a></li>
+</ul>
+</td>
+</tr>
+</table>
+<p><script type="text/javascript">
+//<![CDATA[
+ if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } 
+//]]>
+</script></p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="/w/index.php?title=LaTeX:Formatting&amp;action=edit&amp;section=1" title="LaTeX:Formatting">edit</a>]</div>
+<p><a name="Text_formatting" id="Text_formatting"></a></p>
+<h3>Text formatting</h3>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="/w/index.php?title=LaTeX:Formatting&amp;action=edit&amp;section=2" title="LaTeX:Formatting">edit</a>]</div>
+<p><a name="Quotes" id="Quotes"></a></p>
+<h4>Quotes</h4>
+<p>Latex treats left and right quotes as different entities. For single quotes, <tt>`</tt> (on British and American keyboards, this symbol is found on the key adjacent to the number 1) gives a left quote mark, and <tt>'</tt> is the right. For double quotes, simply double the symbols, and Latex will interpret them accordingly. (Although, you can use the <tt>"</tt> for right double quotes if you wish).</p>
+<table>
+<tr>
+<td><tt>To `quote' in Latex</tt></td>
+<td>
+<p><a href="/wiki/Image:Quote1.png" class="image" title="Image:quote1.png"><img src="http://upload.wikimedia.org/wikibooks/en/5/56/Quote1.png" alt="Image:quote1.png" width="117" height="16" longdesc="/wiki/Image:Quote1.png" /></a></p>
+</td>
+</tr>
+<tr>
+<td><tt>To ``quote'' in Latex</tt></td>
+<td>
+<p><a href="/wiki/Image:Quote2.png" class="image" title="Image:quote2.png"><img src="http://upload.wikimedia.org/wikibooks/en/8/88/Quote2.png" alt="Image:quote2.png" width="119" height="17" longdesc="/wiki/Image:Quote2.png" /></a></p>
+</td>
+</tr>
+<tr>
+<td><tt>To ``quote" in Latex</tt></td>
+<td>
+<p><a href="/wiki/Image:Quote2.png" class="image" title="Image:quote2.png"><img src="http://upload.wikimedia.org/wikibooks/en/8/88/Quote2.png" alt="Image:quote2.png" width="119" height="17" longdesc="/wiki/Image:Quote2.png" /></a></p>
+</td>
+</tr>
+</table>
+<p>The right quote is also used for apostrophe in Latex without trouble.</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="/w/index.php?title=LaTeX:Formatting&amp;action=edit&amp;section=3" title="LaTeX:Formatting">edit</a>]</div>
+<p><a name="Dots_and_Dashes" id="Dots_and_Dashes"></a></p>
+<h4>Dots and Dashes</h4>
+<p>A sequence of three dots is known as an <i>ellipsis</i>, which is commonly used to indicate omitted text. Simply inputting three dots doesn't give the best output because the spacing is not correct. Therefore, you should use <tt>\ldots</tt> to get the right result.</p>
+<table>
+<tr>
+<td><tt>Ellipsis...</tt></td>
+<td>
+<p><a href="/wiki/Image:Ellipsis1.png" class="image" title="Image:ellipsis1.png"><img src="http://upload.wikimedia.org/wikibooks/en/7/76/Ellipsis1.png" alt="Image:ellipsis1.png" width="59" height="20" longdesc="/wiki/Image:Ellipsis1.png" /></a></p>
+</td>
+</tr>
+<tr>
+<td><tt>Ellipsis \ldots</tt></td>
+<td>
+<p><a href="/wiki/Image:Ellipsis2.png" class="image" title="Image:ellipsis2.png"><img src="http://upload.wikimedia.org/wikibooks/en/1/17/Ellipsis2.png" alt="Image:ellipsis2.png" width="70" height="19" longdesc="/wiki/Image:Ellipsis2.png" /></a></p>
+</td>
+</tr>
+</table>
+<p>Latex has three specific types of dashes (the "hyphen", the "en-dash", and the "em-dash"), each a different size, and each for a different purpose:</p>
+<p><a href="/wiki/Image:Dashes.png" class="image" title="Image:dashes.png"><img src="http://upload.wikimedia.org/wikibooks/en/d/dc/Dashes.png" alt="Image:dashes.png" width="286" height="77" longdesc="/wiki/Image:Dashes.png" /></a></p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="/w/index.php?title=LaTeX:Formatting&amp;action=edit&amp;section=4" title="LaTeX:Formatting">edit</a>]</div>
+<p><a name="Accents" id="Accents"></a></p>
+<h4>Accents</h4>
+<p>It does not take long before you need to use an accented character within your document. Personally, I find it tends to be names of researchers who I wish to cite which contain accents. It's easy to apply (click on the image for a larger version to see greater detail), although not all are easy to remember!:</p>
+<p><a href="/wiki/Image:Accents.png" class="image" title="Image:accents.png"><img src="http://upload.wikimedia.org/wikibooks/en/b/b2/Accents.png" alt="Image:accents.png" width="382" height="226" longdesc="/wiki/Image:Accents.png" /></a></p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="/w/index.php?title=LaTeX:Formatting&amp;action=edit&amp;section=5" title="LaTeX:Formatting">edit</a>]</div>
+<p><a name="Symbols" id="Symbols"></a></p>
+<h4>Symbols</h4>
+<p>Latex has <i>lots</i> of symbols at its disposal. The majority of them are within the mathematical domain, and future tutorials will cover how to get access to them. For the more common text symbols, use the following commands:</p>
+<p><a href="/wiki/Image:Symbols.png" class="image" title="Image:symbols.png"><img src="http://upload.wikimedia.org/wikibooks/en/a/ad/Symbols.png" alt="Image:symbols.png" width="458" height="240" longdesc="/wiki/Image:Symbols.png" /></a></p>
+<p>Of course, these are rather boring, and it just so happens that for some more interesting symbols, then the Postscript ZipfDingbats font is available thanks to the <tt>pifont</tt>. Hopefully, you are beginning to notice now that when you want to use a package, you need to add the declaration to your preamble, in this instance: <tt>\usepackage{pifont}</tt>. Next, the command <tt>\ding{</tt><i>number</i><tt>}</tt>, will print the specified symbol.</p>
+<p>For this link for a table listing all possible [tutorial7/dingbats.png ZapfDingbats symbols] (warning: large image!)</p>
+<p><b>Please note, currently, on the SoC machines, when this package is used, the electronic versions when viewed does not display the symbols correctly. However, when printed, it outputs as intended. Once I work out what the problem is, I shall update this section to instruct on how to rectify.</b></p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="/w/index.php?title=LaTeX:Formatting&amp;action=edit&amp;section=6" title="LaTeX:Formatting">edit</a>]</div>
+<p><a name="Emphasising_text" id="Emphasising_text"></a></p>
+<h4>Emphasising text</h4>
+<p>In order to add some emphasis to a word or phrase, the simplest way is to use the <tt>\emph{</tt><i>text</i><tt>}</tt> command. That's it! See, dead easy.</p>
+<table>
+<tr>
+<td><tt>I want to \emph{emphasize} a word.</tt></td>
+<td>
+<p><a href="/wiki/Image:Emph.png" class="image" title="Image:emph.png"><img src="http://upload.wikimedia.org/wikibooks/en/a/a8/Emph.png" alt="Image:emph.png" width="163" height="18" longdesc="/wiki/Image:Emph.png" /></a></p>
+</td>
+</tr>
+</table>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="/w/index.php?title=LaTeX:Formatting&amp;action=edit&amp;section=7" title="LaTeX:Formatting">edit</a>]</div>
+<p><a name="Font_styles" id="Font_styles"></a></p>
+<h4>Font styles</h4>
+<p>I shall really only scratch the surface about this particular field. This section is not about how to get your text in Verdana size 12pt! There are three main font families: roman (such as Times), sans serif (eg Arial) and monospace (eg Courier). You can also specify styles such as italic and bold. The following table lists the commands you will need to access the typical font styles:</p>
+<p><a href="/wiki/Image:Styles.png" class="image" title="Image:styles.png"><img src="http://upload.wikimedia.org/wikibooks/en/4/43/Styles.png" alt="Image:styles.png" width="357" height="215" longdesc="/wiki/Image:Styles.png" /></a></p>
+<p>You may have noticed the absence of underline. This functionality has to be added with the <tt>ulem</tt> package. Stick <tt>\usepackage{ulem}</tt> in your preamble. By default, this overrides the <tt>\emph</tt> command with the underline rather than the italic style. It is unlikely that you wish this to be the desired effect, so it is better to stop <tt>ulem</tt> taking over <tt>\emph</tt> and simply call the underline command as and when it is needed.</p>
+<ul>
+<li>To disable <tt>ulem</tt>, add <tt>\normalem</tt> straight after the document environment begins.</li>
+<li>To underline, use <tt>\uline{...}</tt>.</li>
+<li>To add a wavy underline, use <tt>\uwave{...}</tt>.</li>
+<li>And for a strike-out <tt>\sout{...}</tt>.</li>
+</ul>
+<p>Finally, there is the issue of size. This to is very easy, simply follow the commands on this table:</p>
+<p><a href="/wiki/Image:Size.png" class="image" title="Image:size.png"><img src="http://upload.wikimedia.org/wikibooks/en/7/75/Size.png" alt="Image:size.png" width="306" height="221" longdesc="/wiki/Image:Size.png" /></a></p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="/w/index.php?title=LaTeX:Formatting&amp;action=edit&amp;section=8" title="LaTeX:Formatting">edit</a>]</div>
+<p><a name="Paragraph_Formatting" id="Paragraph_Formatting"></a></p>
+<h3>Paragraph Formatting</h3>
+<p>Altering the paragraph formatting is not often required, especially in academic writing. However, it is useful to know, and applications tend to be for formatting text in floats, or other more exotic documents.</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="/w/index.php?title=LaTeX:Formatting&amp;action=edit&amp;section=9" title="LaTeX:Formatting">edit</a>]</div>
+<p><a name="Paragraph_Alignment" id="Paragraph_Alignment"></a></p>
+<h4>Paragraph Alignment</h4>
+<p>Paragraphs in Latex are usually fully justified (i.e., flush with both the left and right margins). For whatever reason, should you wish to alter the justification of a paragraph, there are three environments at hand, and also Latex command equivalents.</p>
+<table>
+<tr>
+<th>Alignment</th>
+<th>Environment</th>
+<th>Command</th>
+</tr>
+<tr>
+<td>Left justified</td>
+<td><tt>flushleft</tt></td>
+<td><tt>\raggedleft</tt></td>
+</tr>
+<tr>
+<td>Right justified</td>
+<td><tt>flushright</tt></td>
+<td><tt>\raggedright</tt></td>
+</tr>
+<tr>
+<td>Center</td>
+<td><tt>center</tt></td>
+<td><tt>\centering</tt></td>
+</tr>
+</table>
+<p>All text between the <tt>\begin</tt> and <tt>\end</tt> of the specified environment will be justified appropriately. The commands listed are for use within other environments. For example, <tt>p</tt> (paragraph) columns in <tt>tabular</tt>.</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="/w/index.php?title=LaTeX:Formatting&amp;action=edit&amp;section=10" title="LaTeX:Formatting">edit</a>]</div>
+<p><a name="Paragraph_Indents" id="Paragraph_Indents"></a></p>
+<h4>Paragraph Indents</h4>
+<p>Paragraph indents are normally fine. The size of the indent is determined by a parameter called <tt>\parindent</tt>. The default length that this constant holds is set by the document class that you use. It is possible to override using the <tt>\setlength</tt> command.</p>
+<p><tt>\setlength{\parindent}{<i>length</i>}</tt> will reset the indent to <i>length</i>.</p>
+<p>Be careful, however, if you decide to set the indent to zero, then it means you will need a vertical space between paragraphs in order to make them clear. The space between paragraphs is held in <tt>\parskip</tt>, which could be altered in a similar fashion as above. However, this parameter is used elsewhere too, such as in lists, which means you run the risk of making various parts of your document look very untidy (that is, even more untidy than this type of paragraph style!) It may be better to use a document class typeset for this style of indentation, such as <tt>artikel3.cls</tt> (written by a dutch person, translates to article3).</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="/w/index.php?title=LaTeX:Formatting&amp;action=edit&amp;section=11" title="LaTeX:Formatting">edit</a>]</div>
+<p><a name="Line_Spacing" id="Line_Spacing"></a></p>
+<h4>Line Spacing</h4>
+<p>It's rarely necessary to require anything other than single line spacing. But for those of you who require it, this is how...</p>
+<ol>
+<li>Add <tt>\usepackage{setspace}</tt> to the document preamble.</li>
+<li>This then provides the following environments to use within your document:
+<ul>
+<li><tt>doublespace</tt> - all lines are double spaced.</li>
+<li><tt>onehalfspace</tt> - line spacing set to one-and-half spacing.</li>
+<li><tt>singlespace</tt> - normal linespacing.</li>
+</ul>
+</li>
+</ol>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="/w/index.php?title=LaTeX:Formatting&amp;action=edit&amp;section=12" title="LaTeX:Formatting">edit</a>]</div>
+<p><a name="Special_paragraphs" id="Special_paragraphs"></a></p>
+<h3>Special paragraphs</h3>
+<p>For those of you who have read most/all of the tutorials so far, you will have already come across some of the following paragraph formats. Although seen before, it makes sense to re-introduce here, for the sake of completeness.</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="/w/index.php?title=LaTeX:Formatting&amp;action=edit&amp;section=13" title="LaTeX:Formatting">edit</a>]</div>
+<p><a name="Verbatim_Environment" id="Verbatim_Environment"></a></p>
+<h4><tt>Verbatim</tt> Environment</h4>
+<p>This environment was used in an example in the previous tutorial. Everything input between the <i>begin</i> and <i>end</i> commands are processed as if by a typewriter. All spaces and new lines are reproduced as given, and the text is displayed in an appropriate monospace font. Ideal for typesetting program source code, for example.</p>
+<table>
+<tr>
+<td style="vertical-align: middle;">
+<pre>
+\begin{verbatim}
+The verbatim environment
+  simply reproduces every
+ character you input,
+including all  s p a c e s!
+\end{verbatim}
+</pre></td>
+<td style="vertical-align: middle;">
+<p><a href="/wiki/Image:Verbatim.png" class="image" title="Image:verbatim.png"><img src="http://upload.wikimedia.org/wikibooks/en/0/06/Verbatim.png" alt="Image:verbatim.png" width="217" height="64" longdesc="/wiki/Image:Verbatim.png" /></a></p>
+</td>
+</tr>
+</table>
+<p>Note: once in the <tt>verbatim</tt> environment, the only command that will be recognised is <tt>\end{verbatim}</tt>. Any others will be output, verbatim! If this is an issue, then you can use the <tt>alltt</tt> package instead.</p>
+<table>
+<tr>
+<td style="vertical-align: middle;">
+<pre>
+\begin{alltt}
+Verbatim extended with the ability
+to use normal commands.  Therefore, it
+is possible to \emph{emphasize} words in
+this environment, for example.
+\end{alltt}
+</pre></td>
+<td style="vertical-align: middle;">
+<p><a href="/wiki/Image:Alltt.png" class="image" title="Image:alltt.png"><img src="http://upload.wikimedia.org/wikibooks/en/8/88/Alltt.png" alt="Image:alltt.png" width="303" height="65" longdesc="/wiki/Image:Alltt.png" /></a></p>
+</td>
+</tr>
+</table>
+<p>Remember to add <tt>\usepackage{alltt}</tt> to your preamble to use it though!</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="/w/index.php?title=LaTeX:Formatting&amp;action=edit&amp;section=14" title="LaTeX:Formatting">edit</a>]</div>
+<p><a name="Listing_Environment" id="Listing_Environment"></a></p>
+<h4><tt>Listing</tt> Environment</h4>
+<p>This is also an extension of the verbatim environment. The extra functionality it provides is that it can add line numbers along side the text. The command: <tt>\begin{listing}[<i>step</i>]{<i>first line</i>}</tt>. The mandatory <i>first line</i> argument is for specifying which line the numbering shall commence. The optional <i>step</i> is the step between numbered lines (the default is 1, which means every line will be numbered).</p>
+<p>To use this environment, add <tt>\usepackage{moreverb}</tt> to the document preamble.</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="/w/index.php?title=LaTeX:Formatting&amp;action=edit&amp;section=15" title="LaTeX:Formatting">edit</a>]</div>
+<p><a name="Quote_and_Quotation_Environment" id="Quote_and_Quotation_Environment"></a></p>
+<h4><tt>Quote</tt> and <tt>Quotation</tt> Environment</h4>
+<p>There are two environments available for quoting passages within your own documents, with only a subtle difference between them. The <tt>quote</tt> environment is designed for a short quotation, or a series of small quotes, separated by blank lines. <tt>quotation</tt> on the other-hand, is for use with longer quotes, of more than one paragraph. Both are indented on either margin, and you will need to add your own quotation marks if you want them.</p>
+<p>See the [tutorial7/paras.tex paras.tex] and [tutorial7/paras.pdf paras.pdf] for examples of these in use.</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="/w/index.php?title=LaTeX:Formatting&amp;action=edit&amp;section=16" title="LaTeX:Formatting">edit</a>]</div>
+<p><a name="Abstract_Environment" id="Abstract_Environment"></a></p>
+<h4><tt>Abstract</tt> Environment</h4>
+<p>This should be fairly obvious. For academic papers, an abstract is always included at the beginning. It is typically formatted differently from the rest of the text --- indented either side, and a slightly smaller font. At least, that is what the default presentation is like. See [latextutorial2.html tutorial 2], or [tutorial7/paras.tex paras.tex] and [tutorial7/paras.pdf paras.pdf] for examples of using abstract.</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="/w/index.php?title=LaTeX:Formatting&amp;action=edit&amp;section=17" title="LaTeX:Formatting">edit</a>]</div>
+<p><a name="Verse_Environment" id="Verse_Environment"></a></p>
+<h4><tt>Verse</tt> Environment</h4>
+<p>This environment is intended for displaying poetry. I can't really see many people using this within a typical document, however, it won't hurt to briefly explain its usage. As always, as an environment, it needs to <tt>\begin</tt> and <tt>\end</tt>. Once in, new stanzas are created with a blank line, and new lines within a stanza are indicated using the newline command, <tt>\\</tt>. If a line takes up more than one line on the page, then all subsequent lines are indented until explicitly separated with \\.</p>
+<p>See the [tutorial7/paras.tex paras.tex] and [tutorial7/paras.pdf paras.pdf] for examples of this in action.</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="/w/index.php?title=LaTeX:Formatting&amp;action=edit&amp;section=18" title="LaTeX:Formatting">edit</a>]</div>
+<p><a name="List_structures" id="List_structures"></a></p>
+<h3>List structures</h3>
+<p>Lists often appear in documents, especially academic, as their purpose is often to present information in a clear and concise fashion. List structures in Latex are simply environments which essentially come in three flavours: <tt>itemize</tt>, <tt>enumerate</tt> and <tt>description</tt>.</p>
+<p>All lists follow the basic format:</p>
+<pre>
+\begin{list_type}
+</pre>
+<pre>
+  \item The first item
+  \item The second item
+  \item The third etc \ldots
+</pre>
+<pre>
+\end{list_type}
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="/w/index.php?title=LaTeX:Formatting&amp;action=edit&amp;section=19" title="LaTeX:Formatting">edit</a>]</div>
+<p><a name="Itemize" id="Itemize"></a></p>
+<h4><tt>Itemize</tt></h4>
+<p>This environment is for your standard bulleted list of items.</p>
+<table>
+<tr>
+<td>
+<pre>
+\begin{itemize}
+  \item The first item
+  \item The second item
+  \item The third etc \ldots
+\end{itemize}
+</pre></td>
+<td>
+<p><a href="/wiki/Image:Itemize.png" class="image" title="Image:itemize.png"><img src="http://upload.wikimedia.org/wikibooks/en/e/ea/Itemize.png" alt="Image:itemize.png" width="131" height="80" longdesc="/wiki/Image:Itemize.png" /></a></p>
+</td>
+</tr>
+</table>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="/w/index.php?title=LaTeX:Formatting&amp;action=edit&amp;section=20" title="LaTeX:Formatting">edit</a>]</div>
+<p><a name="Enumerate" id="Enumerate"></a></p>
+<h4><tt>Enumerate</tt></h4>
+<p>The enumerate environment is for ordered lists, where by default, each item is numbered sequentially.</p>
+<table>
+<tr>
+<td>
+<pre>
+\begin{enumerate}
+  \item The first item
+  \item The second item
+  \item The third etc \ldots
+\end{enumerate}
+</pre></td>
+<td>
+<p><a href="/wiki/Image:Enum.png" class="image" title="Image:enum.png"><img src="http://upload.wikimedia.org/wikibooks/en/f/f8/Enum.png" alt="Image:enum.png" width="137" height="81" longdesc="/wiki/Image:Enum.png" /></a></p>
+</td>
+</tr>
+</table>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="/w/index.php?title=LaTeX:Formatting&amp;action=edit&amp;section=21" title="LaTeX:Formatting">edit</a>]</div>
+<p><a name="Description" id="Description"></a></p>
+<h4><tt>Description</tt></h4>
+<p>The description environment is slightly different. You can specify the item label by passing it as an optional argument (although optional, it would look odd if you didn't include it!). Ideal for a series of definitions, such as a glossary.</p>
+<table>
+<tr>
+<td>
+<pre>
+\begin{description}
+  \item[First] The first item
+  \item[Second] The second item
+  \item[Third] The third etc \ldots
+\end{description}
+</pre></td>
+<td>
+<p><a href="/wiki/Image:Desc.png" class="image" title="Image:desc.png"><img src="http://upload.wikimedia.org/wikibooks/en/a/a8/Desc.png" alt="Image:desc.png" width="168" height="83" longdesc="/wiki/Image:Desc.png" /></a></p>
+</td>
+</tr>
+</table>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="/w/index.php?title=LaTeX:Formatting&amp;action=edit&amp;section=22" title="LaTeX:Formatting">edit</a>]</div>
+<p><a name="Nested_Lists" id="Nested_Lists"></a></p>
+<h4>Nested Lists</h4>
+<p>Latex will happily allow you to insert a list environment into an existing one (up to a depth of four). Simply begin the appropriate environment at the desired point within the current list. Latex will sort out the layout and any numbering for you.</p>
+<table>
+<tr>
+<td style="vertical-align: middle;">
+<pre>
+\begin{enumerate}
+  \item The first item
+  \begin{enumerate}
+    \item Nested item 1
+    \item Nested item 2
+  \end{enumerate}
+  \item The second item
+  \item The third etc \ldots
+\end{enumerate}
+</pre></td>
+<td>
+<p><a href="/wiki/Image:Nested.png" class="image" title="Image:nested.png"><img src="http://upload.wikimedia.org/wikibooks/en/d/d8/Nested.png" alt="Image:nested.png" width="148" height="141" longdesc="/wiki/Image:Nested.png" /></a></p>
+</td>
+</tr>
+</table>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="/w/index.php?title=LaTeX:Formatting&amp;action=edit&amp;section=23" title="LaTeX:Formatting">edit</a>]</div>
+<p><a name="Customising_Lists" id="Customising_Lists"></a></p>
+<h3>Customising Lists</h3>
+<p>Customising many things in Latex is not really within the beginners domain. Whilst not necessarily difficult, per se, because beginners are already overwhelmed with the array of commands and environments, moving on to more advanced topics runs the risk of confusion.</p>
+<p>However, since the tutorial is on formatting, then I shall still include a brief guide on customising lists. Feel free to skip!</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="/w/index.php?title=LaTeX:Formatting&amp;action=edit&amp;section=24" title="LaTeX:Formatting">edit</a>]</div>
+<p><a name="Customising_Enumerated_Lists" id="Customising_Enumerated_Lists"></a></p>
+<h4>Customising Enumerated Lists</h4>
+<p>The thing people want to change most often with Enumerated lists are the counters. Therefore, to go any further, a brief introduction to Latex <i>counters</i> is required. Anything that Latex automatically numbers, such as section headers, figures, and itemised lists, there is a counter associated with it that controls the numbering. Each counter also has a default format that dictates how it is displayed whenever Latex needs to print it. Such formats are specified using internal Latex commands:</p>
+<table>
+<tr>
+<td>Command</td>
+<td>Example</td>
+</tr>
+<tr>
+<td><tt>\arabic</tt></td>
+<td>1, 2, 3 ...</td>
+</tr>
+<tr>
+<td><tt>\alph</tt></td>
+<td>a, b, c ...</td>
+</tr>
+<tr>
+<td><tt>\Alph</tt></td>
+<td>A, B, C ...</td>
+</tr>
+<tr>
+<td><tt>\roman</tt></td>
+<td>i, ii, iii ...</td>
+</tr>
+<tr>
+<td><tt>\Roman</tt></td>
+<td>I, II, III ...</td>
+</tr>
+<tr>
+<td><tt>\fnsymbol</tt></td>
+<td>Aimed at footnotes (see below), but prints a sequence of symbols.</td>
+</tr>
+</table>
+<p>There are four individual counters that are associated with itemised lists, each one represents the four possible levels of nesting, which are called: <tt>enumi</tt>, <tt>enumii</tt>, <tt>enumiii</tt>, <tt>enumiv</tt>. Each counter entity holds various bits of information about itself. To get to the numbered element, simply use <tt>\the</tt> followed immediately (ie no space) by the name of the counter, eg <tt>\theenumi</tt>. This is often referred to as the <i>representation</i> of a counter.</p>
+<p>Now, that's most of the technicalities out of the way. To make changes to the formatting of a given level: <tt>\renewcommand{\</tt><i>representation</i><tt>}{\</tt><i>format_command</i><tt>{</tt><i>counter</i><tt>}}</tt>. Admittedly, the generic version is not that clear, so a couple of examples will clarify:</p>
+<pre>
+%Redefine the first level
+\renewcommand{\theenumi}{\Roman{enumi}}
+\renewcommand{\labelenumi}{\theenumi}
+</pre>
+<pre>
+%Redefine the second level
+\renewcommand{\theenumii}{\Alph{enumii}}
+\renewcommand{\labelenumii}{\theenumii}
+</pre>
+<p>The method used above first explicitly changes the format used by the counter. However, the element that controls the label needs to be updated to reflect the change, which is what the second line does. Another way to achieve this result is this:</p>
+<pre>
+\renewcommand{\labelenumi}{\Roman{enumi}}
+</pre>
+<p>This simply redefines the appearance of the label, which is fine, providing that you do not intend to cross-reference to a specific item within the list, in which case the reference will be printed in the previous format. This issue does not arise in the first example.</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="/w/index.php?title=LaTeX:Formatting&amp;action=edit&amp;section=25" title="LaTeX:Formatting">edit</a>]</div>
+<p><a name="Customising_Itemised_Lists" id="Customising_Itemised_Lists"></a></p>
+<h4>Customising Itemised Lists</h4>
+<p>Itemised lists are not as complex as they do not need to count. Therefore, to customise, you simply change the labels. The itemize labels are accessed via <tt>\labelitemi</tt>, <tt>\labelitemii</tt>, <tt>\labelitemiii</tt>, <tt>\labelitemiv</tt>, for the four respective levels.</p>
+<pre>
+                   \renewcommand{\labelitemi}{\textgreater}
+</pre>
+<p>The above example would set the labels for the first level to a greater than (&gt;) symbol. Of course, the text symbols available in Latex are not every exciting. Why not use one of the ZapfDingbat symbols, as described in the [#symbols symbols] section.</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="/w/index.php?title=LaTeX:Formatting&amp;action=edit&amp;section=26" title="LaTeX:Formatting">edit</a>]</div>
+<p><a name="Footnotes" id="Footnotes"></a></p>
+<h3>Footnotes</h3>
+<p>Footnotes are a very useful way of providing extra information to the reader. It is normally non-essential, and so can be placed at the bottom of the page, which means the main body remains concise.</p>
+<p>The footnote facility is easy to use. The command you need is: <tt>\footnote{<i>text</i>}</tt>. Do not leave a space between the command the word where you wish the footnote marker to appear, otherwise Latex will process that space and will leave the output not looking as intended.</p>
+<table>
+<tr>
+<td style="vertical-align: middle;"><tt>Creating a footnote is easy.\footnote{An example footnote.}</tt></td>
+<td>
+<p><a href="/w/index.php?title=Special:Upload&amp;wpDestFile=Footnote.png" class="new" title="Image:Footnote.png">Image:Footnote.png</a></p>
+</td>
+</tr>
+</table>
+<p>Latex will obviously take care of typesetting the footnote at the bottom of the page. Each footnote is numbered sequentially - a process, as you should have guessed by now is automatically done for you.</p>
+<p>It is possible to customise the footnote marking. By default, they are numbered sequentially (Arabic). However, without going too much into the mechanics of Latex at this point, it is possible to change using the following command (of which needs to be placed at the beginning of the document, or at least before the first footnote command is issued).</p>
+<table>
+<tr>
+<td><tt>\renewcommand{\thefootnote}{\arabic{footnote}}</tt></td>
+<td>Arabic numerals, e.g., 1, 2, 3...</td>
+</tr>
+<tr>
+<td><tt>\renewcommand{\thefootnote}{\roman{footnote}}</tt></td>
+<td>Roman numerals (lowercase), e.g., i, ii, iii...</td>
+</tr>
+<tr>
+<td><tt>\renewcommand{\thefootnote}{\Roman{footnote}}</tt></td>
+<td>Roman numerals (uppercase), e.g., I, II, III...</td>
+</tr>
+<tr>
+<td><tt>\renewcommand{\thefootnote}{\alph{footnote}}</tt></td>
+<td>Alphabetic (lowercase), e.g., a, b, c...</td>
+</tr>
+<tr>
+<td><tt>\renewcommand{\thefootnote}{\Alph{footnote}}</tt></td>
+<td>Alphabetic (uppercase), e.g., A, B, C...</td>
+</tr>
+<tr>
+<td><tt>\renewcommand{\thefootnote}{\fnsymbol{footnote}}</tt></td>
+<td>A sequence of nine symbols (try it and see!)</td>
+</tr>
+</table>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="/w/index.php?title=LaTeX:Formatting&amp;action=edit&amp;section=27" title="LaTeX:Formatting">edit</a>]</div>
+<p><a name="Margin_notes" id="Margin_notes"></a></p>
+<h3>Margin notes</h3>
+<p>A dare say that this is a commonly used function, however, I thought I'd include it anyway, as it is simple to use command. <tt>\marginpar{<i>margin text</i>}</tt> will position the enclosed text on to the outside margin. To swap the default side, issue <tt>\reversemarginpar</tt> and that move margin notes to the opposite side.</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="/w/index.php?title=LaTeX:Formatting&amp;action=edit&amp;section=28" title="LaTeX:Formatting">edit</a>]</div>
+<p><a name="Summary" id="Summary"></a></p>
+<h3>Summary</h3>
+<p>Phew! What a busy tutorial! A lot of material was covered here, mainly because formatting is such a broad topic. Latex is so flexible that I actually only skimmed the surface, as you can have much more control over the presentation of your document if you wish. Having said that, one of the purposes of Latex is to take away the stress of having to deal with the physical presentation yourself, so you need not get too carried away!</p>
+<hr />
+<p>Files: [tutorial7/text.tex text.tex] | [tutorial7/text.pdf text.pdf] | [tutorial7/paras.tex paras.tex] | [tutorial7/paras.pdf paras.pdf] | [tutorial7/notes.tex notes.tex] | [tutorial7/notes.pdf notes.pdf] | [tutorial7/lists.tex lists.tex] | [tutorial7/lists.pdf lists.pdf]</p>
+<p><i>This page uses material from Andy Roberts' <a href="http://www.andy-roberts.net/misc/latex/index.html" class='external text' title="http://www.andy-roberts.net/misc/latex/index.html" rel="nofollow">Getting to grips with Latex</a> with permission from the author.</i></p>
+
+
+<!-- Saved in parser cache with key enwikibooks:pcache:idhash:42439-0!1!0!0!!en!2 and timestamp 20060213192329 -->
+<div class="printfooter">
+Retrieved from "<a href="http://en.wikibooks.org/wiki/LaTeX:Formatting">http://en.wikibooks.org/wiki/LaTeX:Formatting</a>"</div>
+						<!-- end content -->
+			<div class="visualClear"></div>
+		</div>
+	</div>
+		</div>
+		<div id="column-one">
+	<div id="p-cactions" class="portlet">
+		<h5>Views</h5>
+		<ul>
+				 <li id="ca-nstab-main" class="selected"><a href="/wiki/LaTeX:Formatting">Module</a></li>
+				 <li id="ca-talk" class="new"><a href="/w/index.php?title=Talk:LaTeX:Formatting&amp;action=edit">Discussion</a></li>
+				 <li id="ca-edit"><a href="/w/index.php?title=LaTeX:Formatting&amp;action=edit">Edit this page</a></li>
+				 <li id="ca-history"><a href="/w/index.php?title=LaTeX:Formatting&amp;action=history">History</a></li>
+		</ul>
+	</div>
+	<div class="portlet" id="p-personal">
+		<h5>Personal tools</h5>
+		<div class="pBody">
+			<ul>
+				<li id="pt-login"><a href="/w/index.php?title=Special:Userlogin&amp;returnto=LaTeX:Formatting">Log in / create account</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-logo">
+		<a style="background-image: url(/images/wiki-textbook.png);" href="/wiki/Main_Page" title="Main Page"></a>
+	</div>
+	<script type="text/javascript"> if (window.isMSIE55) fixalpha(); </script>
+		<div class='portlet' id='p-navigation'>
+		<h5>Navigation</h5>
+		<div class='pBody'>
+			<ul>
+				<li id="n-mainpage"><a href="/wiki/Main_Page">Main Page</a></li>
+				<li id="n-portal"><a href="/wiki/Wikibooks:Community_Portal">Community Portal</a></li>
+				<li id="n-Wikiversity"><a href="/wiki/Wikiversity">Wikiversity</a></li>
+				<li id="n-Wikijunior"><a href="/wiki/Wikijunior">Wikijunior</a></li>
+				<li id="n-Staff-Lounge"><a href="/wiki/Wikibooks:Staff_lounge">Staff Lounge</a></li>
+				<li id="n-All-Bookshelves"><a href="/wiki/Wikibooks:All_bookshelves">All Bookshelves</a></li>
+				<li id="n-Card-Catalog-Office"><a href="/wiki/Wikibooks:Card_Catalog_Office">Card Catalog Office</a></li>
+				<li id="n-help"><a href="/wiki/Help:Contents">Help</a></li>
+				<li id="n-sitesupport"><a href="http://wikimediafoundation.org/wiki/Fundraising">Donations</a></li>
+			</ul>
+		</div>
+	</div>
+		<div class='portlet' id='p-tools'>
+		<h5>tools</h5>
+		<div class='pBody'>
+			<ul>
+				<li id="n-recentchanges"><a href="/wiki/Special:Recentchanges">Recent changes</a></li>
+				<li id="n-randompage"><a href="/wiki/Special:Random">Random module</a></li>
+				<li id="n-Module-Cleanup"><a href="/wiki/Wikibooks:Wikibooks_maintenance">Module Cleanup</a></li>
+			</ul>
+		</div>
+	</div>
+		<div id="p-search" class="portlet">
+		<h5><label for="searchInput">Search</label></h5>
+		<div id="searchBody" class="pBody">
+			<form action="/wiki/Special:Search" id="searchform"><div>
+				<input id="searchInput" name="search" type="text" accesskey="f" value="" />
+				<input type='submit' name="go" class="searchButton" id="searchGoButton"	value="Go" />&nbsp;
+				<input type='submit' name="fulltext" class="searchButton" value="Search" />
+			</div></form>
+		</div>
+	</div>
+	<div class="portlet" id="p-tb">
+		<h5>Toolbox</h5>
+		<div class="pBody">
+			<ul>
+				<li id="t-whatlinkshere"><a href="/wiki/Special:Whatlinkshere/LaTeX:Formatting">What links here</a></li>
+				<li id="t-recentchangeslinked"><a href="/wiki/Special:Recentchangeslinked/LaTeX:Formatting">Related changes</a></li>
+<li id="t-upload"><a href="/wiki/Special:Upload">Upload file</a></li>
+<li id="t-specialpages"><a href="/wiki/Special:Specialpages">Special pages</a></li>
+				<li id="t-print"><a href="/w/index.php?title=LaTeX:Formatting&amp;printable=yes&amp;printable=yes">Printable version</a></li>				<li id="t-permalink"><a href="/w/index.php?title=LaTeX:Formatting&amp;oldid=341404">Permanent link</a></li>			</ul>
+		</div>
+	</div>
+		</div><!-- end of the left (by default at least) column -->
+			<div class="visualClear"></div>
+			<div id="footer">
+				<div id="f-poweredbyico"><a href="http://www.mediawiki.org/"><img src="/skins-1.5/common/images/poweredby_mediawiki_88x31.png" alt="MediaWiki" /></a></div>
+				<div id="f-copyrightico"><a href="http://wikimediafoundation.org/"><img src="/images/wikimedia-button.png" border="0" alt="Wikimedia Foundation"/></a></div>
+			<ul id="f-list">
+				<li id="lastmod"> This page was last modified 13:44, 19 January 2006.</li>
+				<li id="copyright">All text is available under the terms of the <a class='internal' href="/wiki/GNU_Free_Documentation_License">GNU Free Documentation License</a> (see <b><a class='internal' href="/wiki/Wikibooks:Copyrights">Copyrights</a></b> for details).<br /></li>
+				<li id="privacy"><a href="/wiki/Wikibooks:Privacy_policy" title="Wikibooks:Privacy policy">Privacy policy</a></li>
+				<li id="about"><a href="/wiki/Wikibooks:About" title="Wikibooks:About">About Wikibooks</a></li>
+				<li id="disclaimer"><a href="/wiki/Wikibooks:General_disclaimer" title="Wikibooks:General disclaimer">Disclaimers</a></li>
+			</ul>
+		</div>
+	<script type="text/javascript"> if (window.runOnloadHook) runOnloadHook();</script>
+</div>
+<!-- Served by srv23 in 0.07 secs. -->
+</body></html>

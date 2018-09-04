@@ -1,0 +1,1012 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-1 (1.68)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>A Simple Guide to Latex/Lyx</TITLE>
+<META NAME="description" CONTENT="A Simple Guide to Latex/Lyx">
+<META NAME="keywords" CONTENT="lyxguide">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="lyxguide.css">
+
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<IMG WIDTH="81" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next_inactive" SRC="nx_grp_g.png"> 
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_g.png"> 
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev_g.png">   
+<BR>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<P>
+
+<P>
+
+<P>
+<H1 ALIGN=CENTER>A Simple Guide to Latex/Lyx</H1>
+<P ALIGN=CENTER><STRONG>stat@rice helpdesk</STRONG></P>
+<P ALIGN=LEFT></P>
+
+<P>
+
+<H1><A NAME="SECTION00010000000000000000">
+Preparation</A>
+</H1>
+
+<P>
+Run the following commands in a *nix shell (do not enter prompt
+&gt; ):
+
+<P>
+<BLOCKQUOTE>
+<TT>&gt; wget http://www.stat.rice.edu/~helpdesk/howto/lyxdemo.tar.gz</TT>&nbsp;
+<BR><TT>&gt; tar zxf lyxdemo.tar.gz</TT>
+
+</BLOCKQUOTE>
+<TT>wget</TT> is a useful command to grab something from the web.
+Using appropriate command options, it can download the whole web site
+(or only files of certain types) recursively. See <TT>man wget</TT>
+for details. <TT>tar</TT> command is used to uncompress and expand
+<TT>.tar.gz</TT> file. If you are using a windows machine, you can
+use a browser to download the file. Something like winRAR has to be
+used to uncompress the file.
+
+<P>
+The demo file <TT>lyxdemo.tar.gz</TT> contains the following files:
+
+<P>
+
+<OL>
+<LI><TT>demoarticle.tex</TT> and <TT>drawing.eps, demoarticle.ps,</TT>
+a demo latex file with its output.
+</LI>
+<LI><TT>essential.tex</TT>, an excellent introduction to latex by <I>Jon
+Warbrick.</I>
+</LI>
+<LI><TT>latexintro.pdf</TT>, <I>The Not So Short Introduction to L<SUP><SMALL>A</SMALL></SUP>T<SMALL>E</SMALL>X2e </I>
+by <I>Tobias Oetiker Hubert Partl, Irene Hyna and Elisabeth Schlegl.</I>
+</LI>
+<LI><TT>Makefile</TT>, a makefile to simplify the use of latex related
+commands
+</LI>
+<LI><TT>latexsymbol.ps</TT>, list of latex symbols
+</LI>
+<LI><TT>lyxguide.lyx</TT>, this file
+</LI>
+<LI><TT>personal.bind</TT> and <TT>reference.lyx</TT> , <TT>reference.ps</TT>,
+helpdesk lyx bind file with its reference 
+</LI>
+<LI><TT>demo.bib</TT>, a sample bibtex file
+</LI>
+</OL>
+
+<P>
+
+<H1><A NAME="SECTION00020000000000000000">
+Latex Basics</A>
+</H1>
+
+<P>
+<TT>demoarticle.tex</TT> is the latex source file. You are supposed
+to input it (in whatever way you like). <TT>demoarticle.ps</TT> is
+one of the several possible outputs. You need to <I>compile</I> the
+source code to obtain it. Print and read <TT>demoarticle.tex</TT>
+and <TT>demoarticle.ps</TT> side by side and try to guess how the
+latex commands correspond to the output. It is important for you to
+understand
+
+<P>
+
+<OL>
+<LI>document class: the document class determines the overall layout of
+the document. Changing the document class will change <I>a lot</I>
+of your output layout.
+</LI>
+<LI>environments (<TT>&#92;start{itemize}</TT> and <TT>&#92;end{itemize}</TT>
+etc)
+</LI>
+<LI>difference between inline (<TT>$$</TT>) and displayed (<TT>&#92;[
+&#92;]</TT>) formula. 
+</LI>
+<LI><TT>_</TT>, <TT>&#94;</TT> are for subscript and superscript. 
+</LI>
+<LI><TT>&#92;sqrt, &#92;sin, &#92;alpha,
+&#92;beta</TT> are math symbols or functions
+</LI>
+<LI><TT>&#92;label</TT> and <TT>&#92;ref</TT>. <TT>&#92;label</TT>
+is used to name an equation, section etc so that we can refer to them
+by <TT>&#92;ref.</TT>
+</LI>
+<LI>How tables and figures are included. 
+</LI>
+</OL>
+
+<P>
+
+<H1><A NAME="SECTION00030000000000000000">
+Latex commands</A>
+</H1>
+
+<P>
+You should first prepare a <TT>.tex</TT> file, say <TT>article.tex</TT>,
+then
+
+<P>
+
+<OL>
+<LI><TT>latex article.tex</TT>, obtain <TT>article.dvi</TT>
+</LI>
+<LI><TT>xdvi artivle.dvi</TT>, view the dvi file
+</LI>
+<LI><TT>dvips article.dvi</TT>, translate dvi to postscript format
+</LI>
+<LI><TT>gv article.ps</TT>, view ps file
+</LI>
+<LI><TT>ps2pdf article.ps</TT>, translate ps to pdf format
+</LI>
+<LI><TT>acroread article.pdf</TT>, view pdf file (<TT>xpdf</TT> can also
+be used.)
+</LI>
+<LI><TT>pdflatex article.tex</TT>, obtain a pdf file directly from .tex
+file
+</LI>
+<LI><TT>latex2html article.tex</TT>, translate the article to html format.
+</LI>
+</OL>
+You can use a make file to simplify all these. (see sample make file
+<TT>Makefile</TT>). The commands will be simlified to <TT>make
+view</TT>, <TT>make pdf</TT>, <TT>make web</TT> etc. Note that there are
+many options for these commands which makes <TT>make</TT> especially
+useful.
+<BR>
+<P>
+<B>Practice: </B>
+
+<P>
+
+<OL>
+<LI>Try to understand every latex command. Use a editor, input the following
+formula: <!-- MATH
+ $E\left(e^{i\xi X}\right)=\int e^{i\xi x}dF\left(x\right)$
+ -->
+<IMG
+ WIDTH="169" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.png"
+ ALT="$ E\left(e^{i\xi X}\right)=\int e^{i\xi x}dF\left(x\right)$">..
+
+<BR><B>Hint</B>: integral <TT>&#92;int</TT>, subscript <TT>_</TT>,
+superscript <TT>&#94;</TT>, <IMG
+ WIDTH="11" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img2.png"
+ ALT="$ \xi$"> <TT>&#92;xi</TT>,
+use <TT>{}</TT> to group items, use <TT>&#92;left(
+&#92;right)</TT> for big parenthesis and <TT>()</TT> for small
+parenthesis.
+</LI>
+<LI>Compile and view <TT>demoarticle.tex</TT>. 
+</LI>
+<LI>Convert the dvi file to <TT>ps</TT> and <TT>pdf</TT> format and view
+them with appropriate viewers.
+</LI>
+<LI>Modify <TT>makefile</TT> so that you can use <TT>make
+view</TT> etc to compile and view <TT>essential.tex</TT>. 
+</LI>
+<LI>Read <TT>essential.ps</TT> for a more detailed description
+of latex basics.
+</LI>
+</OL>
+
+<P>
+
+<H2><A NAME="SECTION00031000000000000000">
+Start Lyx and set the bind file</A>
+</H2>
+
+<P>
+Type
+
+<P>
+<BLOCKQUOTE>
+<TT>lyx </TT>
+
+</BLOCKQUOTE>
+to start lyx. If this is the first time you run <TT>lyx</TT>, <TT>lyx</TT>
+will try to detect the latex settings and generate a <TT>.lyx</TT>
+directory under your home directory. This is where you put your personal
+settings. It is highly recommended that you use helpdesk bind file.
+It contains <I>a lot of</I> keyboard shortcuts for rapid input almost
+all important math symbols. To use helpdesk bind file, copy the provided
+bind file to <TT>~/.lyx/bind</TT>
+
+<P>
+<BLOCKQUOTE>
+<TT>cp ~/lyxdemo/personal.bind ~/.lyx/bind/</TT>
+
+</BLOCKQUOTE>
+To activate this bind file, you will need to set <TT>Edit -&gt; Preference
+-&gt; interface -&gt; bind file -&gt; Browse -&gt; User bind -&gt; personal.bind</TT>
+and then restart lyx. Press <TT>C-g b</TT> (press <TT>Control</TT>
+and <TT>g</TT> keys, release both keys and then press <TT>b</TT>),
+if you can see <IMG
+ WIDTH="13" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.png"
+ ALT="$ \beta$">, the bind file is loaded correctly. Before
+you get used to all the shortcuts, it is a good idea to keep a copy
+of shortcut reference with you. (<TT>reference.ps</TT>)
+<BR>
+<P>
+<B>Practice:</B> Start and reconfigure lyx. Load helpdesk
+bind file. Print <TT>reference.ps</TT> and have a look at the key
+bindings. 
+
+<P>
+
+<H1><A NAME="SECTION00040000000000000000">
+Your First Lyx Document</A>
+</H1>
+
+<P>
+Play with the menus for a while, guess what they mean. Then
+
+<P>
+
+<OL>
+<LI>start a new lyx file.
+</LI>
+<LI>go to <TT>Layout -&gt; Document.</TT> Choose <TT>article (AMS)</TT> as
+your document class since we will be using ams math package. Note
+that if you use the standard <TT>article</TT> class and <TT>insert
+-&gt; math -&gt; case environment</TT> or other AMS only environments, you will
+get compile errors. This is among the `<I>easiest ways to get compile
+errors of lyx</I>'. If this happens, you can either
+
+<P>
+
+<OL>
+<LI>change your document class to <TT>ams</TT> ones or,
+</LI>
+<LI><TT>Layout -&gt; Document -&gt; Packages -&gt; Use AMS Math</TT>, or
+</LI>
+<LI>put 
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD>&#92;usepackage{amsmath}
+</DD>
+</DL>in the preamble. (<TT>layout -&gt; Document -&gt; preamble.</TT>)
+
+<P>
+</LI>
+</OL>
+</LI>
+<LI>The leftmost drop list on the toolbar is the <I>environment list</I>
+(roughly the same as latex environments). Enter title, author, chapter,
+subchapter etc of the sample file and choose the right environment
+for them. Note that <TT>Chapter*</TT> is the non-numbered version
+of <TT>Chapter</TT> environment.
+</LI>
+</OL>
+
+<P>
+
+<H1><A NAME="SECTION00050000000000000000">
+View your document</A>
+</H1>
+
+<P>
+Save your file. Learn to 
+
+<P>
+
+<OL>
+<LI>Use <TT>View -&gt; DVI</TT> to view dvi output, <TT>View -&gt; PostScript</TT>
+to view ps output. Lyx actually export the lyx file to latex and call
+<TT>latex, xdvi, postscript</TT> etc to do these. If you are interested
+in the underlying latex source, <TT>File</TT> <TT>-&gt; Export -&gt;
+Latex</TT> and read the generated latex file.
+</LI>
+<LI>Modify your document and then <TT>View -&gt; update -&gt; DVI</TT>, <TT>View
+-&gt; Update -&gt; PostScript</TT> (you will need to reload the ps file from
+gv) to see updated output.
+</LI>
+<LI>Learn shortcuts <TT>F9</TT>, <TT>F10</TT>, <TT>F11</TT>, <TT>F12.</TT>
+</LI>
+</OL>
+<B>Practice:</B> Enter the first several paragraphs of
+the sample document.
+
+<P>
+<B>Hint:</B> 
+
+<P>
+
+<OL>
+<LI><TT>F4</TT>, <TT>F5</TT>, <TT>F6</TT> corresponds to normal,
+bold, emphasis fonts. (only for helpdesk bind file)
+</LI>
+<LI>Use <TT>C-M</TT> to enter math mode. Use <TT>arrow</TT>
+or <TT>blank</TT> keys to get out. 
+</LI>
+</OL>
+
+<P>
+
+<H1><A NAME="SECTION00060000000000000000">
+Input Math Formula - basic inline formula</A>
+</H1>
+
+<P>
+There are three ways to enter math mode: (fast to slow) 
+
+<P>
+
+<OL>
+<LI><TT>Ctrl-M</TT> (<TT>Ctrl-M</TT> means press the <TT>Ctrl</TT> and
+<TT>M</TT> keys at the same time. In <TT>reference.tex,</TT> <TT>C</TT>
+stands for <TT>Control</TT>, <TT>S</TT> stands for <TT>shift</TT>
+and <TT>M</TT> stands for <TT>meta</TT> (right <TT>Alt</TT> key for
+windows keyboard)), or
+</LI>
+<LI>click the <!-- MATH
+ $\frac{a+b}{c}$
+ -->
+<IMG
+ WIDTH="29" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img4.png"
+ ALT="$ \frac{a+b}{c}$"> icon on the toolbar, or
+</LI>
+<LI><TT>insert -&gt; math -&gt; inline formula</TT>
+</LI>
+</OL>
+To enter math symbols, you can either (slow to fast)
+
+<P>
+
+<OL>
+<LI>Use Math Panel (right click an existing formula or <TT>insert
+-&gt; math -&gt; math panel ...</TT>), or
+</LI>
+<LI>In math mode, enter <TT>&#92;</TT> plus symbol name, e.g.
+enter <TT>&#92;alpha</TT> for <IMG
+ WIDTH="13" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img5.png"
+ ALT="$ \alpha $">, <TT>&#92;propto</TT>
+for <IMG
+ WIDTH="15" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img6.png"
+ ALT="$ \propto $">. For symbol names, see <TT>latexsymbol.ps</TT>. or
+</LI>
+<LI>Use shortcuts (see shortcut reference). For example, <TT>C-g a</TT>
+for <IMG
+ WIDTH="13" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img5.png"
+ ALT="$ \alpha $">, <TT>C-g r</TT> for <IMG
+ WIDTH="11" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img7.png"
+ ALT="$ \rho $">, <TT>C-s 1</TT> for <!-- MATH
+ $\rightarrow$
+ -->
+<IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img8.png"
+ ALT="$ \rightarrow $">,
+<TT>C-s i</TT> for <IMG
+ WIDTH="19" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img9.png"
+ ALT="$ \infty $">. Basically, <TT>C-g</TT> means Greek
+character and <TT>C-s</TT> means symbol.
+</LI>
+</OL>
+Character Accent:
+
+<P>
+
+<OL>
+<LI>Use math panel or
+</LI>
+<LI>Use shortcuts <TT>C-_</TT>,<TT>~</TT>,<TT>&#94;</TT>
+etc , e.g., <TT>C-&#94; C-g a</TT> inputs <!-- MATH
+ $\hat{\alpha}$
+ -->
+<IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img10.png"
+ ALT="$ \hat{\alpha }$">.
+For wide accent (e.g. <!-- MATH
+ $\widehat{a+b}$
+ -->
+<IMG
+ WIDTH="38" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img11.png"
+ ALT="$ \widehat{a+b}$">) , use <TT>Meta-_</TT>,<TT>~</TT>,<TT>&#94;</TT>
+instead.
+</LI>
+</OL>
+Delimiters:
+
+<P>
+The sizes of ( ) may be small for math equations. The following
+delimiters are paired (so they are easier to input) and can change
+their sizes according to their context.
+
+<P>
+
+<OL>
+<LI>Use math panel or
+</LI>
+<LI>Use <TT>Ctrl + ( ) [ ] { } |</TT> etc to input paired delimeters.
+Shortcuts for one side delimeters are also available.
+</LI>
+</OL>
+Other important shortcuts:
+
+<P>
+
+<OL>
+<LI><TT>C-UpArrow</TT> superscript, <TT>C-DownArrow</TT> subscript, I
+prefer <TT>C-h/C-l</TT> though.
+</LI>
+<LI><TT>C-/</TT> fraction<TT>, C-s b</TT> binomial<TT>, C-s r</TT> root 
+</LI>
+<LI><TT>C-s s</TT> stack 
+</LI>
+</OL>
+<DIV ALIGN="LEFT">
+<B>Practice:</B> Input formula: <!-- MATH
+ $\sqrt{n}\left(\frac{\bar{X}-\mu}{\sigma}\right)\stackrel{d}{\rightarrow}N\left(0,1\right)$
+ -->
+<IMG
+ WIDTH="158" HEIGHT="45" ALIGN="MIDDLE" BORDER="0"
+ SRC="img12.png"
+ ALT="$ \sqrt{n}\left(\frac{\bar{X}-\mu }{\sigma }\right)\stackrel{d}{\rightarrow }N\left(0,1\right)$">. 
+</DIV>
+
+<P>
+<DIV ALIGN="LEFT">
+<B>Hint</B>: <TT>&#92;sqrt</TT> or <TT>C-r</TT>
+for <IMG
+ WIDTH="16" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img13.png"
+ ALT="$ \sqrt{}$">, <TT>C-(</TT> for <!-- MATH
+ $\left(\right)$
+ -->
+<IMG
+ WIDTH="15" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img14.png"
+ ALT="$ \left(\right)$">, <TT>&#92;sigma
+or</TT> <TT>C-s s</TT> for <IMG
+ WIDTH="13" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img15.png"
+ ALT="$ \sigma $">, <TT>C-_ X</TT> for <IMG
+ WIDTH="17" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img16.png"
+ ALT="$ \bar{X}$">,
+<TT>&#92;mu</TT> or <TT>C-g m</TT> for <IMG
+ WIDTH="13" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img17.png"
+ ALT="$ \mu $">, <TT>C-s
+s</TT> for stack, <TT>C-s 1</TT> or <TT>Alt-RightArrow</TT> for <!-- MATH
+ $\rightarrow$
+ -->
+<IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img8.png"
+ ALT="$ \rightarrow $">.
+</DIV>
+
+<P>
+
+<H1><A NAME="SECTION00070000000000000000">
+Input Math Formula - displayed </A>
+</H1>
+
+<P>
+All previous plus: 
+
+<P>
+
+<OL>
+<LI><TT>C-d</TT> for displayed formula. (helpdesk bindfile only)
+</LI>
+<LI><TT>C-d</TT> in inline/display formula will toggle between them.
+</LI>
+<LI>If you prefer AMS align environments, <TT>insert -&gt; math -&gt; AMS
+align environment</TT> etc
+</LI>
+<LI>In displayed formula, use <TT>C-enter</TT> to enter <TT>equarray
+environment</TT>. It is important to know that the middle cells are used
+for alignment purpose so only characters like =, &gt;, &lt;
+etc are welcome. To add more lines, use <TT>C-Enter</TT> at the end
+of a line.
+</LI>
+<LI><TT>Insert -&gt; label</TT> to name a formula, then use <TT>insert
+-&gt; cross reference</TT> to refer to it. Use <TT>C-n</TT>, <TT>C-N</TT>
+to toggle numbering. 
+</LI>
+</OL>
+Important Usuage hints:
+
+<P>
+
+<OL>
+<LI>In math mode, use <TT>C-M</TT> to enter text mode. (If you know latex,
+it is <TT>$ &#92;text{ } $</TT>.) Then, you <I>can
+not</I> use C-M again to enter math mode within the text mode. Use right-arrow
+to <I>step out</I> of the text mode. <B><I>You will get compile
+error if you input math symbols in text mode. </I></B>
+</LI>
+<LI><TT>C-s c</TT> for 2 cases, <TT>C-s C</TT> for 3 cases. (need ams
+package and helpdesk bindfile)
+</LI>
+<LI><TT>C-s m</TT> for 2 by 2 matrix, <TT>C-s M</TT> for 3 by 3 matrix,
+<TT>C-s C-m a b</TT> for <TT>a</TT> by <TT>b</TT> matrix. 
+</LI>
+<LI>use <TT>Edit -&gt; math</TT> to add/delete row, column of a matrix or
+change alignment.
+</LI>
+<LI>Sometimes, you will need one side delimiter, use math panel or shortcuts.
+</LI>
+</OL>
+<B>Practice:</B> Input formula: 
+
+<P>
+
+<H1><A NAME="SECTION00080000000000000000">
+<BR>
+<DIV ALIGN="CENTER">
+<!-- MATH
+ \begin{eqnarray*}
+x & = & \protect\begin{cases}
+\frac{1}{n} & \textrm{w.p. }\frac{1}{n}\protect\\
+n & \textrm{w.p. }1-\frac{1}{n}\protect\end{cases}\protect\\
+y & = & x^{2}
+\end{eqnarray*}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="12" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img18.png"
+ ALT="$\displaystyle x$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="15" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img19.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="121" HEIGHT="64" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.png"
+ ALT="$\displaystyle \protect\begin{cases}
+\frac{1}{n} &amp; \textrm{w.p. }\frac{1}{n}\protect\\
+n &amp; \textrm{w.p. }1-\frac{1}{n}\protect\end{cases}$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="11" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img21.png"
+ ALT="$\displaystyle y$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="15" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img19.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="19" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img22.png"
+ ALT="$\displaystyle x^{2}$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL">
+</A>
+</H1>
+
+<P>
+<B>Hint</B>: '=' should be in the middle cell of the equarray. You
+can use either <TT>insert -&gt; math -&gt; case environment</TT> or one
+side dilimiter <TT>{</TT> <TT>(C-s {</TT>) and then a 2 by 2 matrix.
+Use <TT>C-M</TT> to toggle between text/math mode ( for text w.p.)
+and <TT>edit -&gt; math</TT> to change alignment, if necessary. 
+
+<P>
+
+<H1><A NAME="SECTION00090000000000000000">
+Figure and Table</A>
+</H1>
+
+<P>
+It is time to mention two ways of organizing tables and figures. The
+first one is fixed. The tables or figures will be put where you insert
+them. If there is not enough room in the current page, it will be
+put to the next page but the rest of the current page will be left
+blank. Floating tables and figures are designed to overcome this problem.
+They will be put automatically according to a complex machanism to
+achieve best layout.
+
+<P>
+To insert fixed table/figure: 
+
+<P>
+<BLOCKQUOTE>
+<TT>insert -&gt; tabular material insert -&gt; Graphics</TT>
+
+</BLOCKQUOTE>
+To insert floating table/figure: 
+
+<P>
+<BLOCKQUOTE>
+<TT>insert -&gt; floats -&gt; table/figure, </TT>
+
+</BLOCKQUOTE>
+then <TT>insert -&gt; table/graphics</TT> within the floating box.
+
+<P>
+To set the floating preferences, right click the red 'float' box.
+Usually, you need to set size and rotate propertiies. 
+
+<P>
+
+<H1><A NAME="SECTION000100000000000000000">
+Spell Checker</A>
+</H1>
+
+<P>
+In plain latex, it is rather difficult to use a spell checker. Now,
+you can use <TT>edit -&gt; spellchecker.</TT>
+
+<P>
+
+<H1><A NAME="SECTION000110000000000000000">
+Nested Environment</A>
+</H1>
+
+<P>
+The concept of 'depth' of an environment is important. Two very import
+shortcuts to remember are <TT>C-Left/RightArrow,</TT> or equivalently
+<TT>Layout -&gt; Change environment depth.</TT> To make depth adjustment
+easier, 
+
+<P>
+
+<OL>
+<LI>There are many differnt 'enter's. <TT>Alt-Enter</TT> will keep environment
+type and depth. <TT>Ctrl-enter</TT> will break line but do not break
+paragraph, enter will break paragraph and go to depth 1.
+</LI>
+<LI>standard is also an environment (different from plain latex) . For
+example, you want to insert a centered table within a enumerate environment,
+start a paragraph, select as <TT>standard</TT> environment, use <TT>C-RightArrow</TT>
+to make it one depth higher than the <TT>enumerate</TT> environment
+and then choose <TT>layout -&gt; paragraph -&gt; center</TT>.
+</LI>
+<LI>If you use environment change a lot, it is time to learn shortcuts
+<TT>C-p T</TT> (title), <TT>C-p s</TT> (standard), <TT>C-p 2,
+3,4</TT>, (section, subsection etc).
+</LI>
+</OL>
+
+<P>
+
+<H1><A NAME="SECTION000120000000000000000">
+Advanced Topic: Latex code, ERT and preamble.</A>
+</H1>
+
+<P>
+
+<OL>
+<LI>If you know latex pretty well and know how to do something quicker
+in plain latex, do so. Click the red <IMG
+ WIDTH="36" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img23.png"
+ ALT="$ TeX$"> botton on the toolbar,
+enter appropriate latex comand. The text will be in red so it is called
+Evil Red Text (ERT). E.g. you can use ERT <TT>$x&#94;2$</TT>
+to input <IMG
+ WIDTH="19" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.png"
+ ALT="$ x^{2}$">. One popular ERT is 
+
+<P>
+<BLOCKQUOTE>
+<TT>&#92;vspace{1in}</TT>
+
+</BLOCKQUOTE>
+</LI>
+<LI>If you have a big trunk of plain latex code, you can include them
+directly in your lyx file through ERT. Anyway, if you have a full
+latex file, importing it into lyx would be better.
+</LI>
+<LI>If you need to set preamble (read <TT>latexinto.pdf</TT> to see what
+preamble is), use <TT>Layout -&gt; Preamble</TT>. Useful preambles include
+
+<P>
+<BLOCKQUOTE>
+<TT>&#92;usepackage{amsmath}</TT>
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE><TT>&#92;numberwithin{thm}{section}</TT>
+
+</BLOCKQUOTE>
+</LI>
+</OL>
+<BLOCKQUOTE>
+the first one include amsmath package (in case that you do not use
+ams class.) The second one control how the equations will be numbered.
+
+</BLOCKQUOTE>
+
+<P>
+
+<H1><A NAME="SECTION000130000000000000000">
+Advanced Topic: Insert Source Code</A>
+</H1>
+
+<P>
+If you would like to include your source code into lyx, you can
+
+<P>
+
+<OL>
+<LI><TT>insert -&gt; float -&gt; algorithm</TT>
+</LI>
+<LI>set caption 
+</LI>
+<LI>copy the source code from emacs etc
+</LI>
+<LI>select <TT>lyx Code</TT> environment 
+</LI>
+<LI><TT>Edit -&gt; paste extenal selection -&gt; as lines.</TT>
+</LI>
+</OL>
+
+<P>
+
+<H1><A NAME="SECTION000140000000000000000">
+Advanced Topic: Citation and Bibliographics</A>
+</H1>
+
+<P>
+I would suggest the following way of dealing with bibliographic item. 
+
+<P>
+
+<OL>
+<LI>Keep your bibs in a separate bibtex file. (see <TT>sample.bib</TT>
+file)
+</LI>
+<LI>use <TT>tkbibtex</TT> to edit the bib files. Try to keep track of
+all articles you have read in this way. (Jabref may be easier to use
+under windows).
+</LI>
+<LI>In lyx, <TT>insert -&gt; Lists &amp; TOC -&gt; Bibtex reference</TT> at the
+end of the document. Enter the path to your bib file, do not change
+the style (default as <TT>plain</TT>) if you do not know other styles.
+If you do, <TT>plainnat, natbib (layout -&gt; document -&gt; bibliographics
+-&gt; use natlib)</TT> will be helpful.
+</LI>
+<LI><TT>Insert -&gt; citation reference</TT>, use arrow in the dialog to
+insert citation.
+</LI>
+</OL>
+Lyx (actually latex) will take care of everything else for you. Note
+that you can use ERT <TT>&#92;nocite{*}</TT> to insert
+bib items into your document without actually cite them.
+<BR>
+<P>
+<DIV ALIGN="LEFT">
+<B>Practice:</B> Using sample.bib, insert a citation
+into your lyx file.
+</DIV>
+
+<P>
+
+<H1><A NAME="SECTION000150000000000000000">
+Advanced Topic: Import/Export latex file</A>
+</H1>
+
+<P>
+<TT>File -&gt; Export -&gt; Latex</TT> will export your lyx file to <TT>.tex</TT>
+file. <TT>File -&gt; import -&gt; Latex</TT> can import most of the 'clean'
+latex files. However, because of the complexity of latex, lyx can
+not load very complicated latex files, especially when they use non-standard
+document style, lots of macros etc. It is advised that you use lyx
+from the beginning rather than import a half-done latex file. If lyx
+fails to import your tex file, try to hand-clean it before you import
+it to lyx. 
+<BR>
+<P>
+<DIV ALIGN="LEFT">
+<B>Practice:</B> Export your lyx file to latex
+and have a look at it. Then import it into lyx again.
+</DIV>
+
+<P>
+
+<H1><A NAME="SECTION000160000000000000000">
+Advanced Topic: Key bindings</A>
+</H1>
+
+<P>
+Lyx uses a key-binding file to determine the key-bindings at start
+time. You can choose from Emacs, SWP, CUA style by specifying the
+appropriate file at:
+
+<P>
+<BLOCKQUOTE>
+<TT>Edit -&gt; Preferences -&gt; Look and Feel -&gt; Interface -&gt; Bind
+File</TT>
+
+</BLOCKQUOTE>
+You can add your own key bindings by 
+
+<P>
+
+<OL>
+<LI>copying a system binding file to ~/.lyx/bind 
+</LI>
+<LI>Modify it. 
+</LI>
+<LI>Set this bind file in preference dialog
+</LI>
+</OL>
+The syntax of bind file is pretty easy, here is a few example:
+
+<P>
+<BLOCKQUOTE>
+<TT>&#92;bind &#34;C-f&#34; &#34;math-insert
+&#92;frac&#34; </TT>&nbsp;
+<BR><TT>&#92;bind &#34;F5&#34; &#34;font-bold&#34;</TT>
+
+</BLOCKQUOTE>
+The first line binds <TT>Ctrl-f</TT> to <TT>&#92;frac</TT>
+(fraction). The second one maps <TT>F5</TT> to <TT>font-bold</TT>
+as SWP does. For more examples, have a look at the system bind files
+at <TT>/usr/site/lyx/share/lyx/bind</TT> or my personal bind file.
+
+<BR>
+<P>
+<DIV ALIGN="LEFT">
+<B>Practice:</B> Open ~/.lyx/bind/personal.bind,
+insert a keybinding that bind C-s h to &#92;aleph (<IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img25.png"
+ ALT="$ \aleph $">).
+Save personal.bind, restart lyx, try to insert <IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img25.png"
+ ALT="$ \aleph $">.
+</DIV>
+
+<P>
+
+<H1><A NAME="SECTION000170000000000000000">
+Advanced Topic: Export to HTML</A>
+</H1>
+
+<P>
+You can use insert -&gt; URL to insert a URL. However, if
+you export -&gt; html (or view html), there will be no html
+style link. This is not lyx's fault since there is no standard way
+of dealing link in latex. I, however, figure out a patch to do this. 
+
+<P>
+
+<OL>
+<LI>Save your lyx file, say article.lyx
+</LI>
+<LI>/home/helpdesk/bin/lyx2tex article.lyx
+</LI>
+<LI>latex2html article.tex
+</LI>
+</OL>
+Basically, I modify the lyx file a little bit to let it create 'latex2html'
+style link so that latex2html can recognize and create real links.
+It would be convenient to use the provided make file.
+
+<P>
+
+<H1><A NAME="SECTION000180000000000000000">
+Advaced Topic: Pitfalls about lyx</A>
+</H1>
+
+<P>
+Lyx is not perfect. It has many problems that may irritate even experienced
+users, and you will sooner or later meet some. Fortunately, lyx is
+becoming better and better and its user mailing list is very friendly.
+(I am in that list, you can always send me questions and if I can
+not answer them, I will post them to the list.) Certain precautions
+should be made
+
+<P>
+
+<OL>
+<LI>Compile (press F11) frequently, if any error occurs (latex compile
+error), you know you made the mistake in recently input texts.
+</LI>
+<LI>If the problem persists, export to latex and try to see what forbid
+latex from compiling. This is where latex knowledge becomes very useful.
+Anyway, if you can avoid the following two common problems, you can
+use lyx for a long time without having to face compile error:
+
+<P>
+
+<OL>
+<LI>use AMS package when you input AMS-specific environments like cases,
+align etc.
+</LI>
+<LI>do not enter math symbol in text mode. (Use right-arrow to step out
+of text mode instead of using nested math mode.)
+</LI>
+</OL>
+</LI>
+<LI>Latex output is in general beautiful. However, you will run into trouble
+if you want to do fancy things like putting a logo on every page etc.
+(It is doable but needs the right, if not lots of, latex code.) You
+can find a lot of such tricks from lyx webpage. 
+</LI>
+<LI>You might need to use some other style (class) file. For example,
+you will need to write your thesis with some provided class file.
+It is possible to incorporate outside layout file into lyx but it
+would be simpler to export your lyx file to latex and modify it (especially
+when your advisor does not use lyx.)
+</LI>
+</OL>
+
+<P>
+
+<H1><A NAME="SECTION000190000000000000000">
+Advanced Topic: Windows version of lyx </A>
+</H1>
+
+<P>
+Since lyx depends on various Unix tools and the X-windows system,
+you will have to provide all of them on your windows machine before
+lyx can be installed. That is to say, you will have windows version
+of latex (teT<SMALL>E</SMALL>X), of Unix (Cygwin), of X (X-win32 or Xfree86),
+of ghostview etc. Detailed instructions can be googled through ``lyx
+windows''. There is recently a native lyx port that may be easier
+to install.
+
+<H1><A NAME="SECTION000200000000000000000">
+About this document ...</A>
+</H1>
+ <STRONG>A Simple Guide to Latex/Lyx</STRONG><P>
+This document was generated using the
+<A HREF="http://www.latex2html.org/"><STRONG>LaTeX</STRONG>2<tt>HTML</tt></A> translator Version 2002-1 (1.68)
+<P>
+Copyright &#169; 1993, 1994, 1995, 1996,
+<A HREF="http://cbl.leeds.ac.uk/nikos/personal.html">Nikos Drakos</A>, 
+Computer Based Learning Unit, University of Leeds.
+<BR>
+Copyright &#169; 1997, 1998, 1999,
+<A HREF="http://www.maths.mq.edu.au/~ross/">Ross Moore</A>, 
+Mathematics Department, Macquarie University, Sydney.
+<P>
+The command line arguments were: <BR>
+ <STRONG>latex2html</STRONG> <TT>-local_icons -no_subdir -split 0 lyxguide.tex</TT>
+<P>
+The translation was initiated by Statistics Helpdesk on 2005-03-04<HR>
+<!--Navigation Panel-->
+<IMG WIDTH="81" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next_inactive" SRC="nx_grp_g.png"> 
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_g.png"> 
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev_g.png">   
+<BR>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Statistics Helpdesk
+2005-03-04
+</ADDRESS>
+</BODY>
+</HTML>

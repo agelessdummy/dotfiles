@@ -1,0 +1,105 @@
+<html>
+<head>
+<title>How to change the MARGINS</title>
+<link href="mailto:othomas@mit.edu" rev="made">
+<base target="_top">
+</head>
+
+<body bgcolor="#ffffff" text="#000000" link="#bb0000" vlink="#880000" alink="#ff0000">
+
+<h1><center><img src="/answers/icons/answers.gif" alt="Athena Consulting Stock Answers"></center></h1>
+
+<p><center><form name=seek method=GET action="http://search.mit.edu/query.html">
+<em>Search for </em><input type=text name=qt size=40 value="" maxlength=2047>
+<input type=hidden name=qp value="+url:http://web.mit.edu/answers/ -url:http://web.mit.edu/answers/www/ | ">
+<input type=hidden name=col value="webmit">
+<input type=hidden name=ws value=0>
+<input type=hidden name=nh value=20>
+<input type=hidden name=lk value=2>
+<a href="http://search.mit.edu/help/">[Help]</a><br>
+<a href="http://web.mit.edu/answers/">Main Menu</a> | 
+<a href="http://web.mit.edu/consult/">Athena Consulting Home</a> | 
+<a href="http://web.mit.edu/">MIT Home</a>
+</form>
+</center>
+
+
+<hr>
+
+<center><b>How to change the MARGINS</b></center>
+
+<p><pre>LaTeX's margins are, by default, 1.5 inches wide on 12pt documents,
+1.75 inches wide on 11pt documents, and 1.875 inches wide on 10pt
+documents.  This is the standard for book margins.  If you want to
+change it to the standard 1 inch margins on all sides, you can use the
+&quot;fullpage&quot; package.  You do this by including the line
+
+	 \usepackage{fullpage}
+
+after your \documentclass line.  
+
+If you want to change your margins to something else, you can change the
+values yourself.  For example, here's the commands you would use to change all
+the margins to 1 inch manually:
+
+	\addtolength{\oddsidemargin}{-.875in}
+	\addtolength{\evensidemargin}{-.875in}
+	\addtolength{\textwidth}{1.75in}
+
+	\addtolength{\topmargin}{-.875in}
+	\addtolength{\textheight}{1.75in}
+
+These commands would be used after the \usepackage and before the
+\begin{document} commands.
+
+The idea for these commands is to decrease the margin on one side then
+increase the text size by double that decreased amount, thereby decreasing
+both the left and right margins (or top and bottom in the second group of
+commands) by the same amount.
+
+The \oddsidemargin and the \evensidemargin are both changed because LaTeX has
+two side margins, one for odd pages and one for even pages.
+
+There is another option that you can use to change the margins, which is
+much simpler.  It involves copying a LaTeX style file to your directory.
+Assuming that your files are in the directory ~/latex, type:
+
+	attach sipb
+	cp /mit/sipb/share/tex/macros/simplemargins.sty ~/latex
+
+Then add a line saying
+
+     \usepackage{simplemargins}
+
+after your \documentclass line.
+
+After doing this you should be able to use the following commands to
+specify the margins:
+
+	\setleftmargin{dimen}
+	\setrightmargin{dimen}
+	\settopmargin{dimen}
+	\setbottommargin{dimen}
+	\setallmargins{dimen}
+
+The first four commands should be obvious -- the set the dimension of
+just one margin.  The last one sets all of them to the same thing.  To
+set all your margins to 1 inch you would use:
+
+	\setallmargins{1in}
+
+NOTE: This is a hack!  It will only work at MIT, so if you want to send
+a file with these commands to someone, either send the file
+simplemargins.sty with it or don't use it at all.
+</pre>
+<p><hr>
+<table border=0 width="100%">
+<tr><td align="left"><small><i>Send suggestions and comments about the stock answers to  to <a href="mailto:ostock@mit.edu">ostock@mit.edu</a>.<br>If you're a member of the MIT community and need help with this topic, contact <a href="mailto:olc@mit.edu">olc@mit.edu</a>.
+<br>
+ Web targets last updated Monday, 17 March 2003</i></small></td>
+<td align="right"><a href="http://web.mit.edu/"><img src="/answers/icons/mitgray.gif" alt="MIT" border=0></a></td></tr>
+</table>
+<img src="http://counter.mit.edu/tally" width=1 height=1 alt="">
+</body>
+</html>
+

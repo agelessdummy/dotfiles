@@ -1,0 +1,125 @@
+\documentclass[12pt]{article}
+\usepackage[american]{babel} 
+\usepackage{csquotes} 
+\usepackage[style=mla]{biblatex} 
+
+\usepackage[bookmarks,pdfusetitle]{hyperref}
+
+\bibliography{handbooksamples}
+
+\defbibheading{blank}{}
+\renewcommand*{\mlanamedash}{-{}-{}-}
+
+\title{Brief Article}
+\author{The Author}
+
+\begin{document}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{5.6.1. The Basic Entry: A Book by a Single Author}
+\newrefsegment \nocite{fukuyama02aa,berlage94aa,freedman84aa,kurlansky02aa,lecarre01aa,rowling00aa,silver97aa,tatar92aa}
+
+\printbibliography[heading=blank,segment=1]
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{5.6.2. An Anthology or a Compilation}
+\newrefsegment \nocite{lopate94aa,sevillano86aa,spafford92aa,weisser01aa}
+
+\printbibliography[heading=blank,segment=2]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{5.6.3. Two or More Books by the Same Author}
+\newrefsegment \nocite{borroff63aa,borroff67aa,borroff79aa,frye57aa,frye62aa,frye91aa,frye57ab}
+
+\printbibliography[heading=blank,segment=3]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{5.6.4. A Book by Two or More Authors}
+\newrefsegment \nocite{eggins97aa,hutcheon00aa,gilman93aa,gilman93ab,quirk85aa,quirk85ab,marquart94aa,rabkin83aa}
+
+\printbibliography[heading=blank,segment=4]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{5.6.5. Two or More Books by the Same Authors}
+\newrefsegment \nocite{durant65aa,durant77aa,gilbert95aa,gilbert01aa,gilbert79aa}
+
+\printbibliography[heading=blank,segment=5]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{5.6.6. A Book by a Corporate Author}
+\newrefsegment 
+\nocite{american-medical-association89aa,national-research-council00aa,public-agenda-foundation92aa}
+
+\printbibliography[heading=blank,segment=6]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{5.6.7. A Work in an Anthology}
+(TODO: full support for indicating reprints.)
+\newrefsegment
+\nocite{allende92aa,franco98aa,hansberry71aa,hanzlik92aa,more97aa,witchcraft86aa,douglass00aa,franklin92aa}
+
+\printbibliography[heading=blank,segment=7]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{5.6.8. An Article in a Reference Book}
+\newrefsegment
+\nocite{azimuthal93aa,ginsburg02aa,mandarin94aa,mohanty87aa,noon89aa,allen95aa,le-patourel87aa}
+
+\printbibliography[heading=blank,segment=8]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{5.6.9. An Introduction, a Preface, a Foreword, or an Afterword}
+\newrefsegment
+\nocite{borges73aa,coetzee01aa,drabble85aa,hamill94aa,marsalis93aa,sears01aa,brodsky97aa,doody96aa}
+
+\printbibliography[heading=blank,segment=9]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{5.6.10. Cross-References}
+\newrefsegment
+
+\nocite{baker86aa}\nocite{baker93aa}\nocite{oates2000aa}\nocite{lennon86aa}\nocite{angelou86aa}\nocite{lebowitz93aa}\nocite{hurston93aa}\nocite{walker00aa}\nocite{rodriguez00aa}\nocite{kingston00aa}\nocite{agee00aa}\nocite{atwan00aa}
+
+\printbibliography[heading=blank,segment=10]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{5.6.11. An Anonymous Book}
+\newrefsegment
+
+\nocite{bible84aa}\nocite{virginia93aa}\nocite{NewYorkPublicLibrary97aa}
+
+\printbibliography[heading=blank,segment=11]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{5.6.12. An Edition}
+\newrefsegment
+
+\nocite{crane75ab}\nocite{crane75aa}\nocite{twain93aa}\nocite{smith02aa}\nocite{shakespeare92aa}\nocite{octovian86aa}\nocite{edgeworth92aa}\nocite{austen01aa}
+
+\printbibliography[heading=blank,segment=12]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{5.6.13. A Translation}
+\newrefsegment
+Biblatex-mla will not allow you to decide the order to display the names for translator and editor.  Compare the following entry on \emph{Beowulf} with that in the \emph{MLA Handbook}.  The deviation is minor.
+
+\nocite{mu76aa}\nocite{hildegard-of-bingen01aa}\nocite{esquivel92aa}\nocite{beowulf01aa}\nocite{levi87aa}\nocite{esquivel92ab}
+
+\printbibliography[heading=blank,segment=13]
+
+%\printbibliography
+\end{document}  

@@ -1,0 +1,377 @@
+%%
+%% This is file `marlowe-poemscol.tex',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% dramatist.dtx  (with options: `pmarlowe')
+%% 
+%% IMPORTANT NOTICE:
+%% 
+%% For the copyright see the source file.
+%% 
+%% Any modified versions of this file must be renamed
+%% with new filenames distinct from marlowe-poemscol.tex.
+%% 
+%% For distribution of the original source see the terms
+%% for copying and modification in the file dramatist.dtx.
+%% 
+%% This generated file may be distributed as long as the
+%% original source files, as listed above, are part of the
+%% same distribution. (The sources need not necessarily be
+%% in the same archive or directory.)
+%% dramatist.dtx
+%% Copyright (C) 2003-2005 Massimiliano Dominici
+%% \CharacterTable%%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%%   Digits        \0\1\2\3\4\5\6\7\8\9
+%%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%%   Dollar        \$     Percent       \%     Ampersand     \&
+%%   Acute accent  \'     Left paren    \(     Right paren   \)
+%%   Asterisk      \*     Plus          \+     Comma         \,
+%%   Minus         \-     Point         \.     Solidus       \/
+%%   Colon         \:     Semicolon     \;     Less than     \<
+%%   Equals        \=     Greater than  \>     Question mark \?
+%%   Commercial at \@     Left bracket  \[     Backslash     \\
+%%   Right bracket \]     Circumflex    \^     Underscore    \_
+%%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%%   Right brace   \}     Tilde         \~}
+%%
+%%\section{The GNU General Public License}
+%% This file shows some basic features of package `dramatist', when
+%% typesetting a drama in verse. Here we use package `poemscol' as a
+%% support for text in verse; if you usually use package `verse'
+%% instead, you may give a look to file `marlowe-verse.tex'.
+%%
+%% The source for this example is taken from Marlowe's `Jew of
+%% Malta'. I took leave to insert division in scenes, which is not
+%% present in the original edition, in order to show more features.
+
+\documentclass{book}
+\usepackage{fancyhdr,newmarn,geometry}
+\usepackage{keyval,ifthen,newcropmark}
+\usepackage{poemscol}
+
+%% Load package `dramatist' after `poemscol'
+\usepackage{dramatist}
+
+%% comment out one of the following lines (and comment out the
+%% previous one) if you want line numbering per act or per scene.
+%%\usepackage[lnpa]{dramatist}
+%%\usepackage[lnps]{dramatist}
+
+%% We may change some parameters in the look of acts and scenes:
+%%\renewcommand{\actnamefont}{\bfseries\Large}
+%%\renewcommand{\theact}{\Roman{act}}
+%%\renewcommand{\scenenamefont}{\bfseries\large}
+%%\renewcommand{\thescene}{\Roman{scene}}
+
+%% We may change some parameters in the look of characters:
+%%\renewcommand{\castfont}{\bfseries}
+%%\renewcommand{\speaksfont}{\itshape}
+%%\renewcommand{\speaksdel}{:}
+
+%% We may change some parameters in the look of stage directions:
+%%\StageDirConf{\begin{center}\begin{minipage}{.4\textwidth}\bfseries}{\end{minipage}\end{center}}
+
+%% Comment out the following lines if you want to insert a vertical
+%% space between speeches.
+%%\makeatletter
+%%\renewcommand{\speakstab}{\if@stagedir\global\@stagedirfalse\else\bigskip\fi\hspace{\speaksskip}}
+%%\makeatother
+
+%% Maybe you want acts and scenes print their marks in the headings.
+%% The following lines should work.
+%%\renewcommand{\drampermark}[1]{\volumeheader{#1}}
+%%\renewcommand{\actmark}[1]{\leftheader{#1}}
+%%\renewcommand{\scenemark}[1]{\volumeheader{#1}}
+%%\fancyhf{}
+%%\fancyhead[CO]{\scshape \volumeheadervalue}
+%%\fancyhead[CE]{\scshape \leftheadervalue}
+%%\fancyfoot[CE]{\thepage}
+%%\fancyfoot[CO]{\thepage}
+
+\author{Christopher Marlowe}
+\title{The Jew of Malta}
+\date{}
+
+\begin{document}
+\begin{titlepage}
+\maketitle
+\end{titlepage}
+
+\tableofcontents
+
+%% We define some characters appearing in the play.
+\Character[FERNEZE, governor of Malta.]{Ferneze}{fer}
+\Character[LODOWICK, his son.]{Lodowick}{lod}
+\Character[SELIM CALYMATH, son to the Grand Seignior.]{Calymath}{cal}
+\Character[MARTIN DEL BOSCO, vice-admiral of Spain.]{Martin Del Bosco}{mar}
+\Character[MATHIAS, a gentleman.]{Mathias}{mat}
+%% group of characters.
+\begin{CharacterGroup}{friars.}
+\GCharacter{JACOMO,}{Jacomo}{jac}
+\GCharacter{BARNARDINE,}{Barnardine}{barn}
+\end{CharacterGroup}
+\Character[BARABAS, a wealthy Jew.]{Barabas}{bar}
+\Character[ITHAMORE, a slave.]{Ithamore}{ith}
+\Character[PILIA-BORZA, a bully, attendant to BELLAMIRA.]{Pilia-Borza}{pb}
+%% the following three collective characters appear in the play as
+%% single instances, so we don't need define commands and entries
+%% for them.
+\Character[Two Merchants.]{}{}
+\Character[Three Jews.]{}{}
+\Character[Knights, Bassoes, Officers, Guard, Slaves, Messenger, and Carpenters]{}{}
+\Character[KATHARINE, mother to MATHIAS.]{Katharine}{kat}
+\Character[ABIGAIL, daughter to BARABAS.]{Abigail}{abi}
+\Character[BELLAMIRA, a courtezan.]{Bellamira}{bel}
+\Character[ABBESS.]{Abbess}{abb}
+\Character[NUN.]{Nun}{nun}
+%% This character doesn't appear in the dramatist personae list.
+\Character{Machiavel}{mac}
+
+%% We call the dramatis personae list.
+\DramPer
+
+%% The Prologue: we use \Act, but prevent it from printing \actname
+%% and \theact.
+\setcounter{secnumdepth}{-1}
+\renewcommand{\printacttitle}[1]{\centering\acttitlefont #1}
+%% This is needed only with customized headings.
+%%\renewcommand{\actname}{}
+%%\renewcommand{\theact}{}
+\Act{Prologue}
+
+\StageDir{Enter \mac.}
+
+\begin{drama*}
+\macspeaks
+Albeit the world think Machiavel is dead,\verseline
+Yet was his soul but flown beyond the Alps;\verseline
+And, now the Guise is dead, is come from France,\verseline
+To view this land, and frolic with his friends.\verseline
+To some perhaps my name is odious;\verseline
+But such as love me, guard me from their tongues,\verseline
+And let them know that I am Machiavel,\verseline
+And weigh not men, and therefore not men's words.\verseline
+Admir'd I am of those that hate me most:\verseline
+Though some speak openly against my books,\verseline
+Yet will they read me, and thereby attain\verseline
+To Peter's chair; and, when they cast me off,\verseline
+Are poison'd by my climbing followers.\verseline
+I count religion but a childish toy,\verseline
+And hold there is no sin but ignorance.\verseline
+Birds of the air will tell of murders past!\verseline
+I am asham'd to hear such fooleries.\verseline
+Many will talk of title to a crown:\verseline
+What right had Caesar to the empery?\verseline
+Might first made kings, and laws were then most sure\verseline
+When, like the Draco's, they were writ in blood.\verseline
+Hence comes it that a strong-built citadel\verseline
+Commands much more than letters can import:\verseline
+Which maxim had Phalaris observ'd,\verseline
+H'ad never bellow'd, in a brazen bull,\verseline
+Of great ones' envy:  o' the poor petty wights\verseline
+Let me be envied and not pitied.\verseline
+But whither am I bound?  I come not, I,\verseline
+To read a lecture here in Britain,\verseline
+But to present the tragedy of a Jew,\verseline
+Who smiles to see how full his bags are cramm'd;\verseline
+Which money was not got without my means.\verseline
+I crave but this,--grace him as he deserves,\verseline
+And let him not be entertain'd the worse\verseline
+Because he favours me.\verseline
+\direct{Exit.}
+\end{drama*}
+
+%% Now we restore the default settings.
+\setcounter{act}{0}
+\setcounter{secnumdepth}{0}
+\renewcommand{\printacttitle}[1]{\acttitlefont #1}
+%% This is needed only with customized headings.
+%%\renewcommand{\actname}{Act}
+%%\renewcommand{\theact}{\roman{act}}
+%%\renewcommand{\theact}{\Roman{act}}
+
+%% Without a title, the command to be used is \act. We add a
+%% footnote, just to show a feature.
+\act[\footnote{This is the first act.}]
+
+\scene
+%% Scene are not marked in the original edition. I have introduced
+%% them (somehow arbitrarily, I suppose) to give a complete review
+%% of the available features.
+
+\StageDir{\bar discovered in his counting-house, with heaps
+of gold before him.}
+
+\begin{drama*}
+\barspeaks So that of thus much that return was made;\verseline
+And of the third part of the Persian ships\verseline
+There was the venture summ'd and satisfied.\verseline
+As for those Samnites, and the men of Uz,\verseline
+That bought my Spanish oils and wines of Greece,\verseline
+Here have I purs'd their paltry silverlings.\verseline
+Fie, what a trouble 'tis to count this trash!\verseline
+Well fare the Arabians, who so richly pay\verseline
+The things they traffic for with wedge of gold,\verseline
+Whereof a man may easily in a day\verseline
+Tell that which may maintain him all his life.\verseline
+The needy groom, that never finger'd groat,\verseline
+Would make a miracle of thus much coin;\verseline
+But he whose steel-barr'd coffers are cramm'd full,\verseline
+And all his life-time hath been tired,\verseline
+Wearying his fingers' ends with telling it,\verseline
+Would in his age be loath to labour so,\verseline
+And for a pound to sweat himself to death.\verseline
+Give me the merchants of the Indian mines,\verseline
+That trade in metal of the purest mould;\verseline
+The wealthy Moor, that in the eastern rocks\verseline
+Without control can pick his riches up,\verseline
+And in his house heap pearl like pebble-stones,\verseline
+Receive them free, and sell them by the weight;\verseline
+Bags of fiery opals, sapphires, amethysts,\verseline
+Jacinths, hard topaz, grass-green emeralds,\verseline
+Beauteous rubies, sparkling diamonds,\verseline
+And seld-seen costly stones of so great price,\verseline
+As one of them, indifferently rated,\verseline
+And of a carat of this quantity,\verseline
+May serve, in peril of calamity,\verseline
+To ransom great kings from captivity.\verseline
+This is the ware wherein consists my wealth;\verseline
+And thus methinks should men of judgment frame\verseline
+Their means of traffic from the vulgar trade,\verseline
+And, as their wealth increaseth, so inclose\verseline
+Infinite riches in a little room.\verseline
+But now how stands the wind?\verseline
+Into what corner peers my halcyon's bill?\verseline
+Ha! to the east? yes.  See how stand the vanes--\verseline
+East and by south:  why, then, I hope my ships\verseline
+I sent for Egypt and the bordering isles\verseline
+Are gotten up by Nilus' winding banks;\verseline
+Mine argosy from Alexandria,\verseline
+Loaden with spice and silks, now under sail,\verseline
+Are smoothly gliding down by Candy-shore\verseline
+To Malta, through our Mediterranean sea.--\verseline
+But who comes here?\verseline
+%% We need another character
+\Character{Merchant}{mer}
+\direct{Enter a \mer.}
+How now!\verseline
+
+\merspeaks Barabas, thy ships are safe,\verseline
+Riding in Malta-road; and all the merchants\verseline
+With other merchandise are safe arriv'd,\verseline
+And have sent me to know whether yourself\verseline
+Will come and custom them.\verseline
+
+\barspeaks The ships are safe thou say'st, and richly fraught?\verseline
+
+\merspeaks They are.\verseline
+
+\barspeaks Why, then, go bid them come ashore,\verseline
+And bring with them their bills of entry:\verseline
+I hope our credit in the custom-house\verseline
+Will serve as well as I were present there.\verseline
+Go send 'em threescore camels, thirty mules,\verseline
+And twenty waggons, to bring up the ware.\verseline
+But art thou master in a ship of mine,\verseline
+And is thy credit not enough for that?\verseline
+\end{drama*}
+
+\begin{center}
+[\dots]
+\end{center}
+
+\scene
+%%Other characters.
+
+\Character{knights}{knights}
+\Character{officers}{officers}
+\Character{bassoes}{bassoes}
+\Character{First Basso}{fb}
+
+%% An alternative formulation for \StageDir.
+\begin{stagedir}
+Enter \fer, governor of Malta, \knights, and \officers;
+met by \cal, and \bassoes of the Turk.
+\end{stagedir}
+
+\begin{drama*}
+\ferspeaks Now, bassoes, what demand you at our hands?\verseline
+
+\fbspeaks Know, knights of Malta, that we came from Rhodes,\verseline
+From Cyprus, Candy, and those other isles\verseline
+That lie betwixt the Mediterranean seas.\verseline
+
+\ferspeaks What's Cyprus, Candy, and those other isles\verseline
+To us or Malta? what at our hands demand ye?\verseline
+
+\calspeaks The ten years' tribute that remains unpaid.\verseline
+
+\ferspeaks Alas, my lord, the sum is over-great!\verseline
+I hope your highness will consider us.\verseline
+
+\calspeaks I wish, grave governor, 'twere in my power\verseline
+To favour you; but 'tis my father's cause,\verseline
+Wherein I may not, nay, I dare not dally.\verseline
+\end{drama*}
+
+\begin{center}
+[\dots]
+\end{center}
+
+\act
+
+\scene
+
+\StageDir{Enter \bar with a light.}
+
+\begin{drama*}
+\barspeaks Thus, like the sad-presaging raven, that tolls\verseline
+The sick man's passport in her hollow beak,\verseline
+And in the shadow of the silent night\verseline
+Doth shake contagion from her sable wings,\verseline
+Vex'd and tormented runs poor Barabas\verseline
+With fatal curses towards these Christians.\verseline
+The incertain pleasures of swift-footed time\verseline
+Have ta'en their flight, and left me in despair;\verseline
+And of my former riches rests no more\verseline
+But bare remembrance; like a soldier's scar,\verseline
+That has no further comfort for his maim.--\verseline
+O Thou, that with a fiery pillar ledd'st\verseline
+The sons of Israel through the dismal shades,\verseline
+Light Abraham's offspring; and direct the hand\verseline
+Of Abigail this night! or let the day\verseline
+Turn to eternal darkness after this!--\verseline
+No sleep can fasten on my watchful eyes,\verseline
+Nor quiet enter my distemper'd thoughts,\verseline
+Till I have answer of my Abigail.\verseline
+\end{drama*}
+
+\StageDir{Enter \abi above.}
+
+\begin{drama*}
+\abispeaks Now have I happily espied a time\verseline
+To search the plank my father did appoint;\verseline
+And here, behold, unseen, where I have found\verseline
+The gold, the pearls, and jewels, which he hid.\verseline
+
+\barspeaks Now I remember those old women's words,\verseline
+Who in my wealth would tell me winter's tales,\verseline
+And speak of spirits and ghosts that glide by night\verseline
+About the place where treasure hath been hid:\verseline
+And now methinks that I am one of those;\verseline
+For, whilst I live, here lives my soul's sole hope,\verseline
+And, when I die, here shall my spirit walk.\verseline
+\end{drama*}
+
+\begin{center}
+[\dots]
+\end{center}
+
+\end{document}
+
+\endinput
+%%
+%% End of file `marlowe-poemscol.tex'.

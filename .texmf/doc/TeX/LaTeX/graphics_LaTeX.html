@@ -1,0 +1,261 @@
+<html>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Keywords" CONTENT="\psfrag, LaTeX, graphics, labels, resize figure">
+   <TITLE>Graphics in LaTeX</TITLE>
+	
+	<SCRIPT LANGUAGE="JavaScript">
+		<!-- Begin
+		function goHome() { window.location = "http://www2.eng.cam.ac.uk/~pmg26/home_frame.html"; }
+		function goTeach() { window.location = "http://www2.eng.cam.ac.uk/~pmg26/hpage/teach.html"; }
+		//  End -->
+	</script>
+
+
+</HEAD>
+
+<body BGCOLOR="#FFFFCC" BACKGROUND="../images/background.jpg">
+<style>
+                    <!-- BODY { color:#000000;font-family : Arial;font-size: 10pt} -->
+					A:link { color:red;text-decoration:none;font-family : Arial; }
+                	A:visited { color:#339900;text-decoration:none }
+                	A:active { color:#0099CC;text-decoration:underline }
+                	A:hover { color:#0000FF;text-decoration:underline }
+                	a:visited.sl{color:0034FF;}
+					a:visited:hover.sl{color:FFFFFF;}
+					a:link.sl{color:0034FF;}
+					a:visited.qltop{color:FFFFFF;}
+					a:link.qltop{color:FFFFFF;}
+</style>
+
+<font face="Arial, helvetica" size="2">Paul Galluzzo</font>
+
+<CENTER><H2><u>
+Getting memory-efficient, pretty-looking, robust graphics with very fancy robust labels into LaTeX
+</u> </H2></CENTER>
+
+<i><b>The following questions are answered:</b></i>
+<ol>
+  <li>What is the most crude way to get graphics created in Windows into LaTeX?<p></li>
+  <li>How do you get graphics created in Windows into LaTeX without using gif2ps or jpeg2ps, 
+    which I found produced memory-intensive .eps files?<p></li>
+  <li>How do you put labels on a .gif, .tiff, .jpeg (etc!) file, before inserting it into LaTeX?<p></li>
+  <li>How do you stop those labels from changing size when you resize the figure
+    in LaTeX?<p></li>
+  <li>How do you insert fancy equations into LaTeX figures?<p></li>
+  <li>How do you insert more than one line of text at a time into a figure?<p></li>
+  <font color="#3300ff">
+    <li>How do you stop xfig from reducing the resolution of a jpeg image when importing 
+	it into xfig?  <i>[This question is answered separately, at the bottom of this web 
+	page.]</i><p></li>
+  </font>
+  <font color="#9b01d7">
+    <li>Is there a way to take a drawing straight from a Word or Powerpoint presentation,
+	and import it into LaTeX (without first exporting it in a jpeg or related format)?  
+	<i>[This question is answered separately, at the bottom of this web 
+	page.]</i><p></li>
+  </font>
+</ol>
+
+<p>
+<b><i>The answers to these questions are:</i></b>
+<ol>
+  <li>
+  The most crude way to convert a Windows image into a .eps file for use in LaTeX
+  is to use the <tt>gif2ps</tt> or <tt>jpeg2ps</tt> commands.  If the image is a gif 
+  file, go to a UNIX prompt, and type:<br>
+  <br>
+  <tt>gif2ps myfile.gif > myfile.eps</tt><br>
+  <br>
+  Or, if it is a .jpg (or .jpeg) file, then go to a UNIX prompt and type:<br>
+  <br>
+  <tt>gif2ps myfile.gif > myfile.eps</tt><br>
+  <p></li>
+
+  <li>
+  A less crude way to get images into LaTeX is by importing them into xfig, and then
+  exporting them from xfig into .eps format.  This seems to generally make the final
+  eps image take up less memory (by a considerable amount).  To do this, follow the 
+  following steps: <p>
+   <ul>
+      <li>Open xfig.  You require some kind of UNIX front-end to do this.  People
+	     in the engineering department could use xwin32 to do this.<p></li>
+	  
+      <li>Click on the button "Figure", and then click the mouse in two places, thus
+	     creating the top-left and bottom-right corner positions of the (future) image.<p></li>
+	  
+      <li>In the menu that pops up, choose your file.  It can be any format out of
+	     .gif, .jpeg, .jpg, .tiff, .eps, .ps, .pcx, .ppm, .xbm or .xpm.  (I haven't tried 
+		 any others, like .bmp, but that might work - let me know if it does!)
+		 You are free to resize the image to whatever size you choose.<p></li>
+	  
+      <li>Choose "File" -> "Export", and save it as a .eps (encaptulated
+	     postscript) file.<p></li>
+	  
+	  <li>Then, in LaTeX, do the usual<br>
+	     <tt>\begin{figure}<br>
+		 \includegraphics{myfile.eps}<br> 
+	     \end{graphics}</tt><p></li>
+   </ul>
+  <p></li>
+
+  <li>
+  If you want to add a label(s) to the .gif or .jpg file before turning it into
+  a .eps file, then do the following:<p>
+   <ul>
+      <li>Go back into xfig, import the .gif/.jpg file as above<p></li>
+	  
+      <li>Before exporting, click on the text button to insert text; then add 
+	     arrows and lines and whatever you like, in the normal xfig way.<p></li>
+	  
+      <li>Export the file as above, and include it in the LaTeX file (also as
+	     above).<p></li>
+   </ul>
+  <p></li>
+
+  <li>
+  If you want to make sure that the labels on your figure don't change size, or
+  even better you want to guarantee that they will be the same size as the text
+  of your document, then you can use the <tt>\psfrag{}{}</tt> command alongside
+  the <tt>\includegraphics{}</tt> command:<p>
+   <ul>
+      <li>Go back into xfig, import the image file (as above, if necessary).<p></li>
+	  
+      <li>Now, instead of putting the label that you want on the figure in xfig, just
+	     put any non-spaced text, say "<tt>label_me</tt>" in the place where you will
+		 want the label.<p></li>
+	  
+      <li>Then export the file as above, and include it in the LaTeX file (also as
+	     above).<p></li>
+	  
+      <li>Now in LaTeX, you can specify some text for the label, in the figure 
+	      environment.  You must:<p>
+		  <ul>
+		     <li>Add in <tt>\usepackage{psfrag}</tt> at the start of the document.<p></li>
+			 
+		     <li>Specify what you want the label to actually say in the figure
+			    environment.  This is done by putting
+				<tt>\psfrag{text-used-in-xfig-label}{text-you-want-in-label}</tt>
+				inside the figure bit.  <b>Note this seems only to work with
+				<tt>\includegraphics</tt>, and not <tt>\psfig</tt>!</b>
+				For example:<br>
+				<br>
+				<tt>\begin{figure}<br>
+				\psfrag{label_me}{I am a pretty label.}<br>
+				\includegraphics{myfile.eps}<br>
+				\end{figure}</tt><br>
+				<br>
+				would place the label "I am a pretty label." in the figure, at the 
+				location where the text "label_me" was inserted in xfig.<p></li>
+		  </ul>
+	  <p></li>
+	  
+	  <li>Note that the graphics won't show up until you run <tt>dvips</tt> and view
+	     the document in ghostview.<p></li>
+   </ul>
+  <p></li>
+  
+  <li>
+  If you want to include an equation in an image in a figure, then just include an
+  'in-line equation' in the text for the label.  This is just as above, except with
+  "<tt>I am a pretty label.</tt>" replaced by, say, "<tt>Boltzmann states $S=k \ln \Omega$.</tt>".
+  <p></li>
+
+  <li>
+  If you decide you want to insert a multiple-line bit of text into a Figure (for example
+  you want to the word "kinematic" on one line and "boundary conditions" the next), then
+  there is a way of doing this without doing a separate <tt>\psfrag</tt> command for each
+  line.  [Note, if you use a separate <tt>\psfrag</tt> command for each line, then 
+  the line spacing would get screwed up if you resized your figure - try it and you'll see!]
+  The way to do it is to use <b>tabular</b> environment in the <tt>\psfrag</tt> command.
+  So, for example, <br>
+  <br>
+  <tt>\begin{figure}<br>
+  \psfrag{label_me}{\begin{tabular}{c} kinematic \\ boundary conditions \end{tabular}}<br>
+  \includegraphics{myfile.eps}<br>
+  \end{figure}</tt><br>
+  <br>
+  would insert<br>
+  <br>
+  <center><font face="Times, Times New Roman, helvetica, Arial" size="3">
+  kinematic<br>
+  boundary conditions<br>
+  </center></font>
+  <br>
+  into the image, wherever the text "label_me" was placed when creating myfile.eps.
+  <p></li>
+
+</ol>
+
+<p>
+If you've got any questions, then refer to
+<a href="http://www.math.uni-hamburg.de/home/ammann/tex/tetex/doc/latex/GUIDES/pfgguide.ps" target=_blank>this online manual</a>.
+I'm no expert in LaTeX, I have just been told that the above information could be
+useful to a number of people!  Incidently, a postscript driver is available from Adobe: see
+<a href="http://www.adobe.com/products/postscript/main.html" target=_blank>this webpage</a>.
+<p>
+--Paul
+
+
+<font color="#3300ff">
+<p>
+<hr>
+ADDITIONAL NOTE (19 March 2003):  I have noticed that xfig seems to reduce the resolution of 
+jpeg files when importing them (with the method described above).  A method which I have found
+for avoiding this tedious problem is to save the original jpeg file as a physically large 
+(for example 12inches x 12inches) image, and then shrink it down to the required size
+(using the "Scale" button) in xfig.  Hope this is useful to someone...
+</font>
+<hr>
+<font color="#9b01d7">
+ADDITIONAL NOTE (7 May 2003):  Many people want to take a Word document and stick it straight
+into LaTeX, having already drawn figures in Word.  Copying the text into LaTeX is easy; the 
+challenge is to get the figures into LaTeX!  I have developed a strategy for doing this, 
+WHICH DOESN'T REQUIRE EXPORTING THE GRAPHICS INTO JPEG, GIFF, TIFF, OR ANY OTHER GRAPHICS
+FILE FORMAT.  It is (concisely put) as follows: <br>
+1.  Make sure you have a "generic postscript printer driver", and a color one if necessary.
+This is so that you can print the Word document to a postscript file.  Helpful instructions
+on how to obtain a "generic postscript printer driver" can be found at 
+<a href="http://www.sussex.ac.uk/USCS/DTS/printing/" target=_blank>this website</a>.<br>
+2.  Isolate one drawing or figure at a time, and copy that drawing into a new Word document
+all on its own.  Make sure that document is only a single page long.<br>
+3.  Print that document to a file using the postscript printer driver, using the option
+"Print to File".<br>
+4.  Change the filename extension of the resulting file from ".prn" to ".eps".<br>
+5.  Open the file in a text editor (such as notepad, winedt, meditor).  Notice that
+there are several lines in the file containing the phrase "Bounding Box".  Find the last
+such command in the file, and change its coordinates so that the Bounding Box is close to 
+the edges of the drawing.  (Note, I have found that there are several Bounding Box commands 
+in the file, but that modifying the last one is sufficient.)
+<i>NOTE: You can view the bounding box in ghostview, which is available for free for
+PC's as gsview.exe - see 
+<a href="http://www.cs.wisc.edu/~ghost/index.html" target=_blank>this website</a>.</i><br>
+6.  It may be necessary to use ghostscript to convert the "ps" file into a "eps" file 
+(postscript into encaptulated postscript); ghostscript is available at 
+<a href="http://www.cs.wisc.edu/~ghost/" target=_blank>this website [click here]</a>.
+This is necessary in some cases, but not all cases.<br>
+7.  Insert the resulting eps file into your LaTeX document as normal, using \includegraphics{}.
+</font>
+
+<hr>
+
+<center>
+<SCRIPT LANGUAGE="JavaScript">
+<!--//hide script from old browsers
+document.write( "<I>Last updated "+ document.lastModified +"</I>");
+//end hiding contents -->
+</SCRIPT> 		
+	 by <i><b>Paul Galluzzo</b></i>
+</center>
+<FORM>
+<input type="button" Value="Paul's Home Page" onClick="goHome()">
+&nbsp; &nbsp; &nbsp; &nbsp;
+<input type="button" Value="Teaching Pages" onClick="goTeach()">
+&nbsp; &nbsp; &nbsp; &nbsp;
+<input type="button" Value="Close this window" onClick="self.close()">
+</FORM>
+
+
+</body>
+</html>
+

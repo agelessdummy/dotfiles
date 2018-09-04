@@ -1,0 +1,25 @@
+% $Id: american-mla.lbx,v 0.1 2009/05/02 clawson beta $
+
+\ProvidesFile{american-mla.lbx}[\blx@bbxid $Id: american-mla.lbx,v 0.1 2009/05/02 clawson beta$] 
+\InheritBibliographyExtras{american}
+
+\DeclareBibliographyExtras{%
+  \def\bibdatelong{%
+    \@tempcnta0\thefield{day} \the\@tempcnta\nobreakspace%
+    \mkbibmonth{\thefield{month}}\nobreakspace
+    \thefield{year}}%
+  \def\bibdateshort{%
+    \thefield{day}/\thefield{month}/\thefield{year}}%
+  \def\biburldatelong{%
+    \@tempcnta0\thefield{urlday} \the\@tempcnta\nobreakspace%
+    \mkbibmonth{\thefield{urlmonth}}\nobreakspace
+    \thefield{urlyear}}%
+  \def\biburldateshort{%
+    \thefield{urlday}/\thefield{urlmonth}/\thefield{urlyear}}%
+}
+
+\DeclareBibliographyStrings{% 
+  inherit          = {english},
+}%
+
+\endinput

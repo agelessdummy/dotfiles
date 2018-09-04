@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Working with Graphics: LaTeX</TITLE>
+   <META NAME="Elmer K. Hayashi" CONTENT="">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY>
+
+<CENTER><P><IMG SRC="images/mag.jpg" HEIGHT=60 WIDTH=300></P></CENTER>
+
+<CENTER><P><B>Department of Mathematics and Computer Science</B></P></CENTER>
+
+<CENTER><P><B>Working with Graphics:  In LaTeX</B></P></CENTER>
+
+<CENTER><P>
+<HR WIDTH="100%"></P></CENTER>
+<P>Working with graphics has been greatly simplified with <b>PDF LaTeX</b>.
+Using the <b>graphicx</b> package, you can incorporate graphics in pdf,
+jpg, png or tif(with one f) formats.  If you don't specify the file extension,
+it will look for and use whichever one is available.  In the preamble,
+put<br><CENTER><b>\usepackage{graphicx}</b></CENTER><br> to load the graphicx package.  To
+load the graphics file itself in the main body,
+put<br><center> <b>\includegraphics{filename}</b>.</center><br>  PDF LaTeX
+produces a pdf document that is ready for printing or posting to the network,
+and readily previewed using Acrobat.  Hence no special previewer is needed to
+view graphics other than the one most of us have already.  You can also add
+an option like height=.., width=.., scale=.., or angle=.. to specify a height,
+width, scaling factor, or angle of rotation to manage the size and orientation
+of your graphics, eg 
+<br><center><b>\includegraphics[height=3in]{filename}</b>.</center><br></P>
+
+
+<P>The <B>graphics</B> package provides a standard way to include
+graphics in LaTeX documents using encapsulated postscript (eps)
+format.  To use the graphics package, as usual, you need to
+include the following statement in the preamble of your
+LaTeX document.<br>
+<CENTER><B>\usepackage{graphics}</B></CENTER><br>
+If you have an image
+in eps format named, say <EM>myimage.eps</EM>, in a location
+accesible to your LaTeX typsetter, then the simplest way to
+include the image in your document is to put the following statement
+at the place you want the image to appear in your document.<br>
+<CENTER><B>\includegraphics{myimage.eps}</B></CENTER><br>
+However, this will only work if your image is just the right size.
+Especially, if you create your eps file as I have suggested in
+<A HREF="psformat.html">EPS Format</A>, you will want to crop and
+scale your image to make it useable.  Suppose for example that
+when you printed your image to a file, the image was 2 inches by 2 inches
+and situated in the upper left hand corner of an 8.5 by 11 letter
+size sheet with half inch margins at the top and sides.  Then
+you would crop the image by adding a * after includegraphics,
+and specifying the coordinates of the lower left corner of the
+image followed by the coordinates of the upper right corner of the
+image where the origin, (0,0), is situated at the lower left corner
+of the letter size sheet.  Thus the statement you want to use is<br>
+<CENTER><B>\includegraphics*[0.5in,8.5in][2.5in,10.5in]{myimage.eps}</B></CENTER><br>
+After cropping, your image may still be too big or too small for your
+purposes.  By putting the image in a scalebox, and specifying a scale factor,
+you can magnify or shrink your image.  If for example we wanted to reduce
+myimage to a one inch square, we would use the following statement to
+shrink it by a factor of 0.5<br>
+<CENTER><B>\scalebox{0.5}{\includegraphics*[0.5in,8.5in][2.5in,10.5in]{myimage.eps}}</B></CENTER><br>
+Although not usually a good idea, you can specify two scale factors, the second, in square brackets
+instead of curly braces, would control the vertical stretching while the first, in curly braces
+as above, would determine the horizontal stretching.</P>
+<P>Finally, once you have cropped and scaled your image, you can put it in a figure, minipage, or picture
+environment or some other kind of box to get the image to appear at a suitable place in your
+printed document.
+</P>
+
+<CENTER><P><IMG SRC="images/wfu-logo2t.gif"
+			HEIGHT=50 WIDTH=175></P></CENTER>
+
+<P><CENTER><IMG SRC="images/fadewide.jpg"
+	HEIGHT=20 WIDTH="100%"></CENTER></P>
+
+<P ALIGN=CENTER>
+	| <A HREF="index.html">Introduction</A>
+	| <A HREF="obtain.html">Obtaining Images</A>
+	| <A HREF="wmformat.html">WMF Format</A>
+	| <A HREF="psformat.html">EPS Format</A><br>
+	  <A HREF="inemtex.html">In EmTeX</A> 
+	| <A HREF="inpctex.html">In PCTeX</A> 
+	| <A HREF="inlotus.html">In Lotus Notes</A>
+	| <A HREF="webpage.html">On Web Pages</A>
+	|</P>
+	
+<P ALIGN=CENTER><A HREF="http://www/wfu.edu/~ekh">Elmer K. Hayashi</A></P>
+
+<P ALIGN=CENTER><font size=-1>
+Created 06/09/2000.  Last modified 04/19/2002.  Email to
+<A HREF="mailto: ekh@wfu.edu">ekh@wfu.edu</A>
+</BODY>
+</HTML>

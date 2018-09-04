@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="generator" content="http://www.nongnu.org/elyxer/"/>
+<meta name="create-date" content="2010-05-13"/>
+<link rel="stylesheet" href="lyx.css" type="text/css" media="screen"/>
+<title>eLyxer Math Showcase (Unicode edition)</title>
+</head>
+<body>
+<div id="globalWrapper">
+
+<h1 class="title">
+<img class="embedded" src="elyxer.png" alt="figure elyxer.png" style="max-width: 160px; max-height: 160px; "/>
+eLyXer Math Showcase
+</h1>
+<h2 class="author">
+Alex Fernández (elyxer@gmail.com)
+</h2>
+<h1 class="Section">
+<a class="toc" name="toc-Section-1">1</a> Introduction
+</h1>
+<div class="Unindented">
+This document is intended as a showcase of the mathematical abilities of eLyXer; for more information be sure to visit the <a class="URL" href="index.html">main page</a>.
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-1.1">1.1</a> Versions
+</h2>
+<div class="Unindented">
+There are several versions of this page:
+</div>
+<ul>
+
+<li>
+A <a class="URL" href="math.html">non-Unicode version</a> of this page with midspaces.
+</li>
+<li>
+A <a class="URL" href="math-unicode.html">Unicode version</a> with mathematical spaces (generated with <tt>--unicode</tt>).
+</li>
+<li>
+An <a class="URL" href="math-iso885915.html">ISO-8859-15 version</a> (generated with <tt>--iso885915</tt>).
+</li>
+<li>
+A <a class="URL" href="math-jsmath.html">jsMath version</a> that uses <a class="URL" href="http://www.math.union.edu/~dpvc/jsMath/welcome.html">jsMath</a> (generated with <tt>--jsmath</tt>).
+</li>
+<li>
+A <a class="URL" href="math-mathjax.html">MathJax version</a> with <a class="URL" href="http://www.mathjax.org/">MathJax</a> (generated with <tt>--mathjax</tt>).
+</li>
+</ul>
+<div class="Unindented">
+All of them are generated from the same <tt>.lyx</tt> source file; they should help you decide which rendering options suit you best.
+</div>
+<h1 class="Section">
+<a class="toc" name="toc-Section-2">2</a> Typography
+</h1>
+<div class="Unindented">
+Math formulae use a lot of different symbols and fonts.
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-2.1">2.1</a> Greek Symbols
+</h2>
+<div class="Unindented">
+Greek symbols are very important in equations: <span class="formula"><i>φ</i></span>, <span class="formula"><i>π</i></span>, <span class="formula">Ξ</span>. eLyXer offers a complete set in both upper case: <span class="formula"><i>A</i>Ω</span> and lower case: <span class="formula"><i>α</i><i>ω</i></span>. Also the AMS italicized upper case: <span class="formula"><i>Γ</i><i>Ω</i></span>.
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-2.2">2.2</a> Math Symbols
+</h2>
+<div class="Unindented">
+eLyXer supports the whole set of math symbols in <a class="URL" href="http://www.johndcook.com/math_symbols.html">John D. Cook's list</a>: <span class="formula">∃∂∇ ≥ </span>. It can also render a few more: <span class="formula"> ∝  × </span>. You also get all symbols from <a class="URL" href="http://www.cl.cam.ac.uk/~mgk25/ucs/examples/TeX.txt">Markus Kuhn's list</a>: <span class="formula">⊙∐</span>.
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-2.3">2.3</a> Other Symbols
+</h2>
+<div class="Unindented">
+There are other symbols like arrows: <span class="formula"> ←  → </span>, or geometrical shapes: <span class="formula">○</span>, <span class="formula">□</span>. eLyXer offers limited support for them. You might also want to use financial symbols in formulae: <span class="formula">¥€$</span>.
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-2.4">2.4</a> Spacing
+</h2>
+<div class="Unindented">
+Equations look good when items are properly separated. The main separation is the Medium Mathematical Space: <span class="formula"><i>x</i> = 3</span>. 
+<span class="greyedout">
+Note: if you are viewing the non-Unicode version <a class="FlexURL" href="math.html">math.html</a> of this page then you are in fact seeing midspaces, which are very similar but not exactly the same: <span class="formula"><span class="fraction"><span class="numerator">4</span><span class="denominator">18</span></span><span class="mathrm"> em</span></span> for medium mathematical spaces versus <span class="formula"><span class="fraction"><span class="numerator">1</span><span class="denominator">2</span></span><span class="mathrm"> en</span></span>, where <span class="formula">1<span class="mathrm"> em</span> = 2<span class="mathrm"> en</span></span>. Try out the Unicode version <a class="FlexURL" href="math-unicode.html">math-unicode.html</a> — and viceversa. You can check out what version this page is in the page title.
+</span>
+</div>
+<div class="Indented">
+The command <tt>\raisebox</tt> is useful to, surprisingly, raise a little box.
+</div>
+<div class="Indented">
+<span class="formula"><span class="raisebox" style="vertical-align: 2mm;"><i>raised</i></span><i>over</i><span class="raisebox" style="vertical-align: -2mm;"><i>lowered</i></span><span class="mathrm">and back</span>.</span>
+</div>
+<div class="Indented">
+It can also be used just for spacing.
+</div>
+<div class="Indented">
+<span class="formula"><span class="raisebox" style="vertical-align: 5mm;"></span><i>B</i><sup><i>V</i></sup></span>.
+</div>
+<div class="Indented">
+There are other spacing commands: <tt>\hspace</tt>: <span class="formula">"<span class="hspace" style="width: 4mm;"> </span>"</span>, and <tt>\vspace</tt>: <span class="formula">"<span class="vspace" style="height: 1cm;"> </span>"</span>.
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-2.5">2.5</a> Fonts
+</h2>
+<div class="Unindented">
+Many fonts are used in equations.
+</div>
+<div class="Indented">
+Regular text is shown italicized. Variable: <span class="formula"><i>length</i></span>, <span class="formula"><i>α</i></span>, <span class="formula"><i>Speed</i></span>.
+</div>
+<div class="Indented">
+Some font styles can be used in equations. Roman: <span class="formula">1<span class="mathrm"> mathrm</span></span>. Sans serif: <span class="formula">2<span class="mathsf"> mathsf</span></span>. Typewriter: <span class="formula">3<tt> mathtt</tt></span>. Bold: <span class="formula">4<b> mathbf</b></span>.
+</div>
+<div class="Indented">
+Regular text. Normal text: <span class="formula">5<span class="mathrm"> textfm</span></span>. Literal text: <span class="formula">6<span class="mbox"> mbox text</span></span>. Phonetic alphabet: <span class="formula">7<span class="text"> <span class="textipa">abcde</span></span></span>.
+</div>
+<div class="Indented">
+Units can be shown with or without a magnitude. Withouth: <span class="formula"><span class="unit">km</span></span>. With: <span class="formula">57<span class="unit"> km</span></span>. With fractional units: <span class="formula">200<span class="fraction"><sup class="unit"> km</sup>⁄<sub class="unit">h</sub></span></span>. With a fraction before the units: <span class="formula"><span class="fraction"><sup class="numerator">3</sup>⁄<sub class="denominator">2</sub></span><span class="unit"> km</span></span>, <span class="formula"><span class="fraction"><span class="numerator">7</span><span class="denominator">16</span></span><span class="unit"> s</span></span>.
+</div>
+<div class="Indented">
+Some special fonts are supported: <span class="formula"><span class="script">mathscr</span></span>, <span class="formula"><span class="script">MATHCAL</span></span>, <span class="formula"><span class="blackboard">MATHBB</span></span>, <span class="formula"><span class="fraktur">mathfrak</span></span>. For those, some single characters are translated to their Unicode equivalents: <span class="formula">ℱ</span>, <span class="formula">𝔽</span>, <span class="formula">𝔉</span>.
+</div>
+<h1 class="Section">
+<a class="toc" name="toc-Section-3">3</a> Numeration
+</h1>
+<div class="Unindented">
+Equations can be numbered, like <a class="Reference" href="#eq:first">1↓</a>.
+</div>
+<div class="Indented">
+
+<div class="formula">
+<a class="eqnumber" name="eq:first">(1) </a><i>y</i> = <i>x</i>
+</div>
+</div>
+<div class="Indented">
+And also like <a class="Reference" href="#eq:second">2↓</a>.
+</div>
+<div class="Indented">
+
+<div class="formula">
+<a class="eqnumber" name="eq:second">(2) </a><i>x</i> = 3
+</div>
+</div>
+<div class="Indented">
+Some equations can be numbered even if they don’t have a label.
+</div>
+<div class="Indented">
+
+<div class="formula">
+<a class="eqnumber" name="eq-3">(3) </a><i>x</i> = 2<i>y</i>
+</div>
+</div>
+<div class="Indented">
+Notice that <a class="Reference" href="#eq:second">2↑</a> comes after <a class="Reference" href="#eq:first">1↑</a>.
+</div>
+<h1 class="Section">
+<a class="toc" name="toc-Section-4">4</a> Simple Structures
+</h1>
+<div class="Unindented">
+Let’s now see a few of the simpler structures that eLyXer can output.
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-4.1">4.1</a> Fractions
+</h2>
+<div class="Unindented">
+A simple fraction: 
+<div class="formula">
+<span class="fraction"><span class="numerator">1</span><span class="denominator">2</span></span>.
+</div>Inlined: <span class="formula"><span class="fraction"><span class="numerator">2</span><span class="denominator">3</span></span>.</span>
+</div>
+<div class="Indented">
+A big recursive fraction: 
+<div class="formula">
+<span class="fraction"><span class="numerator">1</span><span class="denominator"><span class="symbol">(</span>1 + <span class="symbol">(</span><span class="fraction"><span class="numerator">1</span><span class="denominator">1 + <span class="symbol">(</span><span class="fraction"><span class="numerator">1</span><span class="denominator">1 + 2<i>x</i></span></span><span class="symbol">)</span></span></span><span class="symbol">)</span><span class="symbol">)</span></span></span>
+</div>
+</div>
+<div class="Indented">
+A nice fraction: <span class="formula"><span class="fraction"><sup class="numerator">5</sup>⁄<sub class="denominator">6</sub></span></span>. A non-diminishing fraction containing alignments:
+<div class="formula">
+<span class="fullfraction"><span class="numerator">1</span><span class="denominator">1 + <span class="symbol">(</span><span class="fullfraction"><span class="numeratorl">1</span><span class="denominator">1 + <i>x</i></span></span> × <span class="fullfraction"><span class="numeratorr">1</span><span class="denominator">1 + <i>x</i></span></span><span class="symbol">)</span></span></span>.
+</div>
+</div>
+<div class="Indented">
+A similar concept is a binomial coefficient: <span class="formula"><span class="bigsymbol">(</span><span class="binom"><span class="upbinom"><i>A</i> + 1</span><span class="downbinom"><i>B</i></span></span><span class="bigsymbol">)</span>.</span> It can be prettily presented: 
+<div class="formula">
+<span class="bigsymbol">(</span><span class="fullbinom"><span class="upbinom"><i>A</i></span><span class="downbinom"><i>B</i> + 1</span></span><span class="bigsymbol">)</span>.
+</div>
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-4.2">4.2</a> Limits
+</h2>
+<div class="Unindented">
+A limit must appear below the main symbol: 
+<div class="formula">
+lim<sub><i>x</i> → ∞</sub><i>f</i>(<i>x</i>), 
+</div>which should appear as <span class="formula"><i>x</i> → ∞</span> in italics, and «lim» in plain style. Note that in HTML the limit does not actually appear below the «lim» but to the right. Inlined: <span class="formula">lim<sub><i>x</i> → ∞</sub><i>f</i>(<i>x</i>)</span>.
+</div>
+<div class="Indented">
+Limits are also used in sums: 
+<div class="formula">
+<span class="bigsymbol">∑</span><span class="limits"><sup class="bigsymbol">∞</sup><sub class="bigsymbol"><i>i</i> = 1</sub></span><i>x</i>, 
+</div>where the sum’s limits should appear below (<span class="formula"><i>i</i> = 1</span>) and above (<span class="formula">∞</span>) the <span class="formula"><span class="bigsymbol">∑</span></span>. Inlined: <span class="formula"><span class="bigsymbol">∑</span><span class="limits"><sup class="bigsymbol">∞</sup><sub class="bigsymbol"><i>i</i> = 1</sub></span><i>x</i>.</span> Also in integrals: <span class="formula"><span class="bigsymbol">∫</span><span class="limits"><sup class="bigsymbol">∞</sup><sub class="bigsymbol"><i>i</i> = 1</sub></span><i>x</i>.</span>
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-4.3">4.3</a> Roots
+</h2>
+<div class="Unindented">
+A square root: <span class="formula"><span class="sqrt"><span class="radical">√</span><span class="root">3</span></span>.</span> A more complex root in a fraction:
+<div class="formula">
+<span class="fraction"><span class="numerator">1</span><span class="denominator"><span class="symbol">(</span>1 + <span class="sqrt"><span class="radical">√</span><span class="root">2</span></span><span class="symbol">(</span><span class="fraction"><span class="numerator">1</span><span class="denominator">1 + <span class="sqrt"><span class="radical">√</span><span class="root">2</span></span></span></span><span class="symbol">)</span> + <span class="sqrt"><span class="radical">√</span><span class="root"><span class="fraction"><span class="numerator">1</span><span class="denominator">2</span></span></span></span><span class="symbol">)</span></span></span>.
+</div>
+</div>
+<div class="Indented">
+eLyXer can also do higher-order roots: <span class="formula"><sup>3</sup><span class="sqrt"><span class="radical">√</span><span class="root"><i>x</i> + <i>y</i></span></span></span>. A devilish case mixing everything we have seen so far:
+<div class="formula">
+<span class="fraction"><span class="numerator"><sup><span class="fraction"><sup class="numerator">7</sup>⁄<sub class="denominator">8</sub></span></sup><span class="sqrt"><span class="radical">√</span><span class="root"><span class="fraction"><span class="numerator">8</span><span class="denominator">4</span></span><i>x</i></span></span> + <span class="bigsymbol">∑</span><span class="limits"><sup class="bigsymbol">∞</sup><sub class="bigsymbol"><i>i</i> = 1</sub></span><i>x</i></span><span class="denominator"><sup><i>s</i> + 5</sup><span class="sqrt"><span class="radical">√</span><span class="root"><span class="fraction"><span class="numerator">(78<i>x</i> + 45<i>y</i>) × <span class="sqrt"><span class="radical">√</span><span class="root">Ω</span></span></span><span class="denominator">sin(<i>x</i> + 1)</span></span> + 38<span class="unit"> km</span></span></span></span></span>.
+</div>
+</div>
+<h1 class="Section">
+<a class="toc" name="toc-Section-5">5</a> Complex Structures
+</h1>
+<div class="Unindented">
+In this section we will explore arrays and related constructs.
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-5.1">5.1</a> Arrays
+</h2>
+<div class="Unindented">
+An inline array <span class="formula"><span class="symbol">[</span>
+<table class="formula">
+
+<tr>
+
+<td class="formula-c">
+<i>a</i>
+</td>
+<td class="formula-c">
+<i>b</i>
+</td>
+</tr>
+<tr>
+
+<td class="formula-c">
+<i>c</i>
+</td>
+<td class="formula-c">
+<i>dio</i>
+</td>
+</tr>
+</table><span class="symbol">]</span></span>: is always shown in the same line.
+</div>
+<div class="Indented">
+An independent array is shown on its own line: 
+<div class="formula">
+<span class="symbol">[</span>
+<table class="formula">
+
+<tr>
+
+<td class="formula-l">
+12
+</td>
+<td class="formula-c">
+2
+</td>
+</tr>
+<tr>
+
+<td class="formula-l">
+3
+</td>
+<td class="formula-c">
+4 × <i>y</i><sup><i>x</i></sup>
+</td>
+</tr>
+</table><span class="symbol">]</span>
+</div>Apart from that the appearance should be the same.
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-5.2">5.2</a> Brackets
+</h2>
+<div class="Unindented">
+Arrays are separated by brackets: <span class="formula"><span class="symbol">(</span><i>a</i><span class="symbol">)</span></span> <span class="formula"><span class="symbol">[</span><i>b</i><span class="symbol">]</span></span> <span class="formula"><span class="symbol">{</span><i>c</i><span class="symbol">}</span></span> <span class="formula"><span class="symbol">⟨</span><i>d</i><span class="symbol">⟩</span></span> <span class="formula"><span class="symbol">|</span><i>e</i><span class="symbol">|</span></span>. There are also big brackets: <span class="formula"><span class="bigsymbol">⟨</span><i>f</i><span class="bigsymbol">⟩</span></span>.
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-5.3">5.3</a> Cases
+</h2>
+<div class="Unindented">
+Used to switch between several values.
+</div>
+<div class="Indented">
+<span class="formula"><i>y</i> = 
+<table class="cases">
+
+<tr>
+
+<td class="formula-l">
+<i>x</i>
+</td>
+<td class="formula-l">
+<i>i</i> = 0, 
+</td>
+</tr>
+<tr>
+
+<td class="formula-l">
+<i>x</i> + 1
+</td>
+<td class="formula-l">
+<i>i</i> &lt; 3
+</td>
+</tr>
+</table></span>
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-5.4">5.4</a> Braces
+</h2>
+<div class="Unindented">
+Values can be underbraced or overbraced.
+</div>
+<div class="Indented">
+<span class="formula"><span class="underbrace"><i>a</i> − <i>b</i></span> = <span class="overbrace"><i>b</i> + <i>c</i> + <i>d</i> + <i>e</i></span></span>.
+</div>
+<h1 class="Section">
+<a class="toc" name="toc-Section-6">6</a> Macros
+</h1>
+<div class="Unindented">
+Now it’s time for user-defined commands (sometimes called “macros”).
+</div>
+<div class="Indented">
+Definitions can be added as macros. Then they can be used in formulae: <span class="formula"><sup></sup><span class="sqrt"><span class="radical">√</span><span class="root">12</span></span></span>. They can accept default parameters. Again, useful in formulae: <span class="formula"><sup>4</sup><span class="sqrt"><span class="radical">√</span><span class="root">5</span></span></span>.
+</div>
+<div class="Indented">
+Other definitions from the preamble can be used: <span class="formula"><sup>3</sup><span class="sqrt"><span class="radical">√</span><span class="root">4</span></span></span>.
+</div>
+<div class="Indented">
+Definitions on the fly are also possible: <span class="formula"><sup>7</sup><span class="sqrt"><span class="radical">√</span><span class="root">8</span></span></span>, and used with different values: <span class="formula"><sup><i>a</i></sup><span class="sqrt"><span class="radical">√</span><span class="root"><i>b</i></span></span></span>.
+</div>
+<h1 class="Section">
+<a class="toc" name="toc-Section-7">7</a> The End
+</h1>
+<div class="Unindented">
+That’s all folks!
+</div>
+
+<hr class="footer"/>
+<div class="footer">
+Copyright (C) 2010 Alex Fernández (elyxer@gmail.com)
+</div>
+<div class="footer" id="generated-by">
+Document generated by <a href="http://elyxer.nongnu.org/">eLyXer 0.98 (2010-05-13)</a> on <span class="create-date">2010-05-13T01:43:39.503640</span>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,697 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+
+<html>
+<head>
+<title>LaTeX -- A Typesetting Program</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+</head>
+
+<body>
+<h1><font color="#cc0000">LaTeX -- A Typesetting Program</font></h1>
+
+<h2><font color="#999900">Contents</font></h2>
+
+<ol> 
+<li><a href="#intro">Introduction</a></li>
+<li><a href="#info">Information and Software</a></li>
+<li><a href="#files">LaTeX Files</a></li>
+<li><a href="#writing">Writing Ordinary Text in the Input File</a></li>
+<li><a href="#divisions">The Divisions of a Document</a></li>
+<li><a href="#list">List Environments</a></li>
+<li><a href="#para">Paragraph Alignment</a></li>
+<li><a href="#tables">Tables</a></li>
+<li><a href="#figures">Figures</a></li>
+<li><a href="#maths">Mathematics</a></li>
+<li><a href="#crossref">Cross References</a></li>
+<li><a href="#refbib">References and Bibliography</a></li>
+</ol>
+
+
+<h2><font color="#0000cc"><a name="intro">Introduction</a></font></h2>
+
+<p>LaTeX is a program for typesetting documents on a computer.  It may be pronounced "La-Tech" with "La" as in <i>last</i> and "Tech" as in <i>technology</i>.  Note the special arrangement of capital letters in LaTeX.</p>
+
+<p>In the production of a document with a WYSIWYG word processor (<i>What You See Is What You Get</i>) two kinds of work must be done:</p>
+
+<ol>
+<li> The work of writing the content.</li>
+<li> The work of typesetting and page layout.</li>
+</ol>
+
+<p>LaTeX allows you to focus on the content of a document without wasting time on typesetting and page layout. LaTeX is not a WYSIWYG program---the input to LaTeX is plain text with commands showing the
+structure of the document and the special symbols needed.  You may think at first that LaTeX is mysterious and complicated.  However, after a little practice, you are likely to find it easier than WYSIWYG systems.</p>
+
+<h2><font color="#0000cc"><a name="info">Information and Software</a></font></h2>
+
+<p>The standard references on LaTeX are:</p>
+
+<ul>
+<li><i>LATEX: a document preparation system users guide and reference manual</i> by Leslie Lamport, Addison-Wesley Pub. Co. Inc., 1994.</li>
+
+<li><i>Latex Companion, 2nd Edition</i> by Goossens and others, Penguin Books (NZ) Ltd., 2004.</li>
+</ul>
+
+<p>You will need two software programs.  They are available free on the Internet:</p>
+
+<p><b>MiKTeX.</b>&nbsp;&nbsp;Download <i>Small MiKTeX</i> (24MB) from <a href="http://www.miktex.org/">www.miktex.org</a><br>
+<b>TeXnicCenter.</b>&nbsp;&nbsp;This is a LaTeX shell for Windows.  It can be downloaded from <a href="http://www.texniccenter.org/">www.texniccenter.org</a></p>
+
+<p>The <i>LaTeX Help e-Book</i> included with the TeXnicCenter software gives full information on the LaTeX program.</p>
+
+<h2><font color="#0000cc"><a name="files">LaTeX Files</a></font></h2>
+
+<h3><font color="#cccc00">The Input File</font></h3>
+
+<p>The input to LaTeX is an ASCII text file. It may be typed with
+any plain text processor, but it is more
+convenient to use <i>TeXnicCenter</i>.  The file name must have the file extension <font color="#cc0000"><tt>.tex</tt></font>.</p>
+
+<p>We shall consider two of the document classes in LaTeX:</p>
+
+<dl><dt><font color="#cc0000"><tt>article</tt></font></dt><dd>Use this for seminar papers and short progress reports.</dd><dt><font color="#cc0000"><tt>report</tt></font></dt><dd>Use this for your research proposal and your thesis.</dd></dl>
+
+<p>Most of the commands in LaTeX begin with a backslash, but some of
+the commands are simple typewriter characters. The input file begins
+with a document class command such as:</p>
+
+<blockquote><font color="#cc0000"><tt>
+\documentclass[a4paper,12pt]{article}
+</tt></font></blockquote>
+
+<p>This states that the document will be formatted automatically as an article on A4 paper with font size 12 points.</p>
+
+<p>Next comes the body of the document with the command</p>
+
+<blockquote><font color="#cc0000"><tt>
+\begin{document}
+</tt></font></blockquote>
+
+<p>at the beginning and</p>
+
+<blockquote><font color="#cc0000"><tt>
+\end{document}
+</tt></font></blockquote>
+
+<p>at the end.</p>
+
+<p>An example of a very simple document is shown in the box below.</p>
+
+<table border="1" cellpadding="3">
+<tr><td><font color="#cc0000"><tt>
+\documentclass[a4paper,12pt]{article}<br>
+\begin{document}<br>
+This is an example of a very simple<br>
+document containing only one sentence.<br>
+\end{document}<br>
+</tt></font></td></tr>
+</table>
+
+<h3><font color="#cccc00">Output Files</font></h3>
+
+<p>After making an input file (*.tex) you must build an output file for
+viewing and printing the document. The output file may be a device
+independent file (*.dvi), or a portable document file (*.pdf), or a
+postscript file (*.ps). You can use TeXnicCenter to build these files.</p>
+
+<h2><font color="#0000cc"><a name="writing">Writing Ordinary Text in the Input File</a></font></h2>
+
+<h3><font color="#cccc00">Paragraphs</font></h3>
+
+<p>Type ordinary text in the usual way.  An empty line, obtained by pressing the [Enter] key twice, marks the end of a paragraph.</p>
+
+<p>To break a line without marking the end of
+the paragraph use a double
+backslash <font color="#cc0000"><tt>\\</tt></font>.</p>
+
+<h3><font color="#cccc00">Special Characters</font></h3>
+
+<p>Special characters that cannot be typed in the usual way are as follows:
+
+</p><blockquote><font color="#cc0000"><tt>
+$ &amp; % # { } _ ^ ~ \
+</tt></font></blockquote>
+
+<p>However, some of them can be made to appear in your text with the help of the backslash as follows:</p>
+
+<blockquote><font color="#cc0000"><tt>
+\$ \&amp; \% \# \{ \} \_
+</tt></font></blockquote>
+
+<h3><font color="#cccc00">Quote Marks</font></h3>
+
+<p>Do not use the double quote " for quotations.  Instead use one or two <font color="#cc0000"><tt><b>`</b></tt></font> marks (<font color="#cc0000"><tt><b>`</b></tt></font> or <font color="#cc0000"><tt><b>``</b></tt></font>) for opening a quotation and one or two <font color="#cc0000"><tt>'</tt></font> marks (<font color="#990000"><tt><b>'</b></tt></font> or <font color="#cc0000"><tt><b>''</b></tt></font>) for closing the quotation.</p>
+
+<h3><font color="#cccc00">Hyphens and Dashes</font></h3>
+
+<p>Use <font color="#cc0000"><tt>-</tt></font> for hyphens in words, <font color="#cc0000"><tt>--</tt></font> for short dashes in number ranges, and <font color="#cc0000"><tt>---</tt></font> for long dashes in sentence punctuation.</p>
+
+<h3><font color="#cccc00">Emphasis</font></h3>
+
+<p>Use <font color="#cc0000"><tt>\emph{text}</tt></font> to emphasize text.  This prints the text between the brackets in italics.</p>
+
+<h3><font color="#cccc00">Spacing</font></h3>
+
+<p>LaTeX manages the spacing of words automatically.  However, in some cases we must control the spacing with special commands.</p>
+
+<p>Use <font color="#cc0000"><tt>\,</tt></font> to produce a small space, for example between a number and a unit symbol: <font color="#cc0000"><tt>64\,km</tt></font>.</p>
+
+<p>LaTeX assumes that a full stop after a small letter marks the end of a sentence and inserts a long space before the next word. To prevent this use <font color="#cc0000"><tt>\</tt></font> followed by a single space.  Use <font color="#cc0000"><tt>~</tt></font> to make a hard space as in <font color="#cc0000"><tt>Fig.~5</tt></font>.</p>
+
+<p>When a full stop comes after a capital letter LaTeX assumes the full
+stop marks an abbreviation and not the end of a sentence. Use <font color="#cc0000"><tt>\@.</tt></font> to mark a full stop at the end of a sentence ending with a capital letter:</p>
+
+<blockquote>
+<font color="#cc0000"><tt>The program was written in BASIC\@.</tt></font>
+</blockquote>
+
+<h3><font color="#cccc00">Line Breaking</font></h3>
+
+<p>LaTeX makes line breaks when typesetting a page; this sometimes includes breaking words with a hyphen at the end of a line.  A "hyphenation" command may be placed at the beginning of the input file to control how LaTeX is allowed to break words.  For example</p>
+
+<blockquote><font color="#cc0000"><tt>
+\hyphenation{FORTRAN hy-phen-a-tion}
+</tt></font></blockquote>
+
+<p>prevents <i>FORTRAN</i> being broken, and allows <i>hyphenation</i> to be broken in three ways.  Only ordinary letters should be used in this command.  Capitalization is ignored.</p>
+
+<p>An <font color="#cc0000"><tt>mbox</tt></font> command causes the characters between brackets to be treated as a single character.  For example</p>
+
+<blockquote><font color="#cc0000"><tt>
+\mbox{0 2872 9014-5}
+</tt></font></blockquote>
+
+<p>is a telephone number that cannot be broken at the end of a line.</p>
+
+<h3><font color="#cccc00">Comments</font></h3>
+
+<p>The percent sign <font color="#cc0000"><tt>%</tt></font> causes LaTeX to ignore everything that follows it on the line.  You can use a line beginning with <font color="#cc0000"><tt>%</tt></font> to write non-printing comments in your input file.</p>
+
+<h2><font color="#0000cc"><a name="divisions">The Divisions of a Document</a></font></h2>
+
+<h3><font color="#cccc00">The Title</font></h3>
+
+<p>Documents normally begin with a title, the author's name and affiliation, and the date.  Several authors may be given, separated by the command <font color="#cc0000"><tt>\and</tt></font>.  These items of information are entered as follows:</p>
+
+<blockquote><font color="#cc0000"><tt>
+\title{Title of the Document}<br>
+\author{Name of First Author,\\Address of First Author<br>
+\and Name of Second Author\\Address of Second Author}<br>
+\date{dd Month 2004}<br>
+\maketitle<br>
+</tt></font></blockquote>
+
+<p>The double backslash causes the address of the author to be placed under the author's name.  The last command <font color="#cc0000"><tt>\maketitle</tt></font> causes the title, author and date to be placed at the top of the page in the <font color="#cc0000"><tt>article</tt></font> document class and on a separate title page in the <font color="#cc0000"><tt>report</tt></font> document class.</p>
+
+<h3><font color="#cccc00">Abstract</font></h3>
+
+<p>An abstract may be written as follows:</p>
+
+<blockquote><font color="#cc0000"><tt>
+\begin{abstract}<br>
+Insert the text of the abstract here.<br>
+\end{abstract}<br>
+</tt></font></blockquote>
+
+<p>The abstract is placed below the title, author and date in articles, and on a separate page after the title page in reports.</p>
+
+<h3><font color="#cccc00">Chapters and Sections</font></h3>
+
+<p>Reports are divided into chapters. LaTeX gives serial numbers to
+the chapters automatically. Chapters are made by the command</p>
+
+<blockquote><font color="#cc0000"><tt>
+\chapter[Short Title]{Title of Chapter}
+</tt></font></blockquote>
+
+<p>The optional short title is used when LaTeX makes a table of
+contents for the document (explained later). The contents of each
+chapter follow the title command. Chapters are not used in articles.</p>
+
+<p>Articles and the chapters in a report are divided into automatically numbered sections and subsections by the commands</p>
+
+<blockquote><font color="#cc0000"><tt>
+\section[Short Title]{Title of Section}<br>
+\subsection[Short Title]{Title of Subsection}<br>
+</tt></font></blockquote>
+
+<p>Subsections can be further divided into subsubsections. To simplify
+the document, the numbering of the subsubsections
+should be stopped by using <font color="#cc0000"><tt>*</tt></font> in the the command. Then the
+subsubsection does not have a short title and does not appear in the
+table of contents. The command is written as follows:</p>
+
+<blockquote><font color="#cc0000"><tt>
+\subsubsection*{Title of Subsubsection}
+</tt></font></blockquote>
+
+<h3><font color="#cccc00">The Appendix</font></h3>
+
+<p>To make an appendix the command<p>
+
+<blockquote><font color="#cc0000"><tt>
+\appendix
+</tt></font></blockquote>
+
+<p>may be placed at the end of a document.  In the article class the sections following this command are labeled "A", "B", etc., instead of being numbered.  In the report class the chapters following this command are called "Appendix A", "Appendix B", etc.</p>
+
+<h3><font color="#cccc00">Tables of Contents</font></h3>
+
+<p>A table of contents (including chapters, sections and subsections) may be inserted into a report by the command</p>
+
+<blockquote><font color="#cc0000"><tt>
+\tableofcontents
+</tt></font></blockquote>
+
+<p>Lists of tables and figures can also be inserted:</p>
+
+<blockquote><font color="#cc0000"><tt>
+\listoftables<br>
+\listoffigures
+</tt></font></blockquote>
+
+<p>These tables should be inserted after the abstract and before the first chapter.</p>
+
+
+<h3><font color="#cccc00">Splitting the Input</font></h3>
+
+<p>When the document is long you can divide the LaTeX input into separate files, for example a separate file for each chapter.  The command</p>
+
+<blockquote>
+<font color="#cc0000"><tt>\input{filename}</tt></font>
+</blockquote>
+
+<p>inserts the contents of the file with the specified filename into the input file at the point where the command occurs.</p>
+
+<h2><font color="#0000cc"><a name="list">List Environments</a></font></h2>
+
+<p>Formatted lists are created by the following commands.</p>
+
+<h3><font color="#cccc00">Itemized (Bulleted) Lists</font></h3>
+
+<blockquote><font color="#cc0000"><tt>
+\begin{itemize}<br>
+\item First item in the bulleted list.<br>
+\item Second item in the bulleted list.<br>
+\end{itemize}
+</tt></font></blockquote>
+
+<h3><font color="#cccc00">Enumerated (Numbered) Lists</font></h3>
+
+<blockquote><font color="#cc0000"><tt>
+\begin{enumerate}<br>
+\item First item in the numbered list.<br>
+\item Second item in the numbered list.<br>
+\end{enumerate}
+</tt></font></blockquote>
+
+<h3><font color="#cccc00">Description Lists</font></h3>
+
+<blockquote><font color="#cc0000"><tt>
+\begin{description}<br>
+\item[label] Description of the term or symbol in the label.<br>
+\end{description}
+</tt></font></blockquote>
+
+<p>Description lists may be used in glossaries for defining acronyms, technical terms and mathematical symbols.</p>
+
+<h2><font color="#0000cc"><a name="para">Paragraph Alignment</a></font></h2>
+
+<p>The following environment commands control how the contents of paragraphs are aligned on the printed page.</p>
+
+<h3><font color="#cccc00">Center</font></h3>
+
+<p>This is used for centering text, tables, pictures, etc., as follows:</p>
+
+<blockquote><font color="#cc0000"><tt>
+\begin{center}<br>
+Text, table, picture, etc., to be centered.<br>
+\end{center}
+</tt></font></blockquote>
+
+<h3><font color="#cccc00">Quote</font></h3>
+
+<p>This is used for indenting a block of text.</p>
+
+<blockquote><font color="#cc0000"><tt>
+\begin{quote}<br>
+Text to be indented.<br>
+\end{quote}
+</tt></font></blockquote>
+
+<h3><font color="#cccc00">Verbatim</font></h3>
+
+<p>This causes text to be printed exactly as it is typed in typewriter font without any reformatting:</p>
+
+<blockquote><font color="#cc0000"><tt>
+\begin{verbatim}<br>
+Text to be printed as typed.<br>
+\end{verbatim}
+</tt></font></blockquote>
+
+<p>Use typewriter font on your computer when typing the contents of a <font color="#cc0000"><tt>verbatim</tt></font> environment to ensure that your screen shows the layout correctly.</p>
+
+<h2><font color="#0000cc"><a name="tables">Tables</a></font></h2>
+
+<p>Tables are created in the <font color="#cc0000"><tt>table</tt></font> and <font color="#cc0000"><tt>tabular</tt></font> environments:</p>
+
+<blockquote>
+<font color="#cc0000"><tt>
+\begin{table}<br>
+\caption[Short Caption]{Caption Above the Table}<br>
+\begin{center}<br>
+\begin{tabular}{tabular specification}<br>
+Insert the rows of the table here.<br>
+\end{tabular}<br>
+\end{center}<br>
+\end{table}
+</tt></font>
+</blockquote>
+
+<p>The optional "Short Caption" is used when a list of tables is made.  The full text of the caption appears above the table.</p>
+
+<p>The tabular specification defines the format of the columns in the table using the following symbols:</p>
+
+<blockquote>
+<font color="#cc0000"><tt>l</tt></font>&nbsp;&nbsp;&nbsp;for a column of left-justified text (words).<br>
+<font color="#cc0000"><tt>r</tt></font>&nbsp;&nbsp;&nbsp;for a column of right-justified text (numbers).<br>
+<font color="#cc0000"><tt>c</tt></font>&nbsp;&nbsp;&nbsp;for centered text (column headings).<br>
+<font color="#cc0000"><tt>p{width}</tt></font>&nbsp;&nbsp;&nbsp;for a column of text (with line breaks) having a specified width, e.g., 40 mm.
+</blockquote>
+
+<p>The rows of the table are typed one after the other with <font color="#cc0000"><tt>&</tt></font> between column entries.</p>
+<blockquote>
+<font color="#cc0000"><tt>\\</tt></font> starts a new row of the table; this is not needed before the first row, nor after the last row.<br>
+<font color="#cc0000"><tt>\hline</tt></font> draws a horizontal line.<br>
+<font color="#cc0000"><tt>\cline{i-j}</tt></font> draws a horizontal line through columns i to j inclusive.
+</blockquote>
+
+<p>To span a number of columns with centered text use:</p>
+
+<blockquote>
+<font color="#cc0000"><tt>
+\multicolumn{n}{c}{Text}
+</tt></font>
+</blockquote>
+
+<p>Here 
+<font color="#cc0000"><tt>n</tt></font> is the number of columns to be spanned, and 
+<font color="#cc0000"><tt>c</tt></font> indicates that the text is to be centered over these columns.</p>
+
+<h3><font color="#cccc00">Example of a Simple Table</font></h3>
+
+<p>The following commands give the table below.</p>
+
+
+<blockquote>
+<font color="#cc0000"><tt>
+\begin{table}<br>
+\caption{Longwave Emittance of Clouds}<br>
+\begin{center}<br>
+\begin{tabular}{lr}<br>
+\hline\\<br>
+Cloud Type & Emittance\\<br>
+\hline\\<br>
+High & 0.5\\<br>
+Middle & 0.8\\<br>
+Low & 1.0\\<br>
+\hline<br>
+\end{tabular}<br>
+\end{center}<br>
+\end{table}
+</tt></font>
+</blockquote>
+
+<pre>
+     Table #. Longwave Emittance of Clouds
+           -------------------------
+           Cloud Type      Emittance
+           -------------------------
+           High                  0.5
+           Middle                0.8
+           Low                   1.0
+           -------------------------
+</pre>
+
+<h2><font color="#0000cc"><a name="figures">Figures</a></font></h2>
+
+<h3><font color="#cccc00">The Figure Environment</font></h3>
+
+<p>Figures are created in the <font color="#cc0000"><tt>figure</tt></font> and <font color="#cc0000"><tt>picture</tt></font> environments.  The figure environment controls the position of the figure in the document.  The picture environment contains the drawing commands.   Before the picture environment is opened the unit length for measurements should be defined with the <font color="#cc0000"><tt>setlength</tt></font> and <font color="#cc0000"><tt>unitlength</tt></font> commands, as shown below.  The picture is centered using the <font color="#cc0000"><tt>center</tt></font> environment.</p>
+
+<blockquote>
+<font color="#cc0000"><tt>
+\begin{figure}<br>
+\setlength{\unitlength}{1mm}<br>
+\begin{center}<br>
+\begin{picture}(width,height)<br>
+Insert the commands for drawing the figure here<br>
+\end{picture}<br>
+\end{center}<br>
+\caption[Short Caption]{Full text of the caption.}<br>
+\end{figure}
+</tt></font>
+</blockquote>
+
+<p>The optional "Short Caption" is used when a list of figures is made.  The full text of the caption appears below the figure.</p>
+
+<h3><font color="#cccc00">Picture Commands</font></h3>
+
+<p>If the unit length is 1 mm the commands</p>
+
+<blockquote>
+<font color="#cc0000"><tt>
+\begin{picture}(50,40) ... \end{picture}
+</tt></font>
+</blockquote>
+
+<p>make a picture of width 50&nbsp;mm and height 40&nbsp;mm.  The lower left corner has coordinates (0,0) and the upper right corner has coordinates (50,40).</p>
+
+<p><i>Text</i> is written on the picture, starting at the point (x, y), by the command</p>
+
+<blockquote>
+<font color="#cc0000"><tt>
+\put(x,y){Written text}
+</tt></font>
+</blockquote>
+
+<p>Lines drawn are thin (the default) or thick.  They are specified by the commands <font color="#cc0000"><tt>\thinlines</tt></font> and <font color="#cc0000"><tt>\thicklines</tt></font>
+ declared at any time.</p>
+
+<p><i>Straight lines</i> are drawn with a command</p>
+
+<blockquote>
+<font color="#cc0000"><tt>
+\put(x,y){\line(m,n){l}}
+</tt></font>
+</blockquote>
+
+<p>where (x,y) is the starting point, (m,n) defines the slope, and l is the horizontal component of the length, or the vertical component if the horizontal component is zero.  The value of l must be positive;  m and n must be relatively prime integers with magnitude not greater than 6; they can be positive or negative.  The length of a slanting line must be at least 4&nbsp;mm.</p>
+
+<p><i>Arrows</i> are drawn like straight lines, but m and n must have magnitude not greater than 4.  The command for drawing an arrow of length l starting at (x, y) and pointing in the direction (m, n) is as follows:</p>
+
+<blockquote>
+<font color="#cc0000"><tt>
+\put(x,y){\vector(m,n){l}}
+</tt></font>
+</blockquote>
+
+<p>A <i>small circle</i> with center (x, y) and diameter d is drawn by the command</p>
+
+<blockquote>
+<font color="#cc0000"><tt>
+\put(x,y){\circle{d}}
+</tt></font>
+</blockquote>
+
+<p>A <i>filled circle or disk</i> is drawn by the command</p>
+
+<blockquote>
+<font color="#cc0000"><tt>
+\put(x,y){\circle*{d}}
+</tt></font>
+</blockquote>
+
+<p>The diameter of a circle or disk cannot be greater than 14&nbsp;mm.</p>
+
+<p><i>Boxes</i> of width w and height h containing centered text are drawn by the commands</p>
+
+<blockquote>
+<font color="#cc0000"><tt>
+\put(x,y){\makebox(w,h){Text in the box}}<br>
+\put(x,y){\framebox(w,h){Text in the box}}<br>
+\put(x,y){\dashbox{d}(w,h){Text in the box}}
+</tt></font>
+</blockquote>
+
+<p>Here (x, y) is the position of the bottom left corner of the box.  The <font color="#cc0000"><tt>\makebox</tt></font> command draws an invisible box. The <font color="#cc0000"><tt>\framebox</tt></font> command draws a box surrounded by a frame.  The <font color="#cc0000"><tt>\dashbox{d}</tt></font> command draws a box with a frame broken into dashes of length d;  the dashed box looks best when w and h are integral multiples of d.  A box can have zero size; then (x, y) is the position of the center of the text:</p>
+
+<blockquote>
+<font color="#cc0000"><tt>
+\put(x,y){\makebox(0,0){Text in the box}}
+</tt></font>
+</blockquote>
+
+<p>A quadratic <i>Bezier curve</i> with control points P<sub>1</sub> = (x<sub>1</sub>, y<sub>1</sub>), P<sub>2</sub> = (x<sub>2</sub>, y<sub>2</sub>) and P<sub>3</sub> = (x<sub>3</sub>, y<sub>3</sub>) begins at the point P<sub>1</sub> with tangent pointing in the direction of P<sub>2</sub>, and ends at the point P<sub>3</sub> with tangent in the direction from P<sub>2</sub> to P<sub>3</sub>.  The curve is drawn by the command</p>
+
+<blockquote>
+<font color="#cc0000"><tt>
+\qbezier(x<sub>1</sub>,y<sub>1</sub>)(x<sub>2</sub>,y<sub>2</sub>)(x<sub>3</sub>,y<sub>3</sub>)
+</tt></font>
+</blockquote>
+
+<p>Smooth curves through a sequence of points can be drawn by aligning their tangents at the end points.</p>
+
+<p><i>Regularly spaced copies of the same object</i> can be drawn by the following command:</p> 
+
+<blockquote>
+<font color="#cc0000"><tt>
+\multiput(x,y)(dx,dy){n}{ ... }
+</tt></font>
+</blockquote>
+
+<p>This draws n copies of the object defined in the brackets { ... }; the first object is at (x, y) and the remaining n&nbsp;-&nbsp;1 copies are in a line with steps (dx, dy) between them.</p>
+
+<h2><font color="#0000cc"><a name="maths">Mathematics</a></font></h2>
+
+<h3><font color="#cccc00">Math Mode Environments</font></h3>
+
+<p>To insert mathematical expressions into a line of text use <font color="#cc0000"><tt>$</tt></font> at the beginning and end of the expression.</p>
+
+<p>Example:  <font color="#cc0000"><tt>The solution of the equation $3x - 2 = 7$ is $x = 3$.</tt></font></p>
+
+<p>An unnumbered centered equation is displayed using the commands <font color="#cc0000"><tt>\[</tt></font> and <font color="#cc0000"><tt>\]</tt></font> as follows:</p>
+
+<blockquote>
+<font color="#cc0000"><tt>
+The distributive law of multiplication over addition is:<br>
+\[ a(b + c) = ab + ac \]
+</tt></font>
+</blockquote>
+
+<p>A numbered centered equation is displayed as follows:</p>
+
+<blockquote>
+<font color="#cc0000"><tt>
+\begin{equation}<br>
+a(b + c) = ab + ac<br>
+\end{equation}
+</tt></font>
+</blockquote>
+
+<p>There many commands for typesetting mathematics in math mode environments.  A few of the simple commands are given below.  For more details consult the references mentioned above in the section <a href="#info">Information and Software</a>.  The TeXnicCenter software gives shortcut buttons for the specialized math commands.</p>
+
+<p>In the examples below the brackets <font color="#cc0000"><tt>{</tt></font> and <font color="#cc0000"><tt>}</tt></font> are used to group symbols into expressions treated as single units in the mathematical structures.</p>
+
+<h3><font color="#cccc00">Common Structures</font></h3>
+
+<dl>
+
+<dt><font color="#cc0000"><tt>a', a'', ...</tt></font></dt>
+<dd>Primes: a', a", ...</dd>
+
+<dt><font color="#cc0000"><tt>x_i, x_{i+1}</tt></font></dt>
+<dd>Subscripts: x<sub>i</sub>, x<sub>i+1</sub></dd>
+
+<dt><font color="#cc0000"><tt>x^2, x^{m+n}</tt></font></dt>
+<dd>Superscripts: x<sup>2</sup>, x<sup>m+n</sup></dd>
+
+<dt><font color="#cc0000"><tt>\sqrt{expression}</tt></font></dt>
+<dd>The square root of the expression in brackets.</dd>
+
+<dt><font color="#cc0000"><tt>\frac{numerator}{denominator}</tt></font></dt>
+<dd>A double line fraction.</dd>
+
+<dt><font color="#cc0000"><tt>\int_a^b f(x)\,dx</tt></font></dt>
+<dd>The integral from a to b of f(x) with respect to x.  Note the small space between f(x) and dx.</dd>
+
+</dl>
+
+<h3><font color="#cccc00">Common Mathematical Symbols</font></h3>
+
+<dl>
+
+<dt><font color="#cc0000"><tt>\ldots, \cdots</tt></font></dt>
+<dd>Three dots (...) at the bottom of the line, and three dots in the center of the line (&middot;&middot;&middot;).</dd>
+
+<dt><font color="#cc0000"><tt>\pm, \times, \leq, \geq, \approx</tt></font></dt>
+<dd>Plus or minus <u>+</u>, times &times;, less than or equal <u>&lt;</u>, greater than or equal <u>&gt;</u>, approximately equal.</dd>
+
+<dt><font color="#cc0000"><tt>\circ</tt></font></dt>
+<dd>A small circle useful as a superscript indicating degrees.</dd>
+
+<dt><font color="#cc0000"><tt>\alpha, \beta, \gamma, \delta, ...</tt></font></dt>
+<dd>Lower case Greek letters.</dd>
+
+<dt><font color="#cc0000"><tt>\Gamma, \Delta, ...</tt></font></dt>
+<dd>Upper case Greek letters.  Note that they start with a capital letter.</dd>
+
+<dt><font color="#cc0000"><tt>\exp x, \ln(1+x), \sin \theta, \cos(A+B)</tt></font></dt>
+<dd>Examples of standard functions.</dd>
+
+</dl>
+
+<h2><font color="#0000cc"><a name="crossref">Cross References</a></font></h2>
+
+<p>Cross references from one part of the document to another chapter, section, or subsection, or to a table, figure or numbered equation, are made with the help of the following commands:</p>
+
+<dl>
+<dt><font color="#cc0000"><tt>\label{keyword}</tt></font></dt>
+<dd>Put this immediately after the chapter heading, section heading, subsection heading, table caption, figure caption, or numbered equation which will be cited elsewhere in the document.  The keyword is chosen to uniquely define the reference point in the document.</dd>
+
+<dt><font color="#cc0000"><tt>\ref{keyword}</tt></font></dt>
+<dd>This command is used in the citation.  LaTeX replaces the command by the number of the chapter, section, subsection, table, figure, or  equation that has been labeled with the same keyword.</dd>
+
+</dl>
+
+<p><b>Example</b>:  Suppose we have an equation labeled as follows:</p>
+
+<blockquote>
+<font color="#cc0000"><tt>
+\begin{equation}<br>
+a(b + c) = ab + ac<br>
+\label{distrib}<br>
+\end{equation}
+</tt></font>
+</blockquote>
+
+<p>We may refer to this equation in the main text as follows:</p>
+
+<blockquote>
+<font color="#cc0000"><tt>
+Equation \ref{distrib} is the distributive law.
+</tt></font>
+</blockquote>
+
+<h2><font color="#0000cc"><a name="refbib">References and Bibliography</a></font></h2>
+
+<p>References to the literature are placed at the end of articles and reports in an environment called <font color="#cc0000"><tt>thebibliography</tt></font>.  This environment is headed "References" in articles, and "Bibliography" in reports.  The entries in this environment are your literature references created by a <font color="#cc0000"><tt>bibitem</tt></font> command.  These references are labeled automatically with numbers in square brackets: [1], [2], ...</p>
+
+<blockquote>
+<font color="#cc0000"><tt>
+\begin{thebibliography}{[00]}<br>
+\bibitem{keyword}Details of the reference.<br>
+\bibitem{ExChDu1989}R. H. B. Exell, Chumnong Sorapipatana and Dusadee Sukawat, (1989). The relation between wind speeds at the surface and above the boundary layer in Thailand and India. \emph{Solar Energy}, Vol.~35, pp.~3--13.<br>
+\end{thebibliography}
+</tt></font>
+</blockquote>
+
+<p>The expression <font color="#cc0000"><tt>[00]</tt></font> in the first command indicates the size of the widest label in the bibliography, which is a two-digit number enclosed in square brackets.</p>
+
+<p>The keyword in the <font color="#cc0000"><tt>\bibitem</tt></font> command is used to uniquely identify the reference.  Letters and numbers representing the authors and the year are recommended as keywords, as shown in the second reference.</p>
+
+<p>The items in the bibliography are cited in the main text of the document by the command</p>
+
+<blockquote>
+<font color="#cc0000"><tt>
+\cite{keyword}
+</tt></font>
+</blockquote>
+
+<p>The <font color="#cc0000"><tt>\cite</tt></font> command prints the numerical label of the reference in the main text.</p>
+
+<hr>
+
+<p><font color="#cc0000"><i>By R. H. B. Exell, 2004.  Joint Graduate School of Energy and Environment, King Mongkut's University of Technology Thonburi.</i></font> &nbsp; <a href="http://www.jgsee.kmutt.ac.th/exell/">Home Page</a></p>
+
+
+</body></html>

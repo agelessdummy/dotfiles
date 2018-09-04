@@ -1,0 +1,2219 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% historian.tex, v0.3, 2010/04/24
+% Testfile, demo, and user guide for historian,
+% a citation- and bibliography style for use with biblatex v 0.9a
+% Developed and maintained by Sander Gliboff, 
+% based on guidelines from the Turabian Manual for Writers, 7th ed.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Initialize document class and styles to match biblatex documentation
+\documentclass{ltxdockit}[2010/02/12]
+\usepackage{btxdockit}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{shortvrb}
+\MakeShortVerb{\|}
+%Match colors in section headings
+\usepackage{sectsty}
+\sectionfont{\spotcolor}\subsectionfont{\spotcolor}\subsubsectionfont{\spotcolor} 
+\paragraphfont{\spotcolor}\subparagraphfont{\spotcolor} 
+% Title-page declarations
+\rcsid{$Id: historian.tex,v 0.3 2010/04/24 11:00:00 gliboff beta $}
+\titlepage{%
+  title={\spotcolor User's Guide to \sty{Historian}},
+  subtitle={A Style For Use With the \sty{Biblatex} System of Programmable Bibliographies and Citations},
+ % url={},
+  author={Sander Gliboff},
+  email={a.historian@ymail.com},
+  revision={\rcsrevision},
+  date={\rcstoday}}
+\hypersetup{%
+  pdftitle={User's Guide to \sty{Historian}},
+  pdfsubject={A Style For Use With the \sty{Biblatex} System of Programmable Bibliographies and Citations},
+  pdfauthor={Sander Gliboff},
+  pdfkeywords={biblatex, latex, \bibtex, notes, bibliography, references, citation, turabian, chicago}}
+
+%Adjust margins, line spacing, etc.
+\usepackage[left=1.75in,top=1in,right=1in,bottom=.5in, includeheadfoot]{geometry}                   
+\emergencystretch=12pt
+\setcounter{secnumdepth}{4}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	LOAD BIBLATEX AND ASSOCIATED PACKAGES AND OPTIONS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[latin9]{inputenc}
+\usepackage[english,german,american]{babel}%``american'' goes last, as main language. Other languages optional
+\usepackage[strict,babel=once,english=american]{csquotes}%Intelligent quotation marks and block quoting. American option required by historian. 
+
+%Load the Biblatex package and call the Historian style files
+\usepackage[style=historian,sorting=nty,autocite=footnote,babel=hyphen,mincrossrefs=1,usetranslator=true,printseries,printnoterefs=true,url=false, doi=false, eprint=false]{biblatex}
+
+%Link Biblatex to your \bibtex reference database
+\bibliography{historian}
+
+%Load more of the recommended packages and options
+
+\usepackage{hyperref}%Clickable urls and cross-reference; load after biblatex.
+\urlstyle{tt}%Controls url font. Options are tt, rm, sf, or 'same' as current font
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ADJUST DOCUMENT FORMATTING TO TURABIAN SPECIFICATIONS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Change the footnote numbers from superscript to on-baseline numbering in the footnotes.
+%(Preferred, but not required)
+\makeatletter
+\renewcommand\@makefntext{\hspace*{2em}\@thefnmark. }
+\makeatother
+
+%Add empty line between footnotes, and print footnotes in same font size as main text
+\footnotesep\baselineskip
+\renewcommand\footnotesize{\normalsize}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%			BEGIN DOCUMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%   FRONT MATTER %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\printtitlepage
+%\maketitle 
+
+\begin{abstract} 
+The files \file{historian.bbx} and \file{historian.cbx} implement a bibliography and citation style for use with Philipp Lehman's \sty{biblatex} package. The style is designed for use by historians who need to generate detailed footnotes not only for ordinary books and articles, but also reprint editions, correspondence, archives and archival documents, online sources, book reviews, unpublished manuscripts, and conference presentations. The \sty{historian} style follows the conventions of \emph{The Chicago Manual of Style,} as presented in Turabian's \emph{Manual for Writers.}
+
+\end{abstract}
+
+\tableofcontents
+
+
+%  MAIN TEXT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%	INTRODUCTION
+
+\section{Introduction} 
+\sty{Historian} is a formatting style for \sty{biblatex}, by Philipp Lehman. 
+Please see Lehman's documentation\fnurl{www.ctan.org/tex-archive/help/Catalogue/entries/biblatex.html} for information on how to set up the programmable bibliography system and your \bibtex reference libraries.
+
+\sty{Historian} comprises a bibliography style file (\path{historian.bbx}) and a citation style file (\path{historian.cbx}), which use the \LaTeX macros supplied by \sty{biblatex} to implement the conventions of the ``Chicago'' style, as explained and illustrated, by Turabian. See the Turabian manual for definitive information about the formatting rules and for more examples.\autocites[][]{turabian:2007}
+
+\sty{Historian} was developed for my own use as a historian of science, with special attention to the formatting of scholarly articles, books, and archival documents. It will also format every other kind of reference discussed in the Turabian manual, but I do not have as many and varied test data for these, and errors are more likely to crop up with them. In short, this is still very much a ``beta'' version.
+
+
+\subsection{License} 
+Copyright \copyright 2010 Sander Gliboff. This package is author-maintained. 
+Permission is granted to copy, distribute and/or modify this software under the 
+terms of the LaTeX Project Public License, version 1.3c\fnurl{http://www.ctan.org/tex-archive/macros/latex/base/lppl.txt}
+
+This software is provided ``as is,'' without warranty of any kind, either expressed or implied, including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose. 
+
+\subsection{Feedback} 
+Send any feedback and bug reports by e-mail to the address given above. Include your .bib entry and cite command in your bug report.
+
+%\subsection{Acknowledgments }
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%										%
+%		PREAMBLE/PACKAGES/OPTIONS			%
+%										%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Setting Up Your Files}
+
+\subsection{Prerequisites }
+\subsubsection{Requirements}
+\begin{enumerate}
+\item A working installation of \sty{biblatex}
+\item The standard \sty{biblatex} \file{lbx}, \file{cbx}, and \file{bbx} files. \sty{Historian} uses resources from \file{english.lbx}, \file{american.lbx}, \file{verbose-inote.cbx} and -\file{.bbx}, \file{standard.bbx}, and \file{author-title.bbx}, but it is advisable simply to keep all the \sty{biblatex} files together.
+\item \bibtex as a database frontend, with record and field types set up as required by \sty{biblatex} and detailed further below.
+\item The \sty{babel} package for multilingual typesetting, with \opt{american} as the main language option. Other language options may be given \emph{in addition} to \opt{american} (the examples in this file use \opt{german} as well), but \sty{historian} requires american.
+\end{enumerate}
+
+\subsubsection{Recommended} 
+The hyperref package for hyperlinks within the document and to urls. 
+
+\sty{biblatex} and \sty{historian} should work with most \LaTeX document classes.
+See the \sty{biblatex} documentation for details. 
+
+\subsubsection{Incompatible packages}
+See the \sty{biblatex} documentation.
+
+\subsection{A Sample Preamble For Use With \sty{Biblatex} and \sty{Historian}}
+Enter your preferred \cmd{documentclass}, then:
+\begin{verbatim}
+%Required packages
+\usepackage[latin9]{inputenc} %Other encodings also ok
+\usepackage	[english,
+           	german,
+             american]        %``american'' goes last,as main option.
+            {babel} 
+\usepackage [babel=once,      %Sets quote style once for whole document
+            english=american] %American quote style
+            {csquotes}
+%Load Biblatex and Historian, with recommended options
+\usepackage
+	[style=historian,     %Loads the Historian files
+	sorting=nty,          %Sorts bibliography by name, title
+	autocite=footnote,    %Autocite command generates footnotes
+	babel=hyphen,         %Allows hyphenation rules for foreign languages to
+                      %apply to individual entries.
+                      %(The other language rules should all be American)
+	mincrossrefs=1,       %Includes all x-ref'ed entries in the bibliography
+	usetranslator=true,   %Translator's name may be substituted for
+                      %author or editor, if the latter are blank
+	printurls,printseries]%Options provided by Historian, see below
+	{biblatex}
+
+%Link Biblatex to your \bibtex database
+\bibliography{historian}
+
+%Change the footnote numbers from superscript to on-baseline 
+%numbering in the footnotes. (Preferred, but not required)
+\makeatletter
+\renewcommand\@makefntext{\hspace*{2em}\@thefnmark. }
+\makeatother
+
+%Add empty line between footnotes, and print in same
+%font size as main text
+\footnotesep\baselineskip
+\renewcommand\footnotesize{\normalsize}
+%Or in the memoir class:
+%\renewcommand{\foottextfont}{\normalsize}
+
+\end{verbatim}
+
+
+%	OPTIONS
+
+\subsection{Preamble- and Entry Options}
+In addition to the package options defined in \sty{biblatex}, \sty{historian} provides the following:
+
+\begin{optionlist}
+
+%%	PRINTURLS
+\boolitem[true]{url}\label{printurlsoption}
+The \opt{url} option is defined as in the standard style and causes \sty{historian} to print all available \bibfield{url}s and \bibfield{urldate}s. This option can be set globally in the preamble, as in the standard style, or on a per-entry basis, by entering \opt{url} (equivalent to \kvopt{url}{true}),  or \kvopt{url}{false} in the data field \bibfield{options}.
+
+\boolitem[true]{doi}
+The \opt{doi} option is defined as in the standard style and causes \sty{historian} to print all available \bibfield{doi}s and. This option can be set globally in the preamble, as in the standard style, or on a per-entry basis, by entering \opt{doi} (equivalent to \kvopt{doi}{true}),  or \kvopt{doi}{false} in the data field \bibfield{options}.
+
+\boolitem[true]{eprint}
+The \opt{eprint} option is defined as in the standard style and causes \sty{historian} to print all available \bibfield{eprint} data. This option can be set globally in the preamble, as in the standard style, or on a per-entry basis, by entering \opt{eprint} (equivalent to \kvopt{eprint}{true}),  or \kvopt{eprint}{false} in the data field \bibfield{options}.
+
+%%	PRINTSERIES
+\boolitem[false]{printseries}\label{printseriesoption}
+By default, \sty{historian} does not include the titles of book series in book citations. This option, which may be set to true or false globally in the preamble, or on a per-entry basis in the \bibfield{options} field, causes the \bibfield{series} to be printed. As above, the value \opt{true} is omissible. Entering \opt{printseries} without a value is equivalent to \kvopt{printseries}{true}.
+(This option does not affect the \bibfield{series} field of \bibtype{article} or other article-like entrytypes, which is always printed when it is not empty.)
+
+%%	PRINTNOTEREFS
+\boolitem[true]{printnoterefs}\label{printnoterefsoption}
+By default, when a citation is repeated, \sty{historian} behaves similarly to \sty{verbose-inote}, by generating either an \emph{ibid}.\midsentence or a short form with a cross-reference to the first citation (\ie \enquote{see note---.} Such crossreferences are not prescribed by Turabian and can be suppressed with the option \kvopt{printnoterefs}{false}, either globally as a package option, or on a per-entry basis in the \bibfield{options} field. (The idea behind the entry-option is that For some letters and archival documents without proper titles, the standard short forms might be ambiguous and the noteref desirable, even when it is generally turned off.)
+
+
+%%	REPRINT
+\optitem[origfirst]{reprint}{\opt{origfirst}, \opt{addorig}, \opt{addtransfrom}}\label{reprintoptions}
+This option tells \sty{historian} how to interpret and format data in the \bibtype{book}- and \bibtype{collection} fields, \bibfield{origtitle}, \bibfield{origpublisher}, \bibfield{origlocation}, and \bibfield{origdate}, which are used when citing a reprint edition or translation. (\sty{Historian} does not use \bibfield{origlanguage}.)
+
+Turabian allows for several different ways of printing publication data from both the original and the reprint/translation in the same entry, and \sty{historian} implements the following options:
+
+\begin{valuelist}
+
+\item[origfirst]
+When this option (or no option at all) is set, \sty{historian} gives the original publication data first and adds the reprint data, all in one block, as follows:\ldots (origlocation: origpublisher, origdate; repr., location: publisher, year). \bibfield{Origtitle} is not used. This option can be set globally in the preamble, or on a per-entry basis in the \bibfield{options} field.
+
+\item[addorig] This option cites the reprint first, and adds the original publication data at the end. Unlike \opt{origfirst}, the default option, \opt{addorig} prints \bibfield{origtitle}. The original publishing data are printed as follows:\ldots Originally published as \emph{origtitle} (origlocation: origpublisher, origdate).  This option can be set globally in the preamble, or on a per-entry basis in the options field.
+
+%\item[addtransas] This option is for citing books and their translations in the same note. It should not be set globally, but only in book entries that include translation date in the orig-fields. Under this option, the original edition is printed first (using the fields origtitle, origlocation and origdate, and the title and publication data of the translation are added at the end. Again there is no separate field for the original publisher:\ldots \emph{Title}. Origlocation, origdate. Translated by translator as \emph{title} (location: publisher, year).
+
+\item[addtransfrom] This option is for citing translated books and adding their original titles and publication data. It cannot be set globally, but only on a per-entry basis in the options field. It is only appropriate for \bibtype{book} entries that include translation data in the \bibfield{orig}-fields. Under this option, the translation data are printed first, then the following:\ldots Translation of \emph{origtitle} (origlocation: origpublisher, origdate). 
+
+
+\end{valuelist}
+
+%%	ANNOTATED BIBLIOGRAPHIES
+
+\boolitem[false]{annotation}\label{printannotationsoption}
+This option, which may be set to true or false globally in the preamble, or on a per-entry basis in the \bibfield{options} field, causes the \bibfield{annote} field (or the contents of an external annotation file---see the \sty{biblatx} documentation) to be printed in the bibliography. The value \opt{true} is omissible. Entering \opt{annotation} without a value is equivalent to \kvopt{annotation}{true}.
+For an example of an entry with the entry option \opt{annotation}, see\citeauthor[][]{evans1996fraud-and-illusion} in the bibliography.
+
+
+
+%%	USESHORTAUTHORS
+\boolitem[true]{shortauthor}\label{useshortauthorssoption}
+Set the option \opt{shortauthor} or \kvopt{shortauthor}{true}, in order to substitute the \bibfield{shortauthor} for the \bibfield{author} in the footnotes. This option can be set only on a per-entry basis, in the \bibfield{options} field. It is intended mainly for use with public documents.
+
+
+%%	USESHORTTITLES
+\boolitem[true]{shorttitle}\label{useshorttitlesoption}
+Set the option \opt{shorttitle} or \kvopt{shorttitle}{true}, in order to substitute the \bibfield{shorttitle} for the \bibfield{title} in the footnotes. This option can be set only on a per-entry basis, in the \bibfield{options} field. It is intended mainly for use with public documents.
+
+
+\end{optionlist}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%										%
+%		CITATION COMMANDS				%
+%										%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Citation Commands}\label{citecmds}
+The citation commands of \sty{historian} are based on those of \sty{biblatex}'s \sty{verbose-inote} style and handle repeated citations mostly in the same way, using ``ibid.''\midsentence or a short form and a cross-reference to the first citation. \sty{Historian} has a few special short forms prescribed by Turabian for certain types of entries, and it also allows the cross-referencing to be turned off, using the \kvopt{printnoterefs}{false} (see above). 
+
+\sty{Historian} is intended primarily for generating footnotes (and their corresponding bibliography entries), using \cmd{footcite}. The \cmd{cite} command is also available, but should not be needed (except perhaps within a complex footnote, in which case it will call up the \cmd{footcite} routines. 
+
+If the package options are set as in this demo file, the style-independent commands, \cmd{autocite} and \cmd{autocites}  will execute \cmd{footcite}. In the examples below, the variant \cmd{autocites} is used almost exclusively, which also allows for multiple citations in one command.
+
+\subsection{Standard Footnoting Commands}
+
+\begin{ltxsyntax}
+
+\cmditem{autocite}[prenote][postnote]{key}
+
+Or, for more complex notes, use the multicite form: 
+
+\cmditem{autocites}(pre)(post)[pre][post]{key}|...|[pre][post]{key}
+
+
+Also useful is the  \cmd{blockcquote} command provided by the \sty{csquote} package, which formats a quotation and its associated citation at the same time. 
+
+\cmditem{blockcquote}[prenote][postnote]{key}[<punctuation>][<quotation>]
+
+The \path{historian.cbx} file sets the \cmd{SetCiteCommand} parameter to make the \cmd{blockcquote} execute a \cmd{footcite}.
+
+\subsection{Special Form for In-Line Citations}
+
+Turabian allows for occasional use of author-title citations, in parentheses. For this purpose, \sty{historian} provides a special version of the \cmd{parencite} command:
+
+\cmditem{parencite}[prenote][postnote]{key}
+
+In \sty{historian}, \cmd{parencite} generates only author-title citations and puts them in parentheses.
+
+All the other citation commands from the \sty{verbose-inote} style are also available in \sty{historian}, with little or no modification. They are not demonstrated in this file, because they do not seem to be needed under Turabian rules.
+
+\subsection{Special Forms With Modified Punctuation}
+
+In addition, \sty{historian} provides the following citation commands for special situations that might require different punctuation from the usual \cmd{footcite} command:
+
+\cmditem{footcitecolon}[prenote][postnote]{key}
+ 
+For full conformity to Turabian guidelines, when using the \bibfield{postnote} argument to cite specific pages from an entry of type \bibtype{article}, the full page range of the article should be suppressed and the \bibfield{postnote} should be preceded by a colon, instead of the usual comma.  In such cases, \cmd{footcitecolon} should be used for citing specific pages of an \bibtype{article} in the \bibfield{postnote} argument. It changes the comma to a colon and suppresses the \bibtype{article}'s \bibfield{pages} field. Otherwise it is the same as \cmd{footcite}.
+
+\cmditem{footcitedot}[prenote][postnote]{key}
+
+Same as \cmd{footcite}, but generates a period before \bibfield{postnote}, instead of a comma. May be useful when \bibfield{postnote} contains a full sentence of commentary instead of a page range.
+
+\cmditem{footcitenodot}[prenote][postnote]{key} 
+
+Same as \cmd{footcite}, but generates no punctuation (and no space) at all before \bibfield{postnote}. Any desired punctuation can be entered manually. Where no punctuation is needed, just add the space.
+
+\cmditem{citecolon, citedot, citenodot}\ %
+
+Same as the previous three, but do not automatically generate a footnote. Intended for use within a \LaTeX \cmd{footnote} command,\footnote{If used in the main text, they will still work, but repeated citations might not be handled as you expect.} in cases where close manual control of the punctuation is needed.
+
+\cmditem{footcitedots}[prenote][postnote]{key} 
+
+A multicite command with periods separating the individual citations instead of semicolons. May be useful for long footnotes with discursive comments in the \bibfield{postnote}s
+
+\subsection{Special Forms for Annotations}\label{citeannote}
+
+\cmditem{citeannote}{key}
+
+For annotated citations in the main text---not required under Turabian, but included for convenience. Prints the reference, followed by the \bibfield{annote} field (or the contents of an external annotation file---see the \sty{biblatx} documentation). Allows for greater flexibility in sorting the references and interspersing text than in annotated bibliographies.\footnote{But caution when citing a reference more than once; the citation tracker tracks in-text citations separately, and makes cross-references to section numbers instead of footnote numbers. It may be less confusing to suppress to cross-refereces, using the option \kvopt{printnoterefs}{false}.}
+Example:
+
+\citeannote[][]{burkholder1992new-phantom-dinoflag}
+
+
+\end{ltxsyntax}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%										%
+%		ENTRYTYPES AND FIELDS				%
+%										%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Data Types}
+\subsection{Entry Fields}
+It is assumed that users of \sty{historian} are already familiar with \sty{biblatex} and its standard bibliography styles, so only differences in field usage is noted in this section. See the \sty{biblatex} documentation for the full list of fields and further explanation.
+
+\begin{fieldlist}
+
+%\fielditem{abstract}{literal} 
+%Not used.
+%
+%\fielditem{annotation}{literal}
+%Not used.
+
+\fielditem{authortype}{key}
+
+The type of author. Flags certain author fields for special handling by \sty{historian}.	   
+\begin{valuelist}
+\item [anonymous] Enter ``anonymous'' for authors whose names do not appear in the publication, but are known or surmised.
+\item[anonymous?] Add the question mark when authorship is uncertain.
+\item [redundant] Enter ``redundant'' when the author's name is also part of the title, and therefore redundant. \sty{Historian} omits such names in the footnotes and begins the reference with the title instead. The name and title both appear in full in the bibliography, however.
+\item[journal] Special treatment of articles that are to be attributed to the journal as a whole, instead of to a named author.
+\end{valuelist}
+
+\fielditem{booktitle}{literal}
+Used not only for books, but for other media, such as\bibtype{audio} recordings, when the \bibfield{title} field refers to an individual track, or \bibtype{online} sources that are contained within larger pages or sites that also need to be named in the citation.
+
+\fielditem{chapter}{literal}
+
+\sty{Historian} will print chapter numbers in \bibtype{inbook}, \bibtype{incollection}, and \bibtype{inproceedings}, but page ranges are preferred under Turabian guidelines.
+
+\fielditem{editortype}{key}
+
+The type of editor. This field will affect the string used to introduce the editor. Currently supported types are \enquote{editor} and \enquote{compiler}. \sty{Historian} adds \enquote{corporate}, for the special case of a \bibtype{proceedings} or \bibtype{inproceedings} in which the editor and the sponsoring organization are the same. In such cases, the editor string and the organization are suppressed.
+
+\fielditem{eid}{literal}
+
+Not printed by \sty{historian}.
+
+\fielditem{eventdate}{date}
+
+The date of the event named in \bibfield{eventtitle} (see below).
+
+\fielditem{eventtitle}{literal}
+
+The title of a conference, symposium, etc. in \bibtype{proceedings}, \bibtype{inproceedings} and \bibtype{unpublished} entries, or of a recorded concert in \bibtype{audio}. Use \bibfield{eventdate} and \bibfield{venue} for further information about the event.
+
+\fielditem{file}{verbatim}
+Not printed by \sty{historian}.
+
+\fielditem{howpublished}{literal}
+
+Publication data for entries without a conventional publisher. When processing any of the book-like entrytypes, including \bibtype{misc} and \bibtype{booklet}, \sty{historian} always tries to use \bibfield{publisher} first. If \bibfield{publisher} is empty, it then looks for an \bibfield{institution},and if that fails, it prints the contents of \bibfield{howpublished}. Non-print entrytypes such as \bibtype{audio}, \bibtype{video}, or \bibtype{online} will print out both the \bibfield{publisher} and \bibfield{howpublished} fields.
+
+\listitem{institution}{literal}
+
+The name of a university or some other institution, depending on the entry type. Treated like a publisher in the book-like entrytypes (see \bibfield{howpublished}, above).
+
+\fielditem{isan}{literal}
+
+ Not printed out by \sty{historian}.
+
+\fielditem{isbn}{literal}
+
+Not printed.
+
+\fielditem{ismn}{literal}
+
+Not printed.
+
+\fielditem{isrn}{literal}
+
+Not printed.
+
+\fielditem{issn}{literal}
+
+Not printed.
+
+\fielditem{iswc}{literal}
+
+Not printed.
+
+\listitem{language}{key}
+
+Not printed.
+
+\fielditem{library}{literal}
+
+The name of the library or collection where an archival document can be found. Used in the custom entrytypes for archival sources, \bibtype{customa}, \bibtype{customd}, and \bibtype{letter}.
+
+\fielditem{location}{list}
+
+Used not only in \bibtype{book}s and book-like entrytypes, but also in\bibtype{Article}s of entrysubtype ``newspaper.''
+
+\fielditem{nameaddon}{literal}
+
+An add-on to be printed immediately after the author name. Use for an alias or pen name, or ``[pseud.]'' indicate that the name is a pseudonym.
+
+\fielditem{origlanguage}{key}
+
+Not printed.
+
+\listitem{origlocation}{literal}
+
+If the work is a translation or reprint, the \bibfield{location} of the original edition. 
+
+\listitem{origpublisher}{literal}
+
+If the work is a translation or reprint, the \bibfield{publisher} of the original edition.
+
+\fielditem{origtitle}{literal}
+
+If the work is a translation or reissue of a book under a new title, the \bibfield{title} of the original work.
+
+\fielditem{origdate}{range}
+
+If the work is a translation or reprint, the year of publication of the original edition. 
+
+\fielditem{pagetotal}{literal}
+
+Not printed.
+
+\fielditem{pubstate}{key}
+
+The publication state of the work, e. g.,?in press? or ?submitted? (to a journal). Predfined bibstrings avaioable for keys ``inpress'' and ``submitted.'' Other texts, such as may also be written out in this field
+
+\sty{Historian} prints the contents of this field only if \bibfield{year} or \bibfield{date} are both empty.
+
+
+\fielditem{reprinttitle}{literal}
+
+Not printed.
+
+\fielditem{shortjournal}{literal}
+
+Not printed.
+
+\fielditem{shortseries}{literal}
+
+Not printed.
+
+\fielditem{type}{key}
+
+The type of a \bibfield{manual}, \bibtype{booklet},\bibtype{misc}, \bibtype{unpublished}, \bibtype{customd}, \bibtype{letter}, \bibfield{report}, or \bibfield{thesis}. (Also occurs in \bibfield{patent}, which is not fully supported by \sty{historian}.)
+
+\fielditem{venue}{literal}
+
+In the \bibtype{proceedings} and \bibtype{inproceedings} entries, the location of the conference is given in the \bibfield{venue} field. In \bibtype{letter} and \bibtype{customd} this field is used for the place where the letter or other document was written.
+
+\fielditem{version}{literal}
+
+Not used in \bibtype{article}.
+
+\fielditem{year}{literal}
+
+From \sty{biblatex} version 9 on, the \bibfield{date} field is preferred, but \bibfield{year} can still be used and has the advantage of being able to handle non-numeric data, so it can be used for imprecise dates such as ``ca. 1900'' or ``1900?'' or for texts such as ``forthcoming'' or ``in press.''
+
+\end{fieldlist}
+
+\subsection{Special fields}
+
+See the \sty{biblatex} documentation.
+
+\subsection{Custom fields}
+
+\sty{Biblatex} provides some custom fields for use in special bibliography styles. The following are implemented in \sty{historian}:
+
+\begin{fieldlist}
+
+\listitem{nameb}{name}
+
+In special cases, where a \bibtype{collection} entry represents an edited volume within a multivolume set, and the volume and the set have different editors, use custom name field \bibfield{b} (b, for big editor)  for the editor of the multivolume set. The volume editor goes in the standard \bibfield{editor} field.
+
+\fielditem{namebtype}{key}
+
+Similar to \bibfield{authortype} and \bibfield{editortype} but referring to the field\bibfield{nameb}. May be used to enter a string with to describe the function of the editor named in \bibfield{nameb}, for example, ``general editor.''
+
+\listitem{namec}{name}
+
+In letters or other communications of entrytypes \bibtype{letter} or \bibtype{customd} use the custom name field \bibfield{c} (c, for correspondent) for the name of the recipient of the communication. The name of the sender in the standard \bibfield{author} field.
+
+\fielditem{usera}{literal}
+
+Custom field \bibfield{a} (a, for article or archive) has two unrelated uses
+
+One use is in \bibtype{inbook}, \bibtype{incollection} and \bibtype{incollection}-like entrytypes. In the case of articles or other short works reprinted in anthologies, this field gives the original year of publication---not of the collection as a whole, which would go in \bibfield{origdate}, but of the shorter work referred to in the \bibfield{title} field. In footnotes, \bibfield{usera} appears in parentheses after \bibfield{title}. In the bibliography, the parentheses are omitted.
+
+It is also used for call numbers or other codes needed for locating archives or other collections in \bibtype{customa} entries, or in \bibtype{online}, when the target of an \bibfield{xref}.
+
+\fielditem{userb}{literal}
+
+User-defined field \bibfield{b} (\emph{b} for book), is used in \bibtype{inbook}, \bibtype{incollection} and \bibtype{incollection}-like entrytypes, in rare cases of multilevel nested citations, where another year-field is needed in addition to \bibfield{origdate} and \bibfield{usera}. \bibfield{userb} gives the year of original publication of the work referred to in \bibfield{booktitle}. (\bibfield{Origdate} then goes with \bibfield{maintitle}, and \bibfield{usera} with \bibfield{title}.) In footnotes, \bibfield{userb} appears in parentheses after \bibfield{booktitle}. In the bibliography, the parentheses are omitted.
+
+
+
+\fielditem{userc}{literal}
+
+Custom field \bibfield{c} (c, for catalog), is for a special addendum to the publishing information, which is printed only in the bibliography, not the footnotes. Intended mainly for exhibition catalogs, to give additional information about the title and venue of the exhibit.
+
+
+\fielditem{userd}{literal}
+
+Custom field \bibfield{d} (d, for document), is for call numbers or other codes needed for locating individual documents (of entrytype \bibtype{customd} or \bibtype{letter}) within an archive or other \sty{xref}-ed collection. Not to be confused with \bibfield{usera}, which applies to the archive as a whole.
+
+Also used for inventory or catalogue numbers of audio recordings or names or paths of online multimedia files.
+
+\fielditem{usere}{literal}
+
+Custom field \bibfield{e} (e, for English) is used to provide translations of foreign-language titles. 
+
+
+
+\end{fieldlist}
+
+\subsubsection{Field aliases}
+
+See the \sty{biblatex} documentation.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 					ENTRYTYPES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Entrytypes}\label{entrytypes}
+
+The following is a list of the bibliographic entry types, as supported by the \sty{historian} style. The distinction between required and optional fields is taken over from the \sty{biblatex} documentation, but the system is actually quite tolerant of empty fields, even if they are listed as ``required.'' 
+The \bibfield{author} field, for example, is nominally required, but anonymous sources may be entered with the author field simply left blank. (Anonymous sources are formatted with the title first and are alphabetized by title.)
+
+
+Some entry types have subtypes, distinguished by the contents of the field \bibfield{entrysubtype}.
+
+
+\begin{typelist}
+
+%%%%%     ARTICLE     %%%%%%%%%%%%
+
+
+\typeitem{article}
+An article in a journal, magazine, newspaper, or other periodical which forms a self-contained unit with its own title. 
+%For book reviews, the more specialized entrytype \bibtype{review} may also be used.
+
+\opt{Entrysubtype}s of \bibtype{article}:
+\begin{valuelist}
+\item[default] Leave \bibfield{entrysubtype} blank for articles in scholarly journals and other periodicals with numbered volumes.
+\item[``magazine''] For articles in magazines (punctuated differently, and uses dates instead of volume numbers).
+\item[``newspaper''] For newspaper articles (like magazine, but appears in footnote only, not in bibliography; adds city, and omits page numbers).
+\item[``gov''] For government documents (\eg congressional publications, bills, resolutions) published in journal-like series such as the \emph{Congressional Record}.
+\item[``from,'' ``to,'' and ``none''] See \bibtype{inbook}, below
+\end{valuelist}
+
+\reqitem{author, title, journaltitle, date}
+\optitem{editor, translator, redactor, annotator, commentator, authortype, nameaddon, type, subtitle, titleaddon, usere, journalsubtitle, issuetitle, issuesubtitle, location, series, volume, number, issue, year, pages, note, addendum, doi, eprint, eprinttype, url, urldate}
+
+Usage notes: \bibfield{titleaddon} is printed after the title and subtitle, but outside the quotation marks. Use it for adding the name of the department, column, or type of article (\eg, ``editorial,'' or ``obituary for \dots.'') Until the entrytype \bibtype{review} is implemented, it should also be used for the title and author of the book under review (e.g. ``book review of\dots'').
+
+The \bibfield{note} field is printed between the issue title and the journal title and is intended for information about the issue, such as ``special issue.''
+
+Enter ``journal'' in \bibfield{authortype} in special cases, where the journal itself functions as the author of an otherwise anonymous piece.
+
+In citations of subtype ``gov,'' \bibfield{title} is italicized as well as \bibfield{journaltitle}. \bibfield{Type} is also intended for use with government documents (even if they do not require italicized titles and subtype ``gov''). It goes before \bibfield{title} and is printed in roman type.
+
+%%%%%     ARTWORK     %%%%%%%%%%%%
+
+
+\typeitem{artwork}
+Works of the visual arts such as paintings, sculpture, and installations.
+
+Same as \bibtype{customd}.
+
+
+%%%%%		AUDIO		%%%%%
+
+\typeitem{audio}
+
+Audio recordings, typically on audio cd, dvd, or audio cassette. See also \bibtype{music}.
+
+\opt{Entrysubtype}s of \bibtype{audio}:
+\begin{valuelist}
+\item[default] Leave \opt{entrysubtype} blank for most sorts of recordings.
+\item[``book''] For book-like italicization of titles, \eg of audiobooks or recordings of plays or other long pieces.
+\end{valuelist}
+
+\reqitem{author, title, date}
+\optitem{subtitle, titleaddon, booktitle, note, venue, type, series, authortype, nameaddon, organization, institution, publisher, howpublished, eventtitle, eventdate, usera, userd, eprint, eprinttype, doi, url, urldate, addendum, year, pubstate}
+
+
+Usage notes: There are no dedicated fields for the names and roles of performers, directors, producers, etc. Write these out in the \bibfield{note} field.
+The \bibfield{howpublished} field can be used for distributors, and \bibfield{publisher} for production companies; \bibfield{venue}, \bibfield{eventtitle} and \bibfield{eventdate} for concerts and other non-studio recordings; \bibfield{type} for the recording medium; and \bibfield{usera} and \bibfield{userd} for collection and catalog numbers.
+
+
+
+
+%%%%%     BOOK     %%%%%
+
+\typeitem{book}
+A book with one or more authors where the authors share credit for the work as a whole. For anthologies or other edited books, use entrytype \bibtype{collection} (or, where appropriate, \bibtype{proceedings}). 
+
+
+\opt{Entrysubtype}s of \bibtype{book}:
+\begin{valuelist}
+\item[default] Leave \bibfield{entrysubtype}  blank for conventionally published books.
+\item[``online''] For electronic books or books for which urls and other electronic locators should always be printed. This subtype overrides the option \kvopt{printurls}{false}.
+\item[``classic''] For classics or other well-known and widely available and standardized texts, for which it is not necessary to give full publishing information.
+\item[``canon''] Similar to ``classic,'' but for canonical literary works and other well-known books and plays, for which full publishing details are not needed.
+\item[``biblical''] Similar to ``classic,'' but for sacred texts whose titles do not need to be italicized.
+\end{valuelist}
+
+\reqitem{author, title, date}
+\optitem{editor, translator, redactor, annotator, commentator, introduction, foreword, afterword, authortype, nameaddon, subtitle, titleaddon, maintitle, mainsubtitle, maintitleaddon, usere, volume, part, edition, volumes, series, number, note, publisher, location, origtitle, origlocation, origpublisher, origdate, userb, chapter, pages, addendum, doi, eprint, eprinttype, url, urldate, year, pubstate}
+
+Usage notes: Use the \opt{reprint} option to tell \sty{historian} how to interpret and where to print the original publication data from the fields \bibfield{origtitle}, \bibfield{origlocation}, \bibfield{origpublisher}, and \bibfield{origdate}. 
+
+	
+%%%%%		BOOKINBOOK		%%%%%
+
+\typeitem{bookinbook} Same as \bibfield{entrysubtype} ``volume'' of \bibtype{inbook}.
+
+	
+%%%%%		BOOKLET		%%%%%
+
+\typeitem{booklet} 
+
+A book-like work without a conventional publisher or sponsoring institution.
+
+Turabian does not distinguish between books and booklets or pamphlets, so the differences under\sty{historian} are minor.
+
+\opt{Entrysubtype}s of \bibtype{booklet}: Same as \bibtype{book}
+\reqitem{author/editor, title, date}
+\item Optional fields: same as \bibtype{book}, plus \bibfield{howpublished}, \bibfield{type}
+
+Usage notes: Entrytype \bibtype{book} (or \bibtype{collection} for booklets with editors instead of authors) can almost always be used instead instead of \bibtype{booklet}, even for pamphlets, mimeographed or photocopied items, or products of desktop publishing. The \bibfield{publisher} field can hold phrases such as ``privately published,'' ``by the author,'' or ``mimeographed.''
+
+Example of pamphlet as \bibtype{book}.\autocites[Here is a government pamphlet, entered and formatted as \bibtype{book}, using the \bibfield{series} and \bibfield{number} fields for the government division and the pamphlet number, and the \bibfield{publisher} field for the state board:][]{992book} Entrytypes \bibtype{report, unpublished, or misc} might also be appropriate in individual cases.
+
+Example of pamphlet as \bibtype{booklet}. Publishing information will be taken from \bibfield{howpublished}, as long as \bibtype{publisher} is empty. the field \bibfield{type} can also be used to describe the item, if it is not a book.\autocites[Same pamphlet as in the previous note, but entered as a {booklet}, with ``pamphlet'' in the type field, and the board and division, etc., in the howpublished field:][]{992booklet} 
+
+%%%%%		COLLECTION		%%%%%
+
+\typeitem{collection}
+ A book with multiple, self-contained contributions by distinct authors, each with its own title. The work as a whole has no author but it will usually have an editor. 
+
+\opt{Entrysubtype}s of \bibtype{collection}: ``online,'' as described in \bibtype{book}, above.
+
+\reqitem{editor, title, date}
+
+\optitem{Same as in \bibtype{book}.}
+
+
+%%%%%		IMAGE		%%%%%
+
+\typeitem{image} 
+
+Visual images and similar media. Same data entry and formatting as \bibtype{customd}
+
+%%%%%		INBOOK		%%%%%
+
+\typeitem{inbook} 
+A section of a book which forms a self-contained unit with its own title.
+\opt{Entrysubtype}s of \bibtype{inbook}:
+\begin{valuelist}
+\item[default] Leave \opt{entrysubtype} blank for most sorts of titled book sections.
+\item[``to''] For references to introductions, forewords, prefaces, etc., ``to'' the book.
+\item[``from''] For references to generically titled sections ``from'' the book.
+\item[``none''] To suppress the linking preposition altogether.
+\item[``volume''] For references to entire volumes in multivolume sets, when the volume has its own distinct author.
+\item[``canon''] For references to canonical English literature and other standard texts, for which full publication data are omissible.
+\item[``video''] For the special case of a part of a video recording.
+\end{valuelist}
+	
+\reqitem{author, title, booktitle, date}
+\item Optional fields: same as \bibtype{book}, plus \bibfield{bookauthor}, \bibfield{booksubtitle}, \bibfield{booktitleaddon}, \bibfield{xref}, and, for entrysubtype ``video,''also \bibfield{type}.
+
+Usage notes: Entrytype \bibtype{inbook} has fields for all the data required to cite both the book section and the book from which it comes, as in the standard \sty{biblatex} styles, but \sty{historian} also offers a two-entry option. The book data may be entered in a \bibtype{book} entry of its own, and the \bibtype{inbook} is then linked to it by means of its \bibfield{xref} field. The entry key of the \bibtype{book} goes in the \bibfield{xref} of the \bibtype{inbook}. (If \bibfield{xref} is empty, \sty{historian} will attempt to link through the \bibfield{crossref} field, but \bibfield{xref} is preferred. If no cross-reference is found, \sty{historian} uses only what is in the \bibtype{inbook} entry.)
+
+With \bibfield{entrysubtype}s \opt{to} and \opt{from}, use \bibfield{titleaddon} to enter the generic titles, such as introduction, or foreword, so that they do not go in quotation marks. 
+
+
+%%%%%		INCOLLECTION		%%%%%
+
+\typeitem{incollection}
+A contribution to a collection which forms a self-contained unit with a distinct author and title. The \bibfield{author} refers to the \bibfield{title}, the \bibfield{editor} to the \bibfield{booktitle}, \ie the title of the collection.
+
+\opt{Entrysubtype}s of \bibtype{incollection}:
+\begin{valuelist}
+\item[default] Leave \opt{entrysubtype} blank for most sorts of titled book sections.
+\item[``to''] For references to introductions, forewords, prefaces, etc., ``to'' the book.
+\item[``from''] For references to generically titled sections ``from'' the book.
+\item[``none''] To suppress the linking preposition altogether.
+\item[``volume''] For references to entire volumes in multivolume sets, when the volume has its own distinct author.
+\item[``canon''] For references to canonical English literature and other standard texts, for which full publication data are omissible.
+\item[``gov''] For the special case of government documents, collected into book form and requiring italicized titles.
+\end{valuelist}
+
+\reqitem{author, editor, title, booktitle, date}
+
+\item Optional fields: same as \bibtype{inbook}, but without \bibfield{bookauthor} and with \bibfield{nameb}, \bibfield{namebtype}
+
+
+Usage notes: The two additional name-fields are for the special case of an edited volume within a multivolume edited collection. If the single volume and the multivolume set have different editors, a second editor field is needed. Use the custom name field, nameb (b, for big book editor) for the editor of the set as a whole. Use the associated namebtype field for a brief descriptor of the editor's role, such as ``general editor'' or ``editor in chief,'' or leave blank and the usual ``ed.''/``editor'' strings will be generated.
+
+As is the case with \bibtype{inbook} and  \bibtype{book}, above, an \bibtype{incollection} entry may contain either the actual publication data from the collection or a cross-reference (in \bibfield{xref}) to the \bibtype{collection} entry. 
+
+
+%%%%%		INPROCEEDINGS		%%%%%
+
+\typeitem{inproceedings}
+
+An article in a conference proceedings. This type is similar to \bibtype{incollection}, but with some additional fields.
+
+\opt{Entrysubtype}s of \bibtype{inproceedings}: same as \bibtype{incollection} and \bibtype{inbook}
+
+\reqitem{author, editor, title, booktitle, date}
+\item Optional fields: same as \bibtype{incollection}, plus \bibfield{eventtitle}, \bibfield{eventdate}, \bibfield{organization}, \bibfield{venue}, \bibfield{editortype}
+
+Usage notes: The additional fields are \bibfield{organization}, for the organization, corporation, or institution that sponsored the conference or other event whose proceedings were recorded; \bibfield{venue}, for the city where the  conference or event was held, and \bibfield{eventtitle} and \bibfield{eventdate} for the name and date of the conference or event. There is also special handling for corporate editors, when ``corporate'' is entered in  \bibfield{editortype}.
+
+
+%%%%%		INREFERENCE		%%%%%
+
+\typeitem{inreference}
+For entries in well-known encyclopedias, dictionaries, and other reference books. Similar to  \bibtype{incollection}, except that it is intended for footnotes only and does not print complete publication information.
+
+\opt{Entrysubtype}s of \bibtype{inreference}: same as \bibtype{incollection}
+
+\reqitem{author, editor, title, booktitle, date}
+
+\item Optional fields: same as \bibtype{incollection}.
+
+
+%%%%%		JURISDICTION		%%%%%
+
+\typeitem{jurisdiction}
+For references to court decisions, the Constitution, or other legal documents with titles in roman type and minimal publishing data. Intended for footnotes only. Uses special short forms in repeated citations.
+
+\reqitem{title}
+
+\optitem{type, subtitle, titleaddon, note, pages, institution, date, year, pubstate, addendum, doi, eprint, eprinttype, url, urldate}
+
+Usage notes: \bibfield{Institution} is intended for the name of the court deciding a case. \bibfield{Type} and \bibfield{titleaddon} are available for information that might need to precede or follow the title.
+
+
+
+%%%%%		LEGAL		%%%%%
+
+\typeitem{legal}
+For references to statutes, especially those published in journal-like series. Intended for footnotes only. Uses special short forms in repeated citations.
+
+
+\reqitem{title}
+
+\optitem{type, subtitle, titleaddon, note, pages, date, year, pubstate, journaltitle, journalsubtitle, volume, part, number, issue, issuetitle, issuesubtitle, series, addendum, doi, eprint, eprinttype, url, urldate}
+
+
+%%%%%		LEGISLATION		%%%%%
+
+\typeitem{legislation}
+For public documents of all sorts, including, but not limited to legislation (\eg government reports, proclamations, treaties, congressional hearings).
+
+
+\opt{Entrysubtype}s of \bibtype{legislation}: none
+
+
+\reqitem{author, title}
+
+\optitem{type, subtitle, edition, note, institution, publisher, howpublished, date, addendum, doi, eprint, eprinttype, url, urldate}
+
+Usage notes: for the sake of flexibility, many optional fields are available for identifying data. They are printed in the order given above.
+
+%%%%%		LETTER		%%%%%
+
+\typeitem{letter}
+
+Similar to \bibtype{customd}, except that the short form for repeated citations of the same \bibtype{letter} includes the name of the recipient.
+
+Use for personal correspondence such as letters, emails, memoranda, or any document that has a recipient as well as an author. (Consider using \bibtype{customd} for communications that must be identified by some sort of title, because, \eg the sender or recipient is unknown). 
+
+\bibtype{Letter} may be used for letters found either in archives or in published collections. Use the \sty{xref} feature of\sty{biblatex} to link the individual letter to a collection of entrytype \bibtype{customa} (for archives) or \bibtype{collection} (for published collections).  (Note that such cross-referencing will make additional compiler runs through \sty{bibtex} and \LaTeX necessary.
+
+\sty{Historian} adds all \bibtype{letter}s  to the ``footnoteonly'' category, but the cross-referenced \bibtype{customa} or \bibtype{collection} is intended for the bibliography. If no crossreference is made, \sty{historian} looks for archive/collection data in the \bibtype{letter} entry itself
+
+\reqitem{author, namec, xref}
+\optitem{title, titleaddon, date, year, pubstate, note, venue, type, volume, pages, library, userd, authortype, nameaddon, volume, pages}
+
+Usage notes: Use \bibfield{namec} for the recipient of a letter. \bibfield{Volume} and \bibfield{pages} are for locating the item within a cross-referenced \bibtype{collection}, \bibfield{userd} for locating the item within a cross-referenced \bibtype{customa} archive.
+For non-standard, non-numeric dates, use \bibfield{year} or \bibfield{pubstate}. Additional explanation of the dating can go in the\bibfield{note} field, which comes right after the date.
+
+%%%%%		MANUAL		%%%%%
+
+\typeitem{manual}
+
+Technical or other documentation, not necessarily in printed form. May have an \bibfield{author} or an \bibfield{editor} (or neither). Historian treats \bibtype{manual} much like \bibtype{book}, but with some differences in the fields that are available.
+
+\reqitem{author/editor, title, date}
+\item Optional fields: same as \bibtype{book}, plus \bibfield{type}, \bibfield{version}, \bibfield{organization}
+
+
+%%%%%		MISC		%%%%%
+
+\typeitem{misc}
+
+A fallback type for entries which do not fit into any other category, but are more-or-less book-like (\ie, not contained in another publication). 
+Use the field \bibfield{howpublished} to supply publishing information in free format, if applicable. The field \bibfield{type} may be useful as well. \bibfield{Author}, \bibfield{editor}, and \bibfield{date} are omissible. 
+\sty{Historian} formats \bibtype{misc} much like \bibtype{book}, \bibtype{booklet}, or \bibtype{manual}, \ie, with italicized title and publishing data in parentheses in footnotes, but there are some differences in the fields that are available.
+
+\reqitem{author/editor, title, date}
+\item Optional fields: same as \bibtype{book}, plus \bibfield{howpublished}, \bibfield{type}, \bibfield{version}, \bibfield{organization}
+
+Usage notes: Publishing data is taken from \bibfield{howpublished} only when \bibfield{publisher} is empty.
+
+
+
+%%%%%		MOVIE		%%%%%
+
+\typeitem{movie} Same as \bibtype{performance}.
+
+
+%%%%%		MUSIC		%%%%%
+
+\typeitem{music}
+
+Musical recordings, typically on audio cd, dvd, or audio cassette. Same as \bibtype{audio}.
+
+
+%%%%%		ONLINE		%%%%%
+
+\typeitem{online}
+
+An online resource. \bibfield{author}, \bibfield{editor}, and \bibfield{date} are omissible. This entry type is intended for sources such as web sites that are intrinsically online resources and cannot be adapted easily for entry as \bibtype{book} or \bibtype{article}. All available online locators are always printed out for entries of this type, regardless of how the options are set.
+
+All entry types support the \bibfield{url} field and other online locators, so there is no need to enter everything that is online as \bibtype{online}. For example, when adding an article from a journal which happens to be available online, use the \bibtype{article} type and its \bibfield{url} field (and set the \opt{url}, or \opt{doi} or \opt{eprint} options accordingly).
+
+\opt{Entrysubtype}s of \bibtype{online}:
+\begin{valuelist}
+\item[default] Leave \opt{entrysubtype} blank for most web pages and other online sources, whose titles are to go in quotation marks.
+\item[``blog''] For references to blog entries and comments.
+\item[``database''] For online databases, whose titles are to be printed in roman type.
+\item[``book''] For book-like italicization of titles.
+\end{valuelist}
+
+\reqitem{author/editor, title, date, url}
+\optitem{subtitle, titleaddon, booktitle, version, note, organization, institution, publisher, howpublished, type, usera, userd, entrysubtype, date, day, month, year, pubstate, addendum, urldate}
+
+Usage notes: Turabian calls for access dates to go with all urls, so use \bibfield{urldate}.
+
+The amount of information required to characterize a web site, its authors and maintainers varies greatly.  \sty{Historian} therefore supports all the available \sty{biblatex} fields for organizations, institutions, and publishers.
+
+
+%%%%%		PATENT		%%%%%
+
+\typeitem{patent} A patent or patent request. 
+
+Patents are not covered by Turabian and therefore not implemented in \sty{historian}. 
+%Entries of this type will be passed to the verbose-inote style of \sty{biblatex} for formatting. See the \sty{biblatex} documentation for details.
+
+%\reqitem{author, title, number, date}
+%\optitem{holder, subtitle, titleaddon, type, version, location, note, date, day, month, year, pubstate addendum, url, urldate}
+
+
+
+%%%%%		PERFORMANCE		%%%%%
+
+\typeitem{performance} Musical and theatrical performances as well as other works of the performing arts, including movies and television broadcasts. These entries are intended for footnotes only, not the bibliography, and their keys will automatically be added to the ``footnoteonly'' bibliography category.
+
+\opt{Entrysubtype}s of \bibtype{performance}:
+\begin{valuelist}
+\item[default] Leave \opt{entrysubtype} blank for most sorts of documents.
+\item[``book''] For performances of plays or other long pieces, whose titles need to be italicized like books.
+\end{valuelist}
+
+\reqitem{title, date, venue}
+\optitem{author, subtitle, titleaddon, year, pubstate, note, type, authortype, nameaddon, eventtitle, howpublished, publisher, origdate, eprint, doi, url, urldate, addendum}
+
+Usage notes: There are no dedicated fields for the names and roles of performers, directors, producers, etc.  
+Write these out freehand in the \bibfield{note} or \bibfield{titleaddon} field.
+If there is no appropriate name for the \bibfield{author} field, leave it 
+blank.
+
+%%%%%		PERIODICAL		%%%%%
+
+\typeitem{periodical}
+
+An entire issue of a periodical, such as a special issue of a journal. The title of the periodical goes in \bibfield{title} (\emph{not} \bibfield{journaltitle}. If the issue has its own title in addition to the main title of the periodical, it goes in the \bibfield{issuetitle} field. The \bibfield{editor} is omissible.
+
+\reqitem{editor, title, date}
+\optitem{subtitle, issuetitle, issuesubtitle, series, volume, number, issue, year, pubstate, note, addendum, doi, eprint, eprinttype, url, urldate}
+
+
+%%%%%		PROCEEDINGS		%%%%%
+
+\typeitem{proceedings}
+The proceedings of a conference. This entrytype is very similar to collection, but with fields for the organization sponsoring the conference or event, the title and date of the event, and its venue. There is also a distinction between personal and corporate editors, depending upon the field editortype.
+
+\opt{Entrysubtype}s of \bibtype{proceedings}: same as in \bibtype{book} or \bibtype{collection}.
+\reqitem{editor, title, date}
+\item Optional fields: same as \bibtype{collection}, plus \bibfield{eventtitle}, \bibfield{eventdate}, \bibfield{organization}, \bibfield{venue}, \bibfield{editortype}
+
+Usage notes: The editor of the proceedings may be omitted. Corporate editors might have to be entered in curly brackets in order to prevent them from being split inappropriately into first and last names. The \bibfield{venue} field is for the location of the conference or event---not to be confused with the place where the proceedings were published. 
+
+In \bibfield{editortype}, enter ``corporate'' if the editor is an organization; leave blank if the editor field contains the name of a person or persons. 
+
+%%%%%		REFERENCE		%%%%%
+
+\typeitem{reference}
+Same fields and subtypes as collection, but printed out in a short form. Intended for the footnotes only, and added automatically to the ``footnoteonly'' bibliography category.
+
+%%%%%		REPORT		%%%%%
+
+\typeitem{report}
+
+A technical report, research report, or white paper published \eg, by a university or other institution. Use the \bibfield{type} field to specify the type of report. The sponsoring institution goes in \bibfield{institution}. Formatted like \bibtype{book} or \bibtype{manual}, but with slightly different field usage.
+
+\reqitem{author, title, type, date}
+\item Optional fields: same as \bibtype{book}, plus \bibfield{institution}, \bibfield{type}, \bibfield{version}
+
+Usage notes: If \sty{historian} finds a \bibfield{publisher}, it will be printed instead of the \bibfield{institution}.
+
+
+%%%%%		REVIEW		%%%%%
+
+\typeitem{review} Same as article.
+Enter information about the reviewed item in the \bibfield{titleaddon} field. 
+
+%%%%%		SUPPBOOK		%%%%%
+
+\typeitem{suppbook} Same as inbook.
+
+%%%%%		SUPPCOLLECTION		%%%%%
+
+\typeitem{suppcollection} Same as incollection.
+
+%%%%%		SUPPERIODICAL		%%%%%
+
+\typeitem{suppperiodical} Same as article.
+
+%%%%%		THESIS		%%%%%
+
+\typeitem{thesis}
+
+A thesis written for an educational institution to satisfy the requirements for a degree. Use the \bibfield{type} field to specify the type of thesis.
+
+\reqitem{author, title, type, institution, date}
+\optitem{year, pubstate, subtitle, titleaddon, authortype, nameaddon, note, addendum, doi, eprint, eprinttype, url, urldate}
+
+Usage notes: \bibfield{location} is not used under Turabian guidelines. Enter ``Phd diss.'' or ``master's thesis'' as \bibfield{type}. To add the name of a database in which the thesis is available, use \bibfield{addendum}.
+
+
+%%%%%		UNPUBLISHED		%%%%%
+
+\typeitem{unpublished}
+A work with an author and a title which has not been formally published, such as an article draft or the manuscript version of a talk. Use the fields \bibfield{howpublished} and \bibfield{note} to supply additional information in free format, if applicable. (Not intended for letters or archival documents; use \bibtype{letter}/\bibtype{customd} and \bibtype{customa} instead.)
+
+\sty{historian} offers more fields and structure for such unpublished papers than does the \sty{biblatex} standard style.
+
+\reqitem{author, title, date}
+
+\optitem{year, pubstate, subtitle, titleaddon, nameaddon, authortype, eventtitle, organization, venue, howpublished, note, addendum, url, urldate, urlday, urlmonth, urlyear}
+
+Usage notes: \bibfield{date} cannot logically be the year of publication, but may be used for the year in which the talk was given or the manuscript prepared. \bibfield{eventdate} is considered superfluous here and is ignored. If there is no numerical date, enter ``forthcoming,'' ``in preparation,'' or ``unpublished'' or ``n. d.'' as may be appropriate in the \bibfield{year} or \bibfield{pubstate} field (since \bibfield{date} cannot accommodate text).
+
+Use the \bibfield{howpublished} field to explain where the manuscript may be found, how it was circulated, or how and where the talk or paper was presented. 
+ 
+Enter ``paper,'' ``unpublished manuscript,'' ``powerpoint presentation,'' or any other appropriate description in the field \bibfield{type}. 
+
+In the case of conference presentations, use the fields \bibfield{eventtitle}, \bibfield{eventdate}, \bibfield{venue}, and \bibfield{organization} as in \bibtype{inproceedings} to describe the conference.
+
+
+
+%%%%%		VIDEO		%%%%%
+
+\typeitem{video}
+
+Audiovisual recordings, typically on dvd or vhs cassette or in online multimedia files.
+
+\opt{Entrysubtype}s of \bibtype{video}:
+\begin{valuelist}
+\item[default] Leave \opt{entrysubtype} blank for the standard book-like formatting.
+\item[``online''] For online multimedia files.
+\end{valuelist}
+
+\reqitem{author, title, date}
+\optitem{subtitle, titleaddon, note, type, authortype, nameaddon, organization, howpublished, publisher, institution, year, pubstate, userd, eprint, doi, url, urldate, addendum}
+
+Usage notes: There are no dedicated fields for the names and roles of performers, directors, producers, etc. Write these out in the \bibfield{note} or \bibfield{titleaddon} fields.
+The \bibfield{howpublished} field can be used for movie distributors, and \bibfield{publisher} for production companies.
+
+
+%%%%%		CUSTOMA		%%%%%
+
+\typeitem{customa}
+Custom type A (\emph{a} for \emph{A}rchive.)
+For archives or other unpublished collections of source material. (Use entrytype \bibtype{customd} for individual sources in the collection.)
+
+\reqitem{author, nameaddon, title}
+
+\optitem{subtitle, titleaddon, type, note, organization, institution, location, library, url, urldate, doi, eprint, eprinttype, addendum}
+
+Usage notes: \sty{Historian} assumes that most archival collections will be named after a person or institution to whom the archived material belonged and can be alphabetized by this name in the bibliography. In such cases, enter the name of the person or institution in the \bibfield{author} field and ``papers,'' ``archive,'' or other descriptive information in \bibfield{nameaddon}. If this \bibfield{author}--\bibfield{nameaddon} scheme is inapplicable, enter the name of the collection in the \bibfield{title} field instead, and leave \bibfield{author} blank. More information about the collection can be added after the \bibfield{title} in the \bibfield{note} field.  
+
+The \bibfield{type} may be used to specify the nature of the collection, \eg, ``microfilm'' or  ``online database.'' \bibfield{Organization} and \bibfield{institution}, and \bibfield{library} identify who maintains the archive, and \bibfield{location} tells where the archive is maintained.  \bibfield{usera} is for any call number or other identifier needed for finding the collection within the library/institution/organization.
+
+Use of the \sty{biblatex} \bibfield{shorthands} field and feature is highly recommended for use with \bibfield{customa} entries, so that all the institutional and location data do not have to be repeated for every item from the collection. It may also be desirable to have all the collections listed at the end in a list of shorthands, before the bibliography.
+
+
+%%%%%		customd		%%%%%
+
+\typeitem{customd} 
+Custom type D (\emph{d} for \emph{d}ocument.)
+For individual documents, found in archives, online databases, or even published collections, that are needed in the footnotes only, not in the bibliography. Use the \sty{xref} feature of\sty{biblatex} to link the \bibtype{customd} entry to an entry of type \bibtype{customa} (for archives), \bibtype{collection} (for published collections), or \bibtype{online} (for online databases). (Note that such cross-referencing will make additional compiler runs through \sty{bibex} and \LaTeX necessary.
+
+\sty{Historian} adds the \bibtype{customd} entry keys to the category ``footnoteonly'' so that they will be omitted from the bibliography when it is printed with the command \cmd{printbibliography[notcategory=footnoteonly]}. 
+
+\opt{Entrysubtype}s of \bibtype{customd}:
+\begin{valuelist}
+\item[default] Leave \opt{entrysubtype} blank for most sorts of documents.
+\item[``book''] For any documents that might be sufficiently book-like to require italicized titles.
+\item[``to,'' ``from,'' or ``none''] Should the need arise, these subtypes will function as in \bibtype{inbook} to change the preposition that comes before the cross-reference.
+\end{valuelist}
+
+\reqitem{author, title, xref}
+\optitem{subtitle, titleaddon, booktitle, namec, date, year, pubstat, note, venue, type, series, volume, pages, library, authortype, nameaddon, organization, institution, howpublished, volume, pages, userd, eprint, doi, url, urldate, addendum}
+
+Usage notes: Prefer \bibtype{letter} for two-way communications without need for a title. A \bibfield{namec} field is available here, too, for letters or other communications that do not fit the conventions of \bibtype{letter}. 
+
+Unlike letters, \bibtype{customd} documents will usually  have a \bibfield{title}.  If the document does not bear a title, use \bibfield{titleaddon} for some kind of verbal description to help identify it. 
+
+Use \bibfield{date} for the date on the document, if there is any. If dates are uncertain and brackets, question marks or other non-numeric data must be entered, use the \bibfield{year} or \bibfield{pubstate}. The \bibfield{note} field come after the date and can also be used for further explanation of the dating.  
+
+\bibfield{Type} is the type of document, \eg ``manuscript,'' ``transcript,`` or ``notebook.'' It can be left blank if the type is obvious from the title or other information. 
+
+\bibfield{Volume} and \bibfield{pages} are for locating the item within a cross-referenced \bibtype{collection}. \bibfield{Userd}  is for  box- and folder numbers, or other information needed to locate the document in a cross-referenced archive (entrytype \bibtype{customa}). \bibfield{Url}, \bibfield{urldate} and other online locators from the individual documents will be distinguished from the same fields in the cross-referenced \bibtype{collection}s or \bibtype{customa}s.
+
+If no crossreference is given, \sty{historian} will look for collection- and archive data in the \bibtype{customd} record itself. The relevant fields from \bibtype{collection} and \bibtype{customa} are available here, too.
+
+\end{typelist}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%										%
+%		BASIC FORMS AND PATTERNS			%
+%										%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\setcounter{section}{15}
+
+
+\section{Turabian's Notes-Bibliography Style: The Basic Form (Subsection numbering follows Turabian, 7th ed.)}
+
+\subsection{Basic Patterns}
+
+See detailed examples in the next section, or consult the Turabian manual.
+
+\subsection{Bibliographies}
+
+\subsubsection{Types of Bibliographies}
+See Turabian.
+
+\subsubsection{Arrangement of Entries}
+
+Turabian allows considerable flexibility in the categorization and sorting of bibliographies. Only a few options are discussed and illustrated here, since most of them are not handled directly by \sty{historian}. See the Turabian manual and the \sty{biblatex} documentation for more information.
+
+
+\paragraph{Alphabetical by author}
+The standard way of sorting the bibliography under Turabian rules is first by author/editor, then by title. The \sty{biblatex} option \kvopt{sorting}{nty}, in the document preamble, implements this.
+
+When the same author/editor name appears in successive bibliography entries, \sty{historian} replaces all but the first with a long dash, as prescribed by Turabian version 7. This is implemented through the use of a \sty{biblatex} bibstring, defined as follows:
+
+\verb|\DefineBibliographyStrings{american}{namedash={---------}}|
+
+The name dash can be changed in the document preamble, using the same command. To switch, e.g., from the dash to an underline (as in version 6 of the Turabian manual) enter:
+
+\verb|\DefineBibliographyStrings{american}|
+
+\qquad\verb|{namedash={\underline{\qquad}}}|
+
+
+\subsubsection{Sources That May Be Omitted}\label{nobib}
+Not everything mentioned in the footnotes needs to be included in the bibliography. Turabian allows exceptions for: newspaper articles, classics, individual documents in archives, and many others. 
+
+Accordingly, \sty{historian}'s entrytypes \bibtype{letter} and \bibtype{customd} (for archival documents)  as well as the \opt{newspaper} subtype of \bibtype{article} and the \opt{classic} and \opt{canon} subtypes of \bibtype{book} and others are automatically placed in a special bibliography category, called ``footnoteonly.'' 
+The following form of the \cmd{printbibliography} command omits them from the bibliography:
+
+\verb|\printbibliography[notcategory=footnoteonly]|
+
+If you need some or all such references in the bibliography, other systems of categorizing and filtering bibliography entries can easily be devised and implemented. See the \sty{biblatex} documentation.
+
+Individual references of other types can be added to the \enquote{footnoteonly}
+ category manually, in the body of the document, with the command, 
+
+\verb|\addtocategory{footnoteonly}{<cite key>}|
+
+Individual references can also be omitted from the bibliography without the use of categories, by setting the \sty{biblatex} option \opt{skipbib} in the \bibfield{options} field.
+
+
+\subsection{Notes}
+
+\subsubsection{Footnotes vs. Endnotes}
+
+Turabian does not prefer one system over the other, and in any case, the choice lies outside the purview of \sty{historian}. The following \LaTeX commands change footnotes to endnotes.
+In the preamble:
+
+\verb|\usepackage{endnotes}|
+
+\verb|\let\footnote=\endnote|
+
+\noindent And at the end of the document, where the endnotes are to be printed:
+
+\verb|\theendnotes|
+
+The the \opt{notetype} option (new in \sty{biblatex} version 0.9) can also convert footnotes to endnotes. See the \sty{biblatx} documentation for details.
+
+\subsubsection{Referencing Notes in Text}
+Standard \sty{biblatex} superscript footnote marks in the text conform to Turabian requirements. Other rules in this subsection of the Turabian manual govern the placement of the cite commands in the text and must be implemented manually.
+
+\subsubsection{Numbering Notes}
+Standard \sty{biblatex} numbering conforms to Turabian rules and is unaffected by \sty{historian}.
+
+\subsubsection{Formatting Notes}
+Standard \sty{biblatex} formatting indents the footnotes as required by Turabian, but prints the footnote numbers as superscripts, which is allowed, but not preferred.
+The following commands, in the preamble to this document, change them to to on-baseline numbers in the footnotes, but leave the footnote references in the text as superscripts:
+\begin{verbatim}
+\makeatletter
+\renewcommand\@makefntext{\hspace*{2em}\@thefnmark. }
+\makeatother
+\end{verbatim}
+
+The default footnoterule and the breaking across pages seem to be in conformity with Turabian and are not modified by \sty{historian}, but a blank line is called for between footnotes. The command
+\verb|\footnotesep\baselineskip|
+in the preamble skips the line. Change, if desired, by deleting or modifying this command.
+
+\subsubsection{Complex Notes}
+
+\paragraph{Citations}
+Successive citations in a single note are to be separated by a semicolon---standard \sty{biblatex} cite commands do this already.
+\paragraph{Citations and comments}
+If a note includes a substantive comment, the citation goes first, followed by a period and then the comment.
+\subparagraph{Putting full-sentence comments in the \bibfield{postnote} field}
+The comment can easily be entered in the \bibfield{postnote} field of any of the standard cite commands, but the punctuation can be troublesome, because the postnote is normally preceded by a comma, and a period is called for in this case. If there is a page range in addition to the comment, then all is well. One enters the period manually between the pages and the comment, all in the \bibfield{postnote} argument, \eg\autocites[][12-24. The preceding period was entered manually, after the page range, in the postnote of the autocite command]{newman2004promethean-ambi}
+\begin{verbatim}
+\autocites[][12-24. The preceding period was entered manually, after the 
+page range, in the postnote of the autocite command]
+{newman2004promethean-ambi}
+\end{verbatim}
+In case there is no page range to enter, use one of the following:\\
+The \cmd{footcitedot} command, which prints a period before the postnote, instead of a comma:\footcitedot[][The period was generated by the footcitedot command]{potter2001gender-and-boyl}
+\begin{verbatim}
+\footcitedot[][The period was generated by the footcitedot command]
+{potter2001gender-and-boyl}
+\end{verbatim}
+Or the \cmd{footcitenodot} command, which generates no punctuation at all before the postnote (and no space, either):\footcitenodot[][. The period was entered manually in the postnote of the footcitenodot command]{newman2004promethean-ambi}
+\begin{verbatim}
+\footcitenodot[][. The period was entered manually in the postnote 
+of the footcitenodot command]{newman2004promethean-ambi}
+\end{verbatim}
+Or the standard \sty{biblatex} \cmd{cite} command, within an ordinary \LaTeX footnote, as follows.\footnote{\cite{potter2001gender-and-boyl}. The period was entered manually after a cite command in an ordinary footnote.}
+\begin{verbatim}
+\footnote{\cite{potter2001gender-and-boyl}. The period was 
+entered manually after a cite command in an ordinary footnote.}
+\end{verbatim}
+
+\subparagraph{Quotations within footnotes}
+Simply put the quotation in the prenote field of your autocite command. Enter quotation marks manually.
+\autocites[\enquote{Evolution is a change from a no-howish untalkaboutable all-alikeness to a somehowish and in general talkaboutable not-all-alikeness by continuous sticktogetherations and somethingelseifications,} William James, as quoted in][]{gerson1996re:-whence-a-sp}
+
+\subsection{Short Forms for Notes}
+Turabian allows for a variety of short forms for repeated citations. 
+
+\subsubsection{Shortened Notes}
+Turabian allows for author-only and title-only forms, as well as the mixed form used by the \sty{verbose-inote} style of \sty{biblatex}, in which the title is added only if necessary to avoid ambiguity.
+\sty{Historian} adapts the system from \sty{verbose-inote} , with some special short forms for certain entrytypes that do not always have proper authors and titles (\eg letters, documents, and non-print sources).
+
+\sty{Historian} also follows \sty{verbose-inote} in generating cross-references to the note number of the first citation. (Note that such crossreferences require an additional run through your \LaTeX compiler.) These cross-references are not actually required by Turabian and can be suppressed using the package option \kvopt{printnoterefs}{false} (Also available as an entry-option). See \ref{printnoterefsoption}.
+
+\subsubsection{Ibid.}
+Turabian considers op. cit., loc. cit., and idem obsolete, but still allows ibid., which is used here.
+
+\subsubsection{Parenthetical Notes}
+Turabian allows sources occasionally to be cited in a special short form, in parentheses, within the main text.
+For this purpose, use \sty{historian}'s \cmd{parencite} command to generate an author-title citation. For example: \verb|\parencite[see][157]{turabian:2007}|, generates a parenthetical reference to the rules about parenthetical references: \parencite[see][157]{turabian:2007}.
+
+To shorten further, use one of the style-independent short forms provided by \sty{biblatex}, but type in the parentheses manually, \eg:
+the \cmd{citeauthor} command \verb|(\citeauthor[][157]{turabian:2007})| to generate: (\citeauthor[][157]{turabian:2007}), or
+the \cmd{citetitle} command \verb|(\citetitle[][157]{turabian:2007})| to generate (\citetitle[][157]{turabian:2007}).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%										%
+%		EXAMPLES              			%
+%										%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+% BOOKS AND GENERAL GUIDELINES----------------------------------------------
+
+
+\section{Examples (Section numbering follows chapter 17 of the Turabian manual, 7th edition}
+\subsection{Books and General Guidelines}
+\subsubsection{Author's Name}
+\label{bookauthors}
+First name first in footnotes. In bibliography, first author: last name first; subsequent authors: first name first. Use names as given on title pages. If there are only initials, space between them. List up to three authors before using et al.
+\paragraph{Single Authors}
+Single author with full first name.\autocites[][]{olby1985origins-of-mend1}
+Two initials.\autocites[][]{1440}
+One initial.\autocites[][]{2362}
+\paragraph{Multiple Authors}
+Two.\autocites[][]{1066}
+Three.\autocites[][]{baur:1923}
+More.\autocites[][]{1259}
+\paragraph{Editor or Translator in Addition to an Author}
+Treat author same as above; add editor, translator, etc., after title. See next subparagraph, under ``Subsidiary Authors/Editors.''
+
+In footnotes identify editor/translator with abbreviation ``ed.''/``trans.''; in bibliography, write out the phrase ``Edited by''/``Translated by.''  
+
+(This is rather awkward in \sty{biblatex}, whose localization system does distinguish between abbreviations and long forms, but not between footnote- and bibliography environments. \sty{Historian} does not use the  the \file{lbx}-file, but redefines all the bibstrings in \file{historian.bbx}.)
+
+\subparagraph{Subsidiary Authors/Editors \label{authoredannote}}
+Foreword authors or other subsidiary authors or editors may be omitted under Turabian rules, unless they are of interest in the context of the main text. If the part of the book by the subsidiary author is the main or only part of interest, consider using entrytype \bibtype{inbook} instead of \bibtype{book} (or \bibtype{incollection}  instead of \bibtype{collection}). 
+
+Aside from author, editor and translator, the many authorial and editorial roles specifiable in \sty{biblatex} are not required under Turabian rules, and Turabian gives little guidance for formatting them. For the most part, \sty{historian} allows them to be formatted as in the \sty{biblatex} standard styles, but with abbreviated identifying strings in the footnotes and longer texts in the bibliography. (Full use is not made, however, of the \sty{biblatex} system of concatenating bibstrings for names with multiple authorial/editorial roles.)
+
+\subparagraph{Examples of subsidiary authors and editors}
+Translator.\autocites[][]{nordenskiold1936the-history}
+Editor and annotator.\autocites[][]{darwin1958the-autobiograp}
+Translator and commentator (this one also illustrates the use of \bibfield{note} and \bibfield{titleaddon}).\autocites[][]{2482}
+
+\paragraph{Editor or Translator in place of an author} 
+Enter editors' names in the \bibfield{editor} field. \sty{historian} will add ``ed.,'' or ``editor'' after the name, as appropriate, and the reference will appear in the bibliography under the editor's name. 
+Example of an edited Book.\autocites[][]{2009going-amiss}
+
+Book with a translator, but no author: use the field \bibfield{translator} and set \sty{biblatex}'s \opt{usetranslator} option to true, either globally, or in the options field of the entry.\autocites[][]{silverstein:1974}
+ When the option is turned off, such entries are treated as anonymous, see ``Anonymous works,'' below, in this section.
+
+(Testing the bibliography dash and punctuation when there are multiple works by the same translator.\autocites[][]{silverstein:1974a})
+
+\paragraph{Additional Authorial Situations}
+\subparagraph{Author's name in title}
+If the author's name is redundant, it may be omitted in the footnote, but do not omit it from the database entry, because it is still needed in the bibliography. Enter the name in \bibfield{author} as usual, but add  ``redundant'' as the \bibfield{authortype}.\autocites{darwin1958the-autobio-redun} \sty{Historian} will then omit the author's name in the footnote.
+The same function is available in all the other entrytypes as well.\autocites[][]{2452}
+
+\subparagraph{Organization as author}
+Enter organization names and personal names alike in the \bibfield{author} field.\autocites[][]{2748} Organizations and corporate authors may have to entered in curly brackets, to prevent them from being broken up inappropriately into first and last names.  (If the organization is credited both as author and publisher, it should entered in both fields and allowed to appear twice in the reference.)
+
+\subparagraph{Pseudonym}
+ If it is widely used, simply enter the pseudonym as the author's name. Otherwise, enter ``[pseud.]'' or other clarification in  \bibfield{nameaddon}.\autocites[][]{stumpke:1981} (The square brackets have to be entered manually.)
+
+\subparagraph{Anonymous works}
+If the author's name does not appear on the publication, but is known with certainty,  enter it in \bibfield{author} and add \enquote{anonymous} as the  \bibfield{authortype}. This instructs \sty{historian} to put brackets around the author's name.\autocites[][]{385b} (It is better not to insert the brackets manually, because that would affect the sorting of the bibliography.)
+
+If authorship is only surmised, enter \enquote{anonymous?}\midsentence\ (with the question mark) as the \bibfield{authortype}. \sty{Historian} will then add a question mark inside the brackets.\autocites[][]{steiner:1981}
+
+If the author is altogether unknown, simply leave both \bibfield{author} and \bibfield{authortype} blank.\autocites[][]{2201} The entry will be sorted by title (or by editor or translator, if these are available and the options set accordingly).
+
+These \opt{authortype}s are available in all entrytypes.\autocites[][]{2766:pseud,2766:uncertain,2766:anon} (The bibliography entries for these last examples also illustrate the use of the \bibfield{part} field for parts of a book volume. In the first reference the German prefix \enquote{Heft} has been entered manually in \bibfield{part}. In the others, \bibfield{part} contains only the number, and \sty{historian} generates the prefix.\label{parthefte}
+
+\paragraph{Special Types of Names}
+Compound names, names with particles and prefixes, etc.: See Turabian and \sty{biblatex} documentation for the sorting rules. I have not compared \sty{biblatex}'s rules systematically with Turabian's. Use the \bibfield{sortname} fields to influence the sort order if necessary.
+
+\subsubsection{Title}
+Book titles are italicized. Colon separates subtitle from title---see book examples, in the notes, above.
+Multiple subtitles are also separated by colons, but since there is only one \bibfield{subtitle} field, enter all the subtitles in it, and separate them manually with colons.
+
+Capitalize titles and subtitles headline style, change ampersands to ``and.'' This must be done manually. (I have not always capitalized headline style in my own reference libraries, particularly not in article titles. Please ignore this departure from Turabian guidelines. It is a data-entry problem, not a programming error in \sty{historian}.)
+
+\paragraph{Special Elements in Titles}
+
+\subparagraph{Dates} Set off dates with commas. (Must be done manually.)
+
+\subparagraph{Titles and quotations within titles.} These need to be placed within quotations marks; do not italicize. This must be done manually, but introduces some complications. Ordinary quotation marks work well enough in most cases. The \cmd{enquote} command of the \sty{csquotes} package has the added advantage of being able to decide when to use single and when double quotation marks. But both of these fail in the case of titles that end in quotation marks, because there is no mechanism for including following punctuation within the quotes, as American conventions require. 
+
+The \cmd{mkbibquote} command supplied by \sty{biblatex} helps here. It looks ahead for the punctuation that comes after the title or subtitle and places it within the quotation marks, if appropriate. In these examples, the title is entered as \verb|\mkbibquote{Protoplasm is soft wax in our hands}|, single quotes are generated, and the following colon is correctly printed outside the quotes, but the following comma inside.\autocites[][]{gliboff2005protoplasm, gliboff2005protoplasm-no-sub}
+
+Unfortunately, the use of \cmd{mkbibquote} (or \cmd{enquote}) in \bibfield{title} affects the sorting of the bibliography. To ensure correct sorting, enter the title again, but without the quotation command, in the field \bibfield{sorttitle}.
+
+\subparagraph{Italicized terms.} Terms that would normally be italicized are to be set in roman when they appear in a title. (Must be done manually).
+\subparagraph{Quotation marks and exclamation points.}
+Suppress any other punctuation following question marks and exclamation points at the end of a title or subtitle.\autocites[][]{crick1988what-mad,crick1988what-madsubtitle}
+\subparagraph{Older titles (18\textsuperscript{th} century or earlier).} May be shortened, but retain original spelling and capitalization. (Must be done manually.)
+\subparagraph{Non-English titles.}
+An English translation of a foreign title may be added, just for informational purposes, in the field \bibfield{usere} (\ie user-defined field e---\emph{e} for English). Capitalize it (manually) sentence-style. \sty{Historian} puts it in brackets.\autocites[][]{343} 
+
+If the reference is to a translation of a book in another language, the title and other information from the original edition can also be added as follows. Enter \kvopt{reprint}{addtransfrom} in the \bibfield{options} field and the original title, publisher, location and year in \bibfield{origtitle}, \bibfield{origpublisher}, \bibfield{origlocation}, and \bibfield{origdate}.\autocites{2824}
+
+\subsubsection{Edition}
+No need to identify first editions.
+\paragraph{Revised Editions}
+For numbered editions after the first, enter just a numeral in the \bibfield{edition} field. It will be converted to an ordinal and followed by the string ``ed.''\autocites[][]{olby1985origins-of-mend2}
+The \bibfield{edition} field may also be used for text, describing or naming the edition, but then the string ``ed.'' will not be appended automatically. Enter, \eg ``rev. ed.'' for revised editions.\autocites[][]{1240} Further information about the edition could also go in the \bibfield{note} field.
+
+\paragraph{Reprint Editions}
+There are two ways of formating reprint data. In either case, use \bibfield{origlocation}, \bibfield{origpublisher}, and \bibfield{origdate} for the publication data of the original edition: 
+
+\begin{valuelist}
+\item[origfirst]
+This is the default option. Enter no option at all or \kvopt{reprint}{origfirst}, either globally in the preamble or on a per-entry basis in the \bibfield{options} field. It prints the original publication data first, then the data from the reprint. The first example uses the \bibfield{addendum} field to provide even more information about the reprint edition.\autocites[][]{225,257}
+
+\item[addorig] Alternatively, use \kvopt{reprint}{addorig} to append the original publication information at the end of the citation. This option will also print the \bibfield{origtitle} if there is one.\autocites{257addorig,schacter2001forgotten-ideas} This option can be set globally in the preamble, or on a per-entry basis in the \bibfield{options} field.
+
+\end{valuelist}
+
+\subsubsection{Volume}
+
+\paragraph{Specific Volume of Multivolume Work}
+\subparagraph{Volume has its own title}
+\sty{Historian} prints the title of the work as a whole (\bibfield{maintitle}), the volume number (\bibfield{volume}) and the volume title (\bibfield{title}).\autocites[][]{twain:1884,Tax:1960ii}
+
+\subparagraph{Volume not individually titled}
+\sty{Historian} prints \bibfield{maintitle} and \bibfield{volume}.\autocites[][]{2548i}
+
+\subparagraph{Volume has its own distinct author or editor}\label{multivolumeeditors}
+
+Volume with a distinct \emph{author}: enter such a case as an \bibtype{incollection} or \bibtype{inbook}, but with ``volume'' as the \bibfield{entrysubtype}. (Or use entrytype \bibtype{bookinbook} without a subtype.) The reference is then taken to be a complete volume, whose title needs to be italicized.  The data for the multivolume work as a whole can then be entered in the same \bibtype{incollection} or \bibtype{inbook} (or \bibtype{bookinbook}) entry,\autocites[][]{darwin:1839} or in a separate \bibtype{collection} (or \bibtype{book}), linked by \bibfield{xref}.\autocites[][]{darwin1839journal-and-rem}
+
+Volume with a distinct \emph{editor}: This is best done in two entries, an \bibtype{incollection} with the \bibfield{entrysubtype} ``volume'' linked by \bibfield{xref} to a \bibtype{collection}.\autocites[][]{1913botanischer-teil-x}  It can also be entered all in one \bibtype{inollection}, but one needs to use one of the custom editor fields for the editor of the multivolume work as a whole, since \bibfield{editor} is already occupied by the volume editor. In the example,  \bibfield{editora} is used but the others will also work (as will \bibfield{nameb}---see next paragraph).\autocites[][]{1913botanischer-teil-incoll}
+One could also use the \bibfield{editoratype} field to generate a different string to introduce the higher-level editor---see the \sty{biblatex} documentation for more on this.)
+
+Three-level example from Turabian.\autocites[][233]{mundy1998mesoamerican-ca} Here we have a selection from an edited volume of a multivolume collection, where the volume has an editor distinct from the general editor of the multivolume work. It is entered as a single \bibtype{incollection} entry. The volume editor goes in any of the custom editor fields, as above, and is associated with the \bibfield{booktitle}. The general editor goes in the custom name field \bibfield{nameb} (\emph{b} for \emph{b}ig editor), and is associated with the \bibfield{maintitle}.
+
+The last example also serves to  illustrate the use of the \bibfield{part} field, for a volume that is subdivided into books or parts. By default, when the field contains nothing but an integer, it is preceded by the abbreviation \enquote{bk.} for \enquote{book.} When it contains other types of data, \sty{historian} assumes that some other prefix has been entered manually, and the \enquote{bk.} is left off. For an example of this, see \ref{parthefte}.
+
+
+
+\paragraph{Multivolume work as a Whole}
+Example.\autocites[][]{1395, 2548}
+
+\subsubsection{Series}
+Optional, according to Turabian rules. Use the package- or entry-option \opt{printseries} to make \sty{historian} print the series title and, if there is one, the number of the book within the series. Delete the package option to omit \bibfield{series} and \bibfield{number} generally, or enter \kvopt{printseries}{false} in the \bibfield{options} field of individual entries. Several examples of books with series can be seen above.
+
+There is no special provision in \sty{historian} for printing series editors. If the series editor is important to you, use the \bibfield{note} field for it, which is printed right after \bibfield{series}.\autocites[Here the \bibfield{note} field is used for the series editor:][]{potter2001gender-series}
+
+The \bibfield{number} field is not strictly for numeric data and may be used for other sorts of descriptors besides simple volume numbers.
+
+\subsubsection{Facts of Publication}
+\paragraph{Place of Publication}
+Use \bibfield{location} for the city where the publisher has its main editorial offices. If \bibfield{location} is undefined, \sty{biblatex} will automatically substitute data from an \bibfield{address} field instead. If there is neither a \bibfield{location} nor an \bibfield{address}, \sty{historian} will try \bibfield{institution}, then \bibfield{howpublished}---this applies to \bibtype{book} as well as to all of the book-like entrytypes.
+
+If the location is missing, \sty{historian} will insert the string ``n.~p.'' (for ``no place'').\autocites{2449:noplace} 
+
+Question mark and brackets may be used to indicate uncertainty about the place of publication. Enter these manually.\autocites[][]{2449:uncertain}
+
+\paragraph{Publisher's Name}
+
+If the publisher is unknown, leave the field blank. The string ``n. p.'' (for ``no publisher'') will be inserted automatically.\autocites[][]{2449:nopub}
+
+If both the location and the publisher are unknown, a single \enquote{n.~p.} will be generated for both.\autocites[][]{2449:neither}
+
+\paragraph{Date of Publication}
+The \bibfield{date} field is preferred, but \bibfield{year} also work, and indeed is preferable when non-numerical data has to be entered, such as   an approximate year in brackets or with a question mark.\autocites{538}
+If both \bibfield{date} and \bibfield{year} are left empty, \bibfield{pubstate} will be used instead, and if all three are empty ``n.~d.'' (\ie no date) will be printed out in lieu of a date.\autocites[][]{954}
+
+For works that are not yet published, but already under contract and titled, enter ``forthcoming'' in \bibfield{year}.\autocites[][]{2877} 
+The \bibfield{pubstate} can also be used for this purpose, but again, only when \bibfield{year} and \bibfield{date} are both empty. Note also that \bibfield{pubstate} may contain either a text or a key to a bibstring, such as ``inpress.''\autocites{2877:pubstate} See the \sty{biblatex} documentation for more about this field and the use of keys and bibstrings.
+
+For works in earlier stages of production, \ie without a definite publisher or journal, it may be better to use the entrytype \bibtype{unpublished} than \bibtype{book} or \bibtype{article}.\autocites[][]{2877:unpub}
+
+
+\subsubsection{Page Numbers and Other Locating Information}
+\paragraph{Page, Chapter, and Division Numbers}
+Unlike the standard \sty{biblatex} styles, \sty{historian} does not print out the \bibfield{pages} and \bibfield{chapter} fields of \bibtype{book}. Use \bibtype{inbook} or \bibtype{incollection} for book sections, or (for footnotes only, not the bibliography) enter page ranges (or chapters, parts, or other divisions of the book) manually in the \bibfield{postnote} argument of the citation command.\autocites[][1--22]{2221} (Abbreviations such as ``p.'' or ``pp.'' are not used for page numbers under Turabian.)
+
+
+\paragraph{Special Types of Locators}
+
+See \sty{biblatex} documentation for implementation of specialized ``pagination'' options, for books that have, e.g., numbered verses instead of pages.
+
+\paragraph{URLs, Permanent Source Identifiers, Access Dates, and Descriptive Locators}
+
+See Turabian for general discussion.
+
+\paragraph{Printed books that are also available online}
+Enter full publication data, so that readers can find the book even if the url changes. Under the option \kvopt{url}{true} (see \ref{printurlsoption}, above), the url and the access dates (from date field \bibfield{urldate}) will be printed. Similarly, \bibfield{doi} and \bibfield{eprint} will be printed if the \opt{doi} and \opt{eprint} are set accordingly.\autocites[][]{2461} 
+
+\sty{Historian} retains the standard \sty{biblatex} strings for introducing the various electronic identifiers (\eg ``URL:'' or ``DOI:''), even though these are not prescribed by Turabian. There are now more kinds of electronic identifiers in common use than when the Turabian manual was last updated, and some such system of prefixes is needed.
+
+\paragraph{Books published online}\label{booksonline}
+Turabian does not make a strong distinction between these and traditional printed books. Use entrytype \bibtype{book} and follow the guidelines for printed books as far as possible. Use the \bibfield{publisher} field for any entity or person who played a role in producing the book that might be  comparable to that of a traditional publisher, or else give a brief verbal explanation of how the book was produced or disseminated. If the publisher or publisher-like entity maintains an office or headquarters, enter the city in the \bibfield{location} field. And, of course, be sure to include the url. Turabian also calls for access dates, which go in \bibfield{urldate}.
+
+In order that the online locating information be printed, make sure the \opt{url} (or \opt{doi} or \opt{eprint}) option is set, or use the entrysubtype ``online,'' which will override this option if it is set to false.\autocites{lamarck1999zoological-phil}
+See also \ref{onlinebooks}, below.
+
+
+% BOOK SECTIONS-------------------------------------
+
+\subsubsection{Chapters and Other Titled Parts of a Book}
+Normally, a book with unified authorship should be cited as a whole in a bibliography, with page ranges identified in the \bibfield{postnote} arguments of the footnotes. However the entrytype \bibtype{inbook} is available for parts of books that have their own titles. Entrytype \bibtype{incollection} is for individual authors' contributions to edited volumes. These two entrytypes are treated similarly by \sty{historian}.
+
+\paragraph{Parts of Single-Author Books}
+
+\subparagraph{Titled book sections}
+Part title goes in \bibfield{title}, book- or volume title in \bibfield{booktitle}, titles of multivolume sets in \bibfield{maintitle}. The page range of the entire section is printed after the \bibfield{booktitle} in the bibliography, but not in the footnotes.\autocites[][]{255}
+Use the \bibfield{postnote} argument of your cite command to refer to specific pages at the end of the footnote, if necessary. 
+
+Turabian give no guidance on the use of chapter numbers, but if a number is entered in \bibfield{chapter}, \sty{historian} will print it before the ``in.''
+
+\subparagraph{Introductions, prefaces, etc., without special titles\label{inbookforw}}
+For, e.g., introductions ``to'' a book or edited volume, use \bibfield{entrysubtype} ``to'' of \bibtype{incollection} or \bibtype{inbook}. 
+Enter ``introduction'' or ``foreword'' or other generic or descriptive title, without capitalizing it, in \bibfield{titleaddon}. 
+Enter the author of the section in \bibfield{author}, the author of the book as a whole (if different from the section author) in \bibfield{bookauthor}.\autocites[][]{696}
+
+An entrysubtype ``from'' is also available, which is formatted in much the same way, only with the preposition ``from'' instead of ``to'' or ``in.''\autocites[][]{2743}
+
+These subtypes are intended for untitled book sections, but if a \bibfield{title} is entered, it will be printed in quotation marks as usual, preceding the generic title from the \bibfield{titleaddon} field.\autocites{2743t}
+
+\paragraph{Parts of Edited Books}
+\subparagraph{Titled}
+For titled sections of an edited collection with multiple authors, use entrytype \bibtype{incollection}, which is formatted similarly to \bibtype{inbook}, except that the work as a whole has an \bibfield{editor} instead of a \bibfield{bookauthor}.\autocites[][74-5]{1100} 
+\subparagraph{Untitled introductions, etc.}
+Same entrysubtypes and guidelines as above in \bibtype{inbook}, except with \bibfield{editor} in place of \bibfield{bookauthor}.
+
+
+\subparagraph{Citing multiple contributions to the same book or edited collection}\label{incollxref}
+When citing multiple sections of the same book or collection, there are two options, under Turabian rules. Either treat each section as a separate bibliographic entity and repeat the book/collection information in full for each; or give the book information in full only for the first section cited, then use a short form of the for the book/collection information in subsequent footnotes.
+
+These options are implemented as follows in \sty{historian}:
+
+\begin{enumerate}
+\item Enter all the section- and book data in every \bibtype{inbook} or \bibtype{incollection} entry. \sty{Historian} will then treat each as a distinct source and will repeat the \bibtype{book}/\bibtype{collection} data.
+
+In these examples, the \bibtype{incollection} entries are both filled out with the complete collection data.\autocites[][]{hp:ratcliff2007duchesnes-straw,de-renzi2007resemblance-pat}
+
+\item Enter the section data in separate \bibtype{inbook} or \bibtype{incollection} entries, but the book/collection data in a single \bibtype{book} or \bibtype{collection}, and link them by means of the \bibfield{xref} field. 
+(The entry key of the \bibtype{book}/\bibtype{collection} goes in the \bibfield{xref} field of each of its \bibtype{inbook}s/\bibtype{incollection}s. \sty{Historian} follows the link and gets the data that it needs.)
+ If the \bibtype{book}/\bibtype{collection} has already been cited, its shorthand or other short form is printed in the footnote. Bibliography entries are not shortened, however.
+
+In this example, An \bibtype{incollection} is linked via \bibfield{xref} to a \bibtype{collection}.\autocites[][]{hp:wilson2007erasmus-darwin-x}
+Here are repeated citations linked to the same \bibtype{collection}.\autocites[][]{hp:ratcliff2007duchesnes-straw-x} And here.\autocites[][]{hp:sabean2007from-clan-to-x} 
+
+This method has the side-effect of pulling the \bibtype{inbook} or \bibtype{incollection} into the bibliography, even if it is not cited explicitly. The \sty{biblatex} option \kvopt{mincrossrefs}{1} sees to it that cross-referenced entries are put into the bibliography the first time they are cited. Higher values will require repeated cross-referencing.
+
+\item (Workable, but not recommended) Same data entry procedure as above, but using the \bibfield{crossref} field instead of \bibfield{xref}. In such cases, \sty{historian} relies on your \bibtex database to follow the links and supply the section- and book/collection data together. From the point of view of \sty{historian}, using \bibfield{crossref} is the same as entering all the data in a single \bibtype{inbook} or \bibtype{incollection} record, as in the first option. 
+
+Reasons for avoiding the \bibtex \opt{crossref} function are discussed in the \sty{biblatex} documentation. (Specific problems I have encountered occur because \bibtype{collection} fields are ``copied down'' indiscriminately to the \bibtype{incollection} level, allowing, \eg even the collection's \bibfield{shorthand} to become associated with the \bibtype{incollection}.)
+
+Still, this option may still be preferable to re-organizing a \bibtex database that already relies on \opt{crossref}. In this example, an \bibtype{incollection} entry is linked by its \bibfield{crossref} field to a \bibtype{collection}.\autocites[][]{hp:sabean2007from-clan-to-cross}
+
+\item If both \bibfield{xref} and \bibfield{crossref} are used, \sty{historian} follows the \bibfield{xref} link and ignores the data supplied by the \opt{crossref} function.
+
+\end{enumerate}
+
+\sty{Historian} does not check for consistent usage of these options.
+The user should avoid mixing them in a single document.
+
+
+
+
+\paragraph{Works in Anthologies}
+
+In most cases, anthologies are no different from the other sorts of edited collections, discussed above.
+Anthologized excerpts from book-length poems or prose works are an exception, however, because their titles have to be italicized. Use the \bibfield{entrysubtype} ``from'' and enter the poem title in \bibfield{booktitle} instead of the usual \bibfield{title}. The anthology title then has to go in \bibfield{maintitle}, and the anthology editor in \bibfield{nameb}, instead of \bibfield{editor}.\autocites[][]{pope1980an-essay-on-cri}
+
+Sometimes the year of original publication of the anthologized article, poem, or prose work is called for. Use custom field \bibfield{usera} (\bibfield{a} for ``\emph{a}rticle'') for this, and it will be printed after the \bibfield{title}.\autocites[][]{reil1811von-der-lebensk}
+
+In rare cases, a separate year will be needed to go with the \bibfield{booktitle} of an anthology. Use \bibfield{userb} (\bibfield{b} for \emph{b}ook) for this.\autocites[][]{pope1980an-essay-with-year}
+
+\subsubsection{Letters and Other Communications in Published Collections}\label{publishedletters}
+Only the collection goes in the bibliography. The individual letters are identified only in the footnotes. Two methods are available:
+\begin{enumerate}
+\item Use entrytype \bibtype{collection} for the published collection as a whole, and identify the letter manually in the \bibfield{prenote} and \bibfield{postnote} arguments of the citation command, as follows:\autocites[Charles Darwin to T. H. Huxley, 2 February, 1860, in][2:~64--5]{1083}
+\verb|\autocites[Charles Darwin to T. H. Huxley,|
+\verb| 2 February, 1860, in][2: 64--5]{1083}|
+
+\item Or, again use \bibtype{collection} for the published collection as a whole, but also use the entrytype \bibtype{letter} for the letter and link it to the \bibtype{collection} using \sty{biblatex}'s \sty{xref} function. The entry key of the \bibtype{collection} goes in the \bibfield{xref} field of the \bibtype{letter}.\autocites[][]{2319y,2632x}
+It is recommended that the \bibtype{collection} also be given a \bibfield{shorthand}, by which to identify it in subsequent citations.\autocites[][]{2319x}
+
+(The \sty{crossref} function of \bibtex can also be used, but is not recommended, because it may be error-prone.)
+
+The custom name field \bibfield{namec} (\bibfield{c} for \emph{c}orrespondent) is for the recipient of the communication.
+Use the \bibfield{volume} and \bibfield{page} fields of \bibtype{letter} to locate the letter within the collection. 
+If letters are to be identified by some internal numbering or labeling scheme instead of (or in addition to) volume and page numbers, try \sty{biblatex}'s \sty{pagination} function, or use the \bibfield{addendum} field.
+
+The field \bibfield{type} of \bibtype{letter} may be used to indicate whether the communication is a postcard, telegram, e-mail, memorandum, or other sort of document than a letter. 
+
+Use \bibfield{venue} for the place from which the letter was sent.
+
+The fields \bibfield{note} and \bibfield{addendum} allow for further, nonstandard information to be included in the citation. \bibfield{Note} is printed between the \bibfield{venue} and the \bibfield{date}, and \bibfield{addendum} after the collection data.
+
+If dates are uncertain and require brackets, question marks, or other non-numeric data that the \bibfield{date} field cannot accommodate, use \bibfield{year} or \bibfield{pubstate} instead. The \bibfield{note} field comes next in sequence and can be used to explain the date further.
+
+
+\end{enumerate}
+
+In repeated citations of the same letter, \sty{historian} adds the recipient's name (from \bibfield{namec}) and the date (from \bibfield{date}, \bibfield{year}, or \bibfield{pubstate}, but not from \bibfield{note}) to the short form.\autocites[][]{2319y} 
+
+See also subsection \ref{manuscripts}, below, on letters and other items in manuscript collections.
+
+
+\subsubsection{Online and Other Electronic Books\label{onlinebooks}}
+\paragraph{Online books with URLs}
+See \ref{booksonline}, above. Follow the guidelines for printed books as far as possible, and either use the entrysubtype ``online'' or set the \opt{url}, \opt{doi}, \opt{eprint} option.
+
+If page numbers are not available, Turabian recommends that the location within the electronic source to be described (in the footnotes) with a phrase, using ``under,'' \eg ``under subheading A.'' This can be done in the \bibfield{postnote} argument of the citation, but it is not quite in conformity with Turabian guidelines, which place the phrase before the url instead of after it.
+
+\paragraph{Other Electronic Formats}
+Use the \bibfield{addendum} field to add information at the end of the reference about other electronic formats in which the book might be available, e.g., ``e-book,'' or ``CD-ROM.'' (The same can be done for non-electronic formats, such as microfilms.)\autocites[][]{haeckel1912the-evolution-o}
+
+
+\subsection{Journal Articles}
+
+\subsubsection{Author's Name}
+
+Same as for \bibtype{book}. See \ref{bookauthors}, above.
+
+\subsubsection{Article Title}
+
+Title in quotation marks, comma inside quotes.\autocites[][]{1451}
+Title and subtitle separated by colon\autocites[][]{2474}
+Titles ending in question marks and exclamation points.\autocites[][]{1291, 2070} 
+Optional English translation of foreign title goes in \bibfield{usere} and is printed in brackets, without quotation marks.\autocites[][]{hofer2001konrad-lorenz-a}
+Other rules must be applied manually.
+
+\subsubsection{Journal Title}
+Like book titles. Don't use abbreviations, except to drop an initial ``the.''
+
+\subsubsection{Issue Information}
+Use any and all identifiers that are available: volume, issue number, date.
+
+\paragraph{Volume and Issue Numbers}
+Use \bibfield{volume} for the volume number and \bibfield{number} for the issue number. Arabic numerals only. ``No.'' before issue number.\autocites[][]{hodge1992darwins-argumen}
+Case of a date instead of an issue number.\autocites[][]{cook2007ius-first-female-journal}
+Case of issue numbers only.\autocites[][]{cook2007ius-first-female-novol}
+
+\paragraph{Date of publication}
+
+Season, using the \bibfield{issue} field.\autocites[][]{haldane1964a-defense-of-be} Month, using either the \bibfield{month} field or the partially filled out \bibfield{date} field.\autocites[][]{cook2007ius-first-female-journal} Year only.\autocites[][]{hodge1992darwins-argumen} Exact date.\autocites[][]{cook2007ius-first-female-date} 
+
+Forthcoming articles: enter \enquote{forthcoming} or other appropriate description in \bibfield{year}  (which, unlike \bibfield{date}, can accommodate text).\autocites[][]{ekholm2008harvey} Or leave \bibfield{year} and \bibfield{date} empty and use \bibfield{pubstate}
+
+
+\subsubsection{Page Numbers and Other Locating Information}
+
+\paragraph{Citing the full article} See examples above.
+
+\paragraph{Citing specific pages}
+
+\sty{Historian} offers two ways of citing specific pages in a footnote, one in better conformity with Turabian than the other. In either case, use the \bibfield{postnote} argument of the citation command for the specific pages. 
+
+The usual \cmd{autocites} or \cmd{footcite} commands print a colon, the full page range of the article, from the \bibfield{pages} field, a comma, and the \bibfield{postnote}. If the \bibfield{postnote} argument specifies pages within the range, it is best to add some prefatory text, such as ``on,'' or ``quotation on,'' or ``see especially.''\autocites[][on 250]{2914}
+
+For full conformity to Turabian guidelines, use the special \sty{historian} citation command, \cmd{footcitecolon}, which  checks whether anything at all is entered in the \bibfield{postnote} argument, and if so, omits the full page range of an \bibtype{article} entry, and prints a colon before the \bibfield{postnote} instead of a comma.\footcitecolon[][199]{dart1925australopithecu}
+
+
+
+In complex cases, where multiple references are cited in the same note, some requiring the colon and some the comma, use appropriate combinations of \cmd{citecolon}, \cmd{citedot}, \cmd{citenodot}, or \cmd{cite}) inside an ordinary \LaTeX footnote.\footnote{\citecolon[][68]{corsi2005before-darwin}; \cite{corsi1988the-age-of-lamarck}}
+
+
+\subsubsection{Special Issues and Supplements}
+
+Issue title goes in \bibfield{issuetitle} and \bibfield{issuesubtitle} and is printed in quotation marks. Enter \enquote{special issue} or other information pertaining to the issue in \bibfield{note}, which functions in \bibtype{article} as a kind of prefix to the journal title.
+If an \bibtype{article} has an \bibfield{issuetitle}, \sty{historian} will assume that any \bibfield{editor} that is entered edited the issue, rather than the article.
+
+Example of an article in a titled issue, with an issue editor, and ``special issue'' in the \bibfield{note} field. (This example also illustrates the formatting of a journal \bibfield{series}.)\autocites{241}
+
+Same example, using \bibfield{xref} to link the \bibtype{article} to a separate \bibtype{periodical} entry, containing the issue-information.\autocites[][]{241-xref} This can be useful when multiple articles from the same special issue are to be cited. See \ref{incollxref}, above for more about crossreferencing. 
+
+The same entrysubtypes as in \bibtype{inbook} and \bibtype{incollection} are available here for changing the preposition from ``in'' to ``from'' or ``to,'' or suppressing it entirely.
+
+To cite a titled issue as a whole, use \bibtype{periodical}.  \bibfield{journaltitle} is not used. The \bibfield{title} and \bibfield{subtitle} fields contain the title of the periodical, \bibfield{issuetitle} and \bibfield{issuesubtitle} contain the title of the issue. The \bibfield{note} field goes before the periodical \bibfield{title} and may be used for descriptors such as ``special issue.'' Examples of whole issues, with and without an issue editor.\autocites{maienschein1981special-issue, 2185}
+
+Separately numbered journal supplements: same as above, using \bibtype{periodical} for entire supplements and \bibtype{article} for articles in the supplement. \sty{Historian} has no special treatment for the \bibtype{supperiodical} entrytype and no special field for a supplement number. Depending on the journal's numbering scheme, either combine it manually with the volume number in the \bibfield{volume} field (with a comma after the volume number), or use the \bibfield{issue} field. In this example, the string, ``79, Suppl.'' is in \bibfield{volume}.\autocites[][]{2387}
+
+\subsubsection{Articles Published Online}
+
+Follow guidelines for printed articles as far as possible, and add urls and other electronic locators in the fields provided. Make sure the \opt{url}, \opt{doi}, and \opt{eprint} options are set accordingly. Turabian calls for access dates with all urls, so use \bibfield{urldate}, too.\autocites[][]{fagan2007wallace-darwin-} If there are no page numbers, use descriptive locators in the \bibfield{postnote} argument of citations, \eg ``under subheading A.''
+
+\subsection{Magazine Articles}
+Use entrytype \bibtype{article} with \bibfield{entrysubtype} ``magazine.''
+Magazine issues are cited by date only, without the parentheses, and with a comma instead of a colon before the page numbers.\autocites[][]{sokal1996a-physicist-exp} The page range may be also be omitted entirely.
+
+Regular column or department: capitalize the name of the column or department and enter it in \bibtype{titleaddon} instead of (or in addition to) the title of the individual article.\autocites[][]{wallraff200515}
+
+Column or department, without a named author: the magazine or journal takes over the role of author. \sty{Historian} cannot recognize this case automatically, so enter the name of the magazine or journal in the \bibfield{author} field (in curly brackets, to prevent inappropriate parsing into first and last names) and ``journal'' in \bibfield{authortype}. \sty{Historian} will then italicize the author name and suppress the \bibfield{journaltitle}.\autocites[][]{yorker200015}
+
+Online magazine articles: same as other online articles.
+
+Crossreferencing from the magazine subtype to the \bibtype{periodical} is also available, but there is not much reason to use it.
+
+\subsection{Newspaper Articles}
+Enter ``newspaper'' in \bibfield{entrysubtype}. Like \bibtype{letter} and archival documents, newspaper articles are added to the bibliography category ``footnoteonly'' so that they can easily be omitted from the bibliography. Restore them to the bibliography by deleting or modifying the clause \kvopt{notcategory}{footnoteonly} in the \cmd{printbibliography} command. In individual cases, if an article is important or frequently referred to, consider switching  to entrysubtype ``magazine,'' to keep it out of the ``footnoteonly'' category.
+
+To make bibliography entries only for the newspapers, and not for the individual articles, create \bibtype{periodical} entries for each newspaper and link the individual \bibtype{article} entries to it using the \bibfield{xref} field. 
+
+Page numbers of newspaper articles are omitted by Turabian, but \sty{historian} will print them if they are entered. Identify the newspaper's edition in \bibfield{addendum}. Otherwise newspaper articles are treated much like magazine articles.\autocites[][]{fountainrichard-westfal}
+
+\subsubsection{Special Format Issues}
+To add the city of publication in parentheses after the newspaper title, enter it in the field \bibfield{location}.\autocites[][]{seebach1996a-bold-scientis}
+
+When authorship is to be attributed to a news service, simply enter it in curly brackets (to prevent inappropriate parsing into first and last names) in the \bibfield{authorfield}. It does not need to be italicized, as in the case of a journal as author, so leave \bibfield{authortype} blank.
+
+\subsubsection{Special Types of Newspaper Citations}
+
+\paragraph{Regular columns} Same as magazine columns. Use \bibfield{titleaddon} for the name or type of column.\autocites[][]{fountainrichard-westfal}
+
+
+\paragraph {Letters to the editor} Cite generically with ``letter to the editor'' in \bibfield{titleaddon}, without any headline or title. (\sty{Historian} will, however, print a \bibfield{title}, if one is entered.)\autocites[][]{ohanlon189715}
+
+\paragraph{Articles in supplements} Same as magazines.
+
+\paragraph{Articles published online} \label{articleonline} Same as online journal articles: in addition to the url, enter all the available publication data, so that the article can be located even without the url. For articles found in online databases, again give all the available publication data, so that the article can be found even without the database. Also include the stable url of the article within the database, and the access date, and make sure the \opt{url}, \opt{doi}, and \opt{eprint} options are set accordingly.
+
+\subsection{Additional Types of Published Sources}
+
+\subsubsection{Classical, Medieval, and Early English Literary Works}
+Footnotes only. Give author, title, and section or line numbers. Use the \sty{pagination} function of \sty{biblatex} to switch from page numbers to the appropriate edition-independent numbering scheme.
+\paragraph{Classical Works} Use the subtype ``classic'' of \bibtype{book}. The reference will be added to the ``footnoteonly'' category, and most publishing data will be omitted. (\sty{Historian} will also print \bibfield{edition} in parentheses, and the \bibfield{note}, and \bibfield{addendum}.) No punctuation will be inserted between author and title. \autocites[][]{aristotle:hstanim}
+
+Punctuation should also be omitted between the title and any line or section numbers in the \bibfield{postnote} argument, but \sty{historian} will not do this automatically. For full compliance with Turabian guidelines, use the citation command \cmd{footcitenodot} to get rid of the comma before the \bibfield{postnote}.\footcitenodot[With full title and author:][ 1.6]{aristotle:hstanim} (Don't forget to supply the space before the page or section number in the postnote.)
+
+Author names may be abbreviated. Use the \bibtype{shortauthor} field for the abbreviation. Abbreviate titles, too, using \bibfield{shorttitle}.\autocites[With abbreviated title and author:][]{aristotlehistanim} Sometimes there is only an author and no title.\footcitenodot[][ 2.40.2-3]{thucydides15}
+
+In repeated references, \sty{historian} uses a short form instead of ibid. and instead of crossreferencing to previous notes. \sty{Historian} will, however, use the \bibfield{shorthand} if one is available.\autocites[][]{aristotlehistanim, aristotle:hstanim}
+
+If the \cmd{printbibliography} command is modified to allow classics in, full names and titles will be printed.
+
+\paragraph{Medieval Works} Same as classics.
+
+\paragraph{Early English Works}\label{earlyworks} Resemble classics, in that full publishing data and bibliography entry are not required, but they have the usual punctuation. Use the entrysubtype ``canon'' of \bibtype{book}. \autocites[][1.83]{miltonparadise-lost}
+
+For parts of early English or other canonical works, use \bibtype{inbook} with entrysubtype ``canon.''\autocites[][]{chaucerwife-of-baths-p}. Crossreferencing from \bibtype{inbook} to \bibtype{book} is also available for the ``canon'' subtype.\autocites{chaucerwife-of-baths-xref}
+
+\subsubsection{The Bible and Other Sacred Works} Same as classics, but titles are not italicized. Use entrysubtype ``biblical'' of \bibtype{book}, leave \bibfield{author} empty, and give title abbreviations in \bibfield{shorttitle}. Versions can be identified in the \bibfield{edition} field and they are printed in parentheses. Use the citation command \cmd{footcitenodot} to suppress the punctuation before any line or verse ranges in the \bibfield{postnote} argument.\footcitenodot[][ 11.8]{2-kings} 
+
+As in the ``classical'' subtype, ibid. is not used in repeated citations, but \bibfield{edition}, \bibfield{note}, and \bibfield{addendum} are not repeated.\autocites[][]{2-kings}
+
+\subsubsection{Reference Works}
+For well-known reference works, for which the full publication data and bibliography entry are not needed, use the entrytype \bibtype{reference} for the reference as a whole, \bibtype{inreference} or just a \bibfield{postnote} argument for the individual entry. If full publication data seem called for, switch to \bibtype{collection}/\bibtype{incollection}.
+
+Examples of reference works.\autocites[][]{1970dictionary-of-s, 1967brockhaus-enzyk}
+Individual entry in the \bibfield{postnote} of a \bibtype{reference}, using ``sub verbo.''\autocites[][s.v. \mkbibquote{Veredeln}]{grimm1854deutsches-worte} (Note the use of \cmd{mkbibquote} in the \bibfield{postnote} to make sure the punctuation goes inside the quotation marks.)
+Individual entry as an \bibtype{inreference}.\autocites[][]{huxley1878evolution-i}
+Individual entry as an \bibtype{inreference}, linked via \bibfield{xref} to the \bibtype{reference}.\autocites[][]{orel2008mendel-gregor}
+
+Reference works and items from reference works are not normally included in the bibliography under Turabian rules. \sty{Historian} adds their entry keys to the ``footnoteonly'' category so that the recommended \cmd{printbibliography} command, \verb|\printbibliography[notcategory=footnoteonly]| will suppress them. 
+
+\bibtype{Reference}s and \bibtype{inreference}s can be included in the bibliography, if desired, either by changing them to \bibtype{collection}s and \bibtype{incollection}s or by deleting the \opt{notcategory} clause. In case the latter option is chosen, \sty{historian} assumes that \bibtype{reference}s will not have authors or editors, and are to be alphabetized by title. Hence they will be printed title first. Entering an author or editor in a  \bibtype{reference} will interfere with the sorting, unless the title is copied to the \bibfield{sortname} and enclosed in curly brackets.\autocites[][]{adelung1793grammatisch-kri}
+
+
+
+\subsubsection{Reviews}
+Use entrytype \bibtype{article} (or \bibtype{review}, which \sty{historian} currently does not distinguish from \bibtype{article}), with the appropriate \bibfield{entrysubtype}, such as ``newspaper.'' Simply describe the reviewed item in the \bibfield{titleaddon} field, with manual formatting as follows, for books:
+\verb|review of \emph{Title}, by Author|; or for performances: 
+\verb|review of \emph{Title}, by Author, directed by Director|, etc.
+To ensure proper sorting, it may sometimes be necessary to repeat the information from \bibfield{titleaddon}, without the formatting instructions, in \bibfield{sorttitle}.
+
+Titles are not required,\autocites[][]{bronn186015} but will be printed if entered.\autocites[][]{waddington1971individual-para}
+
+Turabian does not require reviews to appear in the bibliography, but \sty{historian} does not automatically omit them or add them to the footnoteonly category. To omit individual reviews, see the instructions under \ref{nobib}. If one uses the entrytype \bibtype{review} consistently, all reviews can be kept out of the bibliography by using the clause \kvopt{nottype}{review} in the \cmd{printbibliography} command.
+
+\subsubsection{Abstracts}
+\sty{Historian} provides no special treatment for abstracts. Full compliance with Turabian requires some manual intervention. 
+
+Two cases must be distinguished: abstracts published alongside the full-length article, and abstracts published separately. In either case, follow the instructions under \ref{nobib} to have the abstract omitted from the bibliography.
+
+\paragraph{Abstracts published alongside an article}
+ Enter the full article information in an \bibtype{article}, and simply add the word ``abstract'' in \bibfield{titleaddon}.
+
+\paragraph{Abstracts published separately}
+ Cite the full article as an \bibtype{article} and use the \bibfield{addendum} field for the text ``abstract in'' and the location of the abstract. \LaTeX \ formatting instructions may have to be entered manually in the \bibfield{addendum}
+
+Or cite the article and the abstract in two different entries, with an appropriate note in-between, in the first \bibfield{postnote} argument. This example uses the multicite command \cmd{footcitenodots} to eliminate the usual punctuation between citations.\footcitenodots[][abstract in]{albin2003negotiating-int}[][]{200515}
+\begin{verbatim}
+\footcitenodots[][abstract in]{albin2003negotiating-int}
+[][]{200515}
+\end{verbatim} 
+In cases like this, the abstract entry has no title or author of its own, so, if it is included in the bibliography at all, it might not be sorted properly. In the example, the \bibfield{journaltitle} is copied to \bibfield{sorttitle} to ensure proper sorting.
+
+\subsubsection{Pamphlets and Reports}
+Turabian does not distinguish between these and books, except that they may sometimes be left out of the bibliography. \sty{Historian} makes only minor distinctions among the various book-like entrytypes that \sty{biblatex} offers (\bibtype{book}, \bibtype{booklet}, \bibtype{report}, \bibtype{manual}, \bibtype{misc}), and does not automatically omit any of them from the bibliography. 
+
+Entrytype \bibtype{book} may be used in most cases, even if the \bibfield{howpublished} or \bibfield{institution} field is used instead of \bibfield{publisher}. The other entrytypes do offer a few additional fields: \bibfield{type}, \bibfield{organization} or \bibfield{version} (see the entrytype descriptions in \ref{entrytypes}, above, for details).
+
+
+Example of a report on a special meeting of a scientific society, using \bibfield{titleaddon} to add information about the nature of the report, and \bibfield{organization} to identify the society.\autocites[][]{gdna:1922-as-report}
+
+\subsubsection{Microform Editions}
+Format as usual and use the \bibfield{addendum} field to specify that a microform edition was used.\autocites[][]{weismann1872uber-den-einflu}
+
+\subsubsection{CD-ROMs or DVD-ROMs}
+In book- and collection-like items, use \bibfield{type} for the electronic medium.\autocites[][]{2001das-dritte-reich} A  \bibfield{version} field is also available.
+
+\subsubsection{Online Databases}\label{onlinedatabases}
+On journal articles from online databases, see \ref{articleonline}, above. 
+
+Documents or other sorts of records from online databases: both the individual document and the database are to be cited in the footnote, but only the database in the bibliography. In \sty{historian}, use the same system as for manuscripts and archival documents (\ref{manuscripts}, below): make two linked entries: a \bibtype{customd} (or, where appropriate, \bibtype{letter}) for the individual document, but an \bibtype{online} entry for the database as a whole. Link them by entering the entry key of the \bibtype{online} database in the \bibfield{xref} of the \bibtype{customd}. (This example also illustrates the use of the \bibfield{type} field to indicate that the document is a letter.)\autocites[][]{darwin1881mr.-darwin-on-v} 
+
+By default, the title of the individual document is printed in quotation marks. If it is a book-like document that needs to be italicized, as in the following example, enter ``book'' as the \bibfield{entrysubtype}.\autocites[][]{1838-zoology-of-beagle}
+
+The use of \bibfield{shorthand}s or \bibfield{label}s in the parent entries (i.e., \bibtype{online}, in this case) is highly recommended, especially when there is no author or editor to use in repeated citations.
+
+
+
+\subsection{Unpublished Sources}
+
+\subsubsection{Theses and Dissertations}
+Use entrytype \bibtype{thesis}. Enter the type of thesis (Turabian prescribes either ``PhD diss.'' or ``master's thesis'') in \bibfield{type}, the degree-granting institution in \bibfield{institution},\autocites[][]{mylott2002the-roots-of-ce,gliboff1997evolution-revol} and where appropriate, the database, microfilm, or other medium in \bibfield{addendum}.\autocites[][]{schloegel2006intimate-biolog}
+
+\subsubsection{Lectures and Papers Presented at Meetings}
+Use entrytype \bibtype{unpublished}. The principal entry fields are printed in the following order, with the following punctuation:
+
+In footnotes:
+\bibfield{Author}, ``\bibfield{Title}'' (\bibfield{type}, \bibfield{howpublished}, ``\bibfield{eventtitle},'' \bibfield{organization}, \bibfield{venue}, \bibfield{date}).
+
+In bibliography:
+\bibfield{Author}, ``\bibfield{Title}.'' \bibfield{Type}, \bibfield{howpublished}, ``\bibfield{eventtitle,}''\\ \bibfield{organization}, \bibfield{venue}, \bibfield{date}.
+
+Example of a paper presented at a conference,\autocites[][]{2454} and an abstract from a  conference program.\autocites[][]{1977}
+
+Example of a draft manuscript.\autocites[][]{2469}
+If the manuscript is in press or close to publication, it can also be entered as a \bibtype{book} or \bibtype{article}, with ``forthcoming'' in the \bibfield{year} field. Or, it can be treated as an archival document (see \ref{manuscripts} below).
+
+\subsubsection{Interviews and Personal Communications}\label{interviews}
+\sty{Historian} has no dedicated entrytype for interviews, but they can easily be accommodated in \bibtype{customd}, since they need not be included in the bibliography. Enter the interviewee as the \bibfield{author}, ``interview with'' or other appropriate text in \bibfield{titleaddon}, and interviewer in \bibfield{namec}.\autocites[][]{dobzhansky196215} \sty{Historian} inserts no punctuation between \bibfield{titleaddon} and \bibfield{namec}. 
+
+Other fields are available in \bibtype{customd} for locating the transcript or other documentation of the interview, including, \bibfield{booktitle}, \bibfield{eventtitle}, \bibfield{organization}, \bibfield{institution}, \bibfield{library}, \bibfield{userd}, \bibfield{volume}, \bibfield{pages}, and the usual online locators.
+
+Alternatively, as with the archival documents, in \ref{manuscripts}, below, \bibtype{customd} can also be linked via \bibfield{xref} to a \bibtype{collection}, \bibtype{online} database, or \bibtype{customa} (archive) where the interview might be found.
+
+Similarly, personal communications, such as conversations and e-mail messages, also belong in the notes only and can be entered as \bibtype{customd} or \bibtype{letter}. Enter the sender as \bibfield{author}, ``e-mail message to'' or other appropriate text in \bibfield{titleaddon}, and recipient in \bibfield{namec}. For details, see \ref{publishedletters}, above, and \ref{archivedletters}, below.
+
+\subsubsection{Manuscript Collections}\label{manuscripts} 
+Use entrytype \bibtype{customa} (\bibfield{a} for \bibfield{a}rchive) for the collection, and either \bibtype{letter} or \bibtype{customd} (\emph{d} for \emph{d}ocument) for individual items in the collection. Link the item to the collection by copying the entry key of the \bibtype{customa} to the \bibfield{xref} field of the \bibtype{letter} or \bibtype{customd}.
+
+\bibtype{Customa} records are included in the bibliography; \bibtype{letter}s and \bibtype{customd}s are added to the ``footnoteonly'' category so that they can easily be excluded by the command \cmd{printbibliography [notcategory=footnoteonly]}. If this is not desired, delete the \opt{notcategory} option or use a different system of filtering (see the \sty{biblatex} documentation). 
+
+\paragraph{Archives and Manuscript Collections}
+The entrytype \bibtype{customa} was designed under the assumption that manuscript collections will usually be named after an author, collector, or organization, and that their bibliography entries should be sorted by that name. Hence, one should use the \bibfield{author} and \bibfield{nameaddon} fields, wherever feasible, to name the manuscript collection.
+In this example, the Richard Benedict Goldschmidt Papers has ``Richard Benedict Goldschmidt'' in \bibfield{author} and  ``Papers'' in \bibfield{nameaddon}.\autocites[][]{1904}
+If you find this awkward, or in cases where there is no appropriate name, simply leave \bibfield{author} and \bibfield{nameaddon} blank, and the entry will be sorted by \bibfield{title} instead (see the Cold Spring Harbor example, below).
+
+For identifying the depository where the manuscript collection can be found, \sty{historian} uses the following fields, which are printed in the following order: \bibfield{organization}, \bibfield{institution}, \bibfield{library}, and \bibfield{location}. Typically, \bibfield{library} and \bibfield{location} will suffice and the others can be left blank. These fields are printed without italics or quotation marks. In the example of the Goldschmidt Papers in the previous footnote, the \bibfield{institution} is the University of California and the \bibfield{library} the Bancroft Library.
+
+The field \bibfield{type} may be used to give further information about the type of collection, and will appear after \bibfield{location}.\autocites[][]{1980}
+
+The custom field \bibfield{usera} is for call numbers, box labels, or other filing information that might be needed for locating the manuscript collection within the library or other institution. Use of this field is illustrated in the example of the Goldschmidt Papers, above.
+
+
+Online locators such as \bibfield{url} are also supported, if the collection happens to be available online, or in case you wish to treat an online database as a manuscript collection.\autocites[][]{1976} See \ref{onlinedatabases}, above, for the use of \bibtype{online} for online databases.
+
+The use of \bibfield{shorthand}s is highly recommended, in case the manuscript collection is cited repeatedly.\autocites[][]{1904}
+
+\paragraph{Letters and Other Documents in Archives and Manuscript Collections}
+\subparagraph{Letters}\label{archivedletters}
+Use \bibtype{letter}. Archived letters are handled similarly to letters in published collections, as described above in subsection \ref{publishedletters}, except that the \bibfield{xref} field will contain the entry key of a \bibtype{customa} entry.\autocites{1607}
+Another example, demonstrating the use of shorthands in a repeated citation of a \bibtype{customa} entry.\autocites[][]{1911}
+
+The preposition ``to'' will automatically be printed between \bibfield{author} and \bibfield{namec}, as long as \bibfield{namec} contains any data. 
+
+\bibfield{Namec} is followed by \bibfield{title}, \bibfield{titleaddon}, \bibfield{type}, \bibfield{venue}, \bibfield{note}, and \bibfield{date}(or \bibfield{day}, \bibfield{month}, and \bibfield{year}). 
+
+If the date is uncertain and brackets, question marks or other non-numeric data must be entered and which the \bibfield{date} fields cannot accommodate, use \bibfield{note} instead,\autocites[][]{1607-uncertain} or consider using \bibtype{customd} instead of \bibtype{letter}. 
+
+\bibfield{Venue} is the place from which the letter was sent or the document written. 
+
+\bibfield{Type} is the type of communication, \eg ``telegram,''  ``e-mail,'' or ``memorandum.'' It should be left blank for ordinary letters or if the type is obvious from the title or other information. 
+
+\bibfield{Userd} is for  for call numbers, box- and folder numbers, or other information needed to locate the item in a cross-referenced archive or other collection of entrytype \bibtype{customa}. 
+
+\bibfield{Url}, \bibfield{urldate} and the other online locator fields are taken from the \bibtype{letter} and \bibtype{customd} entries, not from the corresponding \bibtype{customa} fields.
+
+\subparagraph{Other documents}
+Use \bibtype{customd} for the individual document and link via \bibfield{xref} to a \bibtype{customa} entry for the collection as a whole. 
+
+The following fields are read from the \bibtype{customd} entry and printed in the following order: \bibfield{author}, \bibfield{title}, \bibfield{titleaddon} \bibfield{namec}, \bibfield{type}, \bibfield{venue}, \bibfield{note}, and \bibfield{date}. 
+
+\bibfield{Title}s are printed in quotation marks, by default. Generic or descriptive titles that do not require quotation marks should go in \bibfield{titleaddon} or \bibfield{type}. in exceptional cases, where the title needs to be italicized, use \bibfield{entrysubtype} ``book'' of entrytype \bibtype{customd}. A \bibfield{booktitle} field is also available, to allow for citations of parts of book-like documents.
+
+The main differences between \bibtype{customd} and \bibtype{letter} are in the treatment of \bibfield{title}, \bibfield{titleaddon}, and \bibfield{namec}. 
+
+\bibtype{Letter}s are expected to have a recipient in \bibfield{namec} and no \bibfield{title} or  \bibfield{titleaddon}. The word ``to'' will be inserted automatically between the \bibfield{author} and the \bibfield{namec} of a \bibtype{letter}. 
+
+\bibtype{Customd} documents, on the other hand, are expected to have a \bibfield{title} and/or \bibfield{titleaddon}, and may or may not have a correspondent in \bibfield{namec}. The \bibfield{title} and\bibfield{titleaddon} come between the \bibfield{author} and the \bibfield{namec}.  If the reference is to a communication of some sort and a ``to'' is required, enter it manually in \bibfield{titleaddon}. Other connections between the two names can also be made using \bibfield{titleaddon}, such as ``interview with.'' No punctuation is generated between \bibfield{titleaddon} and \bibfield{namec}. Enter punctuation manually at the end of \bibfield{titleaddon}, if needed.
+
+
+Examples of \bibtype{customd} documents.\autocites[][]{1549,weismann1877pultkalender,weismann1887dezember-neapel,kammerer1920entwicklungsmec}
+
+If a \bibtype{letter} or \bibtype{customd} document is entered without a \bibfield{xref} to a \bibtype{customa} archive or other collection, \sty{historian} will look for collection information in the \bibtype{letter}- or \bibtype{customd}-entry itself.
+
+
+There are special short forms for repeated citations of \bibtype{letter}s and \bibtype{customd}s:\label{lettershortform}
+\bibfield{Author}s, recipients and dates are are used to identify \bibtype{letter}s. \bibfield{Titles},  \bibfield{titleaddon}s, and \bibfield{namec}s are used for \bibtype{customd}s.\autocites[][]{1607, 1911, 1549}. 
+
+
+\subsection{Informally Published Electronic Sources}
+Many online sources can and should be treated as \bibtype{book}s, \bibtype{article}s, \bibtype{customd} documents or other entrytypes, with the addition of urls and other online locators in the appropriate fields (or, in the case of \bibtype{customd}, possibly with \bibfield{xref} to an \bibtype{online} database). Where these options are not practicable, use entrytype \bibtype{online} as follows.
+
+\subsubsection{Web Sites}\label{websites}
+The \bibtype{title} field is for the title of the web page and is normally printed in quotation marks. This can be varied through the use of the \bibfield{entrysubtype}: The subtype ``database'' produces roman titles.\autocites[][]{sciper-db} In case the web page is so extensive and permanent that it seems to require an italicized title, use the \bibfield{entrysubtype} ``book'' (this is not foreseen in Turabian). To cite a portion of such a book-like page or site, leave \bibfield{entrysubtype} blank and use \bibfield{title} for the smaller portion and \bibfield{booktitle} for the site as a whole.
+
+The title or owner of the site, and other sorts of credits, are printed in roman type and may be entered in any of the following fields, which are printed in the following order: \bibfield{organization}, \bibfield{institution}, bibfield{publisher}, and \bibfield{howpublished},\autocites[][]{koeniker-society-for-the}
+But sometimes the owner of the site may function as the \bibfield{author}, as in this example.\autocites[][]{osu-pauling} (Don't forget the curly brackets when needed to prevent corporate names from being parsed into first and last names.)
+
+If titles are altogether lacking, use \bibfield{titleaddon} for a descriptive phrase or generic title that will be printed without quotation marks. The \bibfield{type} field can also be used for short descriptions of the type of page or site.
+
+A \bibfield{userd} custom field is also available for providing instructions for navigating to the source (\eg ``under heading A'').
+
+\subsubsection{Weblog Entries and Comments}
+\paragraph{Blog entries}
+For blog entries or comparable subsidiary texts by the main author of the blog or site, use  the \bibfield{entrysubtype} ``blog'' of entrytype \bibtype{online}. Entries of this subtype will be added to the ``footnoteonly'' category for omission from the bibliography.\autocites[][]{myers2007trolling-faith} The title of the entry goes in the \bibfield{title} field and the title or owner of the blog or site in \bibfield{organization}, \bibfield{institution} and/or \bibfield{howpublished}. In the example, the text ``blog entry'' is from the \bibfield{type} field, ``posted'' is generated automatically, and the date is from the \bibfield{date} field. There is no punctuation between \bibfield{type} and \bibfield{date}.
+
+\paragraph{Blog comments}
+Rather than dedicate a special subtype to readers' comments or comparable subsidiary texts not by the site owner or main author, \sty{Historian} currently uses the same subtype (``blog'') as above, for blog entries. Some manual formatting may be necessary to adequately describe and locate the comments.
+
+Leave \bibfield{title} blank (unless the comment has its own title), and enter an appropriate descriptive text in \bibfield{titleaddon}. In this example,\autocites[][]{dunn200815} \bibfield{titleaddon} also contains the title of the blog entry, with manually inserted quotation marks:
+\begin{verbatim}
+reply to cutthroat stalker, comment on
+ \mkbibquote{More Kantian eloquence}
+\end{verbatim}
+
+Alternatively, one could identify the comment in the \bibfield{prenote} argument, while citing the blog entry:\autocites[Comment by ``El Cid,'' comment no. 12 on][]{myers2007trolling-faith}
+\begin{verbatim}
+\autocites[Comment by ``El Cid,'' comment no. 12 on][]
+{myers2007trolling-faith}
+\end{verbatim}
+
+\subsubsection{Electronic Mailing Lists}
+\paragraph{Listserv messages}
+No dedicated form for listserv messages. Leave \bibfield{entrysubtype} blank and provide appropriate descriptors in \bibfield{titleaddon}.\autocites[][]{weikart2004re:-rev:-glibof} In this example, \bibfield{titleaddon} contains the text ``e-mail to H-German list.''
+
+Turabian requires only the author, the list name, the date, and the url, but \sty{historian} will print titles and other information, if it is entered.
+
+
+
+
+\subsection{Sources in the Visual and Performing Arts}
+\subsubsection{Visual Sources}
+Use entrytype \bibtype{artwork} or \bibtype{customd} (the current version of \sty{historian} does not distinguish between the two). These will automatically be added to the ``footnoteonly'' category for omission from the bibliography.
+
+ Link the individual work, when necessary, via \bibfield{xref} to a museum or other collection in a \bibfield{customa} entry. 
+ 
+ By default, \sty{historian} prints the title of the artwork in quotation marks. Where Turabian requires italics (\eg for paintings and sculptures), enter ``book'' as the \bibfield{entrysubtype}.
+
+\subsubsection{Live Performances}
+\paragraph{Theater, music, and dance}
+Use entrytype \bibtype{performance}, which will automatically be added to the ``footnoteonly'' category for omission from the bibliography. Unlike \bibtype{customd}, \bibtype{performance} prints titles first, then the authors, and there is no \sty{xref} function.\autocites[][]{westbirdie-blue} 
+
+Use the \bibfield{title} field for the title of the performance, \bibfield{date} for its date, and \bibfield{venue} field for the name of the theater. \bibfield{Eventtitle} and \bibfield{eventdate} are not used.
+
+By default, \sty{historian} prints the title of the piece in quotation marks. Where Turabian requires an italicized title (\eg for plays and long pieces of music), enter ``book'' as the \bibfield{entrysubtype}.
+
+There are no dedicated fields for performers and directors. Name them and their roles in the \bibfield{note} field. If the performer needs to be emphasized, he or she can sometimes be named in the \bibfield{prenote} argument instead of the \bibfield{note}.
+
+This entrytype is intended for use in the footnotes only. Should you decide to include it in the bibliography (by modifying the \cmd{printbibliography} command), it will still begin with the title, but will be sorted, like the rest of the bibliography, by author. In such cases, copy the title to the \bibfield{sortauthor} field.
+
+\paragraph{recordings}
+Sound, video, and online recordings are treated separately, below, under \ref{soundrec}, \ref{videorec}, and \ref{onlinerec}.
+
+\paragraph{movies}
+Again, use \bibtype{performance} (or \bibtype{movie}, which is synonymous) if the reference is to a movie shown in a theater, not a video recording. Identify the director in \bibfield{note}. The \bibfield{howpublished} field can be used for movie distributors, and \bibfield{publisher} for production companies. Leave out the venue and give the year of release instead of the date of the viewing.\autocites[][]{capote}
+
+\paragraph{Repeated references to \bibtype{performance}s}
+There is a modified short form, without the author label.\autocites[][]{westbirdie-blue}
+
+\subsubsection{Television Programs and Other Broadcast Sources}
+
+\paragraph{Programs}\label{tvshows}
+Again, use \bibtype{performance} if the reference is to a broadcast, not a video recording. The title of the series goes in the \bibfield{title} field and is printed first. Use \bibfield{note} for the title (enter the quotation marks manually, using \cmd{mkbibquote}) and number of the episode, the performers, and any other significant information about the program or episode for which no dedicated field is available. In the case of a re-broadcast of an old episode, use \bibfield{origdate} for the date of the original broadcast and \bibfield{origtitle} for appropriate explanatory text, such as ``originally aired.''\autocites[][]{seinfeld}
+Use \bibfield{venue} to identify the station or distributor.\autocites[][]{all-things-cons}
+
+\paragraph{recordings}
+Video, and online recordings of broadcast programs are treated separately, below, under \ref{videorec}, and \ref{onlinerec}.
+
+
+\paragraph{Interviews}
+Broadcast interviews require some improvisation. Enter them in the same manner as print or manuscript interviews, using \bibtype{customd} (see \ref{interviews}, above), with  the name of the television program and the name of the station or distributor both in \bibfield{venue}.\autocites[][]{rice200515} Manual formatting of the venue will be required, in this case, ``\cmd{mkbibemph}\verb|{|{News Hour\verb|}|, PBS'' was entered.
+
+\paragraph{Advertisements}
+Again, use \bibtype{customd}, and enter whatever information might be available. In the following example, the sponsor of the ad functions as the \bibfield{author} and is entered in curly brackets to avoid parsing into first and last names; ``advertisement'' is given as the \bibfield{type}; and the time and circumstances of its airing are written out (with manual formatting) in the \bibfield{note} field.\autocites[][]{federal-express2006caveman}
+
+\subsubsection{Sound Recordings}\label{soundrec}
+Use entrytype \bibtype{audio} (or \bibtype{music}, which is formatted identically). Recordings are presumed to be more permanent and to have more stable bibliographic data than live performances, and are therefore included in the bibliography as well as the footnotes.
+
+Turabian gives the option of sorting the entry by author or title, or even conductor or performer, depending on the emphasis in the main text. Under \sty{historian}, the choice must be made when the data are entered: Enter the most important name in the \bibfield{author} field and use the \bibfield{nameaddon} to indicate his or her role in the recording. Names and roles of subsidiary importance can be listed freeform in the \bibfield{note} field. Leave \bibfield{author} blank to allow sorting by \bibfield{title}.
+
+The \bibfield{publisher} field can be use for production companies; \bibfield{howpublished} for any other needed details about distribution and availability; \bibfield{venue}, \bibfield{eventtitle}, and \bibfield{eventdate} for concerts and other non-studio recordings; \bibfield{type} for the recording medium; and \bibfield{usera} and \bibfield{userd} for, \eg collection and catalog numbers.\autocites[][]{lehrer1965that-was-the-ye}
+
+To cite individual tracks from a larger recording, use \bibfield{title} for the title of the track and \bibfield{booktitle} for that of the recording as a whole.\autocites[][]{lehrer1965alma}
+
+\subsubsection{Video Recordings}\label{videorec}
+Turabian calls for video recordings to be formatted like books, only with additional information about the \bibfield{type} of medium. Use entrytype \bibtype{video} and try to fit the production and distribution data to the same fields found in \bibtype{book}, such as \bibfield{publisher}. \bibfield{Howpublished} and \bibfield{institution} are also available. \bibfield{Note} can still be used as in \bibtype{performance} for directors and performers, but \bibfield{titleaddon} is better, since \bibfield{note} is printed later and is intended mainly for information about the edition or book series.\autocites[][]{lavut2000after-darwin}
+
+Sometimes a single track or other portion of a video recording will need to be cited individually. In the absence of a dedicated ``invideo'' entrytype, \sty{historian} implements an entrysubtype ``video'' of \bibtype{inbook} for this purpose. It prints the \bibfield{title} of the portion in quotations marks and uses \bibfield{booktitle} for the recording as a whole. Information about the performers, director, and so on should go in \bibfield{titleaddon} or \bibfield{booktitleaddon} instead of \bibfield{note}.\autocites[][]{cleese2001commentaries}
+
+\subsubsection{Online Multimedia Files}\label{onlinerec}
+The entrytype \bibtype{audio} can be used, regardless of whether the recording is online, distributed as a podcast, or on a more traditional medium. All the same fields used by the entrytype \bibtype{online} for identifying a web page or site are available in \bibtype{audio}, too (see\ref{websites}, above). 
+
+For online videos, however, the book-like formatting of the \bibtype{video} entrytype, with its ``location: publisher, year'' structure, becomes less appropriate. Enter ``online'' in the \bibfield{entrysubtype} in order to switch to the less structured listing of publication and location information used in \bibtype{online} (again, see\ref{websites}, above).\autocites[][]{bbcblair-announces}
+
+The entrytype \bibtype{online} can also be used for multimedia files. There are very few practical differences between it and the preceding two options.
+
+In any case, use \bibfield{type} for the type of multimedia file and \bibfield{customd} for additional locating info, such as where to click on the web page or the time at which the cited material appears in the file (that's what the ``3:43'' is in the preceding example, which is slightly modified from Turabian.)
+
+
+\subsubsection{Texts in the Visual and Performing Arts}
+\paragraph{Art Exhibition Catalogs}
+Requires additional information about the title and location of the exhibit in the bibliography (not in the footnotes), but otherwise like a \bibtype{collection}. \sty{Historian} includes a custom field, \bibfield{userc} (\bibfield{c} for catalog) for this purpose.\autocites[][]{1998weltratsel-und}
+
+\paragraph{Plays}
+Use entrytype \bibtype{book}. If the play is well known, consider using \bibfield{entrysubtype} ``canon,'' to abbreviate and omit from the bibliography, as for early English literature (see \ref{earlyworks}, above).
+
+\paragraph{Musical Scores}
+Use entrytype \bibtype{book} for published scores;  \bibtype{customd} for unpublished manuscripts.
+
+\subsection{Public Documents}
+
+Turabian distinguishes many kinds of public documents, there is no single format or entrytype for all of them.
+
+
+The following elements are common to most public documents and should be entered in the fields indicated:
+
+\subsubsection{Elements to Include, Their Order, and How to Format Them}
+
+\begin{description}
+\item[Name of the government and government body] goes in \bibfield{author}. Use curly brackets to prevent unwanted parsing into first and last names. Also use \bibfield{shortauthor} if you want to use an abbreviation or alternative form in the footnote. To omit the government or governing body entirely in the footnote, enter ``redundant'' in \bibfield{authortype}.
+
+\item [Title of the document or collection] goes in \bibfield{title} and is usually italicized. 
+
+\bibtype{Legal} and \bibtype{legislation} italicize the title by default. Switch to \bibtype{article} or \bibtype{inproceedings} for quotation marks. The \bibfield{entrysubtype} ``case'' of \bibtype{legal} will print titles in plain roman. \textbf{Needs updating}
+
+Sometimes an italicized title needs to be preceded or followed by roman text. In\bibtype{legislation} use \bibfield{type} for leading text, such as ``Bill'' or ``Proclamation''; and \bibfield{titleaddon} for following text, such as ``executive order no. 2111.'' 
+
+In cases, where the title is always to be abbreviated in the footnotes, enter a \bibfield{shorttitle} and set the entry option \opt{useshorttitles} or \kvopt{useshorttitles}{true} in the \bibfield{options} field (the \emph{Congressional Record}, \eg is usually treated this way). See \ref{useshorttitlesoption}, above.
+
+\item [Name of an individual author or editor.] If an editor is named, it goes in \bibfield{editor},\bibfield{compiler}), or any other of the editorial-role fields that might be appropriate. Since the \bibfield{author} field is already used, any subsidiary authors must go in the custom field \bibfield{namea}.
+
+\item[Report number or other identifiers] may go in any of the following: \bibfield{titleaddon} \bibfield{series}, \bibfield{number}, or \bibfield{note}, all of which precede the publishing data (if there are any) and the date; \bibfield{usera} or \bibfield{userd}, which follow the publishing data and date; \bibfield{addendum} if it belongs at the end; or \bibfield{userc} for things that belong only in the bibliography.
+
+\item[Place of publication and publisher's name] may be omitted if the publisher is the same as the issuing body already given as the \bibfield{author}. Otherwise use \bibfield{location} and \bibfield{publisher} as usual.
+
+\item[Date.] Often, \bibfield{year} will suffice, but \sty{historian} will print \bibfield{month} and \bibfield{day} (or \bibfield{date}) if entered.
+
+\item[Page numbers or other locators, if relevant] can go in \bibfield{pages} or in the \bibfield{postnote} argument. Use the \sty{pagination} function of \sty{biblatex} for alternative numbering schemes.
+
+\end{description}
+
+
+Many public documents can be formatted satisfactorily by the standard entrytypes such as \bibtype{report}, \bibtype{proceedings}, \bibtype{inproceedings}, or \bibtype{article}. For the more difficult cases, use \bibtype{legislation} or \bibtype{legal}.  \bibtype{Legal} is intended for footnotes only, not for inclusion in the bibliography. Both use \bibfield{shorttitle} and \bibfield{shortauthor} in repeated citations, never author alone, and never ibid or crossreferences to earlier notes.
+
+
+In many cases, the author must be abbreviated or even omitted in the footnotes, but retained in the bibliography. The entrytype \bibtype{legislation} will automatically use \bibfield{shortauthor} (if available) in the footnotes. Use \bibfield{authortype} ``redundant'' to omit the author entirely. When using other entrytypes, set the \opt{useshorttitles} option (in the \bibfield{options} field of the entry).
+
+Titles will not automatically be abbreviated, except in repeated references to the same document. In cases where abbreviation is called for even in first citations, use the \opt{useshorttitles} option (in the \bibfield{options} field of the entry).
+
+
+\subsubsection{Basic Formats for Public Documents}
+
+Here I depart from Turabian's organization and presentation. Instead of going by type of document (legislation, treaty, government report, etc.), I group the public documents by their formatting requirements, as follows:
+
+\begin{enumerate}
+	\item Included in both the bibliography and the footnotes
+	\begin{enumerate}
+	
+		\item Book- or report-like
+		
+		\begin{enumerate}
+		
+			\item Using the  \verb|(location: publisher, date)| construction
+			
+			\begin{description}
+				\item [Turabian's subsection 17.9.3] Presidential publications (collected in book form---whole collection) 
+				\item [17.9.4] Publications of government departments and agencies (reports, bulletins, circulars from executive departments, bureaus, agencies)
+			\end{description}
+			
+			Use entrytype \bibtype{report} (or possibly \bibtype{book}, \bibtype{collection}, or \bibtype{proceedings}).\autocites[][]{US1984an-oilspill-risk}
+			
+			\item Publishing data omitted or in free form
+
+			\begin{description}
+				\item [17.9.2] Congressional publications (Debates, reports and documents, Hearings) 
+				\item [17.9.4] Publications of government departments and agencies (reports, bulletins, circulars, study papers from federal commissions)
+				\item [17.9.6] Treaties (published in collections)
+			\end{description}
+		\end{enumerate}
+		
+		Use \bibtype{legislation}, default subtype.
+		Use \bibfield{authortype} ``redundant'' to omit the author in the footnote (``U. S. Congress'' in the following example).\autocites[][]{hj15eh}
+		Cite with the \cmd{footcitecolon} command to replace the comma with a colon before the \bibfield{postnote} argument, where required.\footcitecolon[][10828-30]{u.s.-congress193015}
+		
+		\item Individual document in a book-like collection
+
+			\begin{description}
+				\item [17.9.3] Presidential publications (collected in book form---individual document) 
+			\end{description}
+			
+			Use \bibtype{incollection}, with ``gov'' as \bibfield{entrysubtype}.\autocites[][4: 16]{1907house-miscellan}
+			
+		\item Article-like
+		
+		\begin{enumerate}
+			\item Title in quotation marks
+
+			\begin{description}
+				\item [17.9.3] Presidential publications (proclamations, orders, vetoes, addresses, etc., in a journal-like publication such as the \emph{Federal Register}) 
+				\item [17.9.6] Treaties (published in series)
+			\end{description}
+			
+			Use \bibtype{article} (leave \bibfield{entrysubtype} empty). Titles will appear in quotation marks. Use \bibfield{type} and \bibfield{titleaddon} for proclamation numbers and other identifiers that go before and after the title, outside the quotes.\autocites[][]{u.s-president1984carribbean-basin}
+			
+			\item Title in italics
+
+			\begin{description}
+				\item [17.9.2] Congressional publications (bills and resolutions)
+			\end{description}
+			
+			Use \bibtype{article}, with ``gov'' as \bibfield{entrysubtype}. Titles will be italicized. Use \bibfield{type} and \bibfield{titleaddon} for bill numbers and other identifiers that go in roman type, before and after the title.\autocites[][]{u.-s.-congress.-house1985food-security}
+
+		\end{enumerate}
+	\end{enumerate}
+	\item Footnotes only
+	\begin{enumerate}
+		\item Italicized titles
+		
+			\begin{description}
+				\item [17.9.2] Congressional publications (Statutes) 
+			\end{description}
+						
+			Use \bibtype{legal}. Titles will be italicized. Use \bibfield{type} and \bibfield{titleaddon} for bill numbers and other identifiers that go in roman type, before and after the title.\autocites[][]{1970national-enviro}
+
+		\item Simplified, without italics or quotation marks
+
+		\begin{description}
+			\item [17.9.5] U. S. Constitution 
+			\item [17.9.7] Legal cases 
+		\end{description}
+		
+			Use \bibtype{jurisdiction}. Titles will appear in roman type, without quotation marks. \bibfield{Type} is available, but should not be needed. Use \bibfield{titleaddon} or \bibfield{note} for identifying numbers and reporters. Give the abbreviated name of the court in \bibfield{institution}.\autocites[][]{2000united-states-v}
+			
+			Placement of page numbers presents some difficulty, since they go before the court and the year, rather than at the end of the note. \sty{Historian} places them properly when they are given in the \bibfield{pages} field, but when they are in the \bibfield{postnote} argument of the citation, they are printed at the end.
+						
+	\end{enumerate}
+\end{enumerate}
+
+Turabian calls for special short forms in repeated citations of certain public documents, avoiding ibids and cross-references to earlier notes. In \sty{historian} the subtype ``gov'' of \bibtype{article} and \bibtype{incollection} and the types \bibtype{legal}, \bibtype{legislation} and \bibtype{jurisdiction} use these short forms.\autocites{hj15eh, u.s.-congress193015, 1907house-miscellan, u.-s.-congress.-house1985food-security, 1970national-enviro, 2000united-states-v}
+Unfortunately it is not always clear from the Turabian manual how these short forms should be composed, especially when author and title may be missing, as in the citation from the \emph{Congressional Record} (\sty{historian} uses \bibfield{shortjournal} and \bibfield{note} in this case). In difficult cases, it might be best to override \sty{historian}'s choices by supplying short forms in the \bibfield{shortauthor}, \bibfield{shorttitle}, or \bibfield{label} fields, or by using \bibfield{shorthand}s.
+
+State and local government documents [17.9.8], Canadian government documents [17.9.9], and British government documents [17.9.10], and publications of international bodies [17.9.11] fall into the same categories.
+
+Unpublished government documents should be treated as archival manuscripts (see \ref{manuscripts}, above).
+
+Online government documents fall into the same groupings as above; just add the \bibfield{url} and \bibfield{urldate}.
+
+
+
+
+\section{Other Documents not Discussed in the Turabian Manual}
+
+\subsection{Patents}
+Not covered by Turabian and not implemented in \sty{historian}.
+
+\subsection{Published Proceedings---From Turabian, 6th ed.}
+Turabian's 7th edition omits its earlier guidance on conference proceedings, but \sty{historian} implements the following rules from the 6th edition.
+\paragraph{Proceedings with named author and editor}
+\subparagraph{Reference to entire volume of proceedings}
+The entrytype \bibtype{collection} can be used here,\autocites[][]{2488}  but \bibtype{proceedings} is preferable when additional information about the conference or event (in \bibfield{eventtitle}, \bibfield{venue}, and \bibfield{eventdate}) and sponsoring \bibfield{organization} is to be given.\autocites[][]{143}
+
+
+\subparagraph{Reference to an individual paper in the volume of proceedings}
+An example using \bibtype{inproceedings}, with the proceedings data in the same entry.\autocites[][]{2489} Crossreferencing from \bibtype{inproceedings} to \bibtype{proceedings} is also available and works as above, between \bibtype{incollection} and \bibtype{collection} (see \ref{incollxref}).
+
+\paragraph{Proceedings published by an institution, association or the Like}
+Enter the name of the institution or organization in the \bibfield{editor} field and, to avoid redundancy, enter ``corporate'' in \bibfield{editortype}  to indicate the corporate editorship. The \bibfield{organization} field will then be suppressed, as will the ``ed.'' string. Example of a \bibtype{proceedings} with corporate editorship.\autocites{gdna:1922-as-proceedings-corp}
+Example of an \bibtype{inproceedings} with corporate editorship.\autocites[][]{sudhoff1922einleitung}
+
+\subsection{Manuals}
+Manuals are formatted just like books, but with additional fields for type, version, and organization.\autocites[][]{turabian:2007a,2373}
+
+\subsection{Miscellaneous}
+Entrytype \bibtype{misc} is available for any material that does not seem to fit anywhere else. Entries of this type are formatted like books with italicized titles.\autocites{u.-s.-gauges-and-thermometers:misc}
+
+Alternatively, for unforeseen cases that are definitely not book-like, use \bibtype{customd}. Titles will be printed in quotation marks and publishing information less structured than in \bibtype{misc}.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 			FORMATTING THE BIBLIOGRAPHY
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+
+\section{Formatting and Printing the Bibliography}
+
+
+%	LIST OF SHORTHANDS
+
+\subsection{List of Shorthands}
+Before the bibliography proper,  the command \cmd{printshorthands} can be used to print  the list of shorthands, which have been used in these examples for many of the \bibtype{customa} and \bibtype{reference} entries, which normally are not cited directly, as well as for frequently cited collections.
+
+\printshorthands
+
+%	LISTS OF ARCHIVES, REFERENCE WORKS
+\subsection{Lists of Archives, Reference Works, and Other Types and Subtypes}
+It is sometimes also desirable to make additional lists of some of the entrytypes and subtypes that Turabian normally omits from the main bibliography, for example, a list of archives or reference works. 
+
+First provide a formatted text for the heading, using the \cmd{defbibheading} command of \sty{biblatex}, \eg
+\begin{verbatim}
+\defbibheading{archives}{\subsubsection*{Archives and Manuscript Collections}}
+\end{verbatim}
+\defbibheading{archives}{\subsubsection*{Archives and Manuscript Collections}}%
+Then the \cmd{printbibliography} command, with the clauses \kvopt{heading}{archives} to generate the heading defined above, and \kvopt{type}{customa} to single out the archives. Result:
+
+\printbibliography[heading=archives,type=customa]
+
+Similarly for a list of reference works, use:
+\begin{verbatim}
+\defbibheading{references}{\subsubsection*{Reference Books}}
+\printbibliography[heading=references,type=reference]
+\end{verbatim}
+\defbibheading{references}{\subsubsection*{Reference Books}}
+\printbibliography[heading=references,type=reference]
+
+For ease in sorting out some of the entrysubtypes, \sty{historian} puts them automatically into the categories ``innewspaper,'' ``inmagazine,'' ``newspaper,'' ``magazine,'' ``biblical,'' ``classic,'' and ``canonical.'' These can be printed separately using commands such as the following:
+\begin{verbatim}
+\defbibheading{magazine}{\subsubsection*{Magazine Literature}}
+\printbibliography[heading=magazine,category=inmagazine]
+\end{verbatim}
+\defbibheading{magazine}{\subsubsection*{Magazine Literature}}
+\printbibliography[heading=magazine,category=inmagazine]
+
+
+%     MAIN BIBLIOGRAPHY
+\subsection{Main Bibliography}
+Now comes the main part of the bibliography, which omits references of entrytype \bibtype{customd}, \bibtype{reference}, \bibtype{inreference}, \bibtype{legal}, and \bibtype{jurisdiction}, as well as entrysubtypes \enquote{classic} and \enquote{newspaper}, which \sty{historian} places in the category footnoteonly.
+Use the following command to print the bibliography without references from that category: \verb|\printbibliography[notcategory=footnoteonly]|
+
+To exclude, \eg archives, if they have been listed separately, use a clause such as:
+\verb|\printbibliography[notcategory=footnoteonly, nottype=customa]|
+
+In the following bibliography, everything is included except the footnoteonly category.
+
+
+\printbibliography[notcategory=footnoteonly]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%		REVISION HISTORY
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Revision history}
+
+\begin{changelog}
+
+\begin{release}{0.3}{2010-04-21}
+\item \opt{Printnoterefs} option fixed.
+\item Various internal changes for compatibility with versions 0.9 and 0.9a of \sty{biblatex}.
+\item Publication dates have been moved from \bibfield{year} to \bibfield{date} in all the examples, but \bibfield{year} can still be used, and is especially useful for uncertain dates that include non-numeric characters such as or ``n.d.,'' or ``ca. 1900.''
+\item The field{pubstate} has been implemented as a fallback for the publication date, in case \bibfield{date} and \bibfield{year} are both empty. Use it for non-numeric dates or texts such as ``forthcoming'' or predifined keys such as ``inpress.''
+\item Original publication dates of reprints have been moved from \bibfield{origyear} to \bibfield{origdate}
+\item \opt{Printurls} option has been replaced by the \opt{url}, \opt{doi}, and \opt{eprint} options as defined in the standard style. In \sty{historian}, these options may also be used on a per-entry basis.\see{printurlsoption}.
+\item \bibtype{customd} is now defined as the fallback entrytype.
+\item \bibfield{Eventdate} is now used in \bibtype{proceedings}, \bibtype{inproceedings}, and \bibtype{audio}.
+\item \bibtype{bookinbook} supported, but not distinguished from \bibfield{entrysubtype} ``volume'' of \bibtype{inbook}.\see{multivolumeeditors}
+\item New handling of edited volumes within edited multivolume collections takes advantage of the editora/b/c fields.\see{multivolumeeditors}
+\item The \opt{printnoterefs} option is also available as an entry-option. \see{printnoterefsoption}
+\item Short form for repeated citations of \bibtype{letter}s now includes the date.\see{lettershortform}
+\item \bibtype{performance} uses \bibfield{origtitle} and \bibfield{origdate} for the case of re-broadcasts of television shows.\see{tvshows}
+\item \bibtype{proceedings} and \bibtype{inproceedings} now include the \bibfield{eventtitle} and \bibfield{eventdate} fields. 
+\end{release}
+
+\begin{release}{0.2a}{2009-08-17}
+\item Internal changes for better conformity with version 0.8i of \sty{biblatex}. (Note, however, that the switch has not been made from the old ``editor'' macros to the new ``editor+others'' macros that were introduced in \sty{biblatex} 0.8e and that concatenate more of the editorial roles. Turabian does not require so many editorial roles to be detailed in this way.)
+\item Added cite command \cmd{citeannote} for printing \bibfield{annotation}.\see{citeannote}
+\item Added an \opt{annotation} option for making annotated bibliographies.\see{printannotationsoption}
+\item Added the option to suppress cross-referencing to the note number of the first instance of a repeated citation, using \kvopt{printnoterefs}{false}\see{printnoterefsoption}
+\item Corrected error in positioning of \bibfield{editor} in \bibtype{periodical}
+\item Corrected error in printing of \bibfield{note} in \bibtype{legal}
+\item Corrected error in printing of name-dashes for bibliography entries sorted by translator in the absence of an author or editor.
+\item Corrected several errors in spacing and punctuation.
+\item Eliminated dependence on \sty{verbose-inote}.
+\end{release}
+
+\begin{release}{0.2}{Skipped}
+\item The cbx file of v. 0.1 was inadvertently given this number.
+\end{release}
+
+\begin{release}{0.1}{2009-05-19}
+\item Initial public release, for use with version 0.8c of \sty{biblatex}
+\end{release}
+
+\end{changelog}
+
+\end{document}  

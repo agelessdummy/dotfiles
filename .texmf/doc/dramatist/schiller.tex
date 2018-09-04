@@ -1,0 +1,338 @@
+%%
+%% This is file `schiller.tex',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% dramatist.dtx  (with options: `schiller')
+%% 
+%% IMPORTANT NOTICE:
+%% 
+%% For the copyright see the source file.
+%% 
+%% Any modified versions of this file must be renamed
+%% with new filenames distinct from schiller.tex.
+%% 
+%% For distribution of the original source see the terms
+%% for copying and modification in the file dramatist.dtx.
+%% 
+%% This generated file may be distributed as long as the
+%% original source files, as listed above, are part of the
+%% same distribution. (The sources need not necessarily be
+%% in the same archive or directory.)
+%% dramatist.dtx
+%% Copyright (C) 2003-2005 Massimiliano Dominici
+%% \CharacterTable%%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%%   Digits        \0\1\2\3\4\5\6\7\8\9
+%%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%%   Dollar        \$     Percent       \%     Ampersand     \&
+%%   Acute accent  \'     Left paren    \(     Right paren   \)
+%%   Asterisk      \*     Plus          \+     Comma         \,
+%%   Minus         \-     Point         \.     Solidus       \/
+%%   Colon         \:     Semicolon     \;     Less than     \<
+%%   Equals        \=     Greater than  \>     Question mark \?
+%%   Commercial at \@     Left bracket  \[     Backslash     \\
+%%   Right bracket \]     Circumflex    \^     Underscore    \_
+%%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%%   Right brace   \}     Tilde         \~}
+%%
+%%\section{The GNU General Public License}
+%% This file shows some basic features of package `dramatist', when
+%% typesetting a drama in prose. See the commented line for more
+%% informations.
+%%
+%% The source for this example is taken from Schiller's `The
+%% Robbers'.
+
+\documentclass{book}
+\usepackage{dramatist}
+
+\pagestyle{plain}
+%% Maybe you want acts and scenes print their marks in the headings.
+%% The following lines should work.
+%%\makeatletter
+%%\def\ps@myheadings{%%
+%%    \renewcommand\drampermark[1]{\markboth{##1}{}}
+%%    \renewcommand\actmark[1]{\markboth{##1}{}}
+%%    \renewcommand\scenemark[1]{\markright{##1}}
+%%    \def\@oddfoot{\hfil\thepage\hfil}
+%%    \def\@evenfoot{\hfil\thepage\hfil}
+%%    \def\@evenhead{\hfil\scshape\leftmark\hfil}%%
+%%    \def\@oddhead{\hfil\scshape\rightmark\hfil}%%
+%%}
+%%\makeatother
+%%\pagestyle{myheadings}
+
+%% We may change some parameters in the look of acts and scenes:
+%%\renewcommand{\actnamefont}{\bfseries\Large}
+%%\renewcommand{\theact}{\Roman{act}}
+%%\renewcommand{\scenenamefont}{\bfseries\large}
+%%\renewcommand{\thescene}{\Roman{scene}}
+
+%% We may change some parameters in the look of characters:
+%%\renewcommand{\castfont}{\bfseries}
+%%\renewcommand{\speaksfont}{\itshape}
+%%\renewcommand{\speaksdel}{.\\}
+%%\renewcommand{\namefont}{\bfseries}
+
+%% We may change some parameters in the look of stage directions:
+%%\StageDirConf{\begin{center}\begin{minipage}{.7\textwidth}\bfseries\centering}{\end{minipage}\end{center}}
+%%\renewcommand{\dirdelimiter}[1]{[#1]}
+
+%% If you want the name of character printed centered above the
+%% dialogue, you should comment out the following lines.
+%%\Dlabelsep=0pt
+%%\renewcommand{\speakslabel}[1]{%%
+%%    \hbox to\textwidth{\hfill\speaksfont{#1}\hfill}}
+
+\author{Friederich Schiller}
+\title{The Robbers}
+\date{}
+
+\begin{document}
+\begin{titlepage}
+\maketitle
+\end{titlepage}
+
+\tableofcontents
+
+%% We define some characters appearing in the play.
+\Character[MAXIMILIAN, COUNT VON MOOR.]{Old Moor}{moor}
+%% group of characters.
+\begin{CharacterGroup}{his Sons.}
+\GCharacter{CHARLES,}{Charles Von Moor}{cha}
+\GCharacter{FRANCIS,}{Francis}{fran}
+\end{CharacterGroup}
+\Character[AMELIA VON EDELREICH, his Niece.]{Amelia}{amelia}
+%% group of characters.
+\begin{CharacterGroup}{Libertines, afterwards Banditti}
+\GCharacter{SPIEGELBERG,}{Spiegelberg}{spie}
+\GCharacter{SCHWEITZER,}{Schweitzer}{schwei}
+\GCharacter{GRIMM,}{Grimm}{grim}
+\GCharacter{RAZMANN,}{Razmann}{raz}
+\GCharacter{SCHUFTERLE,}{Schufterle}{schuf}
+\GCharacter{ROLLER,}{Roller}{rol}
+\GCharacter{KOSINSKY,}{Kosinsky}{kos}
+\GCharacter{SCHWARTZ,}{Schwartz}{schwa}
+\end{CharacterGroup}
+\Character[HERMANN, the natural son of a Nobleman.]{Hermann}{her}
+\Character[DANIEL, an old Servant of Count von Moor.]{Daniel}{dan}
+\Character[PASTOR MOSER.]{Pastor Moser}{pm}
+\Character[FATHER DOMINIC, a Monk.]{Father Dominic}{fd}
+%% the following collective character appears in the play as single
+%% instances, so we don't need define commands and entries for it.
+\Character[BAND OF ROBBERS, SERVANTS, ETC.]{}{}
+
+%% We call the dramatis personae list.
+\DramPer
+
+\act
+
+%% Schiller puts some general informations about location in the
+%% scene heading. So, we must use uppercase version of `\scene'. On
+%% the other hand we don't want this information to appear in
+%% headers and table of contents; hence the empty optional argument.
+\Scene[]{. -- Franconia}
+
+\StageDir{Apartment in the Castle of COUNT MOOR.\\\fran, \moor}
+
+\begin{drama}
+\franspeaks But are you really well, father? You look so pale.
+
+\moorspeaks Quite well, my son -- what have you to tell me?
+
+\franspeaks The post is arrived -- a letter from our correspondent at
+Leipsic.
+
+\moorspeaks \direct{eagerly} Any tidings of my son Charles?
+
+\franspeaks Hem! Hem! -- Why, yes. But I fear -- I know not -- whether I dare
+ -- your health. -- Are you really quite well, father?
+
+\moorspeaks As a fish in water. Does he write of my son? What means this
+anxiety about my health? You have asked me that question twice.
+
+\franspeaks If you are unwell -- or are the least apprehensive of being so --
+permit me to defer -- I will speak to you at a fitter season. -- \direct{Half
+aside.} These are no tidings for a feeble frame.
+
+\moorspeaks Gracious Heavens? what am I doomed to hear?
+
+\franspeaks First let me retire and shed a tear of compassion for my lost
+brother. Would that my lips might be forever sealed -- for he is your
+son! Would that I could throw an eternal veil over his shame -- for he is
+my brother! But to obey you is my first, though painful, duty -- forgive
+me, therefore.
+
+\moorspeaks Oh, Charles! Charles! Didst thou but know what thorns thou
+plantest in thy father's bosom! That one gladdening report of thee would
+add ten years to my life! yes, bring back my youth! whilst now, alas,
+each fresh intelligence but hurries me a step nearer to the grave!
+
+\franspeaks Is it so, old man, then farewell! for even this very day we
+might all have to tear our hair over your coffin.
+
+\moorspeaks Stay! There remains but one short step more -- let him have his
+will! \direct{He sits down.} The sins of the father shall be visited unto the
+third and fourth generation -- let him fulfil the decree.
+
+\franspeaks \direct{takes the letter out of his pocket}. You know our
+correspondent! See! I would give a finger of my right hand might I
+pronounce him a liar -- a base and slanderous liar! Compose yourself!
+Forgive me if I do not let you read the letter yourself. You cannot,
+must not, yet know all.
+
+\moorspeaks All, all, my son. You will but spare me crutches.
+
+\franspeaks \direct{reads} ``Leipsic, May 1. Were I not bound by an inviolable
+promise to conceal nothing from you, not even the smallest particular,
+that I am able to collect, respecting your brother's career, never, my
+dearest friend, should my guiltless pen become an instrument of torture
+to you. I can gather from a hundred of your letters how tidings such as
+these must pierce your fraternal heart. It seems to me as though I saw
+thee, for the sake of this worthless, this detestable'' -- \direct{\moor covers
+his face}. Oh! my father, I am only reading you the mildest passages --
+``this detestable man, shedding a thousand tears.'' Alas! mine flowed -- ay,
+gushed in torrents over these pitying cheeks. ``I already picture to
+myself your aged pious father, pale as death.'' Good Heavens! and so you
+are, before you have heard anything.
+
+\moorspeaks Go on! Go on!
+\end{drama}
+
+\begin{center}
+[\dots]
+\end{center}
+
+\Scene[]{. -- A Tavern on the Frontier of Saxony.}
+
+\StageDir{\cha intent on a book; \spie drinking at the table.}
+
+\begin{drama}
+\chaspeaks \direct{lays the book aside}. I am disgusted with this age of
+puny scribblers when I read of great men in my Plutarch.
+
+\spiespeaks \direct{places a glass before him, and drinks.} Josephus is the book
+you should read.
+
+\chaspeaks The glowing spark of Prometheus is burnt out, and now
+they substitute for it the flash of lycopodium, a stage-fire which will
+not so much as light a pipe. The present generation may be compared to
+rats crawling about the club of Hercules.
+
+A French abbe lays it down that Alexander was a poltroon; a phthisicky
+professor, holding at every word a bottle of sal volatile to his nose,
+lectures on strength. Fellows who faint at the veriest trifle criticise
+the tactics of Hannibal; whimpering boys store themselves with phrases
+out of the slaughter at Canna; and blubber over the victories of Scipio,
+because they are obliged to construe them.
+
+\spiespeaks Spouted in true Alexandrian style.
+
+\chaspeaks A brilliant reward for your sweat in the battle-field
+truly to have your existence perpetuated in gymnasiums, and your
+immortality laboriously dragged about in a schoolboy's satchel. A
+precious recompense for your lavished blood to be wrapped round
+gingerbread by some Nuremberg chandler, or, if you have great luck, to
+be screwed upon stilts by a French playwright, and be made to move on
+wires! Ha, ha, ha!
+
+\spiespeaks \direct{drinks.} Read Josephus, I tell you.
+
+\chaspeaks Fie! fie upon this weak, effeminate age, fit for nothing
+but to ponder over the deeds of former times, and torture the heroes of
+antiquity with commentaries, or mangle them in tragedies. The vigor of
+its loins is dried up, and the propagation of the human species has
+become dependent on potations of malt liquor.
+\end{drama}
+
+\begin{center}
+[\dots]
+\end{center}
+
+\act
+
+\Scene[]{. -- {\scshape Francis von Moor} in his chamber -- in meditation.}
+
+\begin{drama}
+\franspeaks It lasts too long -- and the doctor even says is recovering -- an
+old man's life is a very eternity! The course would be free and plain
+before me, but for this troublesome, tough lump of flesh, which, like
+the infernal demon-hound in ghost stories, bars the way to my treasures.
+
+Must, then, my projects bend to the iron yoke of a mechanical system?
+Is my soaring spirit to be chained down to the snail's pace of matter?
+To blow out a wick which is already flickering upon its last drop of
+oil -- 'tis nothing more. And yet I would rather not do it myself, on
+account of what the world would say. I should not wish him to be
+killed, but merely disposed of. I should like to do what your clever
+physician does, only the reverse way -- not stop Nature's course by
+running a bar across her path, but only help her to speed a little
+faster. Are we not able to prolong the conditions of life? Why,
+then, should we not also be able to shorten them? Philosophers and
+physiologists teach us how close is the sympathy between the emotions of
+the mind and the movements of the bodily machine. Convulsive sensations
+are always accompanied by a disturbance of the mechanical vibrations --
+passions injure the vital powers -- an overburdened spirit bursts its
+shell. Well, then -- what if one knew how to smooth this unbeaten path,
+for the easier entrance of death into the citadel of life? -- to work the
+body's destruction through the mind -- ha! an original device! -- who can
+accomplish this? -- a device without a parallel! Think upon it, Moor!
+That were an art worthy of thee for its inventor. Has not poisoning
+been raised almost to the rank of a regular science, and Nature
+compelled, by the force of experiments, to define her limits, so that
+one may now calculate the heart's throbbings for years in advance, and
+say to the beating pulse, ``So far, and no farther''? Why should not one
+try one's skill in this line?
+
+And how, then, must I, too, go to work to dissever that sweet and
+peaceful union of soul and body? What species of sensations should I
+seek to produce? Which would most fiercely assail the condition of
+life? Anger? -- that ravenous wolf is too quickly satiated. Care? that
+worm gnaws far too slowly. Grief? -- that viper creeps too lazily for me.
+Fear? -- hope destroys its power. What! and are these the only
+executioners of man? is the armory of death so soon exhausted? \direct{In deep
+thought.} How now! what! ho! I have it! \direct{Starting up.} Terror! What
+is proof against terror? What powers have religion and reason under
+that giant's icy grasp! And yet -- if he should withstand even this
+assault? If he should! Oh, then, come Anguish to my aid! and thou,
+gnawing Repentance! -- furies of hell, burrowing snakes who regorge your
+food, and feed upon your own excrements; ye that are forever destroying,
+and forever reproducing your poison! And thou, howling Remorse, that
+desolatest thine own habitation, and feedest upon thy mother. And come
+ye, too, gentle Graces, to my aid; even you, sweet smiling Memory,
+goddess of the past -- and thou, with thy overflowing horn of plenty,
+blooming Futurity; show him in your mirror the joys of Paradise, while
+with fleeting foot you elude his eager grasp. Thus will I work my
+battery of death, stroke after stroke, upon his fragile body, until the
+troop of furies close upon him with Despair! Triumph! triumph! -- the
+plan is complete -- difficult and masterly beyond compare -- sure -- safe; for
+then \direct{with a sneer} the dissecting knife can find no trace of wound or
+of corrosive poison.
+
+\direct{Resolutely.} Be it so! \direct{Enter \her.} Ha! \emph{Deus ex machina}!
+Hermann!
+
+\herspeaks At your service, gracious sir!
+
+\franspeaks \direct{shakes him by the hand.} You will not find it that of an
+ungrateful master.
+
+\herspeaks I have proofs of this.
+
+\franspeaks And you shall have more soon -- very soon, Hermann! -- I have
+something to say to thee, Hermann.
+
+\herspeaks I am all attention.
+\end{drama}
+
+\begin{center}
+[\dots]
+\end{center}
+
+\end{document}
+
+\endinput
+%%
+%% End of file `schiller.tex'.

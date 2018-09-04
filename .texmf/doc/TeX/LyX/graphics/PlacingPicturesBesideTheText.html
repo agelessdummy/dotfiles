@@ -1,0 +1,205 @@
+<!DOCTYPE html 
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+  <title>LyX wiki | Tips / PlacingPicturesBesideTheText </title>
+  <meta http-equiv='Content-Style-Type' content='text/css' />
+  <link rel='stylesheet' href='/pub/skins/LyX/pmwiki.css' type='text/css' />
+  <!--HTMLHeader--><style type='text/css'><!--
+  ul, ol, pre, dl, p { margin-top:0px; margin-bottom:0px; }
+  code.escaped { white-space: nowrap; }
+  .vspace { margin-top:1.33em; }
+  .indent { margin-left:40px; }
+  .outdent { margin-left:40px; text-indent:-40px; }
+  a.createlinktext { text-decoration:none; border-bottom:1px dotted gray; }
+  a.createlink { text-decoration:none; position:relative; top:-0.5em;
+    font-weight:bold; font-size:smaller; border-bottom:none; }
+  img { border:0px; }
+  .apprlink { font-size:smaller; }
+div.sectionedit { text-align:right;font-size:smaller;clear:both;}
+
+div.breaklist { text-align: right; }
+div.breaklist strong { background-color: yellow; }
+div.breakpage { text-align: right; }
+span.anchor {
+	float: left;
+	font-size: 10px;
+	margin-left: -10px;
+	width: 10px;
+    position:relative; top:-0.2em;
+	text-align: center;
+}
+span.anchor a { text-decoration: none; }
+span.anchor a:hover { text-decoration: underline; }
+ol.toc { text-indent:-30px; list-style: none; }
+div.toc { font-size: smaller; margin-bottom: 10px; }
+span.uploadlistdetailed { float:left; width:20em; }
+span.uploadlistinfo { font-size:smaller; }
+.editconflict { color:green; 
+  font-style:italic; margin-top:1.33em; margin-bottom:1.33em; }
+
+  table.markup { border:2px dotted #ccf; width:90%; }
+  td.markup1, td.markup2 { padding-left:10px; padding-right:10px; }
+  table.vert td.markup1 { border-bottom:1px solid #ccf; }
+  table.horiz td.markup1 { width:23em; border-right:1px solid #ccf; }
+  table.markup caption { text-align:left; }
+  div.faq p, div.faq pre { margin-left:2em; }
+  div.faq p.question { margin:1em 0 0.75em 0; font-weight:bold; }
+  div.faqtoc div.faq * { display:none; }
+  div.faqtoc div.faq p.question 
+    { display:block; font-weight:normal; margin:0.5em 0 0.5em 20px; line-height:normal; }
+  div.faqtoc div.faq p.question * { display:inline; }
+   
+    .frame 
+      { border:1px solid #cccccc; padding:4px; background-color:#f9f9f9; }
+    .lfloat { float:left; margin-right:0.5em; }
+    .rfloat { float:right; margin-left:0.5em; }
+a.varlink { text-decoration:none; }
+
+--></style><link rel='stylesheet' href='/farm.d/pub/css/markup.css' type='text/css' />
+  <meta name='robots' content='index,follow' />
+<link rel='stylesheet' type='text/css' href='/pub/css/local.css' />
+
+</head>
+<body>
+<!--PageHeaderFmt-->
+  <div id='wikilogo'><a href=''>
+     <img src='/pub/skins/LyX/lyx_logo_medium2.png' alt='LyX wiki' border='0' /></a></div>
+  <div id='wikihead'>
+  <div class='fpltemplate'>
+<form action='' method='get'>
+Go to page: 
+<select onchange='window.location.href=this.options[this.selectedIndex].value'
+       name='invisible"' style='font-size:85%; width:30em;'><option value='/Tips/AccessTableOfContentsAsASeperateDocument'>AccessTableOfContentsAsASeperateDocument</option><option value='/Tips/AddingInvisibleTagToPDF'>Adding an </option><option value='/Tips/AdditionalSoftware'>AdditionalSoftware</option><option value='/Tips/Beamer'>Beamer</option><option value='/Tips/BibTeX'>BibTeX</option><option value='/Tips/BibTeXAndEmacs'>BibTeXAndEmacs</option><option value='/Tips/BlockedKeyboardShortcuts'>BlockedKeyboardShortcuts</option><option value='/Tips/ChangeTrackingLyx1-3-2'>ChangeTrackingLyx1-3-2</option><option value='/Tips/ChildMathMacros'>ChildMathMacros</option><option value='/Tips/Color'>Color</option><option value='/Tips/ColorSchemes'>ColorSchemes</option><option value='/Tips/CommandSequences'>CommandSequences</option><option value='/Tips/CommandSequencesTips'>CommandSequencesTips</option><option value='/Tips/Compiling'>Compiling</option><option value='/Tips/ConvertFilesIntoArchive'>ConvertFilesIntoArchive</option><option value='/Tips/ConvertSweave'>ConvertSweave</option><option value='/Tips/CopyTablesFromSpreadsheets'>CopyTablesFromSpreadsheets</option><option value='/Tips/CorrectingSplitSubversionKeywords'>CorrectingSplitSubversionKeywords</option><option value='/Tips/Cyrillic'>Cyrillic</option><option value='/Tips/DebuggingLayoutFiles'>DebuggingLayoutFiles</option><option value='/Tips/EndNotes'>EndNotes</option><option value='/Tips/Enumitem'>Enumitem</option><option value='/Tips/EquationNumbering'>EquationNumbering</option><option value='/Tips/ExportingRichTextFormatWithLaTeX2rtf'>ExportingRichTextFormatWithLaTeX2rtf</option><option value='/Tips/ExportWithCommentsIncluded'>ExportWithCommentsIncluded</option><option value='/Tips/FeynmanDiagrams'>FeynmanDiagrams</option><option value='/Tips/FrequentlyUsedShortcuts'>FrequentlyUsedShortcuts</option><option value='/Tips/Fullscreen'>Fullscreen</option><option value='/Tips/GenerateListOfKeyboardShortcuts'>GenerateListOfKeyboardShortcuts</option><option value='/Tips/Indexing'>Indexing</option><option value='/Tips/InstallType1Fonts'>InstallType1Fonts</option><option value='/Tips/KeyboardShortcutForCharacterStyles'>KeyboardShortcutForCharacterStyles</option><option value='/Tips/KeyboardShortcuts'>KeyboardShortcuts</option><option value='/Tips/Latinkeys-bind'>Latinkeys-bind</option><option value='/Tips/LyXFilesBackupScript'>LyXFilesBackupScript</option><option value='/Tips/MathMacros'>MathMacros</option><option value='/Tips/ModifyChapterEtc'>ModifyChapterEtc</option><option value='/Tips/MultipleLyxCodeInSingleEnumerate'>MultipleLyxCodeInSingleEnumerate</option><option value='/Tips/Nomenclature'>Nomenclature</option><option value='/Tips/OpenFileInRunningLyx'>OpenFileInRunningLyx</option><option value='/Tips/OptionalEnvironmentArguments'>OptionalEnvironmentArguments</option><option value='/Tips/Outline'>Outline</option><option value='/Tips/PageList'>PageList</option><option value='/Tips/PaperLayout'>PaperLayout</option><option value='/Tips/PasteTexCodeIntoLyx'>PasteTexCodeIntoLyx</option><option value='/Tips/PerformanceIssues'>PerformanceIssues</option><option value='/Tips/PlacingFiguresAndProducingLegends'>PlacingFiguresAndProducingLegends</option><option value='/Tips/PlacingPicturesBesideTheText'>PlacingPicturesBesideTheText</option><option value='/Tips/RecentChanges'>RecentChanges</option><option value='/Tips/ResetNumberingOfTablesAndFiguresInAnAppendix'>ResetNumberingOfTablesAndFiguresInAnAppendix</option><option value='/Tips/SettingLANG'>SettingLANG</option><option value='/Tips/SubfiguresAndCrossReferences'>SubfiguresAndCrossReferences</option><option value='/Tips/Symbols'>Symbols</option><option value='/Tips/TheLetTrick'>TheLetTrick</option><option value='/Tips/TheTensindPackage'>TheTensindPackage</option><option value='/Tips/Tips'>Tips</option><option value='/Tips/ToplevelMathMenu'>ToplevelMathMenu</option><option value='/Tips/Typography'>Typography</option><option value='/Tips/UseBatikSVGImages'>UseBatikSVGImages</option><option value='/Tips/UseInkscapeSVGImages'>UseInkscapeSVGImages</option><option value='/Tips/UseIpeFilesDirectlyInLyX'>UseIpeFilesDirectlyInLyX</option><option value='/Tips/UsingLyXWithTgif'>UsingLyXWithTgif</option><option value='/Tips/UsingMakefileToExportPDF'>UsingMakefileToExportPDF</option><option value='/Tips/WordCount'>WordCount</option></select>
+<input id='{id4bead55618454}' type='submit' value='Go'
+       class='inputbutton' />
+<script type='text/javascript'>
+<!-- document.getElementById('{id4bead55618454}').style.display = 'none'; //-->
+</script>
+</form>
+</div> 
+<form action='' method='post'>
+<p>Search: 
+<input type='hidden' name='action' value='search' />
+<input type='hidden' name='n' value='Tips.PlacingPicturesBesideTheText' />
+<input type='text' name='q' class='inputbox' size='35' />
+<input type='submit' value='Search' class='inputbutton' />
+&nbsp; <a class='wikilink' href='/Site/Search'>Help</a>
+</p></form>
+
+  </div>
+<!--/PageHeaderFmt-->
+  <table id='wikimid' width='100%' cellspacing='0' cellpadding='0'><tr>
+<!--PageLeftFmt-->
+      <td id='wikileft' valign='top'>
+        <p class='sidehead'> <a class='wikilink' href='/Site/Navigation'>Navigation</a> 
+</p><ul><li><a class='urllink' href='http://wiki.lyx.org/LyX/Welcome' rel='nofollow'>Welcome</a>
+</li><li><a class='urllink' href='http://wiki.lyx.org/ipfm/index.php?dir=/' rel='nofollow'>Upload and manage files</a> 
+</li><li><a class='wikilink' href='/Site/PageList'>Page list for <strong>Tips/</strong></a> 
+<ul><li><a class='wikilink' href='/Tips/PlacingPicturesBesideTheText?action=search&amp;q=Tips%2F+'>All pages in Tips/</a>
+</li></ul></li></ul><p class='vspace sidehead'><a class='wikilink' href='/Field/Groups'>Groups</a>
+<a name='list' id='list'></a>
+</p><ul><li><span class='hlLyX'><a class='urllink' href='http://wiki.lyx.org/LyX/' rel='nofollow'>LyX/</a></span>
+</li><li><span  style='color: green; font-weight: bold;'><a style='color: green' class='urllink' href='http://wiki.lyx.org/Tips/' rel='nofollow'>Tips/</a></span>
+</li><li><span class='hlFAQ'><a class='urllink' href='http://wiki.lyx.org/FAQ/' rel='nofollow'>FAQ/</a></span>
+</li><li><span class='hlTools'><a class='urllink' href='http://wiki.lyx.org/Tools/' rel='nofollow'>Tools/</a></span>
+</li><li><span class='hlLaTeX'><a class='urllink' href='http://wiki.lyx.org/LaTeX/' rel='nofollow'>LaTeX/</a></span>
+</li><li><span class='hlBibTeX'><a class='urllink' href='http://wiki.lyx.org/BibTeX/' rel='nofollow'>BibTeX/</a></span>
+</li><li><span class='hlLayouts'><a class='urllink' href='http://wiki.lyx.org/Layouts/' rel='nofollow'>Layouts/</a></span>
+</li><li><span class='hlMac'><a class='urllink' href='http://wiki.lyx.org/Mac/Mac' rel='nofollow'>Mac/</a></span>
+</li><li><span class='hlWindows'><a class='urllink' href='http://wiki.lyx.org/Windows/Windows' rel='nofollow'>Windows/</a></span>
+</li><li><span class='hlExamples'><a class='urllink' href='http://wiki.lyx.org/Examples/' rel='nofollow'>Examples/</a></span>
+</li><li><span class='hlGlossary'><a class='urllink' href='http://wiki.lyx.org/Glossary/Glossary' rel='nofollow'>Glossary</a>/</span>
+</li><li><a class='wikilink' href='/Devel/Devel'>Devel</a>/
+</li></ul><p class='vspace sidehead' style='font-size: smaller;'><a class='wikilink' href='/LyX/Documentation'>LyX documentation</a>
+</p><ul><li><a class='wikilink' href='/LyX/Documentation'>Documentation</a>
+</li><li><a class='wikilink' href='/LyX/Manuals'>Manuals</a>
+</li><li><a class='wikilink' href='/LyX/Tutorials'>Tutorials</a> 
+</li><li><a class='wikilink' href='/LyX/Presentations'>Presentations</a> 
+</li><li><a class='wikilink' href='/LyX/LyxFunctions'>LyX Functions</a> 
+</li><li><a class='wikilink' href='/LyX/Troubleshooting'>Troubleshooting</a>
+</li><li><a class='wikilink' href='/LyX/SuggestedReading'>Suggested reading</a>
+</li><li><a class='urllink' href='http://www.lyx.org//' rel='nofollow'>Official web site</a>
+</li></ul><p class='vspace sidehead'> Edit
+</p><ul><li><a class='wikilink' href='/Tips/PlacingPicturesBesideTheText?action=edit'>Current page</a> 
+</li><li><a class='wikilink' href='/Site/PageList?action=edit'>Page list</a>  
+</li><li><a class='wikilink' href='/Field/SideBar-field?action=edit'>Field sidebar</a>
+</li><li><a class='wikilink' href='/Playground/Sandbox?action=edit'>Sandbox</a>  
+</li><li><a class='urllink' href='/Field.SideBar-group-Tips?action=edit' rel='nofollow'>Group sidebar (new)</a>
+</li></ul><p class='vspace sidehead'> <a class='wikilink' href='/Site/SharedGroups'>Shared groups</a>
+</p><ul><li><a class='wikilink' href='/Site/Site'>Site/</a>
+</li><li><a class='wikilink' href='/Test/Test'>Test/</a>
+</li><li><a class='wikilink' href='/Site/Profiles'>Profiles/</a>
+</li><li><a class='wikilink' href='/Playground/Playground'>Playground/</a>
+</li></ul><p class='vspace sidehead'> Links
+</p><ul><li><a class='wikilink' href='/Site/Help'>Site help</a>
+</li><li><a class='wikilink' href='/Site/FAQ'>Site FAQ</a>
+</li><li><a class='wikilink' href='/Site/Copyrights'>Copyrights</a>
+</li><li><a class='urllink' href='http://www.lyx.org' rel='nofollow'>www.lyx.org</a>
+</li><li><a class='wikilink' href='/PmWiki/DocumentationIndex'>PmWiki documentation</a>
+</li></ul>
+</td>
+<!--/PageLeftFmt-->
+      <td id='wikibody' valign='top'>
+<!--PageActionFmt-->
+        <div id='wikicmds'><ul><li class='browse'><a accesskey=''  class='selflink' href='/Tips/PlacingPicturesBesideTheText'>View</a>
+</li><li class='edit'><a accesskey='e'  rel='nofollow'  class='wikilink' href='/Tips/PlacingPicturesBesideTheText?action=edit'>Edit</a>
+</li><li class='upload'><a accesskey='ak_upload'  class='urllink' href='http://wiki.lyx.org/ipfm/index.php?dir=/' rel='nofollow'>Upload</a>
+</li><li class='diff'><a accesskey='h'  rel='nofollow'  class='wikilink' href='/Tips/PlacingPicturesBesideTheText?action=diff'>History</a>
+</li><li class='print'><a accesskey=''  rel='nofollow'  class='wikilink' href='/Tips/PlacingPicturesBesideTheText?action=print'>Print</a>
+</li></ul>
+</div>
+<!--PageTitleFmt-->
+        <div id='wikititle'>
+          <div class='pagegroup'><a href='/Tips'>Tips</a> /</div>
+          <h1 class='pagetitle'>PlacingPicturesBesideTheText</h1></div>
+<!--PageText-->
+<div id='wikitext'>
+<p><a name='styles' id='styles'></a>
+</p><div  style='text-align: right;' class='rfloat' style='background-color:#f9f9f9;' >Categories: <a class='categorylink' href='/Category/Tips'>Tips</a>, <a class='categorylink' href='/Category/Figures'>Figures</a></div><span class='wikitrail'>&lt;&lt; <a class='wikilink' href='/Tips/TheTensindPackage'>The tensind package</a> | <a class='wikilink' href='/Tips/PageList'>Page list</a> | <a class='wikilink' href='/Tips/Enumitem'>Enumitem</a> &gt;&gt;</span><br /><br />
+<p>How to insert wrapped floats beside the text
+</p>
+<div class='vspace'></div><div class='sectionedit'><a name='sTips.PlacingPicturesBesideTheText_1'></a><a href='/Tips/PlacingPicturesBesideTheText?action=edit&amp;s=1&amp;auto=y&amp;from=Tips.PlacingPicturesBesideTheText'>(Edit Section &#x2193;)</a></div>
+<h3  style='margin-top: 0px;'> Using picins for inserting pictures beside the text.</h3>
+<p><strong>HEADER:</strong> 
+</p><pre> \usepackage{picins}
+ %Optional: Define style&amp;font for piccaptions:
+ \usepackage[font={small,sf}]{caption}
+ \addto\captionsngerman{\renewcommand{\figurename}{Abb.}}
+ \addto\captionsngerman{%
+  \renewcommand{\figurename}{\sffamily\bfseries Abb.}  
+ }
+</pre><p>%--&gt; important to have babel activated e.g.:
+\usepackage [ngerman] {babel}
+</p>
+<p class='vspace'><strong>TEXT:</strong>
+</p><pre> <strong>ERT:</strong> \piccaption{DESCRIPTION}\label{LABEL}\parpic[r]{
+ <em>&lt;Insert picture with LyX&gt;</em>
+ <strong>ERT:</strong> }
+</pre><div class='vspace'></div><div class='sectionedit'><a name='sTips.PlacingPicturesBesideTheText_2'></a><a href='/Tips/PlacingPicturesBesideTheText?action=edit&amp;s=2&amp;auto=y&amp;from=Tips.PlacingPicturesBesideTheText'>(Edit Section &#x2193;)</a></div>
+<h3  style='margin-top: 0px;'> Using wrapfigure for inserting pictures beside the text (LyX 1.6+).</h3>
+<p>LyX 1.6 uses wrapfigure to produce circumfloated pictures (Insert / Float / Figure Wrap Float; German: Einfügen / Gleitobjekt / Umflossenes Bild-Gleitobjekt)
+</p>
+<p class='vspace'>If you insert a picture at the beginning of a paragraph, wrapfigure places the picture below the first line of the paragraph. To avoid that, insert the following code into the Preamble (Document / Preferences)
+</p>
+<div class='vspace'></div><pre> \setlength{\intextsep}{0cm plus1cm minus1cm}
+</pre><p class='vspace'><a class='categorylink' href='/Category/Tips'>Tips</a> <a class='categorylink' href='/Category/Figures'>Figures</a>
+</p>
+</div>
+
+      </td>
+    </tr></table>
+<!--PageFooterFmt-->
+  <div id='wikifoot'>
+    <div class='footnav'>
+      <a rel="nofollow" href='/Tips/PlacingPicturesBesideTheText?action=edit'>Edit</a> -
+      <a rel="nofollow" href='/Tips/PlacingPicturesBesideTheText?action=diff'>History</a> -
+      <a rel="nofollow" href='/Tips/PlacingPicturesBesideTheText?action=print' target='_blank'>Print</a> -
+      <a href='/Tips/RecentChanges'>Recent Changes</a> -
+      <a href='/Site/AllRecentChanges'>All Recent Changes</a> -
+      <a href='/Site/Search'>Search</a></div>
+    <div class='lastmod'>Page last modified on 2009-07-27 01:25 CEST</div></div>
+<!--HTMLFooter-->
+</body>
+</html>
