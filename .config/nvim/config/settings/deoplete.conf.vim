@@ -1,4 +1,12 @@
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_complete_start_length = 1
+
+call deoplete#custom#source(
+    \ 'dictionary', 'matchers', ['matcher_head'])
+call deoplete#custom#source(
+    \ 'dictionary', 'sorters', [''])
+call deoplete#custom#source(
+    \ 'dictionary','min_pattern_length', 4)
 
 " play nice with multiple omnifunctions provided by third-party plugins
 "let g:deoplete#omni#functions = {}
@@ -42,7 +50,7 @@ let g:deoplete#keyword_patterns.gitcommit = '.+'
 "--- 
 
 
-
+"---
 "--- use TAB as the mapping
 inoremap <silent><expr> <TAB>
     \ pumvisible() ?  "\<C-n>" :
