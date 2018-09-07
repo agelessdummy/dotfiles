@@ -1,0 +1,12 @@
+Add a "gradient" class to all your elements that have a gradient, 
+and add the following override to your HTML to complete the IE9 support:
+
+<!--[if gte IE 9]
+<style type="text/css">
+.gradient {
+filter: none;
+}
+</style>
+<![endif]-->
+
+"-- http://www.cssmatic.com/gradient-generator#'\-moz\-linear\-gradient\%28left\%2C\%20rgba\%28107\%2C91\%2C210\%2C1\%29\%200\%25\%2C\%20rgba\%28112\%2C84\%2C196\%2C0\.95\%29\%2016\%25\%2C\%20rgba\%2898\%2C76\%2C194\%2C0\.84\%29\%2051\%25\%2C\%20rgba\%2873\%2C66\%2C194\%2C0\.69\%29\%20100\%25\%29\%3B\%20/*\%20FF3\.6+\%20*/'
