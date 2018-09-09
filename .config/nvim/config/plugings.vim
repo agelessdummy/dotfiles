@@ -2,9 +2,9 @@ Plug 'junegunn/vim-plug'
 Plug '907th/vim-auto-save'
 
 "--- Tab Completion
-"Plug 'ervandew/supertab'
-"Plug 'vim-scripts/SearchComplete'
-"Plug 'shawncplus/phpcomplete.vim', { 'for': 'php' } 
+Plug 'ervandew/supertab'
+Plug 'vim-scripts/SearchComplete'
+Plug 'shawncplus/phpcomplete.vim', { 'for': 'php' } 
 
 "Plug 'autozimu/LanguageClient-neovim', {
 "    \ 'branch': 'next',
@@ -12,31 +12,21 @@ Plug '907th/vim-auto-save'
 "    \ }
 "Plug 'tjdevries/nvim-langserver-shim'
 
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+"if has('nvim')
+"  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"else
+"  Plug 'Shougo/deoplete.nvim'
+"  Plug 'roxma/nvim-yarp'
+"  Plug 'roxma/vim-hug-neovim-rpc'
+"endif
 
-Plug 'zchee/deoplete-zsh'
-Plug 'zchee/deoplete-go', {'build': {'unix': 'make'}}
-Plug 'jodosha/vim-godebug' " Debugger integration via delve
-Plug 'Shougo/neco-syntax'
-Plug 'thalesmello/webcomplete.vim'
-"Plug 'joereynolds/deoplete-minisnip' | Plug 'joereynolds/vim-minisnip'
-"Plug 'KeyboardFire/vim-minisnip'
-"Plug 'joereynolds/deoplete-minisnip'
-Plug 'SevereOverfl0w/deoplete-github'
-Plug 'Shougo/neco-vim'
-
-" quake-like nvim terminal
-"Plug 'https://gitlab.com/Lenovsky/nuake.git'
-
-" Snippets
-"Plug 'Shougo/neosnippet.vim' | Plug 'Shougo/neosnippet-snippets'
-"Plug 'MarcWeber/vim-addon-mw-utils' | Plug 'tomtom/tlib_vim' | Plug 'garbas/vim-snipmate' | Plug 'honza/vim-snippets' | Plug 'rbonvall/snipmate-snippets-bib'
+"Plug 'zchee/deoplete-zsh'
+"Plug 'zchee/deoplete-go', {'build': {'unix': 'make'}}
+"Plug 'jodosha/vim-godebug' " Debugger integration via delve
+"Plug 'Shougo/neco-syntax'
+"Plug 'thalesmello/webcomplete.vim'
+"Plug 'SevereOverfl0w/deoplete-github'
+"Plug 'Shougo/neco-vim'
 
 "Linters
 Plug 'w0rp/ale', {
@@ -45,8 +35,6 @@ Plug 'prettier/vim-prettier', {
     \ 'do': 'npm i --upgrade',
     \ 'for': [ 'markdown', 'yaml', 'javascript', 'typescript', 'css', 'less', 'scss'] }
 Plug 'PotatoesMaster/i3-vim-syntax'
-"Plug 'davidbeckingsale/writegood.vim'
-"Plug 'jkirchartz/writegooder.vim'
 Plug 'fatih/vim-go' 
 Plug 'godoctor/godoctor.vim'  
 
@@ -56,14 +44,11 @@ Plug 'kana/vim-operator-user'
 "Plug 'reedes/vim-wordy', { 'for': ['markdown', 'tex'] }
 
 " File browse
-"Plug 'scrooloose/nerdtree'
-"Plug 'Xuyuanp/nerdtree-git-plugin'
-"Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-"Plug 'justinmk/vim-dirvish'
-"Plug 'kristijanhusak/vim-dirvish-git'
+Plug 'scrooloose/nerdtree', { 'on': 'NerdTreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 " LaTex
-"Plug 'lervag/vimtex', { 'for': 'tex', 'do': 'pip3 install --user --upgrade neovim-remote' }
 Plug 'lervag/vimtex', {
     \ 'for': 'tex', 
     \ 'do': 'pip3 install --user --upgrade' }
@@ -71,13 +56,11 @@ Plug 'donRaphaco/neotex', { 'for': 'tex' }
 
 " Focus Plugins
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
-"Plug 'junegunn/limelight.vim', {'on': 'Goyo'}
 Plug 'amix/vim-zenroom2', {'on': 'Goyo'}
 
 " Pandoc
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-criticmarkup' 
-" post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'vim-pandoc/vim-pandoc-syntax'
 "Plug 'vim-pandoc/vim-pandoc-after'
 Plug 'dhruvasagar/vim-table-mode'
@@ -85,17 +68,17 @@ Plug 'derdennis/vim-markdownfootnotes'
 Plug 'mmai/vim-markdown-wiki'
 "Plug 'prashanthellina/follow-markdown-links'
 Plug 'ferrine/md-img-paste.vim'
-"function! BuildComposer(info)
-"  if a:info.status != 'unchanged' || a:info.force
-"    if has('nvim')
-"      !cargo build --release
-"    else
-"      !cargo build --release --no-default-features --features json-rpc
-"    endif
-"  endif
-"endfunction
+function! BuildComposer(info)
+  if a:info.status != 'unchanged' || a:info.force
+    if has('nvim')
+      !cargo build --release
+    else
+      !cargo build --release --no-default-features --features json-rpc
+    endif
+  endif
+endfunction
 
-"Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
+Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 
 " Vim Startify
 Plug 'mhinz/vim-startify'
@@ -108,29 +91,28 @@ Plug 'cocopon/iceberg.vim'
 Plug 'logico-dev/typewriter', {'on': 'Goyo'}
 
 "--- Searching
-Plug 'junegunn/fzf', {
-    \ 'dir': '~/.fzf', 
-    \ 'do': './install --all' }
-Plug 'junegunn/fzf.vim' 
-function! BuildRG(info)
-  if a:info.status != 'unchanged' || a:info.force
-    if has('nvim')
-      !cargo build --release
-    else
-      !cargo build --release --no-default-features --feature pcre2 simd-accel avx-accel
-    endif
-  endif
-endfunction
+"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+"Plug 'junegunn/fzf.vim' 
+"function! BuildRG(info)
+"  if a:info.status != 'unchanged' || a:info.force
+"    if has('nvim')
+"      !cargo build --release
+"    else
+"      !cargo build --release --no-default-features --feature pcre2 simd-accel avx-accel
+"    endif
+"  endif
+"endfunction
 
-Plug 'BurntSushi/ripgrep', { 'do': function('BuildRG') }
-Plug 'jremmen/vim-ripgrep'
+"Plug 'BurntSushi/ripgrep', { 'do': function('BuildRG') }
+"Plug 'jremmen/vim-ripgrep'
+Plug 'clouduan/vim-searchme'
 
 "--- Yank
 "Plug 'vim-scripts/YankRing.vim'
 "Plug 'Shougo/neoyank.vim' | Plug 'justinhoward/fzf-neoyank'
 
- "--- Broswer Intergratiion
-Plug 'raghur/vim-ghost', {'do': [ ':GhostInstall', 'pip3 install --user --upgrade' ] }
+"--- Broswer Intergratiion
+"Plug 'raghur/vim-ghost', {'do': [ ':GhostInstall', 'pip3 install --user --upgrade' ] }
 
 "--- Fonts
 Plug 'ryanoasis/vim-devicons'
@@ -147,9 +129,6 @@ Plug 'jdelkins/vim-correction'
 Plug 'bagrat/vim-workspace'
 "Plug 'bling/vim-bufferline'
 Plug 'bling/vim-bufferline'
-
-"--- Remname the currect file
-"Plug 'danro/rename.vim'
 
 "--- Unix Conmands
 Plug 'tpope/vim-eunuch'
@@ -179,7 +158,7 @@ Plug 'jiangmiao/auto-pairs'
 
 "--- Vim Notes
 "Plug 'xolox/vim-notes'
-"Plug 'xolox/vim-tools', { 'do': 'pip3 install' }
+"Plug 'xolox/vim-tools', { 'do': 'pip3 install --user --upgrade' }
 Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
 

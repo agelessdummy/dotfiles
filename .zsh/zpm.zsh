@@ -19,6 +19,8 @@ zpm load KasperChristensen/mylocation
 zpm load wfxr/forgit
 #zpm load zsh-users/zsh-syntax-highlighting
 zpm load zdharma/fast-syntax-highlighting
+zpm load trapd00r/zsh-syntax-highlighting-filetypes
+zpm load zsh-users/zsh-syntax-highlighting
 #zpm load MikeDacre/careful_rm
 zpm load arzzen/calc.plugin.zsh
 zpm load desyncr/auto-ls

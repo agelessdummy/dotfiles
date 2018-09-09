@@ -2,9 +2,6 @@
 " https://www.cyfyifanchen.com/neovim-true-color/
 " https://github.com/NLKNguyen/papercolor-theme
 
-"set background=light
-set background=dark
-
 " For Neovim 0.1.3 and 0.1.4
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 "let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
@@ -21,11 +18,6 @@ if (has("termguicolors"))
     let &t_EI = "\<Esc>[2 q"
 endif
 
-"set guifont=Source\ Code\ Pro\ for\ Powerline\ 12
-"set guifont=Source\ Code\ Pro\ for\ Powerline "make sure to escape the spaces in the name properly
-"set antialias                                                                                               
-let g:Powerline_symbols = 'fancy'
-set guicursor+=a:blinkon0   " disable cursor blink
 
 colorscheme dracula
 "colorscheme iceberg
@@ -47,8 +39,29 @@ let g:airline_theme = 'typewriter'
 " solarized
 " let g: airline_solarized_bg=''    " dark or light
 
-
-if !has('gui_running')
-  set t_Co=256
+if has("gui_running")
+        echo "yes, we have a GUI"
+        set background=dark     "light
+        "set antialias                                                                                               
+        let g:Powerline_symbols = 'fancy'
+        "set guicursor+=a:blinkon0   " disable cursor blink
+        set guioptions-=e
+        if has("gui_gtk2") || has("gui_gtk3")
+        set guifont=Sauce\ Code\ Pro\ Nerd\ Font\ Complete\ 12
+        if has("gui_mac")
+        set guifont=Sauce\ Code\ Pro\ Nerd\ Font\ Complete: 12
+        elseif has("x11")
+	    " Also for GTK 1
+	    set guifont=*-lucidatypewriter-medium-r-normal-*-*-180-*-*-m-*-*
+        elseif has("gui_win32")
+	    set guifont=Luxi_Mono:h12:cANSI
+        endif
+    else
+        echo "Boring old console"
+        set t_Co=256
+        set background=dark " light
+    endif
 endif
+
+
 

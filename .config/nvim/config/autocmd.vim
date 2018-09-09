@@ -108,13 +108,13 @@ com! Prose call Wp()
 "---
 
 "--- let's make some textmode art!
-function! AsciiMode()
-  e ++enc=cp850
-  set nu!
-  set virtualedit=all
-  set colorcolumn=80
-endfunction
-com! Ascii call AsciiMode()
+"function! AsciiMode()
+"  e ++enc=cp850
+"  set nu!
+"  set virtualedit=all
+"  "set colorcolumn=80
+"endfunction
+"com! Ascii call AsciiMode()
 "---
 
 augroup END "}

@@ -40,8 +40,8 @@
 
 " which python2
 " which python3
-let g:python_host_prog='/usr/bin/python2'
-let g:python3_host_prog='/usr/local/bin/python3'
+"let g:python_host_prog='/usr/bin/python2'
+"let g:python3_host_prog='/usr/bin/python3'
 
 set nocompatible
 filetype plugin indent on
@@ -72,7 +72,7 @@ set spellfile=$HOME/.config/nvim/config/words/es.utf-8.add
 set thesaurus+=$HOME/.config/nvim/config/words/thesaurus/mthesaur.txt
 set thesaurus+=$HOME/.config/nvim/config/words/thesaurus/roget13a.txt
 "-- http://usevim.com/2012/07/06/vim101-completion/
-set dictionary=/usr/share/dict/words
+set dictionary+=/usr/share/dict/words
 set dictionary+=$HOME/.config/words/spelling/en_US-large.txt
 set dictionary+=$HOME/.config/words/spelling/en_GB-large.txt
 set dictionary+=$HOME/.config/words/spelling/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/en.txt
@@ -149,7 +149,6 @@ set viewoptions=cursor,folds,slash,unix
 set number
 set laststatus=2    " for statusline
 set showtabline=2
-set guioptions-=e
 
 if has("autocmd")  " go back to where you exited
     autocmd BufReadPost *
@@ -198,7 +197,8 @@ set sidescrolloff=5
 set linespace=0                 " No extra spaces between rows
 
 " Tabs
-set shiftwidth=4 tabstop=4 softtabstop=4 expandtab
+set shiftwidth=4 tabstop=4 softtabstop=4 
+"expandtab
 set tabpagemax=15           " Only show 15 tabs
 set digraph
 set showmode    " display current mode
@@ -209,12 +209,13 @@ set noswapfile
 set backup  " backups are nice
 set nowritebackup
 
-set writebackup
+"set writebackup
 set autoread
 set autowriteall
 
 " Backup, Swap and Undo
 set history=1000         " remember more commands and search history
+set undofile " Persistent Undo
 set undolevels=1000      " use many muchos levels of undo
 set undoreload=10000 " number lines to save for undo on a buffer reload
 
@@ -237,9 +238,6 @@ set grepprg=grep\ -nH\ $*
 set title                " change the terminal's title
 set titlestring=VIM:\ %-25.55F\ %a%r%m titlelen=70   
 set visualbell noerrorbells t_vb=         " don't beep
-set undofile " Persistent Undo
-set undolevels=1000         " Maximum number of changes that can be undone
-set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
 
 set ff=unix
 set ffs=unix,dos
@@ -306,9 +304,15 @@ set nohlsearch  " don't highlight all search matches
 
 
 " Text Wrapping
-set textwidth=80
+set textwidth=74
+set textwidth=0
+set wrapmargin=0
 set colorcolumn=80
 set nowrap
+set formatoptions=1 
+set noexpandtab 
+set linebreak 
+set nolist " list disables linebreaks
 
 "---Automatically install missing plugins on startup-------"
 autocmd VimEnter *

@@ -13,6 +13,11 @@ let maplocalleader = ","
 " :nnoremap <S-Tab> :bprevious<CR>
 " :nnoremap <C-X> :bdelete<CR>
 
+" SearchMe
+noremap <Leader>ss :<C-u>SearchCurrentText<CR>
+vnoremap <Leader>sv :<C-u>SearchVisualText<CR>
+noremap <Leader>sm :Search<space>
+
 " Vim Workspace
 "noremap <Tab> :WSNext<CR>
 "noremap <S-Tab> :WSPrev<CR>

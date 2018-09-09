@@ -120,10 +120,6 @@ function get_nr_jobs() {
   jobs | wc -l
 }
 
-function get_nr_CPUs() {
-  grep -c "^processor" /proc/cpuinfo
-}
-
 function get_load() {
   uptime | awk '{print $11}' | tr ',' ' '
 }
@@ -140,3 +136,15 @@ expand-or-complete-with-dots() {
 }
 zle -N expand-or-complete-with-dots
 bindkey "^I" expand-or-complete-with-dots
+
+#--- My Own
+### https://bash.cyberciti.biz/guide/Calling_functions
+### https://ryanstutorials.net/bash-scripting-tutorial/bash-functions.php
+#
+#function_name () {
+#<commands>
+#}
+##
+yday(){
+ date --date='1 day ago'
+}

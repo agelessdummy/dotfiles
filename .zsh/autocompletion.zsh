@@ -3,6 +3,7 @@
 #    "${fpath[@]}"
 #    ) && autoload $(ls $HOME/.zsh/functions)
 
+fpath=($HOME/.zsh/completions $fpath)
 autoload -Uz compinit && compinit
 
 zstyle ':completion:*' auto-description 'specify: %d'
@@ -76,3 +77,15 @@ setopt   correctall autocd recexact longlistjobs
 setopt   autoresume histignoredups pushdsilent
 setopt   autopushd pushdminus extendedglob rcquotes mailwarning
 unsetopt bgnice autoparamslash
+
+#--- My Own
+# https://bash.cyberciti.biz/guide/Calling_functions
+#name() {
+#	command list;
+#}
+
+yday() {
+	date --date='1 day ago'
+}
+
+

@@ -1,0 +1,130 @@
+## Plotting and Beats
+
+### Plotting
+
+| Numb. | Parts      | #     | Points | WC    | Read WC | POV   |
+| :---  | :---:      | :---: | ---:   | ---:  | ----:   | :---: |
+| 1.    | Setup      | 1     |        | -     | -       | -     |
+| 2.    | Reponse    | 2     |        | -     | -       | -     |
+| 3.    | End        | 3     |        | -     | -       | -     |
+| ----- | -----      | ----- | -----  | ----  | ----    | ----  |
+| 1.    | Start      | 1     |        |       |         |       |
+| 2.    | Reponse    | 2     |        |       |         |       |
+| -     | Attack     | 3     |        |       |         |       |
+| 3.    | End        | 4     |        |       |         |       |
+| ----  | -----      | ----- | -----  | ----- | -----   | ----  |
+| 1.    | Start      | 1     |        | -     | -       | -     |
+| 2.    | R. Action  | 2     |        | -     |         |       |
+| 3.    | Climax     | 3     |        | -     | -       | -     |
+| 4.    | F. Action  | 4     |        | -     | -       | -     |
+| -     | End        | 5     |        | -     | -       | -     |
+| ----  | -----      | ----- | -----  | ----  | ----    | ----  |
+| 1.    | Stasis     | 1     |        | -     | -       | -     |
+| -     | Trigger    | 2     |        | -     | -       | -     |
+| 2.    | Quest      | 3     |        | -     | -       | -     |
+| -     | Surprise   | 4     |        | -     | -       | -     |
+| 3.    | CC         | 5     |        | -     | -       | -     |
+| -     | Climax     | 6     |        | -     | -       | -     |
+| 4.    | Reversal   | 7     |        | -     | -       | -     |
+| 5.    | Resolution | 8     |        | -     | -       | -     |
+
+### Beats
+
+| Numb. | Parts                     | #     | Points                                                             |
+| :---  | :---:                     | :---: | ---:                                                               |
+| 1.    | Beat: Opening Image       | 1.    | snapshot of the main character’s problem                           |
+| -     | setup                     |       |                                                                    |
+| -     | cause                     |       |                                                                    |
+| -     | effect                    |       |                                                                    |
+|       | - Opening Scene           | 1A.   | PROTAG must be introduced                                          |
+| -     | setup                     |       |                                                                    |
+| -     | cause                     |       |                                                                    |
+| -     | effect                    |       |                                                                    |
+|       | Beat: Establish Univese   | 2.    | world as it is, and what is missing in their life                  |
+| -     | setup                     |       |                                                                    |
+| -     | cause                     |       |                                                                    |
+| -     | effect                    |       |                                                                    |
+|       | - Hook Moment             | 2A.   | a itch that needs top be scratched                                 |
+| -     | setup                     |       |                                                                    |
+| -     | cause                     |       |                                                                    |
+| -     | effect                    |       |                                                                    |
+|       | Beat: Spark               | 3.    | the message, the truth, spoken                                     |
+| -     | setup                     |       |                                                                    |
+| -     | cause                     |       |                                                                    |
+| -     | effect                    |       |                                                                    |
+| 2.    | Beat: Struggle            | 4.    | moment where life as it is changes                                 |
+| -     | setup                     |       |                                                                    |
+| -     | cause                     |       |                                                                    |
+| -     | effect                    |       |                                                                    |
+|       | - Inciting Incident       | 4A.   | game-changing event often leading to 1st Plot Point                |
+| -     | setup                     |       |                                                                    |
+| -     | cause                     |       |                                                                    |
+| -     | effect                    |       |                                                                    |
+|       | Beat: Choice              | 5.    | doubts the journey they must take                                  |
+| -     | setup                     |       |                                                                    |
+| -     | cause                     |       |                                                                    |
+| -     | effect                    |       |                                                                    |
+|       | - 1st Plot Point          | 5A.   | ANTAG forces fully into play forces for the PROTAG                 |
+| -     | setup                     |       |                                                                    |
+| -     | cause                     |       |                                                                    |
+| -     | effect                    |       |                                                                    |
+| 3.    | Beat: Break               | 6.    | world and enter the upside-down, opposite world                    |
+| -     | setup                     |       |                                                                    |
+| -     | cause                     |       |                                                                    |
+| -     | effect                    |       |                                                                    |
+|       | Beat: B-Story             | 7.    | a discussion about the Theme                                       |
+| -     | setup                     |       |                                                                    |
+| -     | cause                     |       |                                                                    |
+| -     | effect                    |       |                                                                    |
+| 4.    | Beat: Promise of Premise  | 8.    | explores the new world and the                                     |
+| -     | setup                     |       |                                                                    |
+| -     | cause                     |       |                                                                    |
+| -     | effect                    |       |                                                                    |
+|       | - 1st Pitch Point         | 8A.   | reminder of ANTAG is visble to the reader                          |
+| -     | setup                     |       |                                                                    |
+| -     | cause                     |       |                                                                    |
+| -     | effect                    |       |                                                                    |
+|       | Beat: Midpoint            | 9.    | they think they want (“great”); they think they want (“awful”)     |
+| -     | setup                     |       |                                                                    |
+| -     | cause                     |       |                                                                    |
+| -     | effect                    |       |                                                                    |
+|       | - Midpoint                | 9A.   | new info that changes understanding of context                     |
+| -     | setup                     |       |                                                                    |
+| -     | cause                     |       |                                                                    |
+| -     | effect                    |       |                                                                    |
+| 5.    | Beat: Everything Unravels | 10.   | physical and emotional regroup to defeat the main character’s goal |
+| -     | setup                     |       |                                                                    |
+| -     | cause                     |       |                                                                    |
+| -     | effect                    |       |                                                                    |
+|       | - 2nd Pitch Point         | 10A.  | ANTAG ups the game against the PROTAG's attack                     |
+| -     | setup                     |       |                                                                    |
+| -     | cause                     |       |                                                                    |
+| -     | effect                    |       |                                                                    |
+|       | - All is Lost Lull        | 10B.  | a slower paced before the 2nd Plot Point                           |
+| -     | setup                     |       |                                                                    |
+| -     | cause                     |       |                                                                    |
+| -     | effect                    |       |                                                                    |
+|       | Beat 11: All is Lost      | 11.   | realizes they’ve lost everything they gained                       |
+| -     | setup                     |       |                                                                    |
+| -     | cause                     |       |                                                                    |
+| -     | effect                    |       |                                                                    |
+| 6.    | Beat: Existencial Crisis  | 12.   | main character hits bottom, and wallows in hopelessness            |
+| -     | setup                     |       |                                                                    |
+| -     | cause                     |       |                                                                    |
+| -     | effect                    |       |                                                                    |
+|       | - 2nd Plot Point          | 12A.  | final new info dump, and PROTAGS's quest is accelerated            |
+| -     | setup                     |       |                                                                    |
+| -     | cause                     |       |                                                                    |
+| -     | effect                    |       |                                                                    |
+| 7.    | Beat: Break               | 13.   | fresh idea from the B-Story, the PROTAG chooses to try again       |
+| -     | setup                     |       |                                                                    |
+| -     | cause                     |       |                                                                    |
+| -     | effect                    |       |                                                                    |
+|       | Beat: Denouement          | 14.   | the nudget of truth that now makes sense to them                   |
+| -     | setup                     |       |                                                                    |
+| -     | cause                     |       |                                                                    |
+| -     | effect                    |       |                                                                    |
+| 8.    | Beat: Final Image         | 15.   | proving, visually, that a change has occurred                      |
+| -     | setup                     |       |                                                                    |
+| -     | cause                     |       |                                                                    |
+| -     | effect                    |       |                                                                    |

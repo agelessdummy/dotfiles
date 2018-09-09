@@ -5,8 +5,8 @@ let g:pandoc#syntax#conceal#blacklist = []
 let g:pandoc#syntax#conceal#urls = 1
 let g:pandoc#after#modules#enabled = []
 "let g:pandoc#after#modules#enabled = [ "supertab", "tablemode", "ultisnips", "neosnippets" ]
-let g:pandoc#formatting#mode = 'haA'
-let g:pandoc#formatting#textwidth = 100
+"let g:pandoc#formatting#mode = 'haA'
+"let g:pandoc#formatting#textwidth = 100
 "let g:pandoc#modules#disabled = [ 'commands', 'templates', 'formatting']
 let g:pandoc#completion#bib#use_preview = 0
 let g:pandoc#biblio#use_bibtool = 1
@@ -33,4 +33,4 @@ let g:pandoc#syntax#codeblocks#embeds#langs = ['python',
 
 let g:pandoc#folding#fold_fenced_codeblocks = 1
 
-"let g:pandoc#command#templates_file = ""
+"let g:pandoc#command#templates_file = "$HOME/bin/MyMD/"
