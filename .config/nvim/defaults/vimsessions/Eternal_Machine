@@ -7,14 +7,17 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +30 ~/Documents/writing/writing/narratives/STORYS/eternal_machine/eternal_machines.md
+badd +39 ~/Documents/writing/writing/narratives/STORYS/eternal_machine/eternal_machines.md
 badd +29 ~/Documents/writing/writing/narratives/STORYS/eternal_machine/plots_beats.md
 badd +1 ~/Documents/writing/writing/narratives/STORYS/eternal_machine/Loglines.md
-badd +0 ~/Documents/writing/writing/narratives/STORYS/eternal_machine/Characters.md
+badd +3 ~/Documents/writing/writing/narratives/STORYS/eternal_machine/Characters.md
+badd +9 ~/Documents/writing/writing/narratives/STORYS/eternal_machine/Worldbuilding.md
+badd +33 ~/Documents/writing/writing/narratives/STORYS/eternal_machine/names_fishers.md
+badd +3 ~/Documents/writing/writing/narratives/STORYS/eternal_machine/notes.md
 argglobal
 silent! argdel *
 $argadd eternal_machines.md
-edit ~/Documents/writing/writing/narratives/STORYS/eternal_machine/Characters.md
+edit ~/Documents/writing/writing/narratives/STORYS/eternal_machine/notes.md
 set splitbelow splitright
 wincmd t
 set winminheight=1 winminwidth=1 winheight=1 winwidth=1
@@ -27,11 +30,11 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 5 - ((4 * winheight(0) + 17) / 34)
+let s:l = 3 - ((2 * winheight(0) + 17) / 34)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-5
+3
 normal! 0
 lcd ~/Documents/writing/writing/narratives/STORYS/eternal_machine
 tabnext 1

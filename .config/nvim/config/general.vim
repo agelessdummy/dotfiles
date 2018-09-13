@@ -58,13 +58,14 @@ set iskeyword-=.                    " '.' is an end of word designator
 set iskeyword-=#                    " '#' is an end of word designator
 set iskeyword-=-                    " '-' is an end of word designator
 
-set spell spelllang=en
+"set spell spelllang=en
+setlocal spell spelllang=en_us
 "set complete+=s,kspell
 set complete+=kspell
 "faster keyword completion
-set complete-=i   " disable scanning included files
-set complete-=t   " disable searching tags
-set complete+=s   " makes autocompletion search the thesaurus
+setlocal complete-=i   " disable scanning included files
+setlocal complete-=t   " disable searching tags
+setlocal complete+=s   " makes autocompletion search the thesaurus
 "set spellsuggest=15
 set spellsuggest=5
 set spellfile=$HOME/.config/nvim/config/words/en.utf-8.add
@@ -78,6 +79,7 @@ set dictionary+=$HOME/.config/words/spelling/en_GB-large.txt
 set dictionary+=$HOME/.config/words/spelling/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/en.txt
 set dictionary+=$HOME/.config/words/spelling/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/es.txt
 "runtime config/words/abbrev.vim
+let g:spell_clean_limit = 60 * 60
   
 " http://hacktux.com/vim/spellcheck
 " Vim Spell Colors
@@ -300,7 +302,7 @@ set smartcase " don't ignore capitals in searches
 set winminheight=0              " Windows can be 0 line high
 set autochdir
 set incsearch   " search characters as they're entered
-set nohlsearch  " don't highlight all search matches
+"set nohlsearch  " don't highlight all search matches
 
 
 " Text Wrapping

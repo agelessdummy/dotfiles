@@ -62,6 +62,3 @@ if has("gui_running")
         set background=dark " light
     endif
 endif
-
-
-
