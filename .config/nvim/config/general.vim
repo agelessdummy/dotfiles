@@ -63,8 +63,8 @@ setlocal spell spelllang=en_us
 "set complete+=s,kspell
 set complete+=kspell
 "faster keyword completion
-setlocal complete-=i   " disable scanning included files
-setlocal complete-=t   " disable searching tags
+"setlocal complete-=i   " disable scanning included files
+"setlocal complete-=t   " disable searching tags
 setlocal complete+=s   " makes autocompletion search the thesaurus
 "set spellsuggest=15
 set spellsuggest=5

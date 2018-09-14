@@ -7,22 +7,23 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +39 ~/Documents/writing/writing/narratives/STORYS/eternal_machine/eternal_machines.md
-badd +29 ~/Documents/writing/writing/narratives/STORYS/eternal_machine/plots_beats.md
+badd +81 ~/Documents/writing/writing/narratives/STORYS/eternal_machine/eternal_machines.md
+badd +89 ~/Documents/writing/writing/narratives/STORYS/eternal_machine/plots_beats.md
 badd +1 ~/Documents/writing/writing/narratives/STORYS/eternal_machine/Loglines.md
 badd +3 ~/Documents/writing/writing/narratives/STORYS/eternal_machine/Characters.md
 badd +9 ~/Documents/writing/writing/narratives/STORYS/eternal_machine/Worldbuilding.md
 badd +33 ~/Documents/writing/writing/narratives/STORYS/eternal_machine/names_fishers.md
 badd +3 ~/Documents/writing/writing/narratives/STORYS/eternal_machine/notes.md
+badd +33 ~/Documents/writing/writing/narratives/STORYS/eternal_machine/episodes/16_index.md
 argglobal
 silent! argdel *
 $argadd eternal_machines.md
-edit ~/Documents/writing/writing/narratives/STORYS/eternal_machine/notes.md
+edit ~/Documents/writing/writing/narratives/STORYS/eternal_machine/episodes/16_index.md
 set splitbelow splitright
 wincmd t
 set winminheight=1 winminwidth=1 winheight=1 winwidth=1
 argglobal
-setlocal fdm=syntax
+setlocal fdm=expr
 setlocal fde=pandoc#folding#FoldExpr()
 setlocal fmr={{{,}}}
 setlocal fdi=#
@@ -30,13 +31,17 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 3 - ((2 * winheight(0) + 17) / 34)
+1
+normal! zo
+31
+normal! zo
+let s:l = 5 - ((4 * winheight(0) + 17) / 34)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-3
-normal! 0
-lcd ~/Documents/writing/writing/narratives/STORYS/eternal_machine
+5
+normal! 024|
+lcd ~/Documents/writing/writing/narratives/STORYS/eternal_machine/episodes
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
